@@ -1,0 +1,154 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{enumitem}
+\usepackage[margin=2.5cm]{geometry}
+
+\begin{document}
+
+\section*{1 laboratorinis darbas. Projekto planas}
+
+\subsection*{Poreikiai (Business need statement)}
+
+Pasirinkus vieną iš pasiūlytų užduočių, pakanka pažymėti, kuri poreikių dalis yra įtraukiama (arba neįtraukiama) į projektą.
+
+Darant savo užduotį, pakanka aprašyti poreikius tokiu detalumu kaip pasiūlytose užduotyse.
+
+\subsection*{Sistemos vizija (System vision document)}
+
+Esminiai sistemos tipo ir/arba architektūriniai sprendimai (pvz., Web sistema, kliento-serverio architektūra).
+
+Sistemos skaidymas į dalis, kuriomis remiasi projekto planas.
+
+Preliminarūs techninės įrangos poreikiai, ypač jei sistemai reikia specifinės techninės įrangos.
+
+\subsection*{Projekto planas (Project plan)}
+
+\subsubsection*{Dydžio ir pastangų vertinimas (estimates of size and effort)}
+
+Dydžio vertinimui rekomenduojama naudoti vieną iš metodų, kurie bus išnagrinėti per paskaitas: PROBE arba FP. Kadangi komanda neturi istorinių duomenų, kiek kodo (LOC) arba funkcinių taškų (FP) sukuriama per žmogaus darbo mėnesį, todėl negali gauti pastangų įvertinimo iš turimo prognozuojamo dydžio. Todėl pastangų vertinimui rekomenduojama naudoti veiklomis paremtą metodą kuriamoms sistemos dalims, atsižvelgiant į jų dydį ir sudėtingumą.
+
+\subsubsection*{Tvarkaraštis (schedule)}
+
+Turi būti sudarytas projekto tvarkaraštis, numatantis iteracijas, veiklas, kontrolinius taškus (milestones). Galima planuoti, kad projektas prasidės, pvz., spalio 1 dieną arba kitų metų sausio 2 dieną.
+
+Pastabos:
+\begin{itemize}
+    \item projektą vykdanti komanda gali būti didesnė nei projekto planą kurianti studentų komanda;
+    \item planuojamas projekto vykdymas darbinėje, o ne mokomojoje aplinkoje, t.y. dirbama 5 dienas, o ne 1 dieną per savaitę;
+    \item rekomenduojamas grafinis tvarkaraščio pavaizdavimas (pvz., pasinaudojant MS Project).
+\end{itemize}
+
+\subsubsection*{Resursų planas (resource allocation)}
+
+Turi būti nurodyta:
+\begin{itemize}
+    \item projekto vykdytojų rolės su trumpu apibūdinimu, už ką kiekviena rolė atsakinga (pvz., analitikas, atsakingas už reikalavimų analizę);
+    \item kiekvienos rolės vykdytojų skaičius kiekvienu projekto vykdymo laikotarpiu;
+    \item techninės įrangos poreikis kiekvienu projekto vykdymo laikotarpiu (pvz., integravimui ir testavimui reikalingas serveris).
+\end{itemize}
+
+Pastabos:
+\begin{itemize}
+    \item projektą vykdanti komanda gali būti didesnė nei projekto planą kurianti studentų komanda;
+    \item planuojame, kad vienas žmogus atliks tik vieną rolę, todėl rolės gali būti sudėtinės (pvz., analitikas-projektuotojas).
+\end{itemize}
+
+\subsubsection*{Konfigūracijos valdymo planas (configuration control)}
+
+Turi būti nurodyta:
+\begin{itemize}
+    \item darbo produktai, kurių versijos bus valdomos;
+    \item versijų valdymo būdai (pvz., programos kodo valdymui bus naudojama CVS sistema).
+\end{itemize}
+
+\subsubsection*{Pakeitimų valdymo planas (change management)}
+
+Turi būti nurodyta:
+\begin{itemize}
+    \item pakeitimų valdymo būdas (pvz., Redmine sistema);
+    \item pakeitimų valdymo procedūra.
+\end{itemize}
+
+\subsubsection*{Rizikos valdymo planas (project risk identification and management)}
+
+(klausimų nebuvo)
+
+\section*{2 laboratorinis darbas. Reikalavimai}
+
+\subsection*{Reikalavimų specifikacija (Software requirements specification)}
+
+Reikalavimų specifikacijoje turi būti surašyti visi reikalavimai, keliami programų sistemai. Pageidautina reikalavimus grupuoti į funkcinius/nefunkcinius ir/arba pagal sistemos dalis. Reikalavimai turi būti:
+\begin{itemize}
+    \item aiškūs, nedviprasmiški;
+    \item patikrinami,
+    \item pagrįsti (poreikiais);
+    \item įgyvendinami,
+    \item unikaliai identifikuoti.
+\end{itemize}
+
+Reikia parodyti, kad reikalavimai apima visus užsakovo poreikius, pateiktus poreikių dokumente (žinoma, reikalavimai gali apimti daugiau nei nurodyta poreikių dokumente). Tai galima padaryti, sudėjus poreikius fragmentais į lentelę, o šalia nurodžius juos atitinkančių reikalavimų identifikatorius (numerius).
+
+\subsection*{Analizės modelis (Analysis model)}
+
+Analizės modelis gali būti kuriamas pagal struktūrinės analizės arba objektiškai orientuotos analizės (OOA) metodą.
+
+Bet kuriuo atveju turi būti pateikiama reikalavimų atsekamumo lentelė: reikalavimo identifikatorius, susijęs analizės modelio elementas (arba elementai). Nebūtinai visi nefunkciniai reikalavimai turi būti atvaizduoti analizės modelyje.
+
+\subsubsection*{Struktūrinė analizė}
+
+Analizės modelis pagal šį metodą susideda iš:
+\begin{itemize}
+    \item esybių-ryšių diagramos;
+    \item duomenų srautų diagramų rinkinio;
+    \item duomenų srautų aprašų; kiekvienam duomenų srautui nurodoma tokia informacija:
+    \begin{itemize}
+        \item srauto pavadinimas,
+        \item perduodamų duomenų apibūdinimas,
+        \item šaltinis,
+        \item adresatas,
+        \item srauto identifikatorius (I*- įeinantiems informacijos srautams, O**- išeinantiems informacijos srautams, V**- vidiniams informacijos srautams),
+        \item duomenų pavidalas,
+        \item intensyvumas,
+        \item perdavimo sąlygos;
+    \end{itemize}
+    \item procesų specifikacijų; kiekvienas procesas aprašomas tekstu, matematine formule, diagrama ar kitaip.
+\end{itemize}
+
+\subsubsection*{OOA}
+
+Analizės modelis pagal šį metodą susideda iš:
+\begin{itemize}
+    \item klasių diagramos;
+    \item naudojimo atvejų rinkinio: naudojimo atvejų diagramos ir naudojimo atvejų aprašų; kiekvienam naudojimo atvejui nurodoma:
+    \begin{itemize}
+        \item pavadinimas;
+        \item dalyviai;
+        \item paskirtis;
+        \item kritiškumas (pvz.: būtina; dažnai atliekama);
+        \item pradinės sąlygos;
+        \item rezultatai;
+        \item tipinė eiga ir kiti galimi variantai (aprašoma struktūrizuotu tekstu arba veiklos/plaukimo takelių diagrama);
+    \end{itemize}
+    \item pagal poreikį sistemos elgsenos aprašymo.
+\end{itemize}
+
+Būtina bent viena veiklos/plaukimo takelių diagrama. Pageidautina bent viena būsenų diagrama (visos sistemos ar kažkurios klasės).
+
+\section*{3 laboratorinis darbas. Programų sistemos projektas}
+
+\subsection*{Programų sistemos projektas (Software design specification)}
+
+Darbas turi susidėti iš dviejų dalių:
+
+\begin{enumerate}
+    \item Projektas, apimantis saugomus duomenis (DB struktūrą), sistemos architektūrą, sudėtingesnių modulių veikimo apibrėžimus, interfeisus. Jei taikoma OOD metodika, būtina klasių diagrama.
+
+    Projekto vertinimo pagrindinė metrika: ar galima pagal jį paskirstyti darbus programuotojams ir ar jie be papildomos informacijos sukurs reikiamą sistemą.
+
+    \item Reikalavimų atsekamumo lentelė: reikalavimo identifikatorius, jį įgyvendinantys projekto elementai. Visi reikalavimai turi būti atvaizduoti projekte.
+\end{enumerate}
+
+\end{document}
