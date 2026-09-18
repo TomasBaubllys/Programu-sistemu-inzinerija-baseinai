@@ -12,7 +12,7 @@
 
 \section{System Overview}
 
-The system is intended for the management and execution of individual and group training sessions in swimming pools and other sports environments. It will support instructors in preparing training programs, managing participants, presenting visual training content, and delivering audio instructions during a session.
+The system is intended for the management and execution of individual and group training sessions in swimming pools and other sports environments. It will support instructors in preparing training programs, managing participants, presenting visual training content, and delivering audio instructions during a session. A virtual trainer mode will allow a prepared program to run without the instructor being continuously present on site, making it possible to fill otherwise unused facility time.
 
 The solution will be implemented as a web-based client-server system. The main application and data will be centrally managed, while instructors will access the system through a web interface. During a training session, the system will interact with external audio and video equipment used in the sports environment.
 
@@ -26,6 +26,8 @@ The following preliminary architectural decisions are made:
     \item Application data, training programs, participant information, and session history will be stored centrally.
     \item Video and other training content will be managed by the system and displayed on connected screens or TVs.
     \item Audio instructions and the instructor's voice will be delivered through suitable audio equipment, including participant headphones where applicable.
+    \item The system will distinguish between training-content presentation and advertising or informational content displayed outside training sessions.
+    \item User programs, bookings, actual attendance, and progress will be managed centrally.
     \item The architecture should allow the same software solution to be adapted to different sports environments and hardware configurations.
 \end{itemize}
 
@@ -43,11 +45,17 @@ Responsible for planning and conducting individual and group training sessions. 
 
 \subsection{Participant Management}
 
-Responsible for storing participant information, assigning participants to training sessions, and maintaining participation history.
+Responsible for storing participant information, presenting the schedule, managing place bookings, assigning participants to training sessions, and maintaining actual attendance history.
+
+\subsection{Personal Program Management}
+
+Responsible for client programs created after an individual assessment, preparation recommendations, and exercises to be completed at home. The instructor will be able to update the program remotely, while the client will view it through the mobile interface.
 
 \subsection{Visual Content Presentation}
 
 Responsible for presenting exercises, demonstrations, and other visual information on a TV, display, or other suitable screen. This is particularly important in swimming pools, where the instructor may not be able to demonstrate movements performed in the water or underwater.
+
+When no training session is taking place, the same module may display advertising or informational content. During a session, sponsor logos or other selected elements may be shown in a designated part of the screen.
 
 \subsection{Audio Communication}
 
@@ -85,6 +93,7 @@ The architecture should allow the system to be extended in the future without re
     \item personalized training programs based on participant needs, fitness level, or previous activity;
     \item participant progress and training result analysis;
     \item operation across multiple sports facilities or sports centers.
+    \item advertising content scheduling, campaign management, and performance analysis.
 \end{itemize}
 
 \end{document}
