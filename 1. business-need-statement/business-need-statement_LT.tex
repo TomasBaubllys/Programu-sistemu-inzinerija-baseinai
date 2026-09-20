@@ -4,71 +4,69 @@
 \usepackage[lithuanian]{babel}
 \usepackage{enumitem}
 \usepackage{geometry}
+\usepackage{array}
 \geometry{margin=2.5cm}
 
-\title{Užsakovo poreikių aprašas\\\large Individualių ir grupinių užsiėmimų valdymas}
+\title{Projekto valdymo planas\\\large Pokyčių valdymo procedūra (Change Management)}
 
 \begin{document}
 \maketitle
 
-\section{Problema}
+\section{Tikslas ir taikymo sritis}
+Šio dokumento tikslas – apibrėžti formalų ir kontroliuojamą procesą, skirtą bet kokiems projekto apimties, tvarkaraščio, biudžeto ar kokybės reikalavimų pakeitimams valdyti po to, kai pradiniai projekto planai (bazės) yra oficialiai patvirtinti. 
 
-Baseinuose ir kitose sporto erdvėse individualių bei grupinių užsiėmimų vedimas reikalauja, kad treneris ar užsiėmimo vedėjas vienu metu demonstruotų veiksmus, sektų programos eigą ir perduotų instrukcijas dalyviams.
+Pokyčių valdymu siekiama:
+\begin{itemize}
+    \item Apsaugoti projektą nuo nekontroliuojamo apimties išsiplėtimo (\textit{angl. scope creep}).
+    \item Užtikrinti skaidrų ir pagrįstą sprendimų priėmimą.
+    \item Garantuoti, kad visi suinteresuotieji asmenys laiku sužino apie planuojamų pakeitimų pasekmes.
+\end{itemize}
 
-Baseine vedėjas dažniausiai yra ant baseino krašto, todėl ne visada gali tinkamai pademonstruoti veiksmus, atliekamus vandenyje ar po vandeniu. Dalyviams gali būti sunku aiškiai matyti teisingą kūno padėtį, judesių seką ar atlikimo techniką.
-
-Instrukcijų perdavimą taip pat apsunkina triukšmas, atstumas ir didesnis dalyvių skaičius. Ne visi dalyviai vienodai gerai girdi vedėją, todėl praktiškai ribojamas vienu metu efektyviai valdomos grupės dydis.
-
-Norima sumažinti šiuos vaizdinio demonstravimo ir garso perdavimo apribojimus bei palengvinti individualių ir grupinių užsiėmimų organizavimą.
-
-\section{Sprendimas}
-
-Sistema turėtų leisti iš anksto parengti užsiėmimo programą, sudarytą iš skirtingų etapų, vaizdo medžiagos ir garso instrukcijų. Užsiėmimo metu parengta programa būtų vykdoma pagal nustatytą eigą, o vedėjas prireikus galėtų ją kontroliuoti, koreguoti ar pereiti prie kito etapo.
-
-Dalyviams reikalinga informacija būtų pateikiama vaizdu ir garsu. Vaizdinė medžiaga galėtų padėti parodyti veiksmus, kurių vedėjas negali tinkamai pademonstruoti iš savo buvimo vietos, o garsinės instrukcijos turėtų būti aiškiai girdimos visiems dalyviams.
-
-Sprendimas turi būti pritaikomas baseinams ir kitoms sporto erdvėms, skirtingo dydžio grupėms bei įvairaus pobūdžio individualiems ir grupiniams užsiėmimams.
-
-\section{Verslo nauda}
-
-Virtualaus trenerio režimas leis iš anksto parengtas treniruotes vykdyti laisvu sporto erdvės ar baseino laiku be nuolatinio trenerio dalyvavimo vietoje. Tai padės geriau išnaudoti infrastruktūrą, pasiūlyti daugiau užsiėmimų ir sumažinti vienos treniruotės darbo sąnaudas.
-
-Kai treniruotė nevyksta, ekranuose galės būti rodomas reklaminis ar informacinis turinys, o treniruotės metu -- rėmėjų logotipai ar kiti neįkyrūs reklaminiai elementai. Papildomos reklamos pajamos galėtų padėti greičiau susigrąžinti investiciją į sistemą ir techninę įrangą.
-
-Treniruočių kokybę gerins tikslus pratimų demonstravimas vandenyje ir po vandeniu bei individualus garso perdavimas per belaides ausines. Dalyviai aiškiai girdės instrukcijas netrukdydami kitiems baseino lankytojams, o grupės dydžio neberibos trenerio balso girdimumas.
-
-Po individualaus įvertinimo treneris galės sudaryti klientui asmeninę programą, paskirti pasiruošimo ar namuose atliekamas užduotis ir pateikti jas mobiliojoje programėlėje. Programą bus galima koreguoti nuotoliniu būdu be papildomo susitikimo, o sistema padės sekti registracijas, faktinį lankomumą ir progresą.
-
-\section{Į projektą įtraukiami poreikiai}
-
-\begin{enumerate}[label=\arabic*.]
-    \item Individualių ir grupinių užsiėmimų planavimas ir organizavimas.
-    \item Užsiėmimų programų sudarymas iš skirtingų etapų, pratimų ir kito turinio.
-    \item Vaizdinės informacijos pateikimas dalyviams užsiėmimo metu.
-    \item Garso instrukcijų ir vedėjo balso perdavimas dalyviams.
-    \item Automatinis parengtos programos vykdymas su galimybe vedėjui valdyti jos eigą.
-    \item Dalyvių ir jų dalyvavimo užsiėmimuose valdymas.
-    \item Užsiėmimų turinio, programų ir jų istorijos valdymas.
-    \item Sistemos pritaikymas skirtingoms sporto erdvėms, grupių dydžiams bei naudojamai vaizdo ir garso įrangai.
-    \item Patogus užsiėmimų tvarkaraščio peržiūrėjimas, vietų rezervavimas ir registracijų valdymas.
-    \item Faktinio lankomumo ir dalyvavimo istorijos fiksavimas.
-    \item Virtualaus trenerio režimas, leidžiantis iš anksto parengtą treniruotę vykdyti be nuolatinio trenerio dalyvavimo vietoje.
-    \item Asmeninės kliento programos, pasiruošimo rekomendacijų ir namuose atliekamų užduočių sudarymas.
-    \item Trenerio galimybė nuotoliniu būdu atnaujinti kliento programą ir pakeisti pratimus be papildomo susitikimo.
+\section{Pokyčių klasifikacija}
+Visi projekto pakeitimai skirstomi į tris pagrindines kategorijas pagal jų poveikį projekto trikampiams apribojimams:
+\begin{enumerate}
+    \item \textbf{Nedideli pakeitimai:} Įtakos neturi nei projekto biudžetui, nei galutiniam terminui (pvz., nedidelis užduočių eiliškumo pasikeitimas komandos viduje).
+    \item \textbf{Vidutiniai pakeitimai:} Keičia tarpinius terminus arba reikalauja nedidelio resursų perskirstymo neviršijant bendro biudžeto rezervo.
+    \item \textbf{Dideli pakeitimai:} Iš esmės keičia projekto apimtį, reikalauja papildomo finansavimo arba lemia galutinio projekto termino pratęsimą.
 \end{enumerate}
 
-\section{Pageidaujami išplėtimai}
+\section{Pokyčių valdymo procesas}
+Bet koks pokytis projekto eigoje privalo praeiti šiuos 5 nuoseklius etapus:
 
-Šie poreikiai laikomi galimais sistemos išplėtimais ir nėra būtini pradinei sistemos versijai:
-
-\begin{enumerate}[label=\arabic*., start=14]
-    \item Mobilioji programėlė dalyviams ir treneriams, kurioje klientas matytų savo programą, pasiruošimo rekomendacijas ir namuose atliekamas užduotis.
-    \item Dalyvių identifikavimas sporto erdvėje ir jų susiejimas su konkrečiu užsiėmimu.
-    \item Skirtingų užsiėmimų programų ir vaizdo turinio bibliotekos kūrimas.
-    \item Programų pritaikymas pagal dalyvio poreikius, pasirengimo lygį ar ankstesnę veiklą.
-    \item Dalyvių progreso ir užsiėmimų rezultatų analizė.
-    \item Sistemos naudojimas keliose erdvėse ar skirtinguose sporto centruose.
-    \item Reklaminio ir informacinio turinio rodymas ekranuose ne treniruočių metu bei rėmėjų logotipų rodymas treniruotės metu.
+\begin{enumerate}
+    \item \textbf{1 etapas: Pokyčio inicijavimas ir pateikimas}
+    Bet kuris projekto komandos narys ar užsakovas gal pastebėti pokyčio poreikį. Iniciatorius privalo užpildyti formalią \textit{Pokyčio užklausą} (angl. \textit{Change Request}), kurioje aiškiai aprašo pokyčio esmę, priežastį ir naudą.
+    
+    \item \textbf{2 etapas: Registracija}
+    Projekto vadovas gauna užklausą, ją užregistruoja centrinėje sistemoje – \textit{Pokyčių registre} (angl. \textit{Change Log}) – ir suteikia unikalų numerį tolimesniam sekančiam sekimui.
+    
+    \item \textbf{3 etapas: Poveikio analizė}
+    Projekto vadovas kartu su atsakingais specialistais įvertina pokyčio poveikį:
+    \begin{itemize}
+        \item \textit{Apimčiai:} Kokios naujos funkcijos, reikalavimai atsiranda arba yra pašalinami?
+        \item \textit{Laikui:} Kiek dienų ar savaičių užtruks įgyvendinimas?
+        \item \textit{Kaštams:} Kokia finansinė naštos ar sutaupymo įtaka bus sugeneruota?
+        \item \textit{Rizikai:} Kokias naujas grėsmes ar galimybes tai sukuria projekto sėkmei?
+    \end{itemize}
+    
+    \item \textbf{4 etapas: Sprendimo priėmimas}
+    Remiantis poveikio analize, pokyčio užklausa teikiama tvirtinti atitinkamam valdymo organui (pagal kompetencijos ribas). Galimi sprendimai: patvirtinti, atmesti arba grąžinti patikslinimui.
+    
+    \item \textbf{5 etapas: Įgyvendinimas ir atnaujinimas}
+    Jei pokytis patvirtinamas, projekto vadovas oficialiai atnaujina projekto planą, biudžetą bei tvarkaraštį ir paveda komandai įgyvendinti užduotį. Atmesti prašymai archyvuojami nurodant atmetimo priežastį.
 \end{enumerate}
+
+\section{Kompetencijos ir sprendimų priėmimo ribos}
+Lentelėje pateikiama atsakomybės matrica už pokyčių tvirtinimą pagal jų finansinį ir laiko poveikį:
+
+\begin{center}
+\begin{tabular}{|l|p{6cm}|l|}
+\hline
+\textbf{Pokyčio lygis} & \textbf{Kriterijai / Apibūdinimas} & \textbf{Tvirtinantis asmuo} \\ \hline
+Žemas & Biudžeto pokytis iki 1,000 € / laiko vėlavimas iki 3 d. & Projekto vadovas \\ \hline
+Vidutinis & Biudžeto pokytis 1,000 – 5,000 € / vėlavimas 3–10 d. & Projekto rėmėjas \\ \hline
+Aukštas & Biudžeto pokytis virš 5,000 € / esminis apimties keitimas & Pokyčių valdymo komitetas (CCB) \\ \hline
+\end{tabular}
+\end{center}
 
 \end{document}
