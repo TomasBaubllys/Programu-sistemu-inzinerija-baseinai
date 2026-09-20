@@ -1,1 +1,82 @@
-miau
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx} 
+\usepackage{float}
+\usepackage[lithuanian]{babel}
+
+
+\begin{document}
+
+\section{Rizikų identifikavimas}
+Pagal rizikų tipus, jas skirstysime į šias kategorijas: techninės (TR), funkcinės (FR), integracinės (IR), organizacinės (OR), saugumo (SR) ir ergonominės rizikos (ER). Žemiau pateikti šiame projekte numatomų rizikų registras.
+
+
+
+\begin{itemize}
+    \item Techninės rizikos (TR):
+    \begin{itemize}
+        \item \textbf{Neigiamas drėgmės poveikis aparatūrai ir įrangai.} Kadangi projektas apima ir užsiemimų vykdymą baseinuose, jo aplinkoje naudojama techninė įranga (ausinės, televizoriai, planšetės) gali sugesti ir net kelti saugos pavojų dalyviams. Baseino aplinkoje esanti didelė drėgmė, tiesioginio kontakto su vandeniu galimybė, vandenyje esanti chemija (pvz. chloras) gali turėti neigiamą įtaką aparatūrai.
+        \item \textbf{Ryšio sutrikimai.} Instrukcijų iš trenerio perdavimas į dalyvių ausines arba vaizdo sinchronizavimas su garsu gali vėluoti dėl nestabilaus belaidžio tinklo.
+        \item \textbf{Serverio ir debesijos paslaugų tiekėjo sutrikimai.} Kadangi sistema naudoja serverio ar debesijos aplinką aplikacijai, duomenų bazei, medžiagai talpinti, projekto sėkmė ir sklandus vykdymas tiesiogiai priklauso nuo trečiosios šalies tiekėjo paslaudų kokybės. Tiekėjui patyrus serverio gedimus ar nutrūkus ryšiui su duomenų baze, sutriks visas sistemos darbas.
+    \end{itemize}
+    \item Funkcinės rizikos (FR):
+    \begin{itemize}
+        \item \textbf{Programos režimo klaidos.} Jei treniruotė vyksta be žmogaus priežiūros, yra galimybė, kad sistema užstrigs arba neteisingai interpretuos etapo pabaigą ar pradžią, taip palikdamą naudotojus be instrukcijų.
+    \end{itemize}
+    \item Integracinės rizikos (IR):
+    \begin{itemize}
+        \item \textbf{Garso ir vaizdo įrangos suderinamumas.} Skirtinguose baseinuose ir sport centruose naudojama aparatūra gali nepalaikyti planuojamų programinių sąsajų. 
+    \end{itemize}
+    \item Organizacinės rizikos (OR):
+    \begin{itemize}
+        \item \textbf{Naudotojų (trenerių ir dalyvių) pasirpiešinimas.} Vyresnio amžiaus, ar mažiau pratę prie technologijų treneriai gali sunkiau suprasti sistemos veikimą, o dalyviai gali priešintis prieš gyvo kontakto sumažinimą ir specialios įrangos naudojimą.
+    \end{itemize}
+    \item Saugumo rizikos (SR):
+    \begin{itemize}
+        \item \textbf{Asmens duomenų saugumo ir nutekėjimo rizika.} Planuojama sistema valdo dalyvių informaciją, vietų rezervaciją, lankomumo istoriją, individualius įvertinimo duomenis bei asmenines programas. Tai jautrūs asmens duomenys, kurių nutekėjimas ar neteisėtas pasisavinimas lemia teisinę atsakomybę pagal BDAR reglamentą.
+    \end{itemize}
+    \item Ergonominės rizikos (ER):
+    \begin{itemize}
+        \item \textbf{Nepakankamas vaizdinės medžiagos matomumas.} Kai kurie dalyviai gali turėti silpnesni regėjimą ir nedėvėti baseine akinių ar kontaktinių lęšių, o atstumas iki ekranų gali būti didelis. Jei rodomas vaizdas ir pratimai ekrane bus per maži, ar per mažai kontrastingi, lankytojai gali nesuprasti taisyklingos technikos, kas mažins treniruotės efektyvumą ir saugumą.
+        \item \textbf{Belaidžių ausinių slydimas nuo kepurėlių.} Būnant baseine, dalyviai dažnai dėvi plaukimo kepurėles. Projekte naudojamos ausinės gali nuslysti, pasidaryti nepatogios ar praleisti vandenį, ko pasekoje dalyviai negirdės vedėjo balso ar įrašytų instrukcijų.
+    \end{itemize}
+    
+\end{itemize}
+
+\section{Rizikos vertinimas}
+Rizikos vertinimas vykdomas pagal du pagrindinius kriterijus -- tikėtinumas ir poveikis. Aiškumo dėlei, vertinsime penkiabalėje skalėje nuo 1 iki 5, kur:
+\begin{itemize}
+    \item 1 - labai mažai tikėtina /  minimalus poveikis
+    \item 2 - mažai tikėtina / nedidelis poveikis 
+    \item 3 - vidutiniškai tikėtina /  vidutinis poveikis
+    \item 4 - labai tikėtina / didelis poveikis
+    \item 5 - itin tikėtina (nuolatinė grėsmė) / kritinis poveikis 
+\end{itemize}
+
+Žemiau pateikiama lentelė, vaizduojanti identifikuotų rizikų vertinimą pagal minėtus du kriterijus.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3} % Pataiso eilučių aukštį
+\setlength{\tabcolsep}{8pt}     % Pataiso tarpus tarp stulpelių
+\begin{tabular}{llll}
+\hline
+\textbf{Rizikos tipas} & \textbf{Rizikos pavadinimas}        & \textbf{Tikimybė (1-5)} & \textbf{Poveikis (1-5)} \\ \hline
+TR                     & Drėgmės poveikis įrangai             & 4                       & 5                       \\ 
+TR                     & Ryšio sutrikimai                   & 3                       & 4                       \\ 
+TR                     & Serverio / išorinio tiekėjo gedimai  & 2                       & 5                       \\ 
+FR                     & Programos režimo klaidos           & 2                       & 4                       \\ 
+IR                     & Įrangos suderinamumas              & 3                       & 3                       \\ 
+OR                     & Naudotojų pasipriešinimas            & 2                       & 2                       \\ 
+SR                     & Asmens duomenų saugumas            & 2                       & 5                       \\ 
+ER                     & Ekranų matomumas                   & 4                       & 3                       \\ 
+ER                     & Ausinių pritaikomumas su kepurėlėmis & 2                       & 3                       \\ \hline
+\end{tabular}
+\caption{Projektinių rizikų vertinimo lentelė}
+\label{tab:rizikos_vertinimas}
+\end{table}
+
+\section{Rizikų valdymas}
+hello hi
+
+\end{document}
