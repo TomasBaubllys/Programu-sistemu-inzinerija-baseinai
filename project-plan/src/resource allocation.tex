@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{makecell}
+
+\title{Resursų planas}
+\author{Ugnė Skučaitė}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+\section{Projekto vykdytojų rolės}
+
+
+
+\subsection{Rolės ir jų atsakomybės}
+
+\begin{itemize}
+    \item \textbf{Projekto vadovas} -- planuoja projektą, koordinuoja komandos darbą, stebi terminus, biudžetą ir rizikas, bendrauja su užsakovu.
+    \item \textbf{Produkto vadovas} -- formuoja produkto viziją, sprendžia kokios funkcijos turi būti įgyvendintos.
+    \item \textbf{Verslo analitikas} -- 
+    \item \textbf{Sistemos architektas} -- projektuoja sistemos struktūrą.
+    \item \textbf{UI dizaineris} -- kurią naudotojo sąsają, prototipus.
+    \item \textbf{Programuotojai} -- įgyvendina sisteminius reikalavimus, sukuria programėlę treneriams bei klientams, derina programos veikimą su duomenų baze.
+    \item \textbf{Duomenų bazės specialistas} -- nutaria, kaip ir kur saugomi duomenys, kaip perduodami treneriams, klientams bei sistemos administratoriams.
+    \item \textbf{Testuotojai} -- Atlieka įvairius testus, rastas klaidas perduoda programuotojams.
+    \item \textbf{Saugumo specialistas} -- užtikrina duomenų perdavimo saugumą, ieško spragų sistemoje bei sprendimų joms pašalinti.
+    \item \textbf{Reikalavimų inžinierius} -- aprašo funkcinius ir nefunkcinius reikavimus.
+    \item \textbf{Sistemos administratoriai} -- reguliuoja programos vartotojų prieigas, padeda vartotojams su iškilusiomis problemomis. Užtikrina integraciją su sporto klubo, mokėjimo sistemomis.
+    \item \textbf{Marketingas} -- užsiima produkto reklama, reklamomis ir informaciniu turiniu, rodomu per televizorius laisvu metu.
+    \item \textbf{Techninės įrangos specialistai} -- derina techninę įrangą (ausines, televizorius), ieško tinkamiausios įrangos. Prižiūri tinkamą įrangos veikimą. Užtikrina interneto ryšį, sistemos prieinamumą.
+    \item \textbf{Treneriai} -- sudarinėja individualius treniruočių planus klientams, išbando sukurtas treniruotes ir teikia grįžtamąjį ryšį.
+    \item \textbf{Aktoriai} -- filmuojasi pavyzdiniuose pratimų įrašuose, įrašinėja garsą, paaiškinantį kaip atlikinėti, jei to reikia.
+    \item \textbf{Kokybės specialistas} -- bendrauja su treneriais ir klientais, renka jų atsiliepimus, ieško, kaip pagerinti sistemą, teikia pasiūlymus.
+    \item \textbf{Duomenų analitikas} -- analizuoja klientų treniruočių duomenis ir padeda kurti statistikos bei ataskaitų tikslumą.
+    \item \textbf{Klientų aptarnavimo specialistas} -- padeda treneriams ir klientams registruotis ir naudotis sistema, perduoda atsiradusias problemas.
+\end{itemize}
+
+
+\subsection{Rolės ir jų skaičius kiekvienu vykdymo laikotarpiu}
+
+Pavadinimas, už ką atsakingi, kiek žmonių kiekvienu laikotarpiu
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+        Rolė  & \makecell{Reikalavimų \\ analizė}  & Planavimas & Projektavimas & Kūrimas & \makecell{Diegimas ir  \\ palaikymas} \\
+        \hline
+        Projekto vadovas   & 1 & 1 & 1 & 1 & 1  \\
+        \hline
+        Produkto vadovas   & 1 & 1 & 1 & 1 & 1 \\
+        \hline
+        
+        Verslo analitikas   & 1 & 1 & 1 & 1 & 1 \\
+        \hline
+
+        Sistemos architektas & 1 & 1 & 1 & 1 & 1 \\
+        \hline
+
+        UI  dizaineris & 0 & 0 & 1 & 2 & 1 \\
+        \hline
+
+        Programuotojai & 0 & 0 & 5 & 5  & 3 \\
+        \hline
+
+        \makecell{Duomenų bazės \\ specialistas}   & 1 & 1 & 2 & 3 & 1 \\
+        \hline
+
+        Testuotojai & 0 & 0 & 2 & 2 & 1  \\
+        \hline
+
+        Saugumo specialistas   & 1 & 2  & 2 & 2 & 2 \\
+        \hline
+
+        Reikalavimų inžinierius & 1 & 1 & 1 & 1 & 1  \\
+        \hline
+
+        Sistemos administratoriai & 0 & 1 & 1 &  1& 4 \\
+        \hline
+
+        Marketingas & 0 & 0 & 1 & 1 &  2\\
+        \hline
+
+        \makecell{Techninės įrangos \\ specialistai} & 1 & 1 & 3 & 3 & 3  \\
+        \hline
+
+        Treneriai & 0 & 0 & 0 & 5 & 5 \\
+        \hline
+        
+        Aktoriai   & 0 & 0 &  0 & 2 & 0 \\
+        \hline
+
+        Iš viso: & 8 & 10 & 22 & 27 & 27 \\
+        \hline
+        
+        
+    
+    \end{tabular}
+    \caption{Rolės ir žmonių kiekis}
+    \label{tab:mytable}
+\end{table}
+
+
+\newpage
+\section{Techninės įrangos poreikis}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+        Įranga & Kiekis & Projektavimas & Kūrimas & Diegimas & Palaikymas \\
+        \hline
+        Kompiuteriai & 20 & + & + & + & + \\
+        \hline
+        Televizoriai & 5 & - & - & + & + \\
+        \hline
+        Ausinės & 10 & - & - & + & + \\
+        \hline
+        Planšetės & 5 & - & + (1) & + & + \\
+        \hline
+        Vaizdo kamera & 1 & - & - & + & + \\
+        \hline
+        Mikrofonas & 1 & - & - & + & + \\
+        \hline
+        Kolonėlės & 3 & - & - & + & +  \\
+        \hline
+        Serveris/debesys & 1 & + & + & + & + \\
+        \hline
+        Wi-Fi prieigos taškai & ? & + & + & + & +\\
+        \hline
+        
+    \end{tabular}
+    \caption{Techninės įrangos poreikis}
+    \label{tab:mytable}
+\end{table}
+
+\end{document}
