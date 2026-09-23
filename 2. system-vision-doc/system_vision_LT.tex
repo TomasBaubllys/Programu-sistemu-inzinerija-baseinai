@@ -47,11 +47,12 @@ Numatomi šie preliminarūs architektūriniai sprendimai:
     \item Sistema naudos kliento-serverio architektūrą.
     \item Pagrindinė naudotojo sąsaja bus žiniatinklio pagrindu ir pasiekiama standartiniais kompiuteriais bei planšetėmis.
     \item Sistemos duomenys, užsiėmimų programos, dalyvių informacija ir užsiėmimų istorija bus saugomi centralizuotai.
+    \item Kiekvienoje vietoje vietinį medijos valdymą vykdys specializuoti procesoriai / grotuvai (pvz., „DSDevices DSDX5“ su „Android 14“ ir 4K dekoduojamu turiniu), užtikrinantys sklandų rodymą ir sistemos atsparumą ryšio sutrikimams[cite: 1].
     \item Vaizdo ir kitas užsiėmimų turinys bus valdomas sistemoje ir rodomas prijungtuose ekranuose ar televizoriuose.
     \item Garso instrukcijos ir vedėjo balsas bus perduodami naudojant konkrečiai sporto erdvei tinkamą garso įrangą, įskaitant dalyvių ausines, kai jos reikalingos.
     \item Prieiga prie paskyrų ir funkcijų bus valdoma pagal naudotojo vaidmenį.
     \item Naudotojų programos, rezervacijos, faktinis lankomumas ir progresas bus valdomi centralizuotai.
-    \item Architektūra turi leisti tą patį programinį sprendimą pritaikyti skirtingoms sporto erdvėms ir skirtingoms techninės įrangos konfigūracijoms.
+    \item Architektūra turi leisti tą patį programinį sprendimą pritaikyti skirtingoms sporto erdvėms ir skirtingoms techninės įrangos konfigūracijoms (sausoms salėms ar drėgnoms IP klase sertifikuotoms baseinų zonoms)[cite: 1].
 \end{itemize}
 
 \section{Sistemos skaidymas į dalis}
@@ -76,11 +77,19 @@ Atsakingas už individualaus įvertinimo pagrindu sudaromas kliento programas, p
 
 \subsection{Vaizdinio turinio pateikimas}
 
-Atsakingas už pratimų, demonstracijų ir kitos vaizdinės informacijos pateikimą televizoriuje, monitoriuje ar kitame tinkamame ekrane. Tai ypač svarbu baseinuose, kur vedėjas ne visada gali tinkamai pademonstruoti vandenyje ar po vandeniu atliekamus veiksmus.
+Atsakingas už pratimų, demonstracijų ir kitos vaizdinės informacijos pateikimą atitinkamos aplinkos įrangoje:
+\begin{itemize}
+    \item \textbf{Baseinai ir drėgnos zonos:} drėgmei atsparūs IP66 klasės 4K ekranai (pvz., „Sylvox 65"“ 2000 nits) arba standartiniai / komerciniai ekranai, patalpinti į apsauginius IP korpusus[cite: 1]. Didelėms erdvėms kaip alternatyva numatyti IP65 LED ekranai su P1.2–P1.5 pikselių žingsniu[cite: 1].
+    \item \textbf{Sausos / komercinės salės:} komerciniai 24/7 reitingo 4K UHD ekranai (pvz., „Samsung QM65C / QM75C / QM85C“, 500 nits) arba standartiniai vartotojiški ekranai („Samsung UE“ serija)[cite: 1].
+\end{itemize}
 
 \subsection{Garso komunikacija}
 
-Atsakinga už iš anksto įrašytų garso instrukcijų ir vedėjo balso perdavimą dalyviams. Sprendimas turi palaikyti konkrečiai sporto erdvei tinkamą garso įrangą, įskaitant dalyvių ausines, kai jos reikalingos.
+Atsakinga už iš anksto įrašytų garso instrukcijų ir vedėjo balso perdavimą dalyviams:
+\begin{itemize}
+    \item \textbf{Baseinas ir povandeninis garsas:} daugakanalės radijo ryšio sistemos (pvz., „mGuide AQUA“, 9 kanalai, ~100\,m diapazonas) su IPX8 vandeniui atspariais kaulinio laidumo imtuvais („mGuide AQUA R“) arba alternatyviais IPX8 rinkiniais („Tayogo T8“)[cite: 1]. Neintegruotam vietiniam grojimui palaikomos IP68 ausinės („Shokz OpenSwim Pro“)[cite: 1].
+    \item \textbf{Sausos salės garsas:} aktyvios garso kolonėlės su „Bluetooth“ ir DSP valdymu (pvz., „Alto Professional TS412“ 12")[cite: 1].
+\end{itemize}
 
 \subsection{Duomenų ir istorijos valdymas}
 
@@ -88,20 +97,21 @@ Atsakingas už užsiėmimų programų, užsiėmimų, dalyvavimo informacijos ir 
 
 \section{Preliminarūs techninės įrangos poreikiai}
 
-Sistemai reikalinga standartinė kompiuterinė infrastruktūra bei tiesiogiai sporto erdvėje naudojama techninė įranga.
+Sistemai reikalinga standartinė kompiuterinė infrastruktūra bei tiesiogiai sporto erdvėje naudojama techninė įranga:
 
 \begin{itemize}
     \item Serveris arba debesijos aplinka aplikacijai, duomenų bazei ir užsiėmimų turiniui talpinti.
-    \item Kompiuteris arba planšetė, kurią vedėjas naudos sistemai pasiekti ir valdyti.
-    \item Televizorius, monitorius arba kitas ekranas vaizdiniam užsiėmimų turiniui rodyti.
-    \item Ne baseino aplinkoje gali būti naudojamas mobilus televizorius ar ekranas ant ratukų, jei nėra stacionaraus ekrano.
-    \item Garso įranga instrukcijoms ir vedėjo balsui perduoti.
-    \item Dalyvių ausinės, kai reikalingas individualus garso perdavimas.
-    \item Vedėjo mikrofonas arba ausinės su mikrofonu, kai naudojamas tiesioginis balso perdavimas.
-    \item Tinklo ryšys tarp aplikacijos ir užsiėmimo metu naudojamos įrangos.
+    \item Atskiras vaizdo grotuvas („DSDevices DSDX5 Android 14“, 4K dekodavimas, 2GB/16GB) vietiniam ekrano valdymui[cite: 1].
+    \item Kompiuteris arba planšetė vedėjui: atspari vandeniui IP68 planšetė (pvz., „Samsung Galaxy Tab Active5“) šalia baseino arba standartinė planšetė sausoje zonoje[cite: 1].
+    \item Ekranai: 65"–85" komerciniai 24/7 ekranai, IP66 lauko / drėgnų zonų ekranai baseinui arba standartiniai televizoriai[cite: 1].
+    \item Ne baseino aplinkoje gali būti naudojamas mobilus ekrano stovas / vežimėlis (pvz., „ONKRON TS1551-B“, iki 65\,kg, VESA 600$\times$400)[cite: 1].
+    \item Garso įranga: IPX8 kaulinio laidumo plaukimo ausinės su radijo siųstuvu arba 12" aktyvios „Bluetooth“ kolonėlės sausoms salėms[cite: 1].
+    \item Vedėjo mikrofonas: integruotas siųstuvo mikrofonas arba atskiras belaidis mikrofonas (pvz., „Sennheiser XSW-D Vocal Set“)[cite: 1].
+    \item Dalyvių identifikavimo įranga (papildomai): 13.56\,MHz ISO 14443 A/B NFC skaitytuvas (pvz., „ACS ACR122U USB“) drėgmei atspariame korpuse ir vandeniui atsparios NFC apyrankės[cite: 1].
+    \item Tinklo ryšys (Ethernet / Wi-Fi) tarp aplikacijos ir užsiėmimo metu naudojamos įrangos[cite: 1].
 \end{itemize}
 
-Baseino aplinkoje šalia vandens naudojama įranga turi būti parenkama atsižvelgiant į aplinkos sąlygas ir reikalingą atsparumo vandeniui lygį. Konkretūs techninės įrangos modeliai ir komunikacijos technologijos bus parinkti detalaus sistemos projektavimo ir integracinio testavimo metu.
+Baseino aplinkoje šalia vandens naudojama įranga turi būti parenkama atsižvelgiant į aplinkos sąlygas ir reikalingą atsparumo vandeniui lygį (IP66 ekranams, IP68/IPX8 planšetėms bei plaukikų imtuvams)[cite: 1]. Konkretūs techninės įrangos modeliai ir komunikacijos technologijos bus galutinai patvirtinti detalaus sistemos projektavimo ir integracinio testavimo metu[cite: 1].
 
 \section{Galimi sistemos išplėtimai}
 
@@ -109,12 +119,12 @@ Architektūra turi sudaryti galimybę ateityje plėsti sistemą neatliekant esmi
 
 \begin{itemize}
     \item specializuotos mobiliosios sąsajos vedėjams ir dalyviams;
-    \item dalyvių identifikavimas sporto erdvėje;
+    \item automatinis dalyvių identifikavimas sporto erdvėje naudojant integruotus NFC apyrankių skaitytuvus[cite: 1];
     \item pakartotinai naudojamų užsiėmimų programų ir vaizdo turinio biblioteka;
     \item individualizuotos programos pagal dalyvio poreikius, pasirengimo lygį ar ankstesnę veiklą;
     \item dalyvių progreso ir užsiėmimų rezultatų analizė;
-    \item sistemos naudojimas keliose sporto erdvėse ar skirtinguose sporto centruose.
-    \item reklaminio turinio planavimas, kampanijų valdymas ir jų rezultatų analizė.
+    \item sistemos naudojimas keliose sporto erdvėse ar skirtinguose sporto centruose;
+    \item reklaminio turinio planavimas, kampanijų valdymas ir jų rezultatų analizė prijungtuose ekranuose.
 \end{itemize}
 
 \end{document}
