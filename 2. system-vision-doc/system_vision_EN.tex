@@ -16,6 +16,27 @@ The system is intended for the management and execution of individual and group 
 
 The solution will be implemented as a web-based client-server system. The main application and data will be centrally managed, while instructors will access the system through a web interface. During a training session, the system will interact with external audio and video equipment used in the sports environment.
 
+\section{Users and Their Actions}
+
+Each user has a personal account. After signing in, users see the functions permitted for their role; a participant's personal program and attendance information are not visible to other participants.
+
+\begin{itemize}
+    \item \textbf{Participant:} views the schedule and available places, books or cancels a place, and sees their bookings, attendance history, assigned personal program, and home exercises.
+    \item \textbf{Instructor:} creates and edits training programs, plans sessions, sees registered participants, records actual attendance, controls the program during a session, and updates an individual participant's program remotely.
+    \item \textbf{Administrator:} manages accounts, roles, venues, schedules, and equipment settings, and oversees system operation.
+    \item \textbf{Marketing user (extension):} uploads and selects advertising or informational content for venue screens within permissions granted by the administrator.
+\end{itemize}
+
+\section{Main Use Cases}
+
+\begin{enumerate}
+    \item The instructor prepares a program and schedules a session. A participant books a place through their account; afterwards, the instructor records actual attendance.
+    \item The instructor starts the program and exercises appear on a screen. In the pool, participants receive instructions through headphones; in a gym class, a TV on wheels and suitable room audio equipment may be used. The instructor may pause or change stages.
+    \item The instructor assigns a personal program and home exercises to a participant and updates them remotely; the participant sees the current version in their interface.
+    \item \textbf{Extension -- advertising use case:} when no session is running, the marketing user selects advertising or information for the screen. During a session, a sponsor logo may appear without obscuring the exercise demonstration.
+    \item The administrator schedules a prepared virtual instructor session during unused facility time; the participant books a place and follows the displayed program without an instructor continuously on site.
+\end{enumerate}
+
 \section{Key Architectural Decisions}
 
 The following preliminary architectural decisions are made:
@@ -26,7 +47,7 @@ The following preliminary architectural decisions are made:
     \item Application data, training programs, participant information, and session history will be stored centrally.
     \item Video and other training content will be managed by the system and displayed on connected screens or TVs.
     \item Audio instructions and the instructor's voice will be delivered through suitable audio equipment, including participant headphones where applicable.
-    \item The system will distinguish between training-content presentation and advertising or informational content displayed outside training sessions.
+    \item Access to accounts and functions will be controlled by user role.
     \item User programs, bookings, actual attendance, and progress will be managed centrally.
     \item The architecture should allow the same software solution to be adapted to different sports environments and hardware configurations.
 \end{itemize}
@@ -54,8 +75,6 @@ Responsible for client programs created after an individual assessment, preparat
 \subsection{Visual Content Presentation}
 
 Responsible for presenting exercises, demonstrations, and other visual information on a TV, display, or other suitable screen. This is particularly important in swimming pools, where the instructor may not be able to demonstrate movements performed in the water or underwater.
-
-When no training session is taking place, the same module may display advertising or informational content. During a session, sponsor logos or other selected elements may be shown in a designated part of the screen.
 
 \subsection{Audio Communication}
 
