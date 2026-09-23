@@ -14,44 +14,67 @@
 
 The system is intended for the management and execution of individual and group training sessions in swimming pools and other sports environments. It will support instructors in preparing training programs, managing participants, presenting visual training content, and delivering audio instructions during a session. A virtual trainer mode will allow a prepared program to run without the instructor being continuously present on site, making it possible to fill otherwise unused facility time.
 
-The solution will be implemented as a web-based client-server system. The main application and data will be centrally managed, while instructors will access the system through a web interface. During a training session, the system will interact with external audio and video equipment used in the sports environment.
+The solution will be implemented as a web-based client-server system using cloud infrastructure. The main application and data will be centrally managed, while instructors and participants will access the system through a web interface or mobile application. During a training session, the system will interact in real time with external audio and video equipment deployed across the sports environment.
 
 \section{Users and Their Actions}
 
-Each user has a personal account. After signing in, users see the functions permitted for their role; a participant's personal program and attendance information are not visible to other participants.
+Each user has a personal account secured by Role-Based Access Control (RBAC). After signing in, users see the functions permitted for their role; a participant's personal program and attendance information are not visible to other participants.
 
 \begin{itemize}
     \item \textbf{Participant:} views the schedule and available places, books or cancels a place, and sees their bookings, attendance history, assigned personal program, and home exercises.
     \item \textbf{Instructor:} creates and edits training programs, plans sessions, sees registered participants, records actual attendance, controls the program during a session, and updates an individual participant's program remotely.
     \item \textbf{Administrator:} manages accounts, roles, venues, schedules, and equipment settings, and oversees system operation.
-    \item \textbf{Marketing user (extension):} uploads and selects advertising or informational content for venue screens within permissions granted by the administrator.
+    \item \textbf{Marketing user (extension):} uploads and selects advertising or informational content for venue screens during non-training times within permissions granted by the administrator.
 \end{itemize}
 
 \section{Main Use Cases}
 
 \begin{enumerate}
     \item The instructor prepares a program and schedules a session. A participant books a place through their account; afterwards, the instructor records actual attendance.
-    \item The instructor starts the program and exercises appear on a screen. In the pool, participants receive instructions through headphones; in a gym class, a TV on wheels and suitable room audio equipment may be used. The instructor may pause or change stages.
-    \item The instructor assigns a personal program and home exercises to a participant and updates them remotely; the participant sees the current version in their interface.
+    \item The instructor starts the program and exercises appear on a screen. In the pool, participants receive instructions through special wireless headphones; in a gym class, a TV on wheels and suitable room audio equipment may be used. The instructor may pause or change stages.
+    \item The instructor assigns a personal program and home exercises to a participant and updates them remotely; the participant sees the current version in their mobile interface.
     \item \textbf{Extension -- advertising use case:} when no session is running, the marketing user selects advertising or information for the screen. During a session, a sponsor logo may appear without obscuring the exercise demonstration.
     \item The administrator schedules a prepared virtual instructor session during unused facility time; the participant books a place and follows the displayed program without an instructor continuously on site.
 \end{enumerate}
 
 \section{Key Architectural Decisions}
 
-The following preliminary architectural decisions are made:
+The following preliminary architectural decisions and concrete technical stack are established:
 
 \begin{itemize}
-    \item The system will use a client-server architecture.
-    \item The main user interface will be web-based and accessible from standard computers and tablets.
-    \item Application data, training programs, participant information, and session history will be stored centrally.
-    \item Edge execution at each site will be powered by dedicated Android media players (e.g., DSDevices DSDX5 with Android 14 and 4K decoding) to ensure smooth content playback.
-    \item Video and other training content will be managed by the system and displayed on connected screens or TVs.
-    \item Audio instructions and the instructor's voice will be delivered through suitable audio equipment, including participant headphones where applicable.
-    \item Access to accounts and functions will be controlled by user role.
-    \item User programs, bookings, actual attendance, and progress will be managed centrally.
-    \item The architecture should allow the same software solution to be adapted to different sports environments and hardware configurations (dry-area vs. IP-rated wet pool setups).
+    \item \textbf{Architecture:} Client-server architecture utilizing microservices or a modular monolith deployed on cloud infrastructure (\textit{AWS} or \textit{Google Cloud Platform}).
+    \item \textbf{User Interface:} Web-based main interface accessible from standard computers and tablets, alongside mobile cross-platform applications.
+    \item \textbf{Software Stack:} 
+    \begin{itemize}
+        \item \textit{Backend:} Node.js / NestJS or Python (FastAPI) for high-performance real-time data processing.
+        \item \textit{Frontend:} React.js for web dashboards and React Native for mobile applications.
+        \item \textit{Databases:} PostgreSQL for relational data, users, and bookings; Redis for real-time session state synchronization.
+    \end{itemize}
+    \item \textbf{Protocols and Communication:} REST API for management workflows and WebSockets for real-time synchronization of screens and audio hardware during active sessions.
+    \item \textbf{Security:} HTTPS enforcement, OAuth 2.0 / JWT authentication, role-based access control (RBAC), and GDPR-compliant data encryption.
+    \item \textbf{Edge Execution:} Edge execution at each site is powered by dedicated Android media players (e.g., DSDevices DSDX5 with Android 14 and 4K decoding) to ensure smooth content playback.
+    \item \textbf{Content & Data Management:} Application data, training programs, participant information, session history, user programs, bookings, actual attendance, and progress are managed and stored centrally. Video and other training content are managed by the system and displayed on connected screens or TVs.
+    \item \textbf{Audio Delivery:} Audio instructions and the instructor's voice are delivered through suitable audio equipment, including participant headphones where applicable.
+    \item \textbf{Adaptability:} The architecture allows the same software solution to be adapted to different sports environments and hardware configurations (dry-area vs. IP-rated wet pool setups).
 \end{itemize}
+
+\section{Preliminary Hardware Requirements}
+
+The system requires standard computing infrastructure as well as hardware used directly in the training environment.
+
+\begin{itemize}
+    \item \textbf{Server Infrastructure:} Cloud hosting with auto-scaling capabilities and CDN (Content Delivery Network) for low-latency video streaming.
+    \item Dedicated edge media player (DSDevices DSDX5 Android 14, 4K decode, 2GB/16GB) for local display control.
+    \item A tablet or computer for the instructor: rugged IP68 tablet (e.g., Samsung Galaxy Tab Active5) for poolside use, or a standard tablet for dry zones.
+    \item Display hardware: 65"--85" commercial 24/7 screens, IP66 outdoor screens for wet pool areas, or standard TVs.
+    \item In non-pool environments, a mobile TV trolley (e.g., ONKRON TS1551-B, max 65\,kg, VESA 600$\times$400) may be used.
+    \item Audio equipment: IPX8 bone-conduction pool headsets with radio transmitter, or 12" active Bluetooth PA speakers for dry rooms.
+    \item Instructor microphone: built-in transmitter microphone or wireless mic set (e.g., Sennheiser XSW-D Vocal Set).
+    \item User identification hardware (optional): 13.56\,MHz ISO 14443 A/B NFC reader (e.g., ACS ACR122U USB) with IP-rated enclosure and waterproof NFC wristbands.
+    \item Network connectivity (Ethernet/Wi-Fi) between the application and equipment used during the session.
+\end{itemize}
+
+For swimming pool environments, equipment located near the water must be selected according to the environmental conditions and required water-resistance level (IP66 for displays, IP68/IPX8 for tablets and swimmer receivers).
 
 \section{System Decomposition}
 
@@ -59,15 +82,15 @@ For project planning purposes, the system is divided into the following main par
 
 \subsection{Training Program Management}
 
-Responsible for creating, editing, storing, and managing training programs. A program consists of stages, exercises, video content, audio instructions, and other information required during a training session.
+Responsible for creating, editing, storing, and managing training programs. A program consists of stages, exercises, video content, audio instructions, and other information required during a training session. Implemented using Content Management System (CMS) design patterns.
 
 \subsection{Session Management}
 
-Responsible for planning and conducting individual and group training sessions. It manages the execution of a prepared program and allows the instructor to start, pause, continue, skip, or change stages during a session.
+Responsible for planning and conducting individual and group training sessions. It manages the execution of a prepared program through a real-time session engine and allows the instructor to start, pause, continue, skip, or change stages during a session (\textit{Play, Pause, Skip, Next}).
 
 \subsection{Participant Management}
 
-Responsible for storing participant information, presenting the schedule, managing place bookings, assigning participants to training sessions, and maintaining actual attendance history.
+Responsible for storing participant information, presenting the schedule, managing place bookings, assigning participants to training sessions, handling push notifications/emails, and maintaining actual attendance history including integration with facility access control systems (RFID wristbands / QR codes).
 
 \subsection{Personal Program Management}
 
@@ -86,30 +109,12 @@ Responsible for presenting exercises, demonstrations, and other visual informati
 Responsible for delivering prerecorded audio instructions and the instructor's voice to participants:
 \begin{itemize}
     \item \textbf{Pool / Underwater Audio:} Multi-channel radio systems (e.g., mGuide AQUA, 9 channels, ~100\,m range) using IPX8 waterproof bone-conduction swimmer receivers (mGuide AQUA R) or alternative IPX8 sets (Tayogo T8). Offline usage supports IP68 headsets (Shokz OpenSwim Pro).
-    \item \textbf{Dry Gym Audio:} Active PA room speakers with Bluetooth and integrated DSP (e.g., Alto Professional TS412 12").
+    \item \textbf{Dry Gym Audio:} Active PA room speakers with Bluetooth and integrated DSP (e.g., Alto Professional TS412 12'').
 \end{itemize}
 
 \subsection{Data and History Management}
 
-Responsible for storing training programs, sessions, participation information, and relevant historical data.
-
-\section{Preliminary Hardware Requirements}
-
-The system requires standard computing infrastructure as well as hardware used directly in the training environment.
-
-\begin{itemize}
-    \item A server or cloud environment for hosting the application, database, and training content.
-    \item Dedicated edge media player (DSDevices DSDX5 Android 14, 4K decode, 2GB/16GB) for local display control.
-    \item A tablet or computer for the instructor: rugged IP68 tablet (e.g., Samsung Galaxy Tab Active5) for poolside use, or a standard tablet for dry zones.
-    \item Display hardware: 65"--85" commercial 24/7 screens, IP66 outdoor screens for wet pool areas, or standard TVs.
-    \item In non-pool environments, a mobile TV trolley (e.g., ONKRON TS1551-B, max 65\,kg, VESA 600$\times$400) may be used.
-    \item Audio equipment: IPX8 bone-conduction pool headsets with radio transmitter, or 12" active Bluetooth PA speakers for dry rooms.
-    \item Instructor microphone: built-in transmitter microphone or wireless mic set (e.g., Sennheiser XSW-D Vocal Set).
-    \item User identification hardware (optional): 13.56\,MHz ISO 14443 A/B NFC reader (e.g., ACS ACR122U USB) with IP-rated enclosure and waterproof NFC wristbands.
-    \item Network connectivity (Ethernet/Wi-Fi) between the application and equipment used during the session.
-\end{itemize}
-
-For swimming pool environments, equipment located near the water must be selected according to the environmental conditions and required water-resistance level (IP66 for displays, IP68/IPX8 for tablets and swimmer receivers).
+Responsible for storing training programs, sessions, participation information, and relevant historical data for long-term analytics, reporting, and optional integration with health trackers via \textit{Apple HealthKit} or \textit{Google Fit}.
 
 \section{Future Extensions}
 
@@ -117,10 +122,10 @@ The architecture should allow the system to be extended in the future without re
 
 \begin{itemize}
     \item dedicated mobile interfaces for instructors and participants;
-    \item participant identification in the sports environment using integrated NFC wristband scanners;
+    \item participant identification in the sports environment using integrated NFC wristband scanners or facial recognition;
     \item a reusable library of training programs and video content;
     \item personalized training programs based on participant needs, fitness level, or previous activity;
-    \item participant progress and training result analysis;
+    \item participant progress and training result analysis based on heart rate and workload tracking;
     \item operation across multiple sports facilities or sports centers;
     \item advertising content scheduling, campaign management, and performance analysis across connected commercial displays.
 \end{itemize}
