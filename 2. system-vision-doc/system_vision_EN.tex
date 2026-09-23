@@ -45,11 +45,12 @@ The following preliminary architectural decisions are made:
     \item The system will use a client-server architecture.
     \item The main user interface will be web-based and accessible from standard computers and tablets.
     \item Application data, training programs, participant information, and session history will be stored centrally.
+    \item Edge execution at each site will be powered by dedicated Android media players (e.g., DSDevices DSDX5 with Android 14 and 4K decoding) to ensure smooth content playback.
     \item Video and other training content will be managed by the system and displayed on connected screens or TVs.
     \item Audio instructions and the instructor's voice will be delivered through suitable audio equipment, including participant headphones where applicable.
     \item Access to accounts and functions will be controlled by user role.
     \item User programs, bookings, actual attendance, and progress will be managed centrally.
-    \item The architecture should allow the same software solution to be adapted to different sports environments and hardware configurations.
+    \item The architecture should allow the same software solution to be adapted to different sports environments and hardware configurations (dry-area vs. IP-rated wet pool setups).
 \end{itemize}
 
 \section{System Decomposition}
@@ -74,11 +75,19 @@ Responsible for client programs created after an individual assessment, preparat
 
 \subsection{Visual Content Presentation}
 
-Responsible for presenting exercises, demonstrations, and other visual information on a TV, display, or other suitable screen. This is particularly important in swimming pools, where the instructor may not be able to demonstrate movements performed in the water or underwater.
+Responsible for presenting exercises, demonstrations, and other visual information on display equipment:
+\begin{itemize}
+    \item \textbf{Pool / Wet Areas:} Weatherproof IP66-rated 4K displays (e.g., Sylvox 65" 2000 nits) or standard/commercial displays placed inside water-protective enclosures. Fine pixel pitch IP65 LED displays (P1.2--P1.5) are available for large spaces.
+    \item \textbf{Commercial / Indoor Areas:} Commercial 24/7 4K UHD displays (e.g., Samsung QM65C/QM75C/QM85C, 500 nits) or standard consumer screens (Samsung UE series).
+\end{itemize}
 
 \subsection{Audio Communication}
 
-Responsible for delivering prerecorded audio instructions and the instructor's voice to participants. The solution should support audio equipment suitable for the particular sports environment, including headphones for participants where required.
+Responsible for delivering prerecorded audio instructions and the instructor's voice to participants:
+\begin{itemize}
+    \item \textbf{Pool / Underwater Audio:} Multi-channel radio systems (e.g., mGuide AQUA, 9 channels, ~100\,m range) using IPX8 waterproof bone-conduction swimmer receivers (mGuide AQUA R) or alternative IPX8 sets (Tayogo T8). Offline usage supports IP68 headsets (Shokz OpenSwim Pro).
+    \item \textbf{Dry Gym Audio:} Active PA room speakers with Bluetooth and integrated DSP (e.g., Alto Professional TS412 12").
+\end{itemize}
 
 \subsection{Data and History Management}
 
@@ -90,16 +99,17 @@ The system requires standard computing infrastructure as well as hardware used d
 
 \begin{itemize}
     \item A server or cloud environment for hosting the application, database, and training content.
-    \item A computer or tablet for the instructor to access and control the system.
-    \item A TV, monitor, or other display for presenting visual training content.
-    \item In non-pool environments, a mobile TV/display stand may be used where a fixed screen is not available.
-    \item Audio equipment for delivering instructions and the instructor's voice.
-    \item Participant headphones where individual audio delivery is required.
-    \item A microphone or headset for the instructor where live voice transmission is used.
-    \item Network connectivity between the application and the equipment used during the training session.
+    \item Dedicated edge media player (DSDevices DSDX5 Android 14, 4K decode, 2GB/16GB) for local display control.
+    \item A tablet or computer for the instructor: rugged IP68 tablet (e.g., Samsung Galaxy Tab Active5) for poolside use, or a standard tablet for dry zones.
+    \item Display hardware: 65"--85" commercial 24/7 screens, IP66 outdoor screens for wet pool areas, or standard TVs.
+    \item In non-pool environments, a mobile TV trolley (e.g., ONKRON TS1551-B, max 65\,kg, VESA 600$\times$400) may be used.
+    \item Audio equipment: IPX8 bone-conduction pool headsets with radio transmitter, or 12" active Bluetooth PA speakers for dry rooms.
+    \item Instructor microphone: built-in transmitter microphone or wireless mic set (e.g., Sennheiser XSW-D Vocal Set).
+    \item User identification hardware (optional): 13.56\,MHz ISO 14443 A/B NFC reader (e.g., ACS ACR122U USB) with IP-rated enclosure and waterproof NFC wristbands.
+    \item Network connectivity (Ethernet/Wi-Fi) between the application and equipment used during the session.
 \end{itemize}
 
-For swimming pool environments, equipment located near the water must be selected according to the environmental conditions and required water-resistance level. The exact hardware models and communication technologies will be selected during detailed system design and integration testing.
+For swimming pool environments, equipment located near the water must be selected according to the environmental conditions and required water-resistance level (IP66 for displays, IP68/IPX8 for tablets and swimmer receivers).
 
 \section{Future Extensions}
 
@@ -107,12 +117,12 @@ The architecture should allow the system to be extended in the future without re
 
 \begin{itemize}
     \item dedicated mobile interfaces for instructors and participants;
-    \item participant identification in the sports environment;
+    \item participant identification in the sports environment using integrated NFC wristband scanners;
     \item a reusable library of training programs and video content;
     \item personalized training programs based on participant needs, fitness level, or previous activity;
     \item participant progress and training result analysis;
-    \item operation across multiple sports facilities or sports centers.
-    \item advertising content scheduling, campaign management, and performance analysis.
+    \item operation across multiple sports facilities or sports centers;
+    \item advertising content scheduling, campaign management, and performance analysis across connected commercial displays.
 \end{itemize}
 
 \end{document}
