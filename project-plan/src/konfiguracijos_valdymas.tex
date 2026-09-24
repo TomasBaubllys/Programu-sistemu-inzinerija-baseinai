@@ -1,0 +1,32 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage[english, lithuanian]{babel}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\begin{document}
+
+\section{Konfigūracijos valdymas}
+Šio skyriaus tikslas – užtikrinti sistemingą visų projekto elementų (konfigūracijos elementų) identifikavimą, versijų kontrolę, pakeitimų sekimą bei jų būsenos apskaitą per visą gyvavimo ciklą. Tai padeda išvengti techninių nesklandumų, kylančių dėl nesudėtingų ryšių tarp baseino aparatūros ir serverio dalies.
+
+\subsection{Konfigūracijos elementai}
+Projekte valdomi šie esminiai konfigūracijos elementai, suskistyti į tris grupes:
+\begin{itemize}
+    \item \textbf{Programinė įranga:} Serverio ir duomenų bazės programinis kodas, žiniatinklio sąsajos moduliai bei „Android“ grotuvo aplikacijos, skirtos baseino ekranams ir belaidėms garso sistemoms.
+    \item \textbf{Aparatūra ir techninė įranga:} Vandeniui atsparūs ekranai, planšetės, belaidės ausinės, garso siųstuvai/imtuvai, NFC skaneriai ir apyrankės.
+    \item \textbf{Projektinė ir techninė dokumentacija:} Reikalavimų specifikacijos, architektūros aprašai, vartotojo vadovai bei saugumo procedūros.
+\end{itemize}
+
+\subsection{Versijų kontrolės ir atsekamumo taisyklės}
+Siekiant užtikrinti komandos tęstinumą ir žinių perdavimą taikomos šios taisyklės:
+\begin{enumerate}
+    \item \textbf{Programinio kodo valdymas:} Visi programavimo darbai privalo būti saugomi centralizuotje versijų kontrolės sistemoje (\emph{Git}). Atskiriamos pagrindinė (\texttt{master}), integracinė aplinka (\texttt{develop}) bei atskiros funkcinės šakos (\emph{feature branches}).
+    \item \textbf{Aparatūros ir įrenginių konfigūracijos:} Kiekvienam baseine įdiegtam įrenginiui priskiriamas konfigūracijos pasas, kuriame fiksuojama programinės įrangos/firmware versija, IP adresai bei techniniai nustatymai.
+    \item \textbf{Artefaktų valdymas (\emph{JFrog}):} Sukompiliuoti programiniai paketai bei aplikacijų laidų (*releases*) versijos registruojami ir saugomi centralizuotoje artefaktų saugykloje (\emph{JFrog Artifactory}). Tai užtikrina, kad į baseino įrenginius patektų tik patvirtintos ir versijuotos programinės įrangos kopijos.
+\end{enumerate}
+
+\subsection{Ryšys su pokyčių valdymu ir stebėjimu}
+Projektui vykstant, konfigūracija keičiasi kartu su naujai atsirandančiomis rizikomis ir komandos priimtais sprendimais. Bet koks esminis konfigūracijos pakeitimas (pvz., programinės įrangos atnaujinimas baseino ekranuose ar aparatūros modelio keitimas) privalo praeiti formalų poveikio vertinimą (poveikis apimčiai, laikui, kaštams ir rizikai) bei būti patvirtintas atsakingo asmens pagal nustatytas kompetencijos ribas.
+
+\end{document}
