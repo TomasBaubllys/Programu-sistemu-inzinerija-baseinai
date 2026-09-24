@@ -225,17 +225,22 @@ skirtas atskiras rizikų rezervas (\ref{tab:rezervas}~lentelė).
 
 \subsection{Bendros sąnaudos ir rezervai}
 
-% TEKSTAS:
-% - suvestinė (\ref{tab:sanaudos}~lentelė): 739,25 žm. d. + 26 rizikų rezervas = bazinis planas
-%   765,25 žm. d.; + 37 valdymo rezervas = 802,25 žm. d.;
-% - čia pirmą kartą pavartojama EMV, todėl apibrėžti vieną kartą: „tikėtinoji vertė (angl. expected
-%   monetary value, EMV)“ – rizikos tikimybė, padauginta iš jos papildomų sąnaudų; toliau tik „EMV“;
-% - rizikų rezervas = Σ EMV (25,85 ≈ 26 žm. d., \ref{tab:rezervas}~lentelė); kodėl ne 1,28σ (≈ 38 žm. d.):
-%   σ rodo įverčių sklaidą, o registras – atskirus įvykius; susieti su rizikų valdymo skyriaus registru;
-% - rizikų rezervą valdo projekto vadovas, valdymo rezervą (5~\%) laiko užsakovas; apimties pokyčiai
-%   tvirtinami per pakeitimų valdymą, ne iš rezervų;
-% - rezervai skirti sąnaudoms, ne kalendoriui (laiko rezervai – \ref{sec:tvarkarastis} skyriuje).
-\textit{[Rengiama]}
+Be rezervų projekto darbo sąnaudos sudaro 739,25~žm.~d., arba apie
+35,2~žm.~mėn. (1~žm.~mėn.~=~21~d.~d.; \ref{tab:sanaudos}~lentelė).
+
+Rizikų rezervas skirtas registre surašytoms rizikoms. Kiekvienai rizikai
+apskaičiavome tikėtinąją vertę (angl. \textit{expected monetary value},
+EMV): tikimybę padauginome iš papildomų sąnaudų, kurių prireiktų rizikai
+įvykus. Pavyzdžiui, drėgmės poveikio įrangai (TR1) tikimybė yra 35~\%, o
+papildomos sąnaudos – 8~žm.~d., todėl EMV~=~2,8~žm.~d. Visų 11 rizikų EMV
+suma yra 25,85, t.~y. apie 26~žm.~d. (\ref{tab:rezervas}~lentelė). Šį
+rezervą valdo projekto vadovas. Su juo bazinis planas sudaro
+765,25~žm.~d. (apie 36,4~žm.~mėn.).
+
+Valdymo rezervas (5~\%, apie 37~žm.~d.) skirtas nenumatytiems atvejams,
+kurių registre nėra. Jį laiko užsakovas, todėl projekto vadovas gali jį
+naudoti tik užsakovui sutikus. Su abiem rezervais sąnaudos sudaro
+802,25~žm.~d. (apie 38,2~žm.~mėn.).
 
 \begin{table}[H]
   \centering
@@ -286,20 +291,17 @@ skirtas atskiras rizikų rezervas (\ref{tab:rezervas}~lentelė).
   \end{tabularx}
 \end{table}
 
-% TEKSTAS (po \ref{tab:rezervas}~lentele, 1–2 sakiniai):
-% - ID sutampa su rizikų valdymo skyriaus registru (Godos); IR2, OR2 ir OR3 – naujos rizikos;
-%   debesijos paslaugų teikėjo sutrikimas (TR3) į rezervą neįtrauktas, nes rizika perduota
-%   paslaugų teikėjui;
-% - registre nurodyta pradinė tikimybė (1–5 balai: 1 = 0–19~\%, 2 = 20–39~\%, 3 = 40–59~\%,
-%   4 = 60–79~\%, 5 = 80–100~\%), o lentelėje – likutinė tikimybė po tvarkaraštyje suplanuotų
-%   mažinimo veiklų: TR1 4 balai → 35~\% po bandomojo komplekto bandymo baseine,
-%   IR1 3 balai → 35~\% po prototipo bandymo baseine, ER1 4 balai → 40~\% po bandomojo
-%   klipo matomumo patikros baseine prieš montuojant visus pratimus;
-% - „Kitų registro rizikų (TR2, FR1, OR1, SR1, ER2) procentai atitinka Godos balus; naujų IR2, OR2
-%   ir OR3 – po 30~\% (2 balai).“;
-% - prozoje veiklų ID (A10, A21, A74) nerašyti: rašyti veiklos pavadinimą, kaip nurodyta šiame
-%   komentare, arba nuorodą į \ref{sec:tvarkarastis} skyrių.
-\textit{[Rengiama]}
+Rizikų valdymo skyriaus registre nurodyta pradinė tikimybė, t.~y. kokia ji
+būtų be jokių priemonių. Rezervui naudojome likutinę tikimybę, kuri lieka po
+tvarkaraštyje suplanuotų priemonių. Todėl trijų rizikų tikimybės rezerve
+mažesnės. Drėgmės poveikio įrangai (TR1) ir įrangos suderinamumo (IR1)
+tikimybė sumažėja, nes prieš perkant visą įrangą bandomasis komplektas ir
+prototipas išbandomi baseine, o radus problemą sprendimas pakeičiamas.
+Ekranų matomumo (ER1) tikimybė sumažėja, nes bandomasis vaizdo klipas
+patikrinamas baseine prieš montuojant visus pratimus. Kitų registro rizikų
+tikimybės atitinka rizikų valdymo skyriaus balus, o naujos rizikos IR2, OR2
+ir OR3 įvertintos po 30~\%. Serverio ir debesijos paslaugų teikėjo gedimai
+(TR3) į rezervą neįtraukti, nes ši rizika perduota paslaugų teikėjui.
 
 \subsection{Prielaidos}
 
