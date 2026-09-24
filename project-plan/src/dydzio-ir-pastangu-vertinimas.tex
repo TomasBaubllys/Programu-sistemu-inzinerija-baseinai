@@ -16,27 +16,46 @@
 
 \subsection{Vertinimo metodas}
 
-% TEKSTAS:
-% - kodėl FP: DUK rekomenduoja PROBE arba FP, funkcijos jau apibrėžtos poreikiuose ir vizijoje,
-%   kodo eilučių istorijos komanda neturi;
-% - kodėl sąnaudos neperskaičiuojamos iš FP (nėra istorinio našumo): taikytas veiklomis grįstas
-%   vertinimas PERT metodu, atsižvelgiant į dalies dydį ir sudėtingumą;
-% - trys eilučių grupės: P0–P7 (FP matomos dalys), S1–S4 (FP nematoma programinė įranga),
-%   N1–N5 (neprograminiai darbai); prie programavimo pridedami paskaitos procentai, tada rezervai;
-% - vienetai: 1 žm. d. = 8 val.; 1 žm. mėn. = 21 d. d. (2027 m. 252 d. d. / 12).
-\textit{[Rengiama]}
+Sistemos dydį vertinome funkciniais taškais (FP), o darbo sąnaudas –
+kiekvienai sistemos daliai atskirai PERT metodu.
+
+PROBE metodas šiam projektui netinka: jis remiasi komandos istoriniais
+duomenimis apie anksčiau sukurtų komponentų dydį ir jų kūrimo trukmę, o tokių
+duomenų neturime. FP metodas tinka, nes funkciniai taškai skaičiuojami pagal
+tai, ką sistema daro naudotojams, o tai jau žinoma iš poreikių aprašo ir
+sistemos vizijos. Programos kodo tam nereikia.
+
+Darbo sąnaudų iš FP tiesiogiai neskaičiavome, nes nežinome, kiek darbo mūsų
+komandai reikia vienam funkciniam taškui. Be to, FP neapima vidinio sistemos
+sudėtingumo: realiojo laiko vykdymo variklio, grotuvo programos, garso įrangos
+integracijos ir infrastruktūros. Todėl kiekvienos dalies sąnaudas įvertinome
+ekspertiškai trimis reikšmėmis (optimistine, tikėtiniausia ir pesimistine),
+apskaičiavome PERT įvertį ir dalių įverčius sudėjome. FP naudojome dalims
+palyginti: didesnei daliai skyrėme daugiau darbo dienų.
+
 
 \subsection{Sistemos dydis funkciniais taškais}
 
-% TEKSTAS:
-% - funkcijų tipai ir sudėtingumas nustatyti pagal paskaitos matricas (SE-03, 30 ir 32 skaidrės);
-%   išorinių sąsajų failų (EIF) nėra;
-% - dalių pavadinimai – iš vizijos 6 skyriaus; P0 vizijoje nėra, ji pridėta paskyroms,
-%   sporto erdvėms ir įrangai;
-% - didžiausios dalys P1 (94 UFP) ir P0 (85 UFP); P5 ir P6 turi mažai FP, o jų techninį darbą
-%   dengia S1–S3 eilutės (tab:pert);
-% - paminėti lentelę: \ref{tab:fp}~lentelėje.
-\textit{[Rengiama]}
+Sistemos dydis – 381 nekoreguotas funkcinis taškas (UFP). Suskaičiavome
+87 funkcijas: 9 vidinius loginius failus (ILF), 47 išorines įvestis (EI),
+8 išorines išvestis (EO) ir 23 išorines užklausas (EQ). Išorinių sąsajų
+failų (EIF) nėra, nes bazinė sistemos versija su kitomis sistemomis
+nesijungia. Funkcijų sudėtingumą nustatėme IFPUG metodo matricomis
+(\ref{tab:fp}~lentelė).
+
+Funkciniai taškai skaičiuojami iš naudotojo pusės: kiekviena funkcija,
+kurią naudotojas atlieka ar mato, ir kiekviena duomenų grupė, kurią sistema
+saugo. Todėl didžiausia dalis yra užsiėmimų programų valdymas (P1, 94~UFP).
+Joje treneris kuria, keičia ir šalina programas, jų etapus ir pratimus,
+peržiūri programų sąrašą, pratimų katalogą ir versijų istoriją.
+
+Vaizdinio turinio pateikimas (P5) ir garso komunikacija (P6) turi tik 7 ir
+8~UFP, nors techniškai yra sudėtingiausios. Naudotojui čia matomos tik kelios
+funkcijos, o sinchronizacija realiuoju laiku, grotuvo programa ir radijo
+siųstuvo integracija vyksta sistemos viduje, ir FP jų nemato. Šį darbą
+vertinome atskirai kaip FP nematomą programinę įrangą (S1--S4,
+\ref{tab:pert}~lentelė).
+
 
 \begin{table}[H]
   \centering
@@ -64,12 +83,19 @@
 
 \subsection{Vertės koregavimo koeficientas}
 
-% TEKSTAS:
-% - 14 bendrųjų sistemos charakteristikų (GSC) įvertintos 0–5 balais (\ref{tab:gsc}~lentelė);
-%   pagrįsti bent ginčytinesnes: 3 (našumas), 7 (efektyvumas naudotojui), 13 (baseinas ir salė);
-% - TDI 41, VAF = 0,65 + 0,01 × 41 = 1,06, AFP = 381 × 1,06 ≈ 404; tikėtinas intervalas ≈ 385–431;
-% - AFP naudojamas tik dydžiui palyginti, sąnaudos iš jo neskaičiuojamos.
-\textit{[Rengiama]}
+Nekoreguotą dydį koregavome pagal 14 bendrųjų sistemos charakteristikų
+(GSC), kurių kiekviena įvertinta balu nuo 0 iki 5 (\ref{tab:gsc}~lentelė).
+Balų suma (TDI) yra 41, todėl vertės koregavimo koeficientas
+$\mathrm{VAF} = 0{,}65 + 0{,}01 \times 41 = 1{,}06$, o koreguotas dydis
+$\mathrm{AFP} = 381 \times 1{,}06 \approx 404$ funkciniai taškai.
+
+Didžiausią balą (5) gavo tiesioginis duomenų įvedimas: visus duomenis
+naudotojai įveda patys per žiniatinklio sąsają, ir jie iškart įrašomi į
+sistemą, o paketinio apdorojimo nėra. Dauguma kitų balų ginčytini: jei 12
+iš jų būtų vienu balu mažesni ar didesni, AFP svyruotų nuo 358 iki 450.
+Darbo sąnaudų įverčiui tai įtakos neturi, nes sąnaudas vertinome kiekvienai
+daliai atskirai, o ne iš AFP.
+
 
 \begin{table}[H]
   \centering
@@ -104,18 +130,25 @@
 
 \subsection{Darbo sąnaudų įverčiai (PERT)}
 
-% TEKSTAS:
-% - E = (O + 4M + P) / 6, suapvalinta iki 0,5; σ = (P − O) / 6; O, M, P – ekspertų vertinimo
-%   (Delfi) medianos (\ref{tab:pert}~lentelė);
-% - kodėl atskiros S1–S4 eilutės (vykdymo variklis, grotuvas, garso įranga, infrastruktūra FP
-%   nematomi) ir N1–N5 (įranga, turinio gamyba, bandymai objekte, mokymai ir dokumentacija,
-%   pilotas, perdavimas ir garantinis palaikymas);
-% - N4 = naudotojo dokumentacija 14 + trenerių ir administratorių mokymų vedimas 12 žm. d.,
-%   užsakovo darbuotojų laikas neįtrauktas; N5 = pilotinis naudojimas 20 + priėmimo bandymas 6
-%   + perdavimas 3,5 + 20 d. d. garantinis palaikymas 10 žm. d. (garantijos sąnaudos atskirai nepridedamos);
-% - stulpelis „žm. d. / UFP“ – eilutės E, padalyta iš tos sistemos dalies UFP (tik P0–P7): P5 ir P6 santykis
-%   didžiausias – mažai funkcijų, bet realiojo laiko išvestis.
-\textit{[Rengiama]}
+Kiekvienai sistemos daliai nurodėme tris darbo sąnaudų įverčius:
+optimistinį (O), tikėtiniausią (M) ir pesimistinį (P). Iš jų apskaičiavome
+PERT įvertį $E = (O + 4M + P)/6$ ir standartinį nuokrypį $\sigma = (P - O)/6$
+(\ref{tab:pert}~lentelė). Tikėtiniausias įvertis turi didžiausią svorį, nes
+jis realistiškiausias, o $\sigma$ rodo, kiek neapibrėžtas dalies įvertis.
+
+Pavyzdžiui, dalyvių valdymo (P3) įverčiai yra 18, 25 ir 38~žm.~d., todėl
+$E = (18 + 4 \times 25 + 38)/6 = 26$~žm.~d., o $\sigma = (38 - 18)/6
+\approx 3{,}3$~žm.~d.
+
+FP matomų sistemos dalių (P0--P7) programavimas sudaro 181~žm.~d., FP
+nematomos programinės įrangos (S1--S4) – 128~žm.~d., iš viso 309~žm.~d.
+
+Neprograminius darbus (N1--N5: įrangą, turinio gamybą, bandymus objekte,
+mokymus ir dokumentaciją, pilotinį naudojimą ir perdavimą) taip pat
+vertinome PERT metodu; jie sudaro 198,5~žm.~d. Procentinio priedo prie jų
+nepridėjome, nes tai nėra programų realizacija, o dalis šių darbų
+(integraciniai bandymai objekte ir priėmimo bandymas) pati yra testavimas.
+
 
 \begin{table}[H]
   \centering
@@ -159,13 +192,17 @@
 
 \subsection{Reikalavimų, projektavimo, testavimo ir valdymo priedas}
 
-% TEKSTAS:
-% - procentai – iš paskaitos (SE-03, 36 skaidrė), taikomi tik programavimui (309 žm. d.),
-%   ne neprograminiams darbams (\ref{tab:priedas}~lentelė);
-% - programavimo eilutės apima kodavimą, vienetų testus ir kodo peržiūrą, todėl tas pats darbas
-%   dukart neskaičiuojamas;
-% - su priedu programinei daliai tenka 540,75 žm. d., t. y. 73~\% visų sąnaudų.
-\textit{[Rengiama]}
+Programavimo įvertis (309~žm.~d.) neapima kitų projekto veiklų. Reikalavimų
+analizės, projektavimo, testavimo ir projekto valdymo sąnaudas apskaičiavome
+procentiniu metodu, t.~y. kaip dalį nuo programavimo sąnaudų: reikalavimai
+15~\%, projektavimas 20~\%, testavimas 30~\%, projekto valdymas 10~\%. Iš viso
+tai sudaro 75~\%, arba 231,75~žm.~d. (\ref{tab:priedas}~lentelė).
+
+Priedas nėra rezervas. Tai suplanuotas darbas, kuris tvarkaraštyje turi
+atskiras veiklas: reikalavimų specifikaciją, architektūros projektavimą,
+kiekvienos iteracijos testavimą ir projekto valdymą. Nenumatytiems atvejams
+skirtas atskiras rizikų rezervas (\ref{tab:rezervas}~lentelė).
+
 
 \begin{table}[H]
   \centering
