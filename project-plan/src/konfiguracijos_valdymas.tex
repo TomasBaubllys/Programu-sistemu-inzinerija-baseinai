@@ -1,12 +1,3 @@
-\documentclass[11pt, a4paper]{article}
-\usepackage[a4paper, margin=2.5cm]{geometry}
-\usepackage[english, lithuanian]{babel}
-\usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage{enumitem}
-
-\begin{document}
-
 \section{Konfigūracijos valdymas}
 Šio skyriaus tikslas – užtikrinti sistemingą visų projekto elementų (konfigūracijos elementų) identifikavimą, versijų kontrolę, pakeitimų sekimą bei jų būsenos apskaitą per visą gyvavimo ciklą. Tai padeda išvengti techninių nesklandumų, kylančių dėl nesudėtingų ryšių tarp baseino aparatūros ir serverio dalies.
 
@@ -23,10 +14,11 @@ Siekiant užtikrinti komandos tęstinumą ir žinių perdavimą taikomos šios t
 \begin{enumerate}
     \item \textbf{Programinio kodo valdymas:} Visi programavimo darbai privalo būti saugomi centralizuotje versijų kontrolės sistemoje (\emph{Git}). Atskiriamos pagrindinė (\texttt{master}), integracinė aplinka (\texttt{develop}) bei atskiros funkcinės šakos (\emph{feature branches}).
     \item \textbf{Aparatūros ir įrenginių konfigūracijos:} Kiekvienam baseine įdiegtam įrenginiui priskiriamas konfigūracijos pasas, kuriame fiksuojama programinės įrangos/firmware versija, IP adresai bei techniniai nustatymai.
-    \item \textbf{Artefaktų valdymas (\emph{JFrog}):} Sukompiliuoti programiniai paketai bei aplikacijų laidų (*releases*) versijos registruojami ir saugomi centralizuotoje artefaktų saugykloje (\emph{JFrog Artifactory}). Tai užtikrina, kad į baseino įrenginius patektų tik patvirtintos ir versijuotos programinės įrangos kopijos.
+    \item \textbf{Artefaktų valdymas (\emph{JFrog}):} Sukompiliuoti programiniai paketai bei aplikacijų laidų (\emph{releases}) versijos registruojami ir saugomi centralizuotoje artefaktų saugykloje (\emph{JFrog Artifactory}). Tai užtikrina, kad į baseino įrenginius patektų tik patvirtintos ir versijuotos programinės įrangos kopijos.
 \end{enumerate}
 
 \subsection{Ryšys su pokyčių valdymu ir stebėjimu}
 Projektui vykstant, konfigūracija keičiasi kartu su naujai atsirandančiomis rizikomis ir komandos priimtais sprendimais. Bet koks esminis konfigūracijos pakeitimas (pvz., programinės įrangos atnaujinimas baseino ekranuose ar aparatūros modelio keitimas) privalo praeiti formalų poveikio vertinimą (poveikis apimčiai, laikui, kaštams ir rizikai) bei būti patvirtintas atsakingo asmens pagal nustatytas kompetencijos ribas.
 
-\end{document}
+\subsection{Konfigūracijos baziniai taškai ir ryšys su kontroliniais taškais}
+Konfigūracijos valdymas tiesiogiai remiasi projekto eigos kontroliniais taškais (KT). Kaskart, kai pasiekiamas tarpinis rezultatas (pavyzdžiui, patvirtinama reikalavimų specifikacija ar architektūra – \emph{KT2, KT3, KT4}), atitinkami elementai tampa oficialia projekto konfigūracijos bazine linija (\emph{baseline}). Bet kokie vėlesni pakeitimai šiems elementams privalo būti derinami per pokyčių valdymą, įvertinant jų įtaką likusiems projekto etapams ir galutiniam sistemos perdavimui (\emph{KT14}).

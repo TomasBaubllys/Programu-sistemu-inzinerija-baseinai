@@ -1,107 +1,110 @@
-
-
-
-
-\section{Rizikų identifikavimas}
-Pagal rizikų tipus, jas skirstysime į šias kategorijas: techninės (TR), funkcinės (FR), integracinės (IR), organizacinės (OR), saugumo (SR) ir ergonominės rizikos (ER). Žemiau pateiktas šiame projekte numatomų rizikų registras.
-
-
+\section{Rizikų identifikavimas, analizė ir valdymas}
+\subsection{Rizikų identifikavimas}
+Pagal rizikų tipus, jas skirstysime į šias kategorijas: techninės (TR), funkcinės (FR), integracinės (IR), organizacinės (OR), saugumo (SR) ir ergonominės rizikos (ER). Žemiau pateiktas šiame projekte numatomų rizikų registras, suteikiant unikalius identifikatorius kiekvienai rizikai.
 
 \begin{itemize}
     \item Techninės rizikos (TR):
     \begin{itemize}
-        \item \textbf{Neigiamas drėgmės poveikis aparatūrai ir įrangai.} Kadangi projektas apima ir užsiėmimų vykdymą baseinuose, jo aplinkoje naudojama techninė įranga (ausinės, televizoriai, planšetės) gali sugesti ir net kelti saugos pavojų dalyviams. Baseino aplinkoje esanti didelė drėgmė, tiesioginio kontakto su vandeniu galimybė, vandenyje esanti chemija (pvz. chloras) gali turėti neigiamą įtaką aparatūrai.
-        \item \textbf{Ryšio sutrikimai.} Instrukcijų iš trenerio perdavimas į dalyvių ausines arba vaizdo sinchronizavimas su garsu gali vėluoti dėl nestabilaus belaidžio tinklo.
-        \item \textbf{Serverio ir debesijos paslaugų tiekėjo sutrikimai.} Kadangi sistema naudoja serverio ar debesijos aplinką aplikacijai, duomenų bazei, medžiagai talpinti, projekto sėkmė ir sklandus vykdymas tiesiogiai priklauso nuo trečiosios šalies tiekėjo paslaudų kokybės. Tiekėjui patyrus serverio gedimus ar nutrūkus ryšiui su duomenų baze, sutriks visas sistemos darbas.
+        \item \textbf{TR1: Neigiamas drėgmės poveikis aparatūrai ir įrangai.} Kadangi projektas apima užsiėmimų vykdymą baseinuose, jo aplinkoje naudojama techninė įranga (ausinės, televizoriai, planšetės) gali sugesti ir net kelti saugos pavojų dalyviams. Baseino aplinkoje esanti didelė drėgmė, tiesioginio kontakto su vandeniu galimybė, vandenyje esanti chemija (pvz. chloras) gali turėti neigiamą įtaką aparatūrai (kondensatas pažeidžia stacionarią įrangą).
+        \item \textbf{TR2: Ryšio sutrikimai.} Instrukcijų iš trenerio perdavimas į dalyvių ausines arba vaizdo sinchronizavimas su garsu gali vėluoti dėl nepakankamo ar nestabilaus belaidžio tinklo baseino salėje.
+        \item \textbf{TR3: Serverio ir debesijos paslaugų tiekėjo sutrikimai.} Kadangi sistema naudoja serverio ar debesijos aplinką aplikacijai, duomenų bazei, medžiagai talpinti, projekto sėkmė tiesiogiai priklauso nuo trečiosios šalies tiekėjo paslaugų kokybės.
     \end{itemize}
     \item Funkcinės rizikos (FR):
     \begin{itemize}
-        \item \textbf{Programos režimo klaidos.} Jei treniruotė vyksta be žmogaus priežiūros, yra galimybė, kad sistema užstrigs arba neteisingai interpretuos etapo pabaigą ar pradžią, taip palikdamą naudotojus be instrukcijų.
+        \item \textbf{FR1: Programos režimo ir būsenų mašinos klaidos.} Jei treniruotė vyksta be žmogaus priežiūros, yra galimybė, kad vėlai bus aptiktas užsiėmimo būsenų mašinos defektas, sistema užstrigs arba neteisingai interpretuos etapo pabaigą/pradžią, palikdama naudotojus be instrukcijų.
     \end{itemize}
     \item Integracinės rizikos (IR):
     \begin{itemize}
-        \item \textbf{Garso ir vaizdo įrangos suderinamumas.} Skirtinguose baseinuose ir sport centruose naudojama aparatūra gali nepalaikyti planuojamų programinių sąsajų. 
+        \item \textbf{IR1: Grotuvų, ekranų ar sporto salės kolonėlių ribojimai.} Skirtinguose baseinuose ir sporto centruose naudojama aparatūra gali nepalaikyti planuojamų programinių sąsajų ar turėti techninių apribojimų. 
+        \item \textbf{IR2: Radijo siųstuvo ir mikrofono sujungimas.} Neaiški radijo siųstuvo ir trenerio mikrofono sujungimo grandinė, galinti kelti garso perdavimo nesklandumų.
     \end{itemize}
     \item Organizacinės rizikos (OR):
     \begin{itemize}
-        \item \textbf{Naudotojų (trenerių ir dalyvių) pasirpiešinimas.} Vyresnio amžiaus, ar mažiau pratę prie technologijų treneriai gali sunkiau suprasti sistemos veikimą, o dalyviai gali priešintis prieš gyvo kontakto sumažinimą ir specialios įrangos naudojimą.
+        \item \textbf{OR1: Naudotojų (trenerių ir dalyvių) pasipriešinimas.} Vyresnio amžiaus ar mažiau prie technologijų pratę treneriai gali sunkiau perimti užsiėmimo valdymą, o dalyviai gali priešintis gyvo kontakto sumažinimui ir specialios įrangos naudojimui.
+        \item \textbf{OR2: Įrangos pristatymo vėlavimai.} Užsakyta įranga gali vėluoti arba gali atkeliauti kitas modelis ar atnaujinta mikroprograma, reikalaujanti papildomo derinimo.
+        \item \textbf{OR3: Medžiagos atnaujinimo poreikis.} Gali prireikti dalies pratimų perfilmavimo ir garso instrukcijų įrašymo iš naujo dėl pasikeitusių metodinių reikalavimų.
     \end{itemize}
     \item Saugumo rizikos (SR):
     \begin{itemize}
-        \item \textbf{Asmens duomenų saugumo ir nutekėjimo rizika.} Planuojama sistema valdo dalyvių informaciją, vietų rezervaciją, lankomumo istoriją, individualius įvertinimo duomenis bei asmenines programas. Tai jautrūs asmens duomenys, kurių nutekėjimas ar neteisėtas pasisavinimas lemia teisinę atsakomybę pagal BDAR reglamentą.
+        \item \textbf{SR1: Asmens duomenų saugumo ir prieigos teisių spragos.} Planuojama sistema valdo dalyvių informaciją, rezervacijas, lankomumą ir individualius įvertinimus. Griežtesni asmens duomenų reikalavimai arba prieigos teisių spragos gali lemti teisinę atsakomybę pagal BDAR.
     \end{itemize}
     \item Ergonominės rizikos (ER):
     \begin{itemize}
-        \item \textbf{Nepakankamas vaizdinės medžiagos matomumas.} Kai kurie dalyviai gali turėti silpnesnį regėjimą ir nedėvėti baseine akinių ar kontaktinių lęšių, o atstumas iki ekranų gali būti didelis. Jei rodomas vaizdas ir pratimai ekrane bus per maži, ar per mažai kontrastingi, lankytojai gali nesuprasti taisyklingos technikos, kas mažins treniruotės efektyvumą ir saugumą.
-        \item \textbf{Belaidžių ausinių slydimas nuo kepurėlių.} Būnant baseine, dalyviai dažnai dėvi plaukimo kepurėles. Projekte naudojamos ausinės gali nuslysti, pasidaryti nepatogios ar praleisti vandenį, ko pasekoje dalyviai negirdės vedėjo balso ar įrašytų instrukcijų.
+        \item \textbf{ER1: Nepakankamas vaizdinės medžiagos matomumas.} Pratimų vaizdas gali būti prastai matomas iš tolimų takelių, jei lankytojai nedėvi akinių ar ekranai yra per nutolę.
+        \item \textbf{ER2: Ausinių pritaikomumas.} Būnant baseine, dalyviai dėvi plaukimo kepurėles – ausinės gali slysti nuo kepurėlių arba būti nepatogios naudoti.
     \end{itemize}
-    
 \end{itemize}
 
-\section{Rizikos vertinimas}
-Rizikos vertinimas vykdomas pagal du pagrindinius kriterijus -- tikėtinumas ir poveikis. Aiškumo dėlei, vertinsime penkiabalėje skalėje nuo 1 iki 5, kur:
+\subsection{Rizikos vertinimas}
+Rizikos vertinimas vykdomas pagal du pagrindinius kriterijus -- tikėtinumas ir poveikis. Vertinimui naudojama penkiabalė skalė nuo 1 iki 5:
 \begin{itemize}
-    \item 1 - labai mažai tikėtina /  minimalus poveikis
-    \item 2 - mažai tikėtina / nedidelis poveikis 
-    \item 3 - vidutiniškai tikėtina /  vidutinis poveikis
-    \item 4 - labai tikėtina / didelis poveikis
-    \item 5 - itin tikėtina (nuolatinė grėsmė) / kritinis poveikis 
+    \item 1 -- labai mažai tikėtina / minimalus poveikis
+    \item 2 -- mažai tikėtina / nedidelis poveikis 
+    \item 3 -- vidutiniškai tikėtina / vidutinis poveikis
+    \item 4 -- labai tikėtina / didelis poveikis
+    \item 5 -- itin tikėtina (nuolatinė grėsmė) / kritinis poveikis 
 \end{itemize}
 
-Žemiau pateikiama lentelė, vaizduojanti identifikuotų rizikų vertinimą pagal minėtus du kriterijus (\ref{tab:rizikos_vertinimas} lentelė).
+Žemiau pateikiama lentelė, vaizduojanti identifikuotų pagrindinių rizikų vertinimą pagal minėtus kriterijus (\ref{tab:rizikos_vertinimas} lentelė).
 
 \begin{table}[H]
 \centering
 \noindent\makebox[\textwidth]{%
-\begin{tabularx}{1.15\textwidth}{p{1.5cm} >{\raggedright\arraybackslash}X c c}
+\begin{tabularx}{1.15\textwidth}{p{1.0cm} p{1.5cm} >{\raggedright\arraybackslash}X c c}
 \hline
-\textbf{Rizikos tipas} & \textbf{Rizikos pavadinimas} & \textbf{Tikimybė (1–5)} & \textbf{Poveikis (1–5)} \\ \hline
-TR & Drėgmės poveikis įrangai & 4 & 5 \\ 
-TR & Ryšio sutrikimai & 3 & 4 \\ 
-TR & Serverio / išorinio tiekėjo gedimai & 2 & 5 \\ 
-FR & Programos režimo klaidos & 2 & 4 \\ 
-IR & Įrangos suderinamumas & 3 & 3 \\ 
-OR & Naudotojų pasipriešinimas & 2 & 2 \\ 
-SR & Asmens duomenų saugumas & 2 & 5 \\ 
-ER & Ekranų matomumas & 4 & 3 \\ 
-ER & Ausinių pritaikomumas su kepurėlėmis & 2 & 3 \\ \hline
+\textbf{ID} & \textbf{Rizikos tipas} & \textbf{Rizikos pavadinimas} & \textbf{Tikimybė (1–5)} & \textbf{Poveikis (1–5)} \\ \hline
+TR1 & TR & Drėgmės poveikis įrangai & 4 & 5 \\ 
+TR2 & TR & Ryšio sutrikimai & 3 & 4 \\ 
+TR3 & TR & Serverio / išorinio tiekėjo gedimai & 2 & 5 \\ 
+FR1 & FR & Programos režimo klaidos & 2 & 4 \\ 
+IR1 & IR & Įrangos suderinamumas & 3 & 3 \\ 
+IR2 & IR & Radijo siųstuvo ir mikrofono grandinė & 3 & 3 \\
+OR1 & OR & Naudotojų pasipriešinimas & 2 & 2 \\ 
+OR2 & OR & Įrangos vėlavimas / modelio keitimas & 3 & 3 \\
+OR3 & OR & Pratimų perfilmavimo poreikis & 3 & 3 \\
+SR1 & SR & Asmens duomenų saugumas & 2 & 5 \\ 
+ER1 & ER & Ekranų matomumas & 4 & 3 \\ 
+ER2 & ER & Ausinių pritaikomumas su kepurėlėmis & 2 & 3 \\ \hline
 \end{tabularx}%
 }
 \caption{Projektinių rizikų vertinimo lentelė}
 \label{tab:rizikos_vertinimas}
 \end{table}
 
-\section{Rizikų valdymas}
-Su projektu susijusių rizikų valdymas apima tinkamų atsako strategijų parinkimą. Šiame projekte taikomos šios pagrindinės atsako į riziką startegijos:
 
+\subsection{Rizikų valdymas ir stebėsena}
+Su projektu susijusių rizikų valdymas ir nuolatinė stebėsena apima tinkamų atsako strategijų parinkimą bei periodišką rizikų registro atnaujinimą. Šiame projekte taikomos šios pagrindinės atsako į riziką strategijos:
 \begin{itemize}
     \item \textbf{Vengimas / švelninimas (avoidance / mitigation)} -- imamės veiksmų, kad rizika neįvyktų arba jos poveikis būtų mažesnis.
     \item \textbf{Perdavimas (transfer)} -- rizika perduodama trečiosioms šalims, dažniausiai per sutartis.
-    \item \textbf{Prisiėmimas (accept)} -- taikomas tada, kai vengimo arba perdavimo kaina yra didesnė negu galimas nuostolis; tokiu atveju rizika stebima ir pasiruošiamas atsako planas.
+    \item \textbf{Prisiėmimas (accept)} -- taikomas tada, kai vengimo arba perdavimo kaina yra didesnė negu galimas nuostolis; tokiu atveju rizika stebima, fiksuojami jos požymiai ir pasiruošiamas atsako planas.
 \end{itemize}
 
-Remiantis projektų valdymo metodika, lentelėje žemiau aprašyta kaio siūlome valdyti anksčiau identifikuotas rizikas (\ref{tab:riziku_valdymas} lentelė).
+Rizikų stebėsenos procesas užtikrina, kad kiekviena identifikuota grėsmė būtų nuolat sekama pagal nustatytus rodiklius ir požymius (pvz., tinklo vėlavimus, įrangos nusidėvėjimą, sistemos log'ų įrašus), o atsakingi asmenys laiku inicijuotų korekcinius veiksmus bei atnaujintų informaciją rizikų registre.
+
+Remiantis projektų valdymo metodika, žemiau esančioje lentelėje aprašyta, kaip siūlome valdyti ir stebėti identifikuotas rizikas (\ref{tab:riziku_valdymas} lentelė).
 
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.3}
-\setlength{\tabcolsep}{4pt}
-\begin{tabularx}{1.15\textwidth}{p{1cm} >{\raggedright\arraybackslash}p{2cm} >{\raggedright\arraybackslash}p{2cm} X}
+\small
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{p{0.6cm} p{2.0cm} p{1.9cm} X p{3.7cm}}
 \hline
-\textbf{Tipas} & \textbf{Rizikos pavadinimas} & \textbf{Strategija} & \textbf{Planas} \\ \hline
-TR & Drėgmės poveikis įrangai & Vengimas / Švelninimas & Naudoti tik specialią, vandeniui ir chemijai atsparią įrangą (ne žemesnį nei IP65 ar IP68 sertifikatą). Pasikrovimo ir laikymo stoteles įrengti toliau nuo vandens šaltinio ir drėgmės. \\ \hline
-TR & Ryšio sutrikimai & Vengimas / Prisiėmimas & Visiškai išvengti trukdžių baseino aplinkoje neįmanoma (prisiėmimas), tačiau dalį garso instrukcijų galima lokaliai išsaugoti ausinėse ar planšetėse; jei ryšys dingo visiškai, suveikia vaizdinis ar garsinis signalas vietoje esančiam treneriui, kuris perima treniruotės vykdymą. \\ \hline
-TR & Serverio / tiekėjo gedimai & Perdavimas & Pasirinkti patikimą debesijos paslaugų tiekėją, kuris garantuotų didelį pasiekiamumą. Bet kokių gedimų atsakomybė ir jų šalinimas perduodamas paslaugų tiekėjui. \\ \hline
-FR & Programos režimo klaidos & Vengimas & Atlikti išsamų programinės įrangos testavimą, simuliuojant įvairius scenarijus. Numatoma galimybė perkrauti sesiją nuotoliniu būdu. \\ \hline
-IR & Įrangos suderinamumas & Vengimas & Kurti universalią programinę įrangą, pagrįstą standartizuotais protokolais. Prieš diegiant įrangą naujoje vietoje, atlikti bandomuosius testus. \\ \hline
-OR & Naudotojų pasipriešinimas & Vengimas / Prisiėmimas & Pašalinti žmogiškąjį pasipriešinimą sunku, todėl organizuojami mokymai treneriams ir paruošiami aiškūs bei vizualūs vartotojo vadovai. Stebimi atsiliepimai po pirmųjų užsiėmimų, o kilus trukdžiams – pagalba suteikiama gyvai. \\ \hline
-SR & Asmens duomenų saugumas & Vengimas & Naudoti stiprų ir standartus atitinkantį duomenų šifravimą, riboti prieigas prie jautrios informacijos. Reguliariai tikrinti sistemą dėl saugumo spragų. \\ \hline
-ER & Ekranų matomumas & Vengimas & Projektavimo etape nustatyti griežtus reikalavimus vartotojo sąsajai – naudoti didelius šriftus, aukštą kontrastą ir pakankamai didelius ekranus. \\ \hline
-ER & Ausinių pritaikomumas & Vengimas / Švelninimas & Testuoti ir parinkti ausines, kurios patikimai laikosi po plaukimo kepurėle ir yra patogios dalyviams. \\ \hline
+\textbf{ID} & \textbf{Rizikos pavadinimas} & \textbf{Strategija} & \textbf{Planas} & \textbf{Stebėsena} \\ \hline
+TR1 & Drėgmės poveikis įrangai & Vengimas / Švelninimas & Naudoti tik specialią, vandeniui ir chemijai atsparią įrangą (ne žemesnį nei IP65 ar IP68 sertifikatą). Pasikrovimo ir laikymo stoteles įrengti toliau nuo vandens šaltinio. & Kasdien prieš treniruotes; tikrinama vizualiai, registras atnaujinamas kas savaitę. \\ \hline
+TR2 & Ryšio sutrikimai & Vengimas / Prisiėmimas & Visiškai išvengti trukdžių baseino aplinkoje neįmanoma, tačiau dalį garso instrukcijų galima lokaliai išsaugoti ausinėse ar planšetėse; ryšio dingimo atveju virtualaus trenerio režimu automatiškai išsiunčiamas pranešimas salės administratoriui arba budinčiam nuotoliniam treneriui eskalacijai. & Nuolatinis tinklo kokybės monitoringas sesijos metu; registras atnaujinamas po kiekvieno incidento. \\ \hline
+TR3 & Serverio / tiekėjo gedimai & Perdavimas & Pasirinkti patikimą debesijos paslaugų tiekėją, garantuojantį aukštą pasiekiamumą. Bet kokių gedimų atsakomybė perduodama tiekėjui. & Automatizuoti pasiekiamumo ir serverio sveikatos (uptime) pranešimai; registras peržiūrimas kas mėnesį. \\ \hline
+FR1 & Programos režimo klaidos & Vengimas & Atlikti išsamų programinės įrangos testavimą, simuliuojant scenarijus. Numatoma galimybė perkrauti sesiją nuotoliniu būdu. & Testavimo ataskaitų analizė prieš leidimą į gamybinę aplinką; registras atnaujinamas po testų ciklų. \\ \hline
+IR1 & Įrangos suderinamumas & Vengimas & Kurti universalią programinę įrangą, pagrįstą standartizuotais protokolais. Prieš diegiant įrangą, atlikti bandomuosius testus. & Bandomųjų testų metu; registras atnaujinamas po integracijos etapo. \\ \hline
+IR2 & Siųstuvo ir mikrofono jungtis & Vengimas / Švelninimas & Parinkti išbandytas belaidžio garso perdavimo sistemų konfigūracijas bei atlikti suderinamumo testus prieš užsiėmimus. & Tikrinama prieš kiekvieną užsiėmimą; registras atnaujinamas pagal poreikį. \\ \hline
+OR1 & Naudotojų pasipriešinimas & Vengimas / Prisiėmimas & Organizuojami mokymai treneriams, paruošiami aiškūs vartotojo vadovai. Kilus trukdžiams – pagalba suteikiama gyvai. & Atsiliepimų ir lankomumo analizė po pirmųjų savaičių; registras atnaujinamas kas mėnesį. \\ \hline
+OR2 & Įrangos vėlavimas & Vengimas / Švelninimas & Komponentus užsakyti iš anksto, numatant laiko rezervą tiekimo grandinėje bei alternatyvius tiekėjus. & Tiekimo grandinės eigos stebėsena kas savaitę; registras atnaujinamas pasikeitus terminams. \\ \hline
+OR3 & Pratimų perfilmavimas & Švelninimas & Iš anksto kokybiškai patvirtinti metodinę medžiagą ir scenarijus, kad prireikus korekcijų būtų minimaliai. & Metodinės grupės peržiūra po etapo; registras atnaujinamas po vertinimo. \\ \hline
+SR1 & Asmens duomenų saugumas & Vengimas & Naudoti stiprų ir standartus atitinkantį duomenų šifravimą, riboti prieigas prie jautrios informacijos. Reguliariai tikrinti sistemą dėl spragų. & Automatizuoti saugumo auditai ir logų analizė; registras peržiūrimas kas ketvirtį. \\ \hline
+ER1 & Ekranų matomumas & Vengimas & Projektavimo etape nustatyti griežtus reikalavimus sąsajai – naudoti didelius šriftus, aukštą kontrastą ir tinkamo dydžio ekranus. & Vertinimas bandomųjų peržiūrų metu; registras atnaujinamas po testinių sesijų. \\ \hline
+ER2 & Ausinių pritaikomumas & Vengimas / Švelninimas & Testuoti ir parinkti ausines, kurios patikimai laikosi po plaukimo kepurėle ir yra patogios dalyviams. & Dalyvių atsiliepimai po pirminių treniruočių; registras atnaujinamas kas savaitę. \\ \hline
 \end{tabularx}
-\caption{Projektinių rizikų valdymo planas}
+\caption{Projektinių rizikų valdymo ir stebėsenos planas}
 \label{tab:riziku_valdymas}
 \end{table}
-
-
-
