@@ -30,7 +30,10 @@ sudėtingumo: realiojo laiko vykdymo variklio, grotuvo programos, garso įrangos
 integracijos ir infrastruktūros. Todėl kiekvienos dalies sąnaudas įvertinome
 ekspertiškai trimis reikšmėmis (optimistine, tikėtiniausia ir pesimistine),
 apskaičiavome PERT įvertį ir dalių įverčius sudėjome. FP naudojome dalims
-palyginti: didesnei daliai skyrėme daugiau darbo dienų.
+palyginti: didesnei daliai skyrėme didesnes sąnaudas. Įverčio eilutės
+sudarytos pagal sistemos dalis, o kiekvienos tvarkaraščio veiklos ryšys su
+WBS darbų paketais nurodytas tvarkaraščio faile
+\texttt{project-plan/\allowbreak resources/\allowbreak schedule.csv}.
 
 
 \subsection{Sistemos dydis funkciniais taškais}
@@ -39,10 +42,38 @@ Sistemos dydis – 381 nekoreguotas funkcinis taškas (UFP). Suskaičiavome
 87 funkcijas: 9 vidinius loginius failus (ILF), 47 išorines įvestis (EI),
 8 išorines išvestis (EO) ir 23 išorines užklausas (EQ). Išorinių sąsajų
 failų (EIF) nėra, nes bazinė sistemos versija su kitomis sistemomis
-nesijungia. Funkcijų sudėtingumą nustatėme IFPUG metodo matricomis
-(\ref{tab:fp}~lentelė).
+nesijungia. Kiekvienos funkcijos sudėtingumą pagal DET, RET ir FTR skaičių
+nustatėme paskaitos SE-03 matricomis; išorinės užklausos (EQ) vertintos ta
+pačia matrica kaip įvestys (EI). Funkcijų skaičius pagal sudėtingumą pateiktas
+\ref{tab:fp-sud}~lentelėje, o dydis pagal sistemos dalis –
+\ref{tab:fp}~lentelėje. Dalys P1--P7 atitinka sistemos vizijos skaidymą.
+Paskyrų, prisijungimo, vaidmenų, sporto erdvių ir jų įrangos tvarkymo
+vizijos skaidyme nėra, nors šias funkcijas numato vizijos skyrius
+„Naudotojai ir jų veiksmai“, todėl jas įvertinome kaip atskirą dalį P0.
 
-Funkciniai taškai skaičiuojami iš naudotojo pusės: kiekviena funkcija,
+\begin{table}[H]
+  \centering
+  \caption{Funkcijų skaičius pagal sudėtingumą ir nekoreguoti funkciniai taškai}
+  \label{tab:fp-sud}
+  \small
+  \begin{tabular}{@{}lrrrrrrr@{}}
+    \toprule
+    & \multicolumn{2}{c}{\textbf{Žemas}} & \multicolumn{2}{c}{\textbf{Vidutinis}} & \multicolumn{2}{c}{\textbf{Aukštas}} & \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+    \textbf{Tipas} & \textbf{sk.} & \textbf{svoris} & \textbf{sk.} & \textbf{svoris} & \textbf{sk.} & \textbf{svoris} & \textbf{UFP} \\
+    \midrule
+    ILF & 6 & 7 & 3 & 10 & 0 & 15 & 72 \\
+    EIF & 0 & 5 & 0 & 7 & 0 & 10 & 0 \\
+    EI & 27 & 3 & 12 & 4 & 8 & 6 & 177 \\
+    EO & 0 & 4 & 6 & 5 & 2 & 7 & 44 \\
+    EQ & 12 & 3 & 7 & 4 & 4 & 6 & 88 \\
+    \midrule
+    \textbf{Iš viso} & \textbf{45} & & \textbf{28} & & \textbf{14} & & \textbf{381} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Funkciniai taškai skaičiuojami naudotojo požiūriu: vertinama kiekviena funkcija,
 kurią naudotojas atlieka ar mato, ir kiekviena duomenų grupė, kurią sistema
 saugo. Todėl didžiausia dalis yra užsiėmimų programų valdymas (P1, 94~UFP).
 Joje treneris kuria, keičia ir šalina programas, jų etapus ir pratimus,
@@ -131,7 +162,8 @@ daliai atskirai, o ne iš AFP.
 
 Kiekvienai sistemos daliai nurodėme tris darbo sąnaudų įverčius:
 optimistinį (O), tikėtiniausią (M) ir pesimistinį (P). Iš jų apskaičiavome
-PERT įvertį $E = (O + 4M + P)/6$ ir standartinį nuokrypį $\sigma = (P - O)/6$
+PERT įvertį $E = (O + 4M + P)/6$, suapvalintą iki 0,5~žm.~d., ir
+standartinį nuokrypį $\sigma = (P - O)/6$, suapvalintą iki 0,1~žm.~d.
 (\ref{tab:pert}~lentelė). Tikėtiniausias įvertis turi didžiausią svorį, nes
 jis realistiškiausias, o $\sigma$ rodo, kiek neapibrėžtas dalies įvertis.
 
@@ -157,7 +189,7 @@ nepridėjome, nes tai nėra programų realizacija, o dalis šių darbų
   \setlength{\tabcolsep}{5pt}
   \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrr@{}}
     \toprule
-    \textbf{Kodas} & \textbf{Eilutė} & \textbf{O} & \textbf{M} & \textbf{P} & \textbf{E} & {\boldmath$\sigma$} & \textbf{\makecell[r]{žm.~d. /\\UFP}} \\
+    \textbf{Kodas} & \textbf{Sistemos dalis ar darbas} & \textbf{O} & \textbf{M} & \textbf{P} & \textbf{E} & {\boldmath$\sigma$} & \textbf{\makecell[r]{žm.~d. /\\UFP}} \\
     \midrule
     P0 & Paskyros, sporto erdvės ir įranga & 23 & 33 & 50 & 34,0 & 4,5 & 0,40 \\
     P1 & Užsiėmimų programų valdymas & 27 & 38 & 58 & 39,5 & 5,2 & 0,42 \\
@@ -199,8 +231,9 @@ tai sudaro 75~\%, arba 231,75~žm.~d. (\ref{tab:priedas}~lentelė).
 
 Priedas nėra rezervas. Tai suplanuotas darbas, kuris tvarkaraštyje turi
 atskiras veiklas: reikalavimų specifikaciją, architektūros projektavimą,
-kiekvienos iteracijos testavimą ir projekto valdymą. Nenumatytiems atvejams
-skirtas atskiras rizikų rezervas (\ref{tab:rezervas}~lentelė).
+kiekvienos iteracijos testavimą ir projekto valdymą. Rizikoms skirti
+atskiri rezervai: registre surašytoms rizikoms – rizikų rezervas, o
+nenumatytiems atvejams – valdymo rezervas (\ref{tab:sanaudos}~lentelė).
 
 
 \begin{table}[H]
@@ -227,13 +260,14 @@ skirtas atskiras rizikų rezervas (\ref{tab:rezervas}~lentelė).
 Be rezervų projekto darbo sąnaudos sudaro 739,25~žm.~d., arba apie
 35,2~žm.~mėn. (\ref{tab:sanaudos}~lentelė).
 
-Rizikų rezervas skirtas registre surašytoms rizikoms. Kiekvienai rizikai
+Rizikų rezervas skirtas registre surašytoms rizikoms ir trims naujoms
+projekto rizikoms (IR2, OR2, OR3). Kiekvienai rizikai
 apskaičiavome tikėtinąją vertę (angl. \textit{expected monetary value},
 EMV): tikimybę padauginome iš papildomų sąnaudų, kurių prireiktų rizikai
 įvykus. Pavyzdžiui, drėgmės poveikio įrangai (TR1) tikimybė yra 35~\%, o
 papildomos sąnaudos – 8~žm.~d., todėl EMV~=~2,8~žm.~d. Visų 11 rizikų EMV
 suma yra 25,85, t.~y. apie 26~žm.~d. (\ref{tab:rezervas}~lentelė). Šį
-rezervą valdo projekto vadovas. Su juo bazinis planas sudaro
+rezervą valdo projekto vadovas. Su rizikų rezervu bazinis planas sudaro
 765,25~žm.~d. (apie 36,4~žm.~mėn.).
 
 Valdymo rezervas (5~\%, apie 37~žm.~d.) skirtas nenumatytiems atvejams,
@@ -271,7 +305,7 @@ naudoti tik užsakovui sutikus. Su abiem rezervais sąnaudos sudaro
   \small
   \begin{tabularx}{\textwidth}{@{}rl>{\raggedright\arraybackslash}Xrrr>{\raggedright\arraybackslash}p{2.1cm}@{}}
     \toprule
-    \textbf{Nr.} & \textbf{ID} & \textbf{Rizika} & \textbf{\makecell[r]{Tikimybė,\\\%}} & \textbf{\makecell[r]{Papildomos\\sąnaudos,\\žm.~d.}} & \textbf{\makecell[r]{EMV,\\žm.~d.}} & \textbf{\makecell[l]{Paveiktos\\eilutės}} \\
+    \textbf{Nr.} & \textbf{ID} & \textbf{Rizika} & \textbf{\makecell[r]{Tikimybė,\\\%}} & \textbf{\makecell[r]{Papildomos\\sąnaudos,\\žm.~d.}} & \textbf{\makecell[r]{EMV,\\žm.~d.}} & \textbf{\makecell[l]{Paveiktos\\dalys}} \\
     \midrule
     1 & TR1 & Drėgmė ir kondensatas pažeidžia stacionarią įrangą baseine & 35 & 8 & 2,80 & N1, N3, N5 \\
     2 & TR2 & Nepakankamas belaidis ryšys baseino salėje & 40 & 6 & 2,40 & N1, N3, S1, S2 \\
@@ -290,15 +324,18 @@ naudoti tik užsakovui sutikus. Su abiem rezervais sąnaudos sudaro
   \end{tabularx}
 \end{table}
 
-Rizikų valdymo skyriaus registre nurodyta pradinė tikimybė, t.~y. kokia ji
-būtų be jokių priemonių. Rezervui naudojome likutinę tikimybę, kuri lieka po
+Rizikų vertinimo lentelėje (\ref{tab:rizikos_vertinimas}~lentelė) nurodyta
+pradinė tikimybė, t.~y. kokia ji būtų be jokių priemonių. Ji įvertinta
+balais, kuriuos verčiame procentais taip: 1~balas – 0--19~\%, 2~balai –
+20--39~\%, 3~balai – 40--59~\%, 4~balai – 60--79~\%, 5~balai –
+80--100~\%. Rezervui naudojome likutinę tikimybę, kuri lieka po
 tvarkaraštyje suplanuotų priemonių. Todėl trijų rizikų tikimybės rezerve
 mažesnės. Drėgmės poveikio įrangai (TR1) ir įrangos suderinamumo (IR1)
 tikimybė sumažėja, nes prieš perkant visą įrangą bandomasis komplektas ir
 prototipas išbandomi baseine, o radus problemą sprendimas pakeičiamas.
 Ekranų matomumo (ER1) tikimybė sumažėja, nes bandomasis vaizdo klipas
 patikrinamas baseine prieš montuojant visus pratimus. Kitų registro rizikų
-tikimybės atitinka rizikų valdymo skyriaus balus, o naujos rizikos IR2, OR2
+tikimybės atitinka tos lentelės balus, o naujos rizikos IR2, OR2
 ir OR3 įvertintos po 30~\%. Serverio ir debesijos paslaugų teikėjo gedimai
 (TR3) į rezervą neįtraukti, nes ši rizika perduota paslaugų teikėjui.
 
@@ -306,9 +343,11 @@ ir OR3 įvertintos po 30~\%. Serverio ir debesijos paslaugų teikėjo gedimai
 
 Įvertis galioja, kai tenkinamos šios sąlygos:
 \begin{itemize}
-  \item vertinama tik bazinė versija (poreikiai 1--13); natyvi mobilioji
-    programėlė, NFC ir QR identifikavimas, reklama, integracijos su sveikatos
-    platformomis ir keli centrai yra išplėtimai ir į įvertį neįtraukti;
+  \item vertinama tik bazinė versija (poreikiai 1--13); išplėtimai
+    (poreikiai 14--20: mobilioji programėlė, dalyvių identifikavimas,
+    programų ir vaizdo turinio biblioteka, programų pritaikymas, progreso
+    analizė, kelios erdvės ar centrai, reklama) ir galima integracija su
+    sveikatos platformomis į įvertį neįtraukti;
   \item sistema diegiama viename sporto centre: vienoje baseino zonoje ir
     vienoje sporto salėje;
   \item treneriai vaizdo įrašų nekelia, 4K raiškos nėra (turinys ir ekranai

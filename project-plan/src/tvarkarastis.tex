@@ -127,8 +127,8 @@ užsakovui, o KT15 – projekto uždarymą.
     KT9 & Veikia paskyros, užsiėmimų tvarkaraštis ir istorija & 2027-03-16 & Dalyvis prisiregistruoja, treneris suplanuoja užsiėmimą ir paleidžia jį iš valdymo pulto, istorija kaupiama. Pasirašytas 3~iteracijos demonstracijos protokolas. \\
     KT10 & Sistema funkciškai užbaigta ir patikrinta & 2027-04-16 & 4~iteracijos demonstracijoje veikia vietų rezervavimas, lankomumo žymėjimas ir asmeninių programų sudarymas; pasirašytas demonstracijos protokolas. Sistemos, vaidmenų prieigos ir saugumo bandymuose neliko kritinių ir aukšto prioriteto defektų. \\
     KT11 & Sistema veikia baseine ir sporto salėje & 2027-05-07 & Visi integracinių bandymų scenarijai atlikti realioje aplinkoje, protokolai pasirašyti, kritinių defektų nėra. \\
-    KT12 & Treneriai ir administratoriai išmokyti & 2027-05-17 & Kiekvienas piloto treneris savarankiškai paleido ir užbaigė užsiėmimą; naudotojo vadovai perduoti, mokymų žiniaraštis pasirašytas. \\
-    KT13 & Sistema priimta po pilotinio naudojimo & 2027-06-17 & Parengta 4~savaičių piloto ataskaita; užsakovas pasirašė naudotojų priėmimo bandymo protokolą be kritinių pastabų. \\
+    KT12 & Treneriai ir administratoriai išmokyti & 2027-05-17 & Kiekvienas pilotiniame naudojime dalyvaujantis treneris savarankiškai paleido ir užbaigė užsiėmimą; naudotojo vadovai perduoti, mokymų žiniaraštis pasirašytas. \\
+    KT13 & Sistema priimta po pilotinio naudojimo & 2027-06-17 & Parengta 4~savaičių pilotinio naudojimo ataskaita; užsakovas pasirašė naudotojų priėmimo bandymo protokolą be kritinių pastabų. \\
     KT14 & Sistema perduota užsakovui & 2027-06-29 & Pasirašytas priėmimo ir perdavimo aktas; perduoti išeities kodas, dokumentacija, prieigos duomenys ir įrangos inventorius. \\
     KT15 & Garantinis laikotarpis baigtas, projektas uždarytas & 2027-07-30 & Per 20~d.~d. garantinio laikotarpio kritiniai defektai ištaisyti; užsakovas patvirtino projekto uždarymo ataskaitą. \\
     \bottomrule
@@ -142,7 +142,7 @@ ir lygiagrečius turinio bei įrangos darbus. Tamsios juostos žymi kritinio
 kelio veiklas, šviesios – veiklas su laisvu laiku, punktyrinės – laiko
 rezervus B1 ir B2, o rombai – KT. Diagrama sutraukta iki etapų ir iteracijų;
 visos 75 veiklos su datomis ir priklausomybėmis pateiktos tvarkaraščio
-faile \texttt{schedule.csv}. Įrangos grandinė (užsakymas, 30~d.~d.
+faile \texttt{project-plan/\allowbreak resources/\allowbreak schedule.csv}. Įrangos grandinė (užsakymas, 30~d.~d.
 pristatymas ir montavimas) turi 41~d.~d. laisvo laiko, todėl diagramoje
 atskirta nuo kritinio kelio, o turinys paruošiamas dar prieš 2~iteraciją
 (KT5 – anksčiau nei KT7).
@@ -163,8 +163,8 @@ lemia trumpiausią įmanomą projekto trukmę, 208~d.~d. Kritiniame kelyje yra
 reikalavimų analizė, projekto planas, architektūra ir prototipai su bandymu
 baseine, visos keturios iteracijos, sistemos bandymai, bandymai objekte,
 mokymai, pilotinis naudojimas, priėmimas, perdavimas ir garantinis
-palaikymas. Šios veiklos neturi laisvo laiko, todėl bet kurios jų vėlavimas
-nukelia projekto pabaigą.
+palaikymas. Šios veiklos neturi laisvo laiko, todėl jų vėlavimas nukelia
+projekto pabaigą, jei jo nesugeria laiko rezervai B1 ir B2.
 
 Kitos veiklos turi laisvo laiko, t.~y. gali vėluoti nevėlindamos projekto
 pabaigos (\ref{tab:laiko-rezervai}~lentelė). Pavyzdžiui, įrangos montavimas
@@ -175,9 +175,9 @@ Kritinį kelią saugo du laiko rezervai: B1 (8~d.~d. prieš bandymus objekte)
 ir B2 (5~d.~d. prieš perdavimą). Per juos niekas nedirba, todėl sąnaudų jie
 neturi. Jei kritinio kelio veikla vėluoja, pavyzdžiui, sistemos bandymai
 užtrunka ilgiau arba baseinas laikinai neprieinamas, vėlavimą sugeria laiko
-rezervas, ir svarbiausios datos nepasislenka. Laiko rezervų nereikia
+rezervas, ir KT11 bei KT14 datos nepasislenka. Laiko rezervų nereikia
 painioti su sąnaudų rezervais (\ref{sec:dydis}~skyrius): pirmieji saugo
-datas, antrieji – darbo dienų kiekį.
+datas, antrieji – darbo sąnaudas (žm.~d.).
 
 \begin{table}[H]
   \centering
@@ -221,8 +221,15 @@ reikia keisti planą, tai daroma pagal pakeitimų valdymo procedūrą.
     nedarbo dienos (2026~m. lapkričio 2~d., gruodžio 24 ir 25~d., 2027~m.
     sausio 1~d., vasario 16~d., kovo 11~d., kovo 29~d., birželio 24~d. ir
     liepos 6~d.);
-  \item veiklos trukmė apskaičiuojama sąnaudas padalijus iš joje dirbančių
-    žmonių skaičiaus ir suapvalinus į didesnę pusę;
+  \item atostogos atskiromis veiklomis neplanuojamos: 1~iteracija apima ir
+    2026~m. gruodžio 28--31~d. darbo dienas; jei komanda tuo metu
+    atostogautų, 1~iteracijos demonstracija (KT6) pasislinktų, o vėlavimą
+    sugertų laiko rezervas~B1;
+  \item veiklos trukmė apskaičiuojama sąnaudas padalijus iš veiklai skirtų
+    etatų sumos (pvz., testuotojas iteracijos testavimui skiria pusę etato)
+    ir suapvalinus į didesnę pusę; valdymo, pilotinio naudojimo ir
+    garantinio palaikymo trukmė nustatyta iš anksto, o jų sąnaudos lygios
+    etato daliai, padaugintai iš trukmės;
   \item įrangos pristatymas trunka 30~d.~d. nuo užsakymo; tai laukimo laikas,
     o ne sąnaudos;
   \item pratimai baseine filmuojami ne darbo valandomis, kai baseinas
