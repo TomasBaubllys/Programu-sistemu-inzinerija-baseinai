@@ -12,9 +12,11 @@ Projekte valdomi šie esminiai konfigūracijos elementai, suskistyti į tris gru
 \subsection{Versijų kontrolės ir atsekamumo taisyklės}
 Siekiant užtikrinti komandos tęstinumą ir žinių perdavimą taikomos šios taisyklės:
 \begin{enumerate}
-    \item \textbf{Programinio kodo valdymas:} Visi programavimo darbai privalo būti saugomi centralizuotje versijų kontrolės sistemoje (\emph{Git}). Atskiriamos pagrindinė (\texttt{master}), integracinė aplinka (\texttt{develop}) bei atskiros funkcinės šakos (\emph{feature branches}).
+    \item \textbf{Programinio kodo valdymas:} Visi programavimo darbai privalo būti saugomi centralizuotje versijų kontrolės sistemoje (\emph{Git}). Atskiriamos pagrindinė (\texttt{master}), integracinė aplinka (\texttt{develop}) bei atskiros funkcinės šakos.
     \item \textbf{Aparatūros ir įrenginių konfigūracijos:} Kiekvienam baseine įdiegtam įrenginiui priskiriamas konfigūracijos pasas, kuriame fiksuojama programinės įrangos/firmware versija, IP adresai bei techniniai nustatymai.
-    \item \textbf{Artefaktų valdymas (\emph{JFrog}):} Sukompiliuoti programiniai paketai bei aplikacijų laidų (\emph{releases}) versijos registruojami ir saugomi centralizuotoje artefaktų saugykloje (\emph{JFrog Artifactory}). Tai užtikrina, kad į baseino įrenginius patektų tik patvirtintos ir versijuotos programinės įrangos kopijos.
+    \item \textbf{Artefaktų valdymas (\emph{JFrog}):} Sukompiliuoti programiniai paketai bei aplikacijų versijos registruojamos ir saugomos centralizuotoje artefaktų saugykloje (\emph{JFrog Artifactory}).
+    \item \textbf{Versijų pavadinimai}: Versijų pavadinimai turi laikytis semantinių versijų formato \texttt{Major.Minor.Patch}, pavyzdžiui, v1.1.0).
+    
 \end{enumerate}
 
 \subsection{Ryšys su pokyčių valdymu ir stebėjimu}
