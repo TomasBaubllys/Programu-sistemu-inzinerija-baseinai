@@ -49,9 +49,9 @@ Siekiant užtikrinti sistemos patikimumą, mastelį ir greitaveiką realiuoju la
     \begin{itemize}
         \item \textit{Bazinė programinė įranga:} „Node.js / NestJS“ arba „Python (FastAPI)“ duomenų apdorojimui realiuoju laiku.
         \item \textit{Naudotojo sąsajos:} „React.js“ žiniatinklio sąsajai ir „React Native“ mobiliosioms programėlėms.
-        \item \textit{Duomenų bazės:} „PostgreSQL“ reliaciniams duomenims ir rezervacijoms, „Redis“ momentinei sesijų būsenų sinchronizacijai.
+        \item \textit{Duomenų bazės:} „PostgreSQL“ reliaciniams duomenims ir rezervacijoms, „Redis“ sesijų būsenų sinchronizacijai.
     \end{itemize}
-    \item \textbf{Protokolai ir sąsajos:} programų sąsajos (REST API) valdymui ir saito lizdai (WebSockets) ekranų bei garso įrangos sinchronizacijai užsiėmimo metu.
+    \item \textbf{Protokolai ir sąsajos:} programų sąsajos (REST API) valdymui ir realaus laiko komunikacijos protokolas (WebSockets) ekranų bei garso įrangos sinchronizacijai užsiėmimo metu.
     \item \textbf{Saugumas:} saugaus ryšio protokolas (HTTPS), tapatybės patvirtinimas (OAuth 2.0 / JWT), vaidmenimis pagrįstos prieigos valdymas ir asmens duomenų šifravimas.
     \item \textbf{Vietinis vykdymas:} kiekvienoje vietoje vietinį medijos valdymą vykdys specializuoti procesoriai / grotuvai (pvz., „DSDevices DSDX5“ su „Android 14“ ir 4K dekoduojamu turiniu), užtikrinantys sklandų rodymą ir atsparumą ryšio sutrikimams.
     \item \textbf{Valdymas ir pritaikomumas:} duomenys, programos, lankomumas ir progresas valdomi centralizuotai. Architektūra leidžia tą patį sprendimą pritaikyti skirtingoms erdvėms (sausoms salėms ar drėgnoms IP klase sertifikuotoms baseinų zonoms).
@@ -100,15 +100,15 @@ Atsakingas už individualaus įvertinimo pagrindu sudaromas kliento programas, p
 Atsakingas už pratimų, demonstracijų ir kitos vaizdinės informacijos pateikimą atitinkamos aplinkos įrangoje:
 \begin{itemize}
     \item \textbf{Baseinai ir drėgnos zonos:} drėgmei atsparūs IP66 klasės 4K ekranai (pvz., „Sylvox 65\"“ 2000 nits) arba standartiniai / komerciniai ekranai, patalpinti į apsauginius IP korpusus. Didelėms erdvėms kaip alternatyva numatyti IP65 LED ekranai su P1.2–P1.5 pikselių žingsniu.
-    \item \textbf{Sausos / komercinės salės:} komerciniai 24/7 reitingo 4K UHD ekranai (pvz., „Samsung QM65C / QM75C / QM85C“, 500 nits) arba standartiniai vartotojiški ekranai („Samsung UE“ serija).
+    \item \textbf{Sausos / komercinės salės:} komerciniai 24/7 įvertinimo 4K UHD ekranai (pvz., „Samsung QM65C / QM75C / QM85C“, 500 nits) arba standartiniai ekranai („Samsung UE“ serija).
 \end{itemize}
 
-\subsection{Garso komunikacija}
+\subsection{Garso įranga}
 
 Atsakinga už iš anksto įrašytų garso instrukcijų ir vedėjo balso perdavimą dalyviams:
 \begin{itemize}
     \item \textbf{Baseinas ir povandeninis garsas:} daugakanalės radijo ryšio sistemos (pvz., „mGuide AQUA“, 9 kanalai, ~100 m diapazonas) su IPX8 vandeniui atspariais kaulinio laidumo imtuvais („mGuide AQUA R“) arba alternatyviais IPX8 rinkiniais („Tayogo T8“). Neintegruotam vietiniam grojimui palaikomos IP68 ausinės („Shokz OpenSwim Pro“).
-    \item \textbf{Sausos salės garsas:} aktyvios garso kolonėlės su „Bluetooth“ ir skaitmeninio signalo procesoriaus valdymu (pvz., „Alto Professional TS412“ 12 col.).
+    \item \textbf{Sausos salės garsas:} aktyvios garso kolonėlės su „Bluetooth“ (pvz., „Alto Professional TS412“ 12 col.).
 \end{itemize}
 
 \subsection{Duomenų ir istorijos valdymas}
