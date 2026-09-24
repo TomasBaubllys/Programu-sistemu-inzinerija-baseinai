@@ -1,0 +1,239 @@
+% Tvarkaraštis (atsakingas Marijus Planciunas).
+% Datos – iš tvarkaraščio modelio (75 veiklos, project-plan/resources/schedule.csv).
+% Ganto diagrama (gantt.tex) sugeneruota iš to paties modelio, rankomis jos netaisyti.
+% Veiklų ID (A01–A75) komentaruose – tik nuoroda rašančiajam; veiklų lentelės tekste nėra, todėl prozoje
+% rašyti veiklos pavadinimą.
+
+\section{Tvarkaraštis}\label{sec:tvarkarastis}
+
+Projektas truks 208~d.~d.: nuo 2026~m. spalio 1~d. iki 2027~m. liepos
+30~d. Jį sudaro penki etapai, o Kūrimo etape vyksta keturios iteracijos po
+4--5 savaites, kurių kiekviena baigiasi demonstracija užsakovui. Pažangą
+žymi 15 tarpinių rezultatų (kontrolinių taškų, KT). Po keturių savaičių
+pilotinio naudojimo sistema perduodama užsakovui 2027~m. birželio 29~d.
+(KT14), o po to 20~d.~d. trunka garantinis palaikymas.
+
+\subsection{Gyvavimo ciklo modelis ir iteracijos}
+
+Projektas vykdomas pagal UP (angl. \textit{Unified Process}) gyvavimo ciklo
+modelį. Jo fazės – pradžia, parengimas, konstravimas ir perdavimas (angl.
+\textit{Inception, Elaboration, Construction, Transition}); jų atitiktis
+projekto etapams pateikta \ref{tab:etapai}~lentelėje.
+
+Krioklio modelis šiam projektui netinka, nes jame viskas patikrinama tik
+pabaigoje. Didžiausi neaiškumai susiję su įranga baseine: ar ji atlaikys
+drėgmę, ar radijo ryšys pasieks visus takelius, ar vaizdas ekrane ir garsas
+ausinėse sutaps laiku. Pagal krioklio modelį tai paaiškėtų tik baigiamuosiuose
+bandymuose, kai visa įranga jau nupirkta ir programa parašyta. Pagal UP
+rizikingiausi dalykai tikrinami pirmiausia: bandomasis įrangos komplektas
+baseine išbandomas jau Planavimo etape, o grotuvo, sinchronizacijos ir garso
+perdavimo prototipai – Projektavimo etape, 2026~m. gruodžio pradžioje. Visa
+įranga užsakoma tik po prototipo bandymo baseine.
+
+Kūrimo etapą sudaro keturios iteracijos po 4--5 savaites
+(\ref{tab:iteracijos}~lentelė). Kiekviena baigiasi demonstracija užsakovui,
+todėl jis kas mėnesį mato veikiančią sistemos dalį. Iteracijos išdėstytos
+pagal riziką: pirmosiose kuriama nauja ir techniškai neaiški užsiėmimo
+vykdymo grandinė (vykdymo variklis, grotuvas, garsas), o rezervacijos ir
+lankomumas – paskutinėje, nes tai įprastas ir gerai žinomas funkcionalumas.
+Iteracija prasideda dviejų dienų detaliuoju projektavimu ir baigiasi dviejų
+dienų stabilizavimu bei demonstracija; kitos iteracijos projektavimas vyksta
+tomis pačiomis dienomis kaip ankstesnės stabilizavimas.
+
+\begin{table}[H]
+  \centering
+  \caption{Kūrimo etapo iteracijos}
+  \label{tab:iteracijos}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lllr>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.1cm}@{}}
+    \toprule
+    \textbf{Iteracija} & \textbf{Nuo} & \textbf{Iki} & \textbf{D.~d.} & \textbf{Turinys (sistemos dalys)} & \makecell[lb]{\textbf{Tarpinis}\\\textbf{rezultatas}} \\
+    \midrule
+    1 & 2026-12-04 & 2027-01-11 & 24 & Vykdymo grandinė iš debesies per grotuvą į ekraną, ausines ir kolonėlę (S1, S2, S3, P6, sporto erdvių registras iš P0, S4 prieigos pagrindai) & KT6 \\
+    2 & 2027-01-08 & 2027-02-10 & 24 & Užsiėmimų programos su filmuotu turiniu ir darbas be ryšio (P1, P5, S1 atsparumas, S2 talpykla) & KT7 \\
+    3 & 2027-02-09 & 2027-03-16 & 24 & Paskyros, užsiėmimų planavimas tvarkaraštyje ir valdymo pultas, istorija ir duomenų apsauga (P0, P2, P7, S4) & KT9 \\
+    4 & 2027-03-15 & 2027-04-09 & 19 & Dalyvių valdymas (rezervacijos, lankomumas, priminimai), asmeninės programos ir saugumo stiprinimas (P3, P4, S4) & KT10 (po sistemos bandymų) \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Etapai}
+
+Projektą sudaro penki etapai: Reikalavimų analizė, Planavimas,
+Projektavimas, Kūrimas bei Diegimas ir palaikymas (\ref{tab:etapai}~lentelė).
+Jų pavadinimai ir datos sutampa su resursų plano laikotarpiais, nes resursų
+plane nurodoma, kiek kiekvienos rolės žmonių dirba kiekvienu laikotarpiu;
+taip abu skyrius galima tiesiogiai palyginti. Pirmųjų trijų etapų pabaigą
+žymi juos užbaigiantys KT: Reikalavimų analizės – KT2, Planavimo – KT3,
+Projektavimo – KT4.
+
+Įrangos ir turinio darbai vyksta lygiagrečiai su programinės įrangos kūrimu
+ir apima kelis etapus: pratimai filmuojami nuo Reikalavimų analizės etapo,
+o įranga sumontuojama Kūrimo etape. Tokia veikla priskiriama etapui, kuriame
+ji prasideda. Projekte iš viso dirba 9 žmonės, vienu metu – ne daugiau
+kaip 7.
+
+\begin{table}[H]
+  \centering
+  \caption{Projekto etapai}
+  \label{tab:etapai}
+  \small
+  \begin{tabular}{@{}lllrl@{}}
+    \toprule
+    \textbf{Etapas} & \textbf{Nuo} & \textbf{Iki} & \textbf{D.~d.} & \textbf{UP fazė} \\
+    \midrule
+    Reikalavimų analizė & 2026-10-01 & 2026-10-23 & 17 & Pradžia \\
+    Planavimas & 2026-10-26 & 2026-11-04 & 7 & Pradžia \\
+    Projektavimas & 2026-11-05 & 2026-12-03 & 21 & Parengimas \\
+    Kūrimas & 2026-12-04 & 2027-04-09 & 85 & Konstravimas \\
+    Diegimas ir palaikymas & 2027-04-12 & 2027-07-30 & 78 & Perdavimas \\
+    \midrule
+    \textbf{Iš viso} & 2026-10-01 & 2027-07-30 & \textbf{208} & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Tarpiniai rezultatai (kontroliniai taškai)}
+
+Projekto pažangą matuojame ne praleistomis valandomis, o pasiektais
+rezultatais. Tam numatyta 15 KT (\ref{tab:kt}~lentelė). Kiekvienas KT turi
+kriterijų, kuris nusako, kaip rezultatas patikrinamas: pasirašytas
+protokolas, aktas ar užsakovo patvirtinimas. Todėl į klausimą, ar KT
+pasiektas, galima atsakyti tik „taip“ arba „ne“. Jei KT vėluoja ar
+nepasiektas, projekto vadovas įvertina poveikį ir sprendžia, ar reikia
+perplanuoti darbus, ar teikti pakeitimo prašymą.
+
+KT6, KT7, KT9 ir KT10 žymi iteracijų demonstracijas, KT5 ir KT8 –
+lygiagrečių turinio ir įrangos darbų pabaigą, KT14 – sistemos perdavimą
+užsakovui, o KT15 – projekto uždarymą.
+
+\begin{table}[H]
+  \centering
+  \caption{Tarpiniai rezultatai (KT)}
+  \label{tab:kt}
+  \small
+  \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{0.27\textwidth}l>{\raggedright\arraybackslash}X@{}}
+    \toprule
+    \textbf{KT} & \textbf{Pavadinimas} & \textbf{Data} & \textbf{Kriterijus} \\
+    \midrule
+    KT1 & Patvirtintas pratimų ir programų sąrašas & 2026-10-15 & Užsakovo vyriausiasis treneris pasirašė 40~pratimų ir 10~programų sąrašą su aprašais ir filmavimo vieta. \\
+    KT2 & Patvirtinta reikalavimų specifikacija & 2026-10-23 & Užsakovas pasirašė funkcinių, nefunkcinių ir aplinkos reikalavimų specifikaciją; atsekamumo lentelėje kiekvienas poreikių aprašo punktas susietas su reikalavimu, atvirų klausimų nėra. \\
+    KT3 & Patvirtintas projekto planas ir priėmimo kriterijai & 2026-11-04 & Užsakovas patvirtino tvarkaraštį, iteracijų turinį, rizikų registrą, priėmimo kriterijus ir demonstravimo scenarijus. \\
+    KT4 & Patvirtinta architektūra ir baseine patikrintas įrangos sprendimas & 2026-12-03 & Bandomasis komplektas baseine veikė be drėgmės sukeltų gedimų. Ekrane ir dvejose ausinėse vaizdo ir garso sinchronizacijos nuokrypis neviršija specifikacijos ribos, o grotuvo garsas perduodamas per radijo siųstuvą. Architektūros peržiūros protokole nėra atvirų kritinių pastabų, įrangos sprendimas patvirtintas užsakymui. \\
+    KT5 & Pagamintas ir patvirtintas pratimų vaizdo ir garso turinys & 2026-12-23 & Visų 40~pratimų ir 10~programų įrašai su garso instrukcijomis paruošti grotuvo formatu (Full HD); treneriai pasirašė turinio priėmimo lapą. \\
+    KT6 & Veikia užsiėmimo vykdymo grandinė & 2027-01-11 & 1~iteracijos demonstracijoje užsiėmimo programa paleidžiama iš debesies per vykdymo variklio (S1) bandomąją sąsają, nes trenerio valdymo pultas (P2) kuriamas 3~iteracijoje. Grotuvas rodo pratimą ekrane, o trenerio balsas ir įrašytos instrukcijos girdimi ausinėse ir salės kolonėlėje; kritinių defektų nėra; pasirašytas 1~iteracijos demonstracijos protokolas. \\
+    KT7 & Užsiėmimo programa vykdoma su filmuotu turiniu ir nutrūkus ryšiui & 2027-02-10 & Trenerio sudaryta užsiėmimo programa paleidžiama per S1 bandomąją sąsają ir įvykdoma ekrane ir ausinėse; nutrūkus ryšiui, grotuvas užbaigia programos etapą iš talpyklos. Pasirašytas 2~iteracijos demonstracijos protokolas. \\
+    KT8 & Įranga sumontuota baseine ir sporto salėje & 2027-02-10 & Ekranai, grotuvai, radijo siųstuvas ir kolonėlės sumontuoti ir įregistruoti; montavimo aktas pasirašytas. \\
+    KT9 & Veikia paskyros, užsiėmimų tvarkaraštis ir istorija & 2027-03-16 & Dalyvis prisiregistruoja, treneris suplanuoja užsiėmimą ir paleidžia jį iš valdymo pulto, istorija kaupiama. Pasirašytas 3~iteracijos demonstracijos protokolas. \\
+    KT10 & Sistema funkciškai užbaigta ir patikrinta & 2027-04-16 & 4~iteracijos demonstracijoje veikia vietų rezervavimas, lankomumo žymėjimas ir asmeninių programų sudarymas; pasirašytas demonstracijos protokolas. Sistemos, vaidmenų prieigos ir saugumo bandymuose neliko kritinių ir aukšto prioriteto defektų. \\
+    KT11 & Sistema veikia baseine ir sporto salėje & 2027-05-07 & Visi integracinių bandymų scenarijai atlikti realioje aplinkoje, protokolai pasirašyti, kritinių defektų nėra. \\
+    KT12 & Treneriai ir administratoriai išmokyti & 2027-05-17 & Kiekvienas pilotiniame naudojime dalyvaujantis treneris savarankiškai paleido ir užbaigė užsiėmimą; naudotojo vadovai perduoti, mokymų žiniaraštis pasirašytas. \\
+    KT13 & Sistema priimta po pilotinio naudojimo & 2027-06-17 & Parengta 4~savaičių pilotinio naudojimo ataskaita; užsakovas pasirašė naudotojų priėmimo bandymo protokolą be kritinių pastabų. \\
+    KT14 & Sistema perduota užsakovui & 2027-06-29 & Pasirašytas priėmimo ir perdavimo aktas; perduoti išeities kodas, dokumentacija, prieigos duomenys ir įrangos inventorius. \\
+    KT15 & Garantinis laikotarpis baigtas, projektas uždarytas & 2027-07-30 & Per 20~d.~d. garantinio laikotarpio kritiniai defektai ištaisyti; užsakovas patvirtino projekto uždarymo ataskaitą. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Ganto diagrama}
+
+Ganto diagrama (\ref{fig:gantt}~pav.) rodo projekto etapus, iteracijas, KT
+ir lygiagrečius turinio bei įrangos darbus. Tamsios juostos žymi kritinio
+kelio veiklas, šviesios – veiklas su laisvu laiku, punktyrinės – laiko
+rezervus B1 ir B2, o rombai – KT. Diagrama sutraukta iki etapų ir iteracijų;
+visos 75 veiklos su datomis ir priklausomybėmis pateiktos tvarkaraščio
+faile \texttt{project-plan/\allowbreak resources/\allowbreak schedule.csv}. Įrangos grandinė (užsakymas, 30~d.~d.
+pristatymas ir montavimas) turi 41~d.~d. laisvo laiko, todėl diagramoje
+atskirta nuo kritinio kelio, o turinys paruošiamas dar prieš 2~iteraciją
+(KT5 – anksčiau nei KT7).
+
+\begin{landscape}
+  \begin{figure}[htbp]
+    \centering
+    \input{project-plan/src/gantt}
+    \caption{Projekto tvarkaraštis. Tamsios juostos – kritinis kelias, šviesios – veiklos su laisvu laiku, punktyrinės – laiko rezervai, rombai – KT}
+    \label{fig:gantt}
+  \end{figure}
+\end{landscape}
+
+\subsection{Kritinis kelias ir laiko rezervai}
+
+Kritinis kelias – ilgiausia vienas nuo kito priklausomų veiklų seka; ji
+lemia trumpiausią įmanomą projekto trukmę, 208~d.~d. Kritiniame kelyje yra
+reikalavimų analizė, projekto planas, architektūra ir prototipai su bandymu
+baseine, visos keturios iteracijos, sistemos bandymai, bandymai objekte,
+mokymai, pilotinis naudojimas, priėmimas, perdavimas ir garantinis
+palaikymas. Šios veiklos neturi laisvo laiko, todėl jų vėlavimas nukelia
+projekto pabaigą, jei jo nesugeria laiko rezervai B1 ir B2.
+
+Kitos veiklos turi laisvo laiko, t.~y. gali vėluoti nevėlindamos projekto
+pabaigos (\ref{tab:laiko-rezervai}~lentelė). Pavyzdžiui, įrangos montavimas
+gali baigtis iki 41~d.~d. vėliau (vėliausiai 2027~m. balandžio 13~d.), o
+turinio gamyba – iki 11~d.~d. vėliau, ir perdavimo data nepasikeis.
+
+Kritinį kelią saugo du laiko rezervai: B1 (8~d.~d. prieš bandymus objekte)
+ir B2 (5~d.~d. prieš perdavimą). Per juos niekas nedirba, todėl sąnaudų jie
+neturi. Jei kritinio kelio veikla vėluoja, pavyzdžiui, sistemos bandymai
+užtrunka ilgiau arba baseinas laikinai neprieinamas, vėlavimą sugeria laiko
+rezervas, ir KT11 bei KT14 datos nepasislenka. Laiko rezervų nereikia
+painioti su sąnaudų rezervais (\ref{sec:dydis}~skyrius): pirmieji saugo
+datas, antrieji – darbo sąnaudas (žm.~d.).
+
+\begin{table}[H]
+  \centering
+  \caption{Laiko rezervai ir laisvas laikas}
+  \label{tab:laiko-rezervai}
+  \small
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.3\textwidth}>{\raggedright\arraybackslash}Xr@{}}
+    \toprule
+    \textbf{Pavadinimas} & \textbf{Paaiškinimas} & \textbf{D.~d.} \\
+    \midrule
+    Laiko rezervas~B1 & 2027-04-19~-- 2027-04-28, prieš integracinius bandymus objekte & 8 \\
+    Laiko rezervas~B2 & 2027-06-18~-- 2027-06-25, prieš perdavimą & 5 \\
+    \midrule
+    Įrangos grandinės laisvas laikas & įrangos montavimas gali baigtis vėliausiai 2027-04-13 (planuojama 2027-02-10); tiekimo vėlavimas iki 41~d.~d. perdavimo nepaveiks & 41 \\
+    Turinio grandinės laisvas laikas & turinys gali būti paruoštas vėliausiai 2027-01-12 (KT5 planuojamas 2026-12-23); KT7 data nepasikeis & 11 \\
+    Naudotojo dokumentacijos laisvas laikas & naudotojo vadovai gali būti parengti vėliausiai 2027-05-07 (planuojama 2027-04-09), prieš mokymus & 20 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Projekto stebėsena}
+
+Projekto vadovas kas savaitę lygina planą su faktu. Jis tikrina, ar KT
+pasiekti laiku ir ar įvykdyti jų kriterijai (\ref{tab:kt}~lentelė);
+iteracijų pažanga matoma ir demonstracijose užsakovui. Kiekvienai veiklai
+lyginamos planuotos ir faktinės sąnaudos (žm.~d.) ir vertinama, kiek darbo
+iš tikrųjų atlikta, o ne tik kiek laiko praleista. Taip pat stebima, kiek
+sunaudota laiko rezervų B1 ir B2 bei rizikų rezervo; rizikų rezervo
+naudojimas susiejamas su konkrečia registro rizika pagal jos ID
+(\ref{tab:rezervas}~lentelė).
+
+Kas savaitę vyksta būsenos susirinkimas: aptariama, kas padaryta, kas bus
+daroma toliau, kokios problemos trukdo ir kokių naujų rizikų atsirado.
+Nustačius nukrypimą, įvertinama jo priežastis ir poveikis projektui; jei
+reikia keisti planą, tai daroma pagal pakeitimų valdymo procedūrą.
+
+\subsection{Planavimo prielaidos}
+
+\begin{itemize}
+  \item dirbama 5 dienas per savaitę po 8 valandas; valstybinės šventės yra
+    nedarbo dienos (2026~m. lapkričio 2~d., gruodžio 24 ir 25~d., 2027~m.
+    sausio 1~d., vasario 16~d., kovo 11~d., kovo 29~d., birželio 24~d. ir
+    liepos 6~d.);
+  \item atostogos atskiromis veiklomis neplanuojamos: 1~iteracija apima ir
+    2026~m. gruodžio 28--31~d. darbo dienas; jei komanda tuo metu
+    atostogautų, 1~iteracijos demonstracija (KT6) pasislinktų, o vėlavimą
+    sugertų laiko rezervas~B1;
+  \item veiklos trukmė apskaičiuojama sąnaudas padalijus iš veiklai skirtų
+    etatų sumos (pvz., testuotojas iteracijos testavimui skiria pusę etato)
+    ir suapvalinus į didesnę pusę; valdymo, pilotinio naudojimo ir
+    garantinio palaikymo trukmė nustatyta iš anksto, o jų sąnaudos lygios
+    etato daliai, padaugintai iš trukmės;
+  \item įrangos pristatymas trunka 30~d.~d. nuo užsakymo; tai laukimo laikas,
+    o ne sąnaudos;
+  \item pratimai baseine filmuojami ne darbo valandomis, kai baseinas
+    neužimtas;
+  \item komandą sudaro 9 žmonės, kiekvienas atlieka vieną (sudėtinę) rolę;
+    vienu metu dirba ne daugiau kaip 7.
+\end{itemize}
