@@ -1,18 +1,17 @@
 % Dydžio ir pastangų vertinimas (atsakingas Marijus Planciunas).
-% Lentelių skaičiai – iš galutinio įverčio (2026-09-24). Proza dar nerašyta:
-% kiekvienoje vietoje, pažymėtoje [Rengiama], komentaras „TEKSTAS“ nurodo, ką parašyti.
+% Lentelių skaičiai – iš galutinio įverčio (2026-09-24).
 
 \section{Dydžio ir pastangų vertinimas}\label{sec:dydis}
 
-% TEKSTAS (santraukos pastraipa be poskyrio antraštės, 2–4 sakiniai):
-% - dydis 381 UFP (87 funkcijos), AFP ≈ 404; darbo sąnaudos 739,25 žm. d. = 35,2 žm. mėn.;
-% - pasiskirstymas: programavimas 309, priedas 231,75, neprograminiai darbai 198,5 žm. d.;
-%   su 26 žm. d. rizikų rezervu bazinis planas 765,25 žm. d. (36,4 žm. mėn.);
-% - didžiausios eilutės: N2 turinio gamyba (69 žm. d.) ir S1 vykdymo variklis (44,5 žm. d.);
-%   išplėtimai (poreikiai 14–20) neįtraukti;
-% - čia pirmą kartą apibrėžti FP, žmogaus darbo dienos (žm. d.), žmogaus darbo mėnesiai (žm. mėn.)
-%   ir darbo dienos (d. d.); tvarkaraščio skyriuje jų antrą kartą neapibrėžti.
-\textit{[Rengiama]}
+Sistemos dydis – 381 funkcinis taškas (FP) prieš koregavimą ir apie 404 po
+jo. Darbo sąnaudas vertinome kiekvienai sistemos daliai atskirai: be rezervų
+projektui reikia 739,25 žmogaus darbo dienos (žm.~d.), arba apie 35,2
+žmogaus darbo mėnesio (žm.~mėn.; vienas žm.~mėn. – 21 darbo diena, d.~d.).
+Programavimas sudaro 309~žm.~d., su juo susijusios reikalavimų,
+projektavimo, testavimo ir valdymo veiklos – 231,75~žm.~d., o neprograminiai
+darbai (įranga, turinio gamyba, bandymai objekte, mokymai ir pilotinis
+naudojimas) – 198,5~žm.~d. Su 26~žm.~d. rizikų rezervu bazinis planas yra
+765,25~žm.~d. (apie 36,4~žm.~mėn.); išplėtimai į įvertį neįtraukti.
 
 \subsection{Vertinimo metodas}
 
@@ -226,7 +225,7 @@ skirtas atskiras rizikų rezervas (\ref{tab:rezervas}~lentelė).
 \subsection{Bendros sąnaudos ir rezervai}
 
 Be rezervų projekto darbo sąnaudos sudaro 739,25~žm.~d., arba apie
-35,2~žm.~mėn. (1~žm.~mėn.~=~21~d.~d.; \ref{tab:sanaudos}~lentelė).
+35,2~žm.~mėn. (\ref{tab:sanaudos}~lentelė).
 
 Rizikų rezervas skirtas registre surašytoms rizikoms. Kiekvienai rizikai
 apskaičiavome tikėtinąją vertę (angl. \textit{expected monetary value},
@@ -305,10 +304,28 @@ ir OR3 įvertintos po 30~\%. Serverio ir debesijos paslaugų teikėjo gedimai
 
 \subsection{Prielaidos}
 
-% TEKSTAS (sąrašas mažąja raide, punktai skiriami kabliataškiais):
-% - vertinama bazinė versija (poreikiai 1–13), vienas sporto centras: baseinas ir sporto salė;
-%   treneriai vaizdo įrašų nekelia, 4K nėra, turinys filmuojamas iš anksto (Tado sprendimas);
-% - pradinė biblioteka – apie 40 pratimų ir 10 programų; architektūra: NestJS, PostgreSQL, Redis,
-%   React, vietiniai DSDX5 grotuvai;
-% - programuotojai dirba visu etatu, vidutinio lygio; atostogos vertinamos tvarkaraštyje, ne sąnaudose.
-\textit{[Rengiama]}
+Įvertis galioja, kai tenkinamos šios sąlygos:
+\begin{itemize}
+  \item vertinama tik bazinė versija (poreikiai 1--13); natyvi mobilioji
+    programėlė, NFC ir QR identifikavimas, reklama, integracijos su sveikatos
+    platformomis ir keli centrai yra išplėtimai ir į įvertį neįtraukti;
+  \item sistema diegiama viename sporto centre: vienoje baseino zonoje ir
+    vienoje sporto salėje;
+  \item treneriai vaizdo įrašų nekelia, 4K raiškos nėra (turinys ir ekranai
+    Full HD), pratimai filmuojami iš anksto, o paruoštus failus įkelia
+    administratorius;
+  \item pradinė turinio biblioteka – apie 40 pratimų ir 10 programų,
+    įgarsintų lietuviškai;
+  \item architektūra – modulinis monolitas (NestJS, PostgreSQL, Redis), React
+    žiniatinklio sąsaja ir vietiniai DSDX5 grotuvai;
+  \item programuotojai dirba visu etatu, yra vidutinio lygio, bent vienas turi
+    Android patirties;
+  \item 1~žm.~d. – 8 valandos; atostogos vertinamos tvarkaraštyje, ne
+    sąnaudose.
+\end{itemize}
+
+Prielaidos parodo, kuo remiasi įvertis. Jei kuri nors iš jų pasikeistų,
+pavyzdžiui, užsakovas pageidautų 4K turinio ar mobiliosios programėlės, tai
+būtų apimties pakeitimas: jis įvertinamas iš naujo, o papildomos sąnaudos
+suderinamos su užsakovu pagal pakeitimų valdymo procedūrą ir nedengiamos iš
+rezervų.
