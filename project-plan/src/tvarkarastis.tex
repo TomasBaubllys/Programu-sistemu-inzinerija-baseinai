@@ -143,13 +143,15 @@ užsakovui, o KT15 – projekto uždarymą.
 
 \subsection{Ganto diagrama}
 
-% TEKSTAS:
-% - ką matyti \ref{fig:gantt}~pav.: etapai, iteracijos, KT, lygiagrečios turinio ir įrangos linijos,
-%   laiko rezervai B1 ir B2; diagrama sutraukta iki etapų ir iteracijų, veiklų lygmuo – schedule.csv;
-% - įrangos grandinė (užsakymas, 30 d. d. pristatymas – laukimo laikas, montavimas) turi 41 d. d.
-%   laisvo laiko, todėl nuo kritinio kelio atskirta;
-% - turinys paruoštas iki 2 iteracijos (KT5 prieš KT7).
-\textit{[Rengiama]}
+Ganto diagrama (\ref{fig:gantt}~pav.) rodo projekto etapus, iteracijas, KT
+ir lygiagrečius turinio bei įrangos darbus. Tamsios juostos žymi kritinio
+kelio veiklas, šviesios – veiklas su laisvu laiku, punktyrinės – laiko
+rezervus B1 ir B2, o rombai – KT. Diagrama sutraukta iki etapų ir iteracijų;
+visos 75 veiklos su datomis ir priklausomybėmis pateiktos tvarkaraščio
+faile \texttt{schedule.csv}. Įrangos grandinė (užsakymas, 30~d.~d.
+pristatymas ir montavimas) turi 41~d.~d. laisvo laiko, todėl diagramoje
+atskirta nuo kritinio kelio, o turinys paruošiamas dar prieš 2~iteraciją
+(KT5 – anksčiau nei KT7).
 
 \begin{landscape}
   \begin{figure}[htbp]
@@ -162,18 +164,26 @@ užsakovui, o KT15 – projekto uždarymą.
 
 \subsection{Kritinis kelias ir laiko rezervai}
 
-% TEKSTAS:
-% - kritinis kelias trunka 208 d. d.: reikalavimai, planas, architektūra ir prototipai, bandymas
-%   baseine, 4 iteracijos, sistemos bandymai, B1, bandymai objekte, mokymai, pilotas, priėmimas, B2,
-%   perdavimas, garantinis palaikymas (kritinės veiklos pažymėtos schedule.csv stulpelyje „kritine“);
-% - laiko rezervai (\ref{tab:laiko-rezervai}~lentelė) neturi sąnaudų; jų nepainioti su sąnaudų
-%   rezervais (rizikų rezervas 26 ir valdymo rezervas 37 žm. d., \ref{sec:dydis} skyrius);
-% - laisvas laikas – kiek veikla gali vėluoti nevėlindama projekto pabaigos; įrangos montavimas turi
-%   41 d. d. laisvo laiko (gali baigtis vėliausiai 2027-04-13): 39 d. d. tarpas iki diegimo objekte
-%   ir 2 d. d. paties diegimo laisvo laiko, todėl nerašyti, kad iki diegimo lieka 41 d. d.;
-% - beveik kritinės veiklos (laisvas laikas 1–4 d. d.): grotuvas, vykdymo variklis, grotuvo ir garso
-%   prototipai.
-\textit{[Rengiama]}
+Kritinis kelias – ilgiausia vienas nuo kito priklausomų veiklų seka; ji
+lemia trumpiausią įmanomą projekto trukmę, 208~d.~d. Kritiniame kelyje yra
+reikalavimų analizė, projekto planas, architektūra ir prototipai su bandymu
+baseine, visos keturios iteracijos, sistemos bandymai, bandymai objekte,
+mokymai, pilotinis naudojimas, priėmimas, perdavimas ir garantinis
+palaikymas. Šios veiklos neturi laisvo laiko, todėl bet kurios jų vėlavimas
+nukelia projekto pabaigą.
+
+Kitos veiklos turi laisvo laiko, t.~y. gali vėluoti nevėlindamos projekto
+pabaigos (\ref{tab:laiko-rezervai}~lentelė). Pavyzdžiui, įrangos montavimas
+gali baigtis iki 41~d.~d. vėliau (vėliausiai 2027~m. balandžio 13~d.), o
+turinio gamyba – iki 11~d.~d. vėliau, ir perdavimo data nepasikeis.
+
+Kritinį kelią saugo du laiko rezervai: B1 (8~d.~d. prieš bandymus objekte)
+ir B2 (5~d.~d. prieš perdavimą). Per juos niekas nedirba, todėl sąnaudų jie
+neturi. Jei kritinio kelio veikla vėluoja, pavyzdžiui, sistemos bandymai
+užtrunka ilgiau arba baseinas laikinai neprieinamas, vėlavimą sugeria laiko
+rezervas, ir svarbiausios datos nepasislenka. Laiko rezervų nereikia
+painioti su sąnaudų rezervais (\ref{sec:dydis}~skyrius): pirmieji saugo
+datas, antrieji – darbo dienų kiekį.
 
 \begin{table}[H]
   \centering
