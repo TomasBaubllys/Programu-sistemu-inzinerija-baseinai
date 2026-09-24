@@ -21,21 +21,30 @@
 
 \subsection{Gyvavimo ciklo modelis ir iteracijos}
 
-% TEKSTAS:
-% - modelis – vieningasis procesas (UP), rizikos pirmiausia: bandomasis įrangos komplektas baseine
-%   išbandomas Planavimo etape (A10), S1, S2 ir S3 prototipai bei S4 karkasas (34 žm. d. programavimo)
-%   – Projektavimo etape (A21), visa įranga užsakoma po prototipo bandymo baseine, kartu su KT4
-%   patvirtinimu;
-% - UP fazės (\ref{tab:etapai}~lentelės stulpelis „UP fazė“): angliškus pavadinimus pateikti vieną
-%   kartą, kur fazės paminimos pirmą kartą: „pradžia, parengimas, konstravimas ir perdavimas
-%   (angl. Inception, Elaboration, Construction, Transition)“; toliau ir lentelėje tik lietuviškai;
-% - kodėl ne krioklys ir ne Scrum: apimtis fiksuota, įrangos tiekimas ilgas, reikia bandymų objekte;
-% - 4 iteracijos po 4–5 savaites (24, 24, 24 ir 19 d. d.) išdėstytos pagal riziką
-%   (\ref{tab:iteracijos}~lentelė);
-% - iteracijos eiga: 2 d. d. detalusis projektavimas, kūrimas su lygiagrečiu testavimu,
-%   2 d. d. stabilizavimas ir demonstracija; kitos iteracijos projektavimas vyksta tomis pačiomis
-%   dienomis kaip ankstesnės stabilizavimas (todėl iteracijų d. d. suma 91 didesnė už etapo 85).
-\textit{[Rengiama]}
+Projektas vykdomas pagal UP (angl. \textit{Unified Process}) gyvavimo ciklo
+modelį. Jo fazės – pradžia, parengimas, konstravimas ir perdavimas (angl.
+\textit{Inception, Elaboration, Construction, Transition}); jų atitiktis
+projekto etapams pateikta \ref{tab:etapai}~lentelėje.
+
+Krioklio modelis šiam projektui netinka, nes jame viskas patikrinama tik
+pabaigoje. Didžiausi neaiškumai susiję su įranga baseine: ar ji atlaikys
+drėgmę, ar radijo ryšys pasieks visus takelius, ar vaizdas ekrane ir garsas
+ausinėse sutaps laiku. Pagal krioklio modelį tai paaiškėtų tik baigiamuosiuose
+bandymuose, kai visa įranga jau nupirkta ir programa parašyta. Pagal UP
+rizikingiausi dalykai tikrinami pirmiausia: bandomasis įrangos komplektas
+baseine išbandomas jau Planavimo etape, o grotuvo, sinchronizacijos ir garso
+perdavimo prototipai – Projektavimo etape, 2026~m. gruodžio pradžioje. Visa
+įranga užsakoma tik po prototipo bandymo baseine.
+
+Kūrimo etapą sudaro keturios iteracijos po 4--5 savaites
+(\ref{tab:iteracijos}~lentelė). Kiekviena baigiasi demonstracija užsakovui,
+todėl jis kas mėnesį mato veikiančią sistemos dalį. Iteracijos išdėstytos
+pagal riziką: pirmosiose kuriama nauja ir techniškai neaiški užsiėmimo
+vykdymo grandinė (vykdymo variklis, grotuvas, garsas), o rezervacijos ir
+lankomumas – paskutinėje, nes tai įprastas ir gerai žinomas funkcionalumas.
+Iteracija prasideda dviejų dienų detaliuoju projektavimu ir baigiasi dviejų
+dienų stabilizavimu bei demonstracija; kitos iteracijos projektavimas vyksta
+tomis pačiomis dienomis kaip ankstesnės stabilizavimas.
 
 \begin{table}[H]
   \centering
