@@ -10,6 +10,12 @@
 \usepackage{booktabs}
 \usepackage{makecell}
 \usepackage{float}
+\usepackage{pgfgantt} % Ganto diagrama (tvarkaraštis)
+\usepackage{pdflscape} % gulsčias puslapis Ganto diagramai
+\usepackage{caption}
+% babel lt: „1 lentelė“, „1 pav.“; lentelės pavadinimas virš lentelės, paveikslo – po paveikslu
+\captionsetup[table]{labelsep=period}
+\captionsetup[figure]{labelsep=space}
 
 \babelprovide[main, import]{lithuanian}
 
@@ -23,6 +29,8 @@
 
 \section{Introduction}
 
+\input{project-plan/src/dydzio-ir-pastangu-vertinimas}
+\input{project-plan/src/tvarkarastis}
 \input{project-plan/src/resource allocation}
 \input{project-plan/src/pokyciu_valdymas}
 \input{project-plan/src/risk-management}

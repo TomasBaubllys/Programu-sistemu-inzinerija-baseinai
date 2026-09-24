@@ -1,0 +1,265 @@
+% Dydžio ir pastangų vertinimas (atsakingas Marijus Planciunas).
+% Lentelių skaičiai – iš galutinio įverčio (2026-09-24). Proza dar nerašyta:
+% kiekvienoje vietoje, pažymėtoje [Rengiama], komentaras „TEKSTAS“ nurodo, ką parašyti.
+
+\section{Dydžio ir pastangų vertinimas}\label{sec:dydis}
+
+% TEKSTAS (santraukos pastraipa be poskyrio antraštės, 2–4 sakiniai):
+% - dydis 381 UFP (87 funkcijos), AFP ≈ 404; darbo sąnaudos 739,25 žm. d. = 35,2 žm. mėn.;
+% - pasiskirstymas: programavimas 309, priedas 231,75, neprograminiai darbai 198,5 žm. d.;
+%   su 26 žm. d. rizikų rezervu bazinis planas 765,25 žm. d. (36,4 žm. mėn.);
+% - didžiausios eilutės: N2 turinio gamyba (69 žm. d.) ir S1 vykdymo variklis (44,5 žm. d.);
+%   išplėtimai (poreikiai 14–20) neįtraukti;
+% - čia pirmą kartą apibrėžti FP, žmogaus darbo dienos (žm. d.), žmogaus darbo mėnesiai (žm. mėn.)
+%   ir darbo dienos (d. d.); tvarkaraščio skyriuje jų antrą kartą neapibrėžti.
+\textit{[Rengiama]}
+
+\subsection{Vertinimo metodas}
+
+% TEKSTAS:
+% - kodėl FP: DUK rekomenduoja PROBE arba FP, funkcijos jau apibrėžtos poreikiuose ir vizijoje,
+%   kodo eilučių istorijos komanda neturi;
+% - kodėl sąnaudos neperskaičiuojamos iš FP (nėra istorinio našumo): taikytas veiklomis grįstas
+%   vertinimas PERT metodu, atsižvelgiant į dalies dydį ir sudėtingumą;
+% - trys eilučių grupės: P0–P7 (FP matomos dalys), S1–S4 (FP nematoma programinė įranga),
+%   N1–N5 (neprograminiai darbai); prie programavimo pridedami paskaitos procentai, tada rezervai;
+% - vienetai: 1 žm. d. = 8 val.; 1 žm. mėn. = 21 d. d. (2027 m. 252 d. d. / 12).
+\textit{[Rengiama]}
+
+\subsection{Sistemos dydis funkciniais taškais}
+
+% TEKSTAS:
+% - funkcijų tipai ir sudėtingumas nustatyti pagal paskaitos matricas (SE-03, 30 ir 32 skaidrės);
+%   išorinių sąsajų failų (EIF) nėra;
+% - dalių pavadinimai – iš vizijos 6 skyriaus; P0 vizijoje nėra, ji pridėta paskyroms,
+%   sporto erdvėms ir įrangai;
+% - didžiausios dalys P1 (94 UFP) ir P0 (85 UFP); P5 ir P6 turi mažai FP, o jų techninį darbą
+%   dengia S1–S3 eilutės (tab:pert);
+% - paminėti lentelę: \ref{tab:fp}~lentelėje.
+\textit{[Rengiama]}
+
+\begin{table}[H]
+  \centering
+  \caption{Nekoreguoti funkciniai taškai (UFP) pagal sistemos dalis ir funkcijų tipus}
+  \label{tab:fp}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lXrrrrrrr@{}}
+    \toprule
+    \textbf{Kodas} & \textbf{Sistemos dalis} & \textbf{ILF} & \textbf{EIF} & \textbf{EI} & \textbf{EO} & \textbf{EQ} & \textbf{Funkcijų sk.} & \textbf{UFP} \\
+    \midrule
+    P0 & Paskyros, sporto erdvės ir įranga & 21 & 0 & 41 & 0 & 23 & 23 & 85 \\
+    P1 & Užsiėmimų programų valdymas & 24 & 0 & 45 & 0 & 25 & 22 & 94 \\
+    P2 & Užsiėmimų valdymas & 10 & 0 & 40 & 10 & 6 & 13 & 66 \\
+    P3 & Dalyvių valdymas & 7 & 0 & 18 & 12 & 18 & 13 & 55 \\
+    P4 & Asmeninių programų valdymas & 10 & 0 & 30 & 0 & 10 & 10 & 50 \\
+    P5 & Vaizdinio turinio pateikimas & 0 & 0 & 0 & 7 & 0 & 1 & 7 \\
+    P6 & Garso komunikacija & 0 & 0 & 3 & 5 & 0 & 2 & 8 \\
+    P7 & Duomenų ir istorijos valdymas & 0 & 0 & 0 & 10 & 6 & 3 & 16 \\
+    \midrule
+    & \textbf{Iš viso, UFP} & \textbf{72} & \textbf{0} & \textbf{177} & \textbf{44} & \textbf{88} & & \textbf{381} \\
+    & \textbf{Funkcijų skaičius} & 9 & 0 & 47 & 8 & 23 & \textbf{87} & \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Vertės koregavimo koeficientas}
+
+% TEKSTAS:
+% - 14 bendrųjų sistemos charakteristikų (GSC) įvertintos 0–5 balais (\ref{tab:gsc}~lentelė);
+%   pagrįsti bent ginčytinesnes: 3 (našumas), 7 (efektyvumas naudotojui), 13 (baseinas ir salė);
+% - TDI 41, VAF = 0,65 + 0,01 × 41 = 1,06, AFP = 381 × 1,06 ≈ 404; tikėtinas intervalas ≈ 385–431;
+% - AFP naudojamas tik dydžiui palyginti, sąnaudos iš jo neskaičiuojamos.
+\textit{[Rengiama]}
+
+\begin{table}[H]
+  \centering
+  \caption{Bendrosios sistemos charakteristikos (GSC) ir koreguoti funkciniai taškai}
+  \label{tab:gsc}
+  \small
+  \begin{tabularx}{0.85\textwidth}{@{}rXr@{}}
+    \toprule
+    \textbf{Nr.} & \textbf{Charakteristika} & \textbf{Įtaka (0--5)} \\
+    \midrule
+    1 & Duomenų perdavimas & 4 \\
+    2 & Paskirstytas duomenų apdorojimas & 4 \\
+    3 & Našumas & 3 \\
+    4 & Smarkiai apkrauta konfigūracija & 3 \\
+    5 & Transakcijų dažnumas & 3 \\
+    6 & Tiesioginis duomenų įvedimas & 5 \\
+    7 & Efektyvumas galutiniam naudotojui & 3 \\
+    8 & Tiesioginis atnaujinimas & 3 \\
+    9 & Sudėtingas apdorojimas & 3 \\
+    10 & Pakartotinis panaudojimas & 2 \\
+    11 & Diegimo lengvumas & 1 \\
+    12 & Eksploatavimo lengvumas & 2 \\
+    13 & Kelių vietų palaikymas & 3 \\
+    14 & Pokyčių palengvinimas & 2 \\
+    \midrule
+    & \textbf{Bendra įtaka (TDI)} & \textbf{41} \\
+    & Vertės koregavimo koeficientas VAF $= 0{,}65 + 0{,}01 \times 41$ & 1,06 \\
+    & Koreguoti funkciniai taškai AFP $= 381 \times 1{,}06 = 403{,}86$ & \textbf{$\approx$\,404} \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Darbo sąnaudų įverčiai (PERT)}
+
+% TEKSTAS:
+% - E = (O + 4M + P) / 6, suapvalinta iki 0,5; σ = (P − O) / 6; O, M, P – ekspertų vertinimo
+%   (Delfi) medianos (\ref{tab:pert}~lentelė);
+% - kodėl atskiros S1–S4 eilutės (vykdymo variklis, grotuvas, garso įranga, infrastruktūra FP
+%   nematomi) ir N1–N5 (įranga, turinio gamyba, bandymai objekte, mokymai, pilotas);
+% - N4 = dokumentacija 14 + mokymų vedimas 12 žm. d., užsakovo darbuotojų laikas neįtrauktas;
+%   N5 apima 20 d. d. garantinį palaikymą (10 žm. d.);
+% - stulpelis „žm. d. / UFP“: P5 ir P6 santykis didžiausias – mažai funkcijų, bet realiojo laiko išvestis.
+\textit{[Rengiama]}
+
+\begin{table}[H]
+  \centering
+  \caption{Darbo sąnaudų įverčiai PERT metodu, žm. d.}
+  \label{tab:pert}
+  \small
+  \setlength{\tabcolsep}{5pt}
+  \begin{tabularx}{\textwidth}{@{}lXrrrrrr@{}}
+    \toprule
+    \textbf{Kodas} & \textbf{Eilutė} & \textbf{O} & \textbf{M} & \textbf{P} & \textbf{E} & {\boldmath$\sigma$} & \textbf{\makecell[r]{E / UFP,\\žm. d.}} \\
+    \midrule
+    P0 & Paskyros, sporto erdvės ir įranga & 23 & 33 & 50 & 34,0 & 4,5 & 0,40 \\
+    P1 & Užsiėmimų programų valdymas & 27 & 38 & 58 & 39,5 & 5,2 & 0,42 \\
+    P2 & Užsiėmimų valdymas & 22 & 32 & 50 & 33,5 & 4,7 & 0,51 \\
+    P3 & Dalyvių valdymas & 18 & 25 & 38 & 26,0 & 3,3 & 0,47 \\
+    P4 & Asmeninių programų valdymas & 15 & 22 & 34 & 23,0 & 3,2 & 0,46 \\
+    P5 & Vaizdinio turinio pateikimas & 4 & 8 & 14 & 8,5 & 1,7 & 1,21 \\
+    P6 & Garso komunikacija & 4 & 7 & 12 & 7,5 & 1,3 & 0,94 \\
+    P7 & Duomenų ir istorijos valdymas & 5 & 9 & 14 & 9,0 & 1,5 & 0,56 \\
+    \midrule
+    & \textbf{A. FP matomos sistemos dalys} & & & & \textbf{181,0} & & \\
+    \midrule
+    S1 & Realiojo laiko užsiėmimo vykdymo variklis ir sinchronizacija & 28 & 42 & 72 & 44,5 & 7,3 & -- \\
+    S2 & Vietinio grotuvo programa & 25 & 37 & 62 & 39,0 & 6,2 & -- \\
+    S3 & Garso įrangos integracija & 10 & 18 & 35 & 19,5 & 4,2 & -- \\
+    S4 & Infrastruktūra ir saugumas & 15 & 24 & 38 & 25,0 & 3,8 & -- \\
+    \midrule
+    & \textbf{B. FP nematoma programinė įranga} & & & & \textbf{128,0} & & \\
+    & \textbf{Programavimas iš viso (A + B)} & & & & \textbf{309,0} & & \\
+    \midrule
+    N1 & Techninės įrangos parinkimas, užsakymas ir montavimas & 17 & 26 & 42 & 27,0 & 4,2 & -- \\
+    N2 & Pratimų vaizdo ir garso turinio gamyba & 45 & 66 & 105 & 69,0 & 10,0 & -- \\
+    N3 & Integraciniai bandymai objekte & 22 & 35 & 60 & 37,0 & 6,3 & -- \\
+    N4 & Trenerių mokymai ir naudotojo dokumentacija & 16 & 25 & 40 & 26,0 & 4,0 & -- \\
+    N5 & Pilotinis naudojimas, priėmimo bandymas ir perdavimas & 24 & 38 & 62 & 39,5 & 6,3 & -- \\
+    \midrule
+    & \textbf{C. Neprograminiai darbai} & & & & \textbf{198,5} & & \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Reikalavimų, projektavimo, testavimo ir valdymo priedas}
+
+% TEKSTAS:
+% - procentai – iš paskaitos (SE-03, 36 skaidrė), taikomi tik programavimui (309 žm. d.),
+%   ne neprograminiams darbams (\ref{tab:priedas}~lentelė);
+% - programavimo eilutės apima kodavimą, vienetų testus ir kodo peržiūrą, todėl tas pats darbas
+%   dukart neskaičiuojamas;
+% - su priedu programinei daliai tenka 540,75 žm. d., t. y. 73~\% visų sąnaudų.
+\textit{[Rengiama]}
+
+\begin{table}[H]
+  \centering
+  \caption{Priedas prie programavimo sąnaudų (309 žm. d.) pagal paskaitos procentus}
+  \label{tab:priedas}
+  \small
+  \begin{tabular}{@{}lrr@{}}
+    \toprule
+    \textbf{Veikla} & \textbf{Dalis, \%} & \textbf{Sąnaudos, žm. d.} \\
+    \midrule
+    Reikalavimai & 15 & 46,35 \\
+    Projektavimas & 20 & 61,80 \\
+    Testavimas & 30 & 92,70 \\
+    Projekto valdymas & 10 & 30,90 \\
+    \midrule
+    \textbf{Iš viso} & \textbf{75} & \textbf{231,75} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Bendros sąnaudos ir rezervai}
+
+% TEKSTAS:
+% - suvestinė (\ref{tab:sanaudos}~lentelė): 739,25 žm. d. + 26 rizikų rezervas = bazinis planas
+%   765,25 žm. d.; + 37 valdymo rezervas = 802,25 žm. d.;
+% - rizikų rezervas = Σ EMV (25,85 ≈ 26 žm. d., \ref{tab:rezervas}~lentelė); kodėl ne 1,28σ (≈ 38 žm. d.):
+%   σ rodo įverčių sklaidą, o registras – atskirus įvykius; susieti su rizikų valdymo skyriaus registru;
+% - rizikų rezervą valdo projekto vadovas, valdymo rezervą (5~\%) laiko užsakovas; apimties pokyčiai
+%   tvirtinami per pakeitimų valdymą, ne iš rezervų;
+% - rezervai skirti sąnaudoms, ne kalendoriui (laiko rezervai – \ref{sec:tvarkarastis} skyriuje).
+\textit{[Rengiama]}
+
+\begin{table}[H]
+  \centering
+  \caption{Bendros darbo sąnaudos ir rezervai (1 žm. mėn. = 21 d. d.)}
+  \label{tab:sanaudos}
+  \small
+  \begin{tabular}{@{}lrr@{}}
+    \toprule
+    \textbf{Sudedamoji dalis} & \textbf{Žm. d.} & \textbf{Žm. mėn.} \\
+    \midrule
+    Programavimas (A + B) & 309,00 & 14,71 \\
+    Priedas (75~\%) & 231,75 & 11,04 \\
+    Neprograminiai darbai (C) & 198,50 & 9,45 \\
+    \midrule
+    \textbf{Iš viso be rezervų} & \textbf{739,25} & \textbf{35,20} \\
+    Rizikų rezervas ($\Sigma$ EMV) & 26,00 & 1,24 \\
+    \textbf{Bazinis planas} & \textbf{765,25} & \textbf{36,44} \\
+    Valdymo rezervas (5~\%, laiko užsakovas) & 37,00 & 1,76 \\
+    \midrule
+    \textbf{Iš viso su rezervais} & \textbf{802,25} & \textbf{38,20} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Rizikų rezervo apskaičiavimas (EMV = tikimybė $\times$ papildomos sąnaudos)}
+  \label{tab:rezervas}
+  \small
+  \begin{tabularx}{\textwidth}{@{}rl>{\raggedright\arraybackslash}Xrrr>{\raggedright\arraybackslash}p{2.1cm}@{}}
+    \toprule
+    \textbf{Nr.} & \textbf{ID} & \textbf{Rizika} & \textbf{\makecell[r]{Tikimybė,\\\%}} & \textbf{\makecell[r]{Papildomos\\sąnaudos,\\žm. d.}} & \textbf{\makecell[r]{EMV,\\žm. d.}} & \textbf{\makecell[l]{Paveiktos\\eilutės}} \\
+    \midrule
+    1 & TR1 & Drėgmė ir kondensatas pažeidžia stacionarią įrangą baseine & 35 & 8 & 2,80 & N1, N3, N5 \\
+    2 & TR2 & Nepakankamas belaidis ryšys baseino salėje & 40 & 6 & 2,40 & N1, N3, S1, S2 \\
+    3 & FR1 & Vėlai aptiktas užsiėmimo būsenų mašinos defektas & 25 & 8 & 2,00 & S1, S2, P2, N3, N5 \\
+    4 & IR1 & Grotuvų, ekranų ar sporto salės kolonėlių ribojimai & 35 & 8 & 2,80 & S2, S3, N1, N3 \\
+    5 & IR2 & Neaiški radijo siųstuvo ir trenerio mikrofono sujungimo grandinė & 30 & 8 & 2,40 & S2, S3, P6, N1, N3 \\
+    6 & OR1 & Treneriams sunku perimti užsiėmimo valdymą & 25 & 5 & 1,25 & P2, N4, N5 \\
+    7 & SR1 & Griežtesni asmens duomenų reikalavimai arba prieigos teisių spraga & 30 & 7 & 2,10 & P0, P3, P7, S4 \\
+    8 & ER1 & Pratimų vaizdas prastai matomas iš tolimų takelių & 40 & 10 & 4,00 & N2, P5, S2, N1, N3 \\
+    9 & ER2 & Ausinės slysta nuo kepurėlių arba yra nepatogios & 20 & 5 & 1,00 & N1, N3, S3 \\
+    10 & OR2 & Įranga vėluoja arba atkeliauja kitas modelis ar mikroprograma & 30 & 7 & 2,10 & S2, S3, N1, N3 \\
+    11 & OR3 & Dalies pratimų perfilmavimas ir įgarsinimo perrašymas & 30 & 10 & 3,00 & N2, N5 \\
+    \midrule
+    & & \textbf{Iš viso} & & \textbf{82} & \textbf{25,85\,$\approx$\,26} & \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% TEKSTAS (po \ref{tab:rezervas}~lentele, 1–2 sakiniai):
+% - ID sutampa su rizikų valdymo skyriaus registru (Godos); IR2, OR2 ir OR3 – naujos rizikos;
+%   debesijos tiekėjo sutrikimas (TR3) į rezervą neįtrauktas, nes rizika perduota tiekėjui;
+% - registre nurodyta pradinė tikimybė (1–5 balai: 1 = 0–19~\%, 2 = 20–39~\%, 3 = 40–59~\%,
+%   4 = 60–79~\%, 5 = 80–100~\%), o lentelėje – likutinė tikimybė po tvarkaraštyje suplanuotų
+%   mažinimo veiklų: TR1 4 balai → 35~\% po bandomojo komplekto bandymo baseine (A10),
+%   IR1 3 balai → 35~\% po prototipo bandymo baseine (A21), ER1 4 balai → 40~\% po bandomojo
+%   klipo matomumo patikros (A74); kitų rizikų procentai atitinka registro balus.
+\textit{[Rengiama]}
+
+\subsection{Prielaidos}
+
+% TEKSTAS (sąrašas mažąja raide, punktai skiriami kabliataškiais):
+% - vertinama bazinė versija (poreikiai 1–13), vienas sporto centras: baseinas ir sporto salė;
+%   treneriai vaizdo įrašų nekelia, 4K nėra, turinys filmuojamas iš anksto (Tado sprendimas);
+% - pradinė biblioteka – apie 40 pratimų ir 10 programų; architektūra: NestJS, PostgreSQL, Redis,
+%   React, vietiniai DSDX5 grotuvai;
+% - programuotojai dirba visu etatu, vidutinio lygio; atostogos vertinamos tvarkaraštyje, ne sąnaudose.
+\textit{[Rengiama]}
