@@ -1,23 +1,17 @@
 % Tvarkaraštis (atsakingas Marijus Planciunas).
 % Datos – iš tvarkaraščio modelio (75 veiklos, project-plan/resources/schedule.csv).
 % Ganto diagrama (gantt.tex) sugeneruota iš to paties modelio, rankomis jos netaisyti.
-% Proza dar nerašyta: kiekvienoje vietoje, pažymėtoje [Rengiama], komentaras „TEKSTAS“ nurodo, ką parašyti.
 % Veiklų ID (A01–A75) komentaruose – tik nuoroda rašančiajam; veiklų lentelės tekste nėra, todėl prozoje
 % rašyti veiklos pavadinimą.
 
 \section{Tvarkaraštis}\label{sec:tvarkarastis}
 
-% TEKSTAS (santraukos pastraipa be poskyrio antraštės, 2–4 sakiniai):
-% - projektas truks 208 darbo dienas – nuo 2026 m. spalio 1 d. iki 2027 m. liepos 30 d.
-%   (santrumpa „d. d.“ jau apibrėžta \ref{sec:dydis} skyriaus santraukoje, antrą kartą neapibrėžti);
-% - penki etapai kaip resursų plane, Kūrimo etape – 4 iteracijos po 4–5 savaites, kiekviena baigiasi
-%   demonstracija užsakovui;
-% - čia KT pavartojamas pirmą kartą, todėl apibrėžti vieną kartą visam skyriui, pvz.: „Tvarkaraščio
-%   pažangą žymi 15 tarpinių rezultatų (kontrolinių taškų, KT)“; toliau visur tik „KT“;
-% - 4 savaičių pilotas gegužės–birželio mėnesiais, perdavimas 2027 m. birželio 29 d. (KT14),
-%   po to 20 d. d. garantinis palaikymas;
-% - antra pastraipa – nuorodos: etapai \ref{tab:etapai}, KT \ref{tab:kt}, Ganto diagrama \ref{fig:gantt}.
-\textit{[Rengiama]}
+Projektas truks 208~d.~d.: nuo 2026~m. spalio 1~d. iki 2027~m. liepos
+30~d. Jį sudaro penki etapai, o Kūrimo etape vyksta keturios iteracijos po
+4--5 savaites, kurių kiekviena baigiasi demonstracija užsakovui. Pažangą
+žymi 15 tarpinių rezultatų (kontrolinių taškų, KT). Po keturių savaičių
+pilotinio naudojimo sistema perduodama užsakovui 2027~m. birželio 29~d.
+(KT14), o po to 20~d.~d. trunka garantinis palaikymas.
 
 \subsection{Gyvavimo ciklo modelis ir iteracijos}
 
@@ -206,21 +200,33 @@ datas, antrieji – darbo dienų kiekį.
 
 \subsection{Projekto stebėsena}
 
-% TEKSTAS:
-% - planas ir faktas: KT datos (\ref{tab:kt}~lentelė), iteracijų demonstracijos, sąnaudos (žm. d.)
-%   pagal veiklas iš schedule.csv;
-% - savaitiniai būsenos susirinkimai; KT vėlavimo ir sąnaudų nuokrypio ribos – suderinti su
-%   pakeitimų valdymo skyriumi;
-% - rizikų rezervo naudojimas susiejamas su rizikų registru pagal rizikų ID (\ref{tab:rezervas}~lentelė);
-%   bazinė versija fiksuojama prie KT (konfigūracijos valdymas).
-\textit{[Rengiama]}
+Projekto vadovas kas savaitę lygina planą su faktu. Jis tikrina, ar KT
+pasiekti laiku ir ar įvykdyti jų kriterijai (\ref{tab:kt}~lentelė);
+iteracijų pažanga matoma ir demonstracijose užsakovui. Kiekvienai veiklai
+lyginamos planuotos ir faktinės sąnaudos (žm.~d.) ir vertinama, kiek darbo
+iš tikrųjų atlikta, o ne tik kiek laiko praleista. Taip pat stebima, kiek
+sunaudota laiko rezervų B1 ir B2 bei rizikų rezervo; rizikų rezervo
+naudojimas susiejamas su konkrečia registro rizika pagal jos ID
+(\ref{tab:rezervas}~lentelė).
+
+Kas savaitę vyksta būsenos susirinkimas: aptariama, kas padaryta, kas bus
+daroma toliau, kokios problemos trukdo ir kokių naujų rizikų atsirado.
+Nustačius nukrypimą, įvertinama jo priežastis ir poveikis projektui; jei
+reikia keisti planą, tai daroma pagal pakeitimų valdymo procedūrą.
 
 \subsection{Planavimo prielaidos}
 
-% TEKSTAS (sąrašas mažąja raide, punktai skiriami kabliataškiais):
-% - dirbama 5 dienas per savaitę po 8 val.; švenčių dienos nedarbo (2026-11-02, 12-24, 12-25,
-%   2027-01-01, 02-16, 03-11, 03-29, 06-24, 07-06);
-% - veiklos trukmė = sąnaudos / žmonės, suapvalinta į didesnę pusę; laiko rezervai (B1, B2) sąnaudų neturi;
-% - įrangos pristatymas – 30 d. d. laukimo laikas nuo užsakymo; filmuojama ne darbo valandomis;
-% - komandos sudėtis etapuose atitinka resursų planą.
-\textit{[Rengiama]}
+\begin{itemize}
+  \item dirbama 5 dienas per savaitę po 8 valandas; valstybinės šventės yra
+    nedarbo dienos (2026~m. lapkričio 2~d., gruodžio 24 ir 25~d., 2027~m.
+    sausio 1~d., vasario 16~d., kovo 11~d., kovo 29~d., birželio 24~d. ir
+    liepos 6~d.);
+  \item veiklos trukmė apskaičiuojama sąnaudas padalijus iš joje dirbančių
+    žmonių skaičiaus ir suapvalinus į didesnę pusę;
+  \item įrangos pristatymas trunka 30~d.~d. nuo užsakymo; tai laukimo laikas,
+    o ne sąnaudos;
+  \item pratimai baseine filmuojami ne darbo valandomis, kai baseinas
+    neužimtas;
+  \item komandą sudaro 9 žmonės, kiekvienas atlieka vieną (sudėtinę) rolę;
+    vienu metu dirba ne daugiau kaip 7.
+\end{itemize}
