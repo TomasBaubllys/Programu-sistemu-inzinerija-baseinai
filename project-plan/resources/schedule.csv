@@ -1,4 +1,4 @@
-id,veikla,wbs,etapas,iteracija,pastangos_zmd,zmones,trukme_dd,pradzia,pabaiga,priklauso_nuo,laukimo_laikas_dd,laisvas_laikas_dd,kritine,roles
+id,veikla,wbs,etapas,iteracija,sanaudos_zmd,zmones,trukme_dd,pradzia,pabaiga,priklauso_nuo,laukimo_laikas_dd,laisvas_laikas_dd,kritine,roles
 A01,"Suinteresuotųjų šalių poreikių, objekto ir apimties analizė",1.1 / Reikalavimai,Reikalavimų analizė,,10,2,5,2026-10-01,2026-10-07,,0,0,taip,projekto vadovas-analitikas 1; sistemos architektas-programuotojas 1
 A02,Pratimų ir programų sąrašo sudarymas su užsakovo treneriais,"1.1, 4.1 / Reikalavimai",Reikalavimų analizė,,6,1,6,2026-10-08,2026-10-15,A01,0,11,,treneris-aktorius 1
 A03,"Įrangos rinkos apžvalga, bandomojo komplekto parinkimas ir užsakymas",2.3 / N1,Reikalavimų analizė,,4,1,4,2026-10-08,2026-10-13,A01,0,5,,techninės įrangos specialistas 1
@@ -17,17 +17,17 @@ A13,Grotuvo prototipo kūrimas DSDX5 įrenginyje,4.1 / S2,Projektavimas,,10,1,10
 A14,Projektavimo etapo valdymas,1.2 / Projekto valdymas,Projektavimas,,4.2,0.2,21,2026-11-05,2026-12-03,A07 A08,0,58,,"projekto vadovas-analitikas 0,2"
 A15,Baseino ir sporto salės įrangos konfigūracijų projektavimas,2.3 / Projektavimas,Projektavimas,,8.2,1,9,2026-11-06,2026-11-18,A10 A75 A08,0,8,,techninės įrangos specialistas 1
 A16,Garso instrukcijų įrašymas,4.2 / N2,Projektavimas,,6,2,3,2026-11-12,2026-11-16,A06,0,11,,vaizdo operatorius-montuotojas 1; treneris-aktorius 1
-A17,Sinchronizacijos prototipo kūrimas ir vėlinimo matavimas,3.5 / S1,Projektavimas,,10,1,10,2026-11-17,2026-11-30,A11,0,0,taip,sistemos architektas-programuotojas 1
-A18,"Vykdomos architektūros karkaso kūrimas: moduliai, CI/CD, debesijos aplinka",2.2 / S4,Projektavimas,,8,1,8,2026-11-17,2026-11-26,A11,0,4,,programuotojas (serverio dalis ir DB) 1
+A17,Sinchronizacijos prototipo kūrimas ir delsos matavimas,3.5 / S1,Projektavimas,,10,1,10,2026-11-17,2026-11-30,A11,0,0,taip,sistemos architektas-programuotojas 1
+A18,"Vykdomos architektūros karkaso kūrimas: moduliai, nuolatinė integracija ir diegimas (CI/CD), debesijos aplinka",2.2 / S4,Projektavimas,,8,1,8,2026-11-17,2026-11-26,A11,0,4,,programuotojas (serverio dalis ir DB) 1
 A74,Bandomojo klipo matomumo patikra baseine iš tolimų takelių prieš montuojant visus pratimus,4.1 / N2,Projektavimas,,1,1,1,2026-11-17,2026-11-17,A09 A16,0,11,,vaizdo operatorius-montuotojas 1
 A19,Vaizdo montavimas ir sujungimas su garsu,4.1 / N2,Projektavimas,,18,1,18,2026-11-18,2026-12-11,A16 A74,0,11,,vaizdo operatorius-montuotojas 1
 A20,Garso perdavimo į radijo siųstuvą prototipo kūrimas,4.2 / S3,Projektavimas,,6,1,6,2026-11-19,2026-11-26,A13,0,2,,programuotojas (Android grotuvas ir garsas) 1
-A21,"Prototipo bandymas baseine: sinchronizacija, vėlinimas, garso kokybė",2.3 / Testavimas,Projektavimas,,6,3,2,2026-12-01,2026-12-02,A17 A20 A10 A15,0,0,taip,sistemos architektas-programuotojas 1; programuotojas (Android grotuvas ir garsas) 1; techninės įrangos specialistas 1
+A21,"Prototipo bandymas baseine: sinchronizacija, delsa, garso kokybė",2.3 / Testavimas,Projektavimas,,6,3,2,2026-12-01,2026-12-02,A17 A20 A10 A15,0,0,taip,sistemos architektas-programuotojas 1; programuotojas (Android grotuvas ir garsas) 1; techninės įrangos specialistas 1
 A22,Projekto sprendimų peržiūra ir patvirtinimas,2 / Projektavimas,Projektavimas,,3.8,3.8,1,2026-12-03,2026-12-03,A21 A11 A12 A18,0,0,taip,"sistemos architektas-programuotojas 1; programuotojas (serverio dalis ir DB) 1; programuotojas (Android grotuvas ir garsas) 1; projekto vadovas-analitikas 0,8"
 A23,Galutinės įrangos specifikacijos parengimas ir užsakymas,2.3 / N1,Projektavimas,,3,1,3,2026-12-03,2026-12-07,A21 A75,0,41,,techninės įrangos specialistas 1
 A24,"Kūrimo etapo valdymas: iteracijų planavimas, stebėsena, pokyčių valdymas",1.2 / Projekto valdymas,Kūrimas,1–4 iteracijos,8.5,0.1,85,2026-12-04,2027-04-09,A22 A14,0,58,,"projekto vadovas-analitikas 0,1"
 A25,1 iteracijos detalusis projektavimas,2.2 / Projektavimas,Kūrimas,1 iteracija,8.8,4.5,2,2026-12-04,2026-12-07,A22,0,0,taip,"sistemos architektas-programuotojas 1; programuotojas (serverio dalis ir DB) 1; programuotojas (žiniatinklio sąsaja) 1; programuotojas (Android grotuvas ir garsas) 1; projekto vadovas-analitikas 0,5"
-A26,Realaus laiko vykdymo variklio ir sinchronizacijos kūrimas,3.5 / S1,Kūrimas,1 iteracija,18,1,18,2026-12-08,2027-01-05,A25,0,2,,sistemos architektas-programuotojas 1
+A26,Realiojo laiko vykdymo variklio ir sinchronizacijos kūrimas,3.5 / S1,Kūrimas,1 iteracija,18,1,18,2026-12-08,2027-01-05,A25,0,2,,sistemos architektas-programuotojas 1
 A27,"Grotuvo programos kūrimas: atkūrimas, komandos, būsenos siuntimas",4.1 / S2,Kūrimas,1 iteracija,19,1,19,2026-12-08,2027-01-06,A25,0,1,,programuotojas (Android grotuvas ir garsas) 1
 A28,Garso srautų valdymo kūrimas: radijo siųstuvas ir Bluetooth kolonėlės,"4.2, 4.3 / S3",Kūrimas,1 iteracija,13.5,1,14,2026-12-08,2026-12-29,A25,0,0,taip,programuotojas (serverio dalis ir DB) 1
 A29,Sporto erdvių ir įrangos registro kūrimas,3.1 / P0,Kūrimas,1 iteracija,12,1,12,2026-12-08,2026-12-23,A25,0,0,taip,programuotojas (žiniatinklio sąsaja) 1
@@ -39,7 +39,7 @@ A34,Prieigos kontrolės pagrindų įgyvendinimas,2.1 / S4,Kūrimas,1 iteracija,6
 A35,1 iteracijos stabilizavimas ir demonstracija užsakovui,5.1 / Testavimas,Kūrimas,1 iteracija,4.8,3,2,2027-01-08,2027-01-11,A26 A27 A34 A33 A31 A30,0,0,taip,testuotojas 1; programuotojas (serverio dalis ir DB) 1; programuotojas (žiniatinklio sąsaja) 1
 A36,2 iteracijos detalusis projektavimas,2.2 / Projektavimas,Kūrimas,2 iteracija,5,2.5,2,2027-01-08,2027-01-11,A26 A27 A34 A33,0,0,taip,"sistemos architektas-programuotojas 1; programuotojas (Android grotuvas ir garsas) 1; projekto vadovas-analitikas 0,5"
 A37,Užsiėmimų programų ir pratimų valdymo kūrimas,3.2 / P1,Kūrimas,2 iteracija,39.5,2,20,2027-01-12,2027-02-08,A36 A35,0,0,taip,programuotojas (serverio dalis ir DB) 1; programuotojas (žiniatinklio sąsaja) 1
-A38,"Vykdymo variklio atsparumo didinimas: ryšio praradimas, nuotolinis perkrovimas",3.5 / S1,Kūrimas,2 iteracija,16.5,1,17,2027-01-12,2027-02-03,A36 A35,0,3,,sistemos architektas-programuotojas 1
+A38,"Vykdymo variklio atsparumo didinimas: ryšio praradimas, nuotolinis paleidimas iš naujo",3.5 / S1,Kūrimas,2 iteracija,16.5,1,17,2027-01-12,2027-02-03,A36 A35,0,3,,sistemos architektas-programuotojas 1
 A39,Vaizdinio turinio pateikimo ekrane kūrimas,4.1 / P5,Kūrimas,2 iteracija,8.5,1,9,2027-01-12,2027-01-22,A36 A35 A32,0,1,,programuotojas (Android grotuvas ir garsas) 1
 A40,2 iteracijos testavimas,5.1 / Testavimas,Kūrimas,2 iteracija,10,0.5,20,2027-01-12,2027-02-08,A36 A35,0,0,taip,"testuotojas 0,5"
 A41,Įrangos montavimas baseine ir sporto salėje,"4.3, 5.2 / N1",Kūrimas,2 iteracija,14,1,14,2027-01-22,2027-02-10,A23,30,41,,techninės įrangos specialistas 1
@@ -62,7 +62,7 @@ A57,4 iteracijos stabilizavimas ir demonstracija užsakovui,5.1 / Testavimas,Kū
 A58,Diegimo ir bandymų objekte koordinavimas su užsakovu,1.2 / Projekto valdymas,Diegimas ir palaikymas,,4,0.2,20,2027-04-12,2027-05-07,A57 A24,0,58,,"projekto vadovas-analitikas 0,2"
 A59,"Sistemos, vaidmenų prieigos ir saugumo bandymai",5.1 / Testavimas,Diegimas ir palaikymas,,15,3,5,2027-04-12,2027-04-16,A57,0,0,taip,testuotojas 1; programuotojas (serverio dalis ir DB) 1; programuotojas (žiniatinklio sąsaja) 1
 A60,Programinės įrangos diegimas objekte ir grotuvų konfigūravimas,5.2 / N3,Diegimas ir palaikymas,,9,3,3,2027-04-12,2027-04-14,A57 A41,0,2,,sistemos architektas-programuotojas 1; programuotojas (Android grotuvas ir garsas) 1; techninės įrangos specialistas 1
-A61,Laiko rezervas prieš bandymus objekte (B1),– / laiko rezervas,Diegimas ir palaikymas,,0,0,8,2027-04-19,2027-04-28,A59 A60,0,0,taip,nėra (tik kalendorinis laikas)
+A61,Laiko rezervas prieš bandymus objekte (B1),– / Laiko rezervas,Diegimas ir palaikymas,,0,0,8,2027-04-19,2027-04-28,A59 A60,0,0,taip,nėra (0 žm. d.)
 A62,Integraciniai bandymai baseine,5.2 / N3,Diegimas ir palaikymas,,20,4,5,2027-04-29,2027-05-05,A61,0,0,taip,techninės įrangos specialistas 1; programuotojas (Android grotuvas ir garsas) 1; testuotojas 1; sistemos architektas-programuotojas 1
 A63,Integraciniai bandymai sporto salėje,5.2 / N3,Diegimas ir palaikymas,,8,4,2,2027-05-06,2027-05-07,A62,0,0,taip,techninės įrangos specialistas 1; programuotojas (Android grotuvas ir garsas) 1; testuotojas 1; sistemos architektas-programuotojas 1
 A64,Trenerių ir administratorių mokymai,5.3 / N4,Diegimas ir palaikymas,,12,2,6,2027-05-10,2027-05-17,A63 A55,0,0,taip,projekto vadovas-analitikas 1; techninės įrangos specialistas 1
@@ -70,7 +70,7 @@ A65,Pilotinis naudojimas: 4 savaitės realių užsiėmimų,5.3 / N5,Diegimas ir 
 A66,Piloto metu rastų defektų taisymas ir regresinis testavimas,5.3 / Testavimas,Diegimas ir palaikymas,,10,0.5,20,2027-05-18,2027-06-14,A64,0,0,taip,"programuotojas (Android grotuvas ir garsas) 0,25; testuotojas 0,25"
 A67,Piloto valdymas ir komunikacija su užsakovu,1.2 / Projekto valdymas,Diegimas ir palaikymas,,5,0.25,20,2027-05-18,2027-06-14,A64,0,0,taip,"projekto vadovas-analitikas 0,25"
 A68,Naudotojų priėmimo bandymas,5.3 / N5,Diegimas ir palaikymas,,6,2,3,2027-06-15,2027-06-17,A65 A66 A67,0,0,taip,projekto vadovas-analitikas 1; testuotojas 1
-A69,Laiko rezervas prieš perdavimą (B2),– / laiko rezervas,Diegimas ir palaikymas,,0,0,5,2027-06-18,2027-06-25,A68,0,0,taip,nėra (tik kalendorinis laikas)
+A69,Laiko rezervas prieš perdavimą (B2),– / Laiko rezervas,Diegimas ir palaikymas,,0,0,5,2027-06-18,2027-06-25,A68,0,0,taip,nėra (0 žm. d.)
 A70,Sistemos perdavimas užsakovui,5.3 / N5,Diegimas ir palaikymas,,3.5,2,2,2027-06-28,2027-06-29,A69,0,0,taip,projekto vadovas-analitikas 1; sistemos architektas-programuotojas 1
 A71,Garantinis palaikymas (20 d. d.),5.3 / N5,Diegimas ir palaikymas,,10,0.5,20,2027-06-30,2027-07-28,A70,0,0,taip,"sistemos architektas-programuotojas 0,25; testuotojas 0,25"
 A72,Projekto uždarymas ir pamokų aptarimas,1.2 / Projekto valdymas,Diegimas ir palaikymas,,2.2,1.1,2,2027-07-29,2027-07-30,A71,0,0,taip,"projekto vadovas-analitikas 1; sistemos architektas-programuotojas 0,1"

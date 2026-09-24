@@ -108,21 +108,24 @@
 % - E = (O + 4M + P) / 6, suapvalinta iki 0,5; σ = (P − O) / 6; O, M, P – ekspertų vertinimo
 %   (Delfi) medianos (\ref{tab:pert}~lentelė);
 % - kodėl atskiros S1–S4 eilutės (vykdymo variklis, grotuvas, garso įranga, infrastruktūra FP
-%   nematomi) ir N1–N5 (įranga, turinio gamyba, bandymai objekte, mokymai, pilotas);
-% - N4 = dokumentacija 14 + mokymų vedimas 12 žm. d., užsakovo darbuotojų laikas neįtrauktas;
-%   N5 apima 20 d. d. garantinį palaikymą (10 žm. d.);
-% - stulpelis „žm. d. / UFP“: P5 ir P6 santykis didžiausias – mažai funkcijų, bet realiojo laiko išvestis.
+%   nematomi) ir N1–N5 (įranga, turinio gamyba, bandymai objekte, mokymai ir dokumentacija,
+%   pilotas, perdavimas ir garantinis palaikymas);
+% - N4 = naudotojo dokumentacija 14 + trenerių ir administratorių mokymų vedimas 12 žm. d.,
+%   užsakovo darbuotojų laikas neįtrauktas; N5 = pilotinis naudojimas 20 + priėmimo bandymas 6
+%   + perdavimas 3,5 + 20 d. d. garantinis palaikymas 10 žm. d. (garantijos sąnaudos atskirai nepridedamos);
+% - stulpelis „žm. d. / UFP“ – eilutės E, padalyta iš tos sistemos dalies UFP (tik P0–P7): P5 ir P6 santykis
+%   didžiausias – mažai funkcijų, bet realiojo laiko išvestis.
 \textit{[Rengiama]}
 
 \begin{table}[H]
   \centering
-  \caption{Darbo sąnaudų įverčiai PERT metodu, žm. d.}
+  \caption{Darbo sąnaudų įverčiai PERT metodu, žm.~d.}
   \label{tab:pert}
   \small
   \setlength{\tabcolsep}{5pt}
-  \begin{tabularx}{\textwidth}{@{}lXrrrrrr@{}}
+  \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrr@{}}
     \toprule
-    \textbf{Kodas} & \textbf{Eilutė} & \textbf{O} & \textbf{M} & \textbf{P} & \textbf{E} & {\boldmath$\sigma$} & \textbf{\makecell[r]{E / UFP,\\žm. d.}} \\
+    \textbf{Kodas} & \textbf{Eilutė} & \textbf{O} & \textbf{M} & \textbf{P} & \textbf{E} & {\boldmath$\sigma$} & \textbf{\makecell[r]{žm.~d. /\\UFP}} \\
     \midrule
     P0 & Paskyros, sporto erdvės ir įranga & 23 & 33 & 50 & 34,0 & 4,5 & 0,40 \\
     P1 & Užsiėmimų programų valdymas & 27 & 38 & 58 & 39,5 & 5,2 & 0,42 \\
@@ -146,8 +149,8 @@
     N1 & Techninės įrangos parinkimas, užsakymas ir montavimas & 17 & 26 & 42 & 27,0 & 4,2 & -- \\
     N2 & Pratimų vaizdo ir garso turinio gamyba & 45 & 66 & 105 & 69,0 & 10,0 & -- \\
     N3 & Integraciniai bandymai objekte & 22 & 35 & 60 & 37,0 & 6,3 & -- \\
-    N4 & Trenerių mokymai ir naudotojo dokumentacija & 16 & 25 & 40 & 26,0 & 4,0 & -- \\
-    N5 & Pilotinis naudojimas, priėmimo bandymas ir perdavimas & 24 & 38 & 62 & 39,5 & 6,3 & -- \\
+    N4 & Trenerių ir administratorių mokymai, naudotojo dokumentacija & 16 & 25 & 40 & 26,0 & 4,0 & -- \\
+    N5 & Pilotinis naudojimas, priėmimo bandymas, perdavimas ir garantinis palaikymas & 24 & 38 & 62 & 39,5 & 6,3 & -- \\
     \midrule
     & \textbf{C. Neprograminiai darbai} & & & & \textbf{198,5} & & \\
     \bottomrule
@@ -166,12 +169,12 @@
 
 \begin{table}[H]
   \centering
-  \caption{Priedas prie programavimo sąnaudų (309 žm. d.) pagal paskaitos procentus}
+  \caption{Priedas prie programavimo sąnaudų (309~žm.~d.) pagal paskaitos procentus}
   \label{tab:priedas}
   \small
   \begin{tabular}{@{}lrr@{}}
     \toprule
-    \textbf{Veikla} & \textbf{Dalis, \%} & \textbf{Sąnaudos, žm. d.} \\
+    \textbf{Veikla} & \textbf{Dalis, \%} & \textbf{Sąnaudos, žm.~d.} \\
     \midrule
     Reikalavimai & 15 & 46,35 \\
     Projektavimas & 20 & 61,80 \\
@@ -188,6 +191,8 @@
 % TEKSTAS:
 % - suvestinė (\ref{tab:sanaudos}~lentelė): 739,25 žm. d. + 26 rizikų rezervas = bazinis planas
 %   765,25 žm. d.; + 37 valdymo rezervas = 802,25 žm. d.;
+% - čia pirmą kartą pavartojama EMV, todėl apibrėžti vieną kartą: „tikėtinoji vertė (angl. expected
+%   monetary value, EMV)“ – rizikos tikimybė, padauginta iš jos papildomų sąnaudų; toliau tik „EMV“;
 % - rizikų rezervas = Σ EMV (25,85 ≈ 26 žm. d., \ref{tab:rezervas}~lentelė); kodėl ne 1,28σ (≈ 38 žm. d.):
 %   σ rodo įverčių sklaidą, o registras – atskirus įvykius; susieti su rizikų valdymo skyriaus registru;
 % - rizikų rezervą valdo projekto vadovas, valdymo rezervą (5~\%) laiko užsakovas; apimties pokyčiai
@@ -197,12 +202,12 @@
 
 \begin{table}[H]
   \centering
-  \caption{Bendros darbo sąnaudos ir rezervai (1 žm. mėn. = 21 d. d.)}
+  \caption{Bendros darbo sąnaudos ir rezervai (1~žm.~mėn. = 21~d.~d.)}
   \label{tab:sanaudos}
   \small
   \begin{tabular}{@{}lrr@{}}
     \toprule
-    \textbf{Sudedamoji dalis} & \textbf{Žm. d.} & \textbf{Žm. mėn.} \\
+    \textbf{Sudedamoji dalis} & \textbf{Žm.~d.} & \textbf{Žm.~mėn.} \\
     \midrule
     Programavimas (A + B) & 309,00 & 14,71 \\
     Priedas (75~\%) & 231,75 & 11,04 \\
@@ -225,7 +230,7 @@
   \small
   \begin{tabularx}{\textwidth}{@{}rl>{\raggedright\arraybackslash}Xrrr>{\raggedright\arraybackslash}p{2.1cm}@{}}
     \toprule
-    \textbf{Nr.} & \textbf{ID} & \textbf{Rizika} & \textbf{\makecell[r]{Tikimybė,\\\%}} & \textbf{\makecell[r]{Papildomos\\sąnaudos,\\žm. d.}} & \textbf{\makecell[r]{EMV,\\žm. d.}} & \textbf{\makecell[l]{Paveiktos\\eilutės}} \\
+    \textbf{Nr.} & \textbf{ID} & \textbf{Rizika} & \textbf{\makecell[r]{Tikimybė,\\\%}} & \textbf{\makecell[r]{Papildomos\\sąnaudos,\\žm.~d.}} & \textbf{\makecell[r]{EMV,\\žm.~d.}} & \textbf{\makecell[l]{Paveiktos\\eilutės}} \\
     \midrule
     1 & TR1 & Drėgmė ir kondensatas pažeidžia stacionarią įrangą baseine & 35 & 8 & 2,80 & N1, N3, N5 \\
     2 & TR2 & Nepakankamas belaidis ryšys baseino salėje & 40 & 6 & 2,40 & N1, N3, S1, S2 \\
@@ -237,7 +242,7 @@
     8 & ER1 & Pratimų vaizdas prastai matomas iš tolimų takelių & 40 & 10 & 4,00 & N2, P5, S2, N1, N3 \\
     9 & ER2 & Ausinės slysta nuo kepurėlių arba yra nepatogios & 20 & 5 & 1,00 & N1, N3, S3 \\
     10 & OR2 & Įranga vėluoja arba atkeliauja kitas modelis ar mikroprograma & 30 & 7 & 2,10 & S2, S3, N1, N3 \\
-    11 & OR3 & Dalies pratimų perfilmavimas ir įgarsinimo perrašymas & 30 & 10 & 3,00 & N2, N5 \\
+    11 & OR3 & Dalies pratimų perfilmavimas ir garso instrukcijų įrašymas iš naujo & 30 & 10 & 3,00 & N2, N5 \\
     \midrule
     & & \textbf{Iš viso} & & \textbf{82} & \textbf{25,85\,$\approx$\,26} & \\
     \bottomrule
@@ -246,12 +251,17 @@
 
 % TEKSTAS (po \ref{tab:rezervas}~lentele, 1–2 sakiniai):
 % - ID sutampa su rizikų valdymo skyriaus registru (Godos); IR2, OR2 ir OR3 – naujos rizikos;
-%   debesijos tiekėjo sutrikimas (TR3) į rezervą neįtrauktas, nes rizika perduota tiekėjui;
+%   debesijos paslaugų teikėjo sutrikimas (TR3) į rezervą neįtrauktas, nes rizika perduota
+%   paslaugų teikėjui;
 % - registre nurodyta pradinė tikimybė (1–5 balai: 1 = 0–19~\%, 2 = 20–39~\%, 3 = 40–59~\%,
 %   4 = 60–79~\%, 5 = 80–100~\%), o lentelėje – likutinė tikimybė po tvarkaraštyje suplanuotų
-%   mažinimo veiklų: TR1 4 balai → 35~\% po bandomojo komplekto bandymo baseine (A10),
-%   IR1 3 balai → 35~\% po prototipo bandymo baseine (A21), ER1 4 balai → 40~\% po bandomojo
-%   klipo matomumo patikros (A74); kitų rizikų procentai atitinka registro balus.
+%   mažinimo veiklų: TR1 4 balai → 35~\% po bandomojo komplekto bandymo baseine,
+%   IR1 3 balai → 35~\% po prototipo bandymo baseine, ER1 4 balai → 40~\% po bandomojo
+%   klipo matomumo patikros baseine prieš montuojant visus pratimus;
+% - „Kitų registro rizikų (TR2, FR1, OR1, SR1, ER2) procentai atitinka Godos balus; naujų IR2, OR2
+%   ir OR3 – po 30~\% (2 balai).“;
+% - prozoje veiklų ID (A10, A21, A74) nerašyti: rašyti veiklos pavadinimą, kaip nurodyta šiame
+%   komentare, arba nuorodą į \ref{sec:tvarkarastis} skyrių.
 \textit{[Rengiama]}
 
 \subsection{Prielaidos}
