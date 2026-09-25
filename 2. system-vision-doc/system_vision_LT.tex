@@ -16,7 +16,7 @@
 
 Sistema skirta individualių ir grupinių užsiėmimų valdymui bei vykdymui baseinuose ir kitose sporto erdvėse. Ji padės vedėjams iš anksto parengti užsiėmimų programas, valdyti dalyvius, pateikti vaizdinę mokomąją medžiagą ir perduoti garso instrukcijas užsiėmimo metu. Virtualaus trenerio režimas leis parengtą programą vykdyti ir be nuolatinio trenerio dalyvavimo vietoje, todėl bus galima užpildyti laisvus sporto erdvės laikus.
 
-Sprendimas bus realizuojamas kaip žiniatinklio kliento-serverio sistema, naudojant debesų kompiuterijos infrastruktūrą. Pagrindinė aplikacija ir duomenys bus valdomi centralizuotai, o vedėjai ir dalyviai sistemą pasieks per žiniatinklio sąsają arba mobiliąją programėlę. Užsiėmimo metu sistema realiuoju laiku sąveikaus su sporto erdvėje naudojama išorine garso ir vaizdo įranga.
+Sprendimas bus realizuojamas kaip žiniatinklio kliento-serverio sistema, naudojant debesų kompiuterijos infrastruktūrą. Pagrindinė aplikacija ir duomenys bus valdomi centralizuotai, o vedėjai ir dalyviai sistemą pasieks per kompiuteriui ir telefonui pritaikytą žiniatinklio sąsają. Užsiėmimo metu sistema realiuoju laiku sąveikaus su sporto erdvėje naudojama išorine garso ir vaizdo įranga.
 
 \section{Naudotojai ir jų veiksmai}
 
@@ -34,7 +34,7 @@ Kiekvienas sistemos naudotojas turi asmeninę paskyrą, apsaugotą vaidmenimis p
 \begin{enumerate}
     \item Treneris parengia programą ir suplanuoja užsiėmimą; dalyvis savo paskyroje randa laiką ir rezervuoja vietą. Po užsiėmimo treneris pažymi, kas iš tiesų dalyvavo.
     \item Treneris pradeda parengtą programą, o ekranas demonstruoja pratimus. Baseine instrukcijos dalyviams perduodamos per specialias belaides ausines; sporto salės grupinėje treniruotėje gali būti naudojamas televizorius ant ratukų ir patalpai tinkama garso įranga. Treneris prireikus pristabdo arba pakeičia programos etapą.
-    \item Treneris dalyvio paskyrai priskiria individualią programą ir namų pratimus, vėliau juos pakeičia nuotoliniu būdu; dalyvis mato aktualią versiją savo mobiliojoje sąsajoje.
+    \item Treneris dalyvio paskyrai priskiria individualią programą ir namų pratimus, vėliau juos pakeičia nuotoliniu būdu; dalyvis mato aktualią versiją savo telefone per žiniatinklio sąsają.
     \item \textbf{Plėtinys -- reklamos naudojimo scenarijus:} kai treniruotė nevyksta, rinkodaros naudotojas parenka ekrane rodomą reklamą ar informaciją; vykstant treniruotei ekrano kampe gali būti rodomas rėmėjo logotipas, neuždengiantis pratimų demonstravimo.
     \item Laisvu laiku administratorius suplanuoja iš anksto parengtą virtualaus trenerio užsiėmimą; dalyvis rezervuoja vietą ir stebi ekrane rodomą programą be nuolatinio trenerio dalyvavimo vietoje.
 \end{enumerate}
@@ -44,16 +44,16 @@ Kiekvienas sistemos naudotojas turi asmeninę paskyrą, apsaugotą vaidmenimis p
 Siekiant užtikrinti sistemos patikimumą, mastelį ir greitaveiką realiuoju laiku, numatomi šie preliminarūs architektūriniai sprendimai:
 
 \begin{itemize}
-    \item \textbf{Architektūra:} mikropaslaugų arba modulinio monolito architektūra, paskirstyta debesų kompiuterijos platformoje.
+    \item \textbf{Architektūra:} modulinis monolitas debesų kompiuterijos platformoje ir atskira vietinio grotuvo programa sporto erdvėje.
     \item \textbf{Programinė įranga:} 
     \begin{itemize}
-        \item \textit{Bazinė programinė įranga:} „Node.js / NestJS“ arba „Python (FastAPI)“ duomenų apdorojimui realiuoju laiku.
-        \item \textit{Naudotojo sąsajos:} „React.js“ žiniatinklio sąsajai ir „React Native“ mobiliosioms programėlėms.
+        \item \textit{Bazinė programinė įranga:} „Node.js / NestJS“ serverio daliai.
+        \item \textit{Naudotojo sąsajos:} „React.js“ adaptyviajai žiniatinklio sąsajai kompiuteryje ir telefone; atskira mobilioji programėlė yra plėtinys.
         \item \textit{Duomenų bazės:} „PostgreSQL“ reliaciniams duomenims ir rezervacijoms, „Redis“ sesijų būsenų sinchronizacijai.
     \end{itemize}
     \item \textbf{Protokolai ir sąsajos:} programų sąsajos (REST API) valdymui ir realaus laiko komunikacijos protokolas (WebSockets) ekranų bei garso įrangos sinchronizacijai užsiėmimo metu.
     \item \textbf{Saugumas:} saugaus ryšio protokolas (HTTPS), tapatybės patvirtinimas (OAuth 2.0 / JWT), vaidmenimis pagrįstos prieigos valdymas ir asmens duomenų šifravimas.
-    \item \textbf{Vietinis vykdymas:} kiekvienoje vietoje vietinį medijos valdymą vykdys specializuoti procesoriai / grotuvai (pvz., „DSDevices DSDX5“ su „Android 14“ ir 4K dekoduojamu turiniu), užtikrinantys sklandų rodymą ir atsparumą ryšio sutrikimams.
+    \item \textbf{Vietinis vykdymas:} „Android“ grotuvo programa (pvz., DSDX5 įrenginyje) prieš užsiėmimą atsisiunčia parengtą Full HD turinį; nutrūkus ryšiui ji užbaigia pradėtą etapą. Grotuvo 4K dekodavimo galimybė nereiškia 4K turinio bazinėje apimtyje.
     \item \textbf{Valdymas ir pritaikomumas:} duomenys, programos, lankomumas ir progresas valdomi centralizuotai. Architektūra leidžia tą patį sprendimą pritaikyti skirtingoms erdvėms (sausoms salėms ar drėgnoms IP klase sertifikuotoms baseinų zonoms).
 \end{itemize}
 
@@ -62,15 +62,14 @@ Siekiant užtikrinti sistemos patikimumą, mastelį ir greitaveiką realiuoju la
 Sistemai reikalinga standartinė kompiuterinė infrastruktūra bei tiesiogiai sporto erdvėje naudojama techninė įranga:
 
 \begin{itemize}
-    \item Debesijos serveriai su automatinio mastelio galimybe ir turinio pristatymo tinklu vaizdo srautams be vėlavimų.
-    \item Atskiras vaizdo grotuvas („DSDevices DSDX5 Android 14“, 4K dekodavimas, 2 GB / 16 GB) vietiniam ekrano valdymui.
+    \item Debesijos serveris aplikacijai, duomenų bazei ir iš anksto parengtam turiniui saugoti.
+    \item Atskiras „Android“ grotuvas (pvz., „DSDevices DSDX5“) Full HD turiniui vietoje rodyti.
     \item Kompiuteris arba planšetė vedėjui: atspari vandeniui IP68 planšetė (pvz., „Samsung Galaxy Tab Active5“) šalia baseino arba standartinė planšetė sausoje zonoje.
-    \item Ekranai: 65''–85'' komerciniai 24/7 ekranai, IP66 lauko / drėgnų zonų ekranai baseinui arba standartiniai televizoriai.
+    \item Ekranai: bazėje Full HD vaizdas; baseine tinkamai nuo drėgmės apsaugotas ekranas, sausoje salėje standartinis ar komercinis televizorius.
     \item Ne baseino aplinkoje gali būti naudojamas mobilus ekrano stovas / vežimėlis (pvz., „ONKRON TS1551-B“, iki 65 kg, VESA 600$\times$400).
     \item Garso įranga: IPX8 kaulinio laidumo plaukimo ausinės su radijo siųstuvu arba 12 colių aktyvios „Bluetooth“ kolonėlės sausoms salėms.
     \item Vedėjo mikrofonas: integruotas siųstuvo mikrofonas arba atskiras belaidis mikrofonas (pvz., „Sennheiser XSW-D Vocal Set“).
-    \item Dalyvių identifikavimo įranga (papildomai): 13.56 MHz ISO 14443 A/B NFC skaitytuvas (pvz., „ACS ACR122U USB“) drėgmei atspariame korpuse ir vandeniui atsparios NFC apyrankės.
-    \item Tinklo ryšys: dedikuotas pramoninis belaidis tinklas (Wi-Fi 6) arba patikimas laidinis tinklas minimaliai delsai užtikrinti ($< 50\text{ ms}$).
+    \item Tinklo ryšys: dedikuotas pramoninis belaidis tinklas (Wi-Fi 6) arba patikimas laidinis tinklas minimaliai delsai užtikrinti (pagal bandomajame komplekte patvirtintus delsos kriterijus).
 \end{itemize}
 
 Baseino aplinkoje šalia vandens naudojama įranga turi būti parenkama atsižvelgiant į aplinkos sąlygas ir reikalingą atsparumo vandeniui lygį (IP66 ekranams, IP68 / IPX8 planšetėms bei plaukikų imtuvams). Konkretūs techninės įrangos modeliai ir komunikacijos technologijos bus galutinai patvirtinti detalaus sistemos projektavimo ir integracinio testavimo metu.
@@ -79,9 +78,13 @@ Baseino aplinkoje šalia vandens naudojama įranga turi būti parenkama atsižve
 
 Projekto planavimo tikslais sistema skaidoma į šias pagrindines dalis:
 
+\subsection{Paskyros, administravimas ir sporto erdvės}
+
+Registracija, prisijungimas, vaidmenų teisės, paskyrų ir sporto erdvių įrangos nustatymų valdymas. Administratorius įkelia patvirtintą turinį. Įvertinime ši dalis žymima P0.
+
 \subsection{Užsiėmimų programų valdymas}
 
-Atsakingas už užsiėmimų programų kūrimą, redagavimą, saugojimą ir valdymą. Programa sudaroma iš etapų, pratimų, vaizdo turinio, garso instrukcijų ir kitos užsiėmimui reikalingos informacijos. Įgyvendinama naudojant turinio valdymo sistemų principus.
+Atsakingas už užsiėmimų programų kūrimą, redagavimą, saugojimą ir valdymą. Programa sudaroma iš etapų, pratimų, vaizdo turinio ir garso instrukcijų. Pratimai filmuojami ir instrukcijos įrašomos iš anksto. Patvirtintus Full HD failus per sistemos sąsają įkelia administratorius; treneris iš įkeltų pratimų sudaro programas, tačiau vaizdo failų neįkelia. Pradinėje versijoje numatoma apie 40 pratimų ir 10 programų.
 
 \subsection{Užsiėmimų valdymas}
 
@@ -89,18 +92,18 @@ Atsakingas už individualių ir grupinių užsiėmimų planavimą bei vykdymą. 
 
 \subsection{Dalyvių valdymas}
 
-Atsakingas už dalyvių informacijos saugojimą, tvarkaraščio pateikimą, vietų rezervavimą, dalyvių priskyrimą užsiėmimams, pranešimų siuntimą bei faktinio lankomumo istorijos valdymą, įskaitant integraciją su praėjimo kontrolės sistemomis (NFC apyrankėmis ar QR kodais).
+Atsakingas už dalyvių informacijos saugojimą, tvarkaraščio pateikimą, vietų rezervavimą, dalyvių priskyrimą užsiėmimams, pranešimų siuntimą bei faktinio lankomumo istorijos valdymą. NFC ar QR pagrįstas automatinis identifikavimas priklauso plėtiniams.
 
 \subsection{Asmeninių programų valdymas}
 
-Atsakingas už individualaus įvertinimo pagrindu sudaromas kliento programas, pasiruošimo rekomendacijas ir namuose atliekamas užduotis. Treneris galės programą atnaujinti nuotoliniu būdu, o klientas ją matys mobiliojoje sąsajoje.
+Atsakingas už individualaus įvertinimo pagrindu sudaromas kliento programas, pasiruošimo rekomendacijas ir namuose atliekamas užduotis. Treneris galės programą atnaujinti nuotoliniu būdu, o klientas ją matys telefone pritaikytoje žiniatinklio sąsajoje.
 
 \subsection{Vaizdinio turinio pateikimas}
 
 Atsakingas už pratimų, demonstracijų ir kitos vaizdinės informacijos pateikimą atitinkamos aplinkos įrangoje:
 \begin{itemize}
-    \item \textbf{Baseinai ir drėgnos zonos:} drėgmei atsparūs IP66 klasės 4K ekranai (pvz., „Sylvox 65\"“ 2000 nits) arba standartiniai / komerciniai ekranai, patalpinti į apsauginius IP korpusus. Didelėms erdvėms kaip alternatyva numatyti IP65 LED ekranai su P1.2–P1.5 pikselių žingsniu.
-    \item \textbf{Sausos / komercinės salės:} komerciniai 24/7 įvertinimo 4K UHD ekranai (pvz., „Samsung QM65C / QM75C / QM85C“, 500 nits) arba standartiniai ekranai („Samsung UE“ serija).
+    \item \textbf{Baseinai ir drėgnos zonos:} Full HD vaizdas rodomas nuo drėgmės apsaugotame ekrane; jo dydis parenkamas po matomumo patikros iš tolimų takelių.
+    \item \textbf{Sausos salės:} Full HD vaizdas rodomas standartiniame ar komerciniame televizoriuje, prireikus sumontuotame ant ratukų.
 \end{itemize}
 
 \subsection{Garso įranga}
@@ -111,20 +114,24 @@ Atsakinga už iš anksto įrašytų garso instrukcijų ir vedėjo balso perdavim
     \item \textbf{Sausos salės garsas:} aktyvios garso kolonėlės su „Bluetooth“ (pvz., „Alto Professional TS412“ 12 col.).
 \end{itemize}
 
+\subsection{Vietinio grotuvo programa}
+
+Atskira „Android“ programa prieš užsiėmimą atsisiunčia turinį, rodo dabartinį ir būsimą pratimą, vykdo valdymo komandas ir sinchronizuoja vaizdą su garso instrukcijomis. Nutrūkus ryšiui užbaigia pradėtą etapą iš vietinio turinio. Įvertinime ši dalis žymima S2.
+
 \subsection{Duomenų ir istorijos valdymas}
 
-Atsakingas už užsiėmimų programų, užsiėmimų, dalyvavimo informacijos ir susijusių istorinių duomenų saugojimą ilgalaikei analitikai, ataskaitų generavimui ir galimai integracijai su sveikatos stebėjimo įrenginiais per „Apple HealthKit“ arba „Google Fit“ sąsajas.
+Atsakingas už užsiėmimų programų, užsiėmimų, dalyvavimo informacijos ir susijusių istorinių duomenų saugojimą. Progreso analizė ir integracijos su „Apple HealthKit“ ar „Google Fit“ priklauso plėtiniams.
 
 \section{Galimi sistemos išplėtimai}
 
 Architektūra turi sudaryti galimybę ateityje plėsti sistemą neatliekant esminių pagrindinės sistemos funkcionalumo pakeitimų. Galimi išplėtimai:
 
 \begin{itemize}
-    \item specializuotos mobiliosios sąsajos vedėjams ir dalyviams;
+    \item atskira mobilioji programėlė treneriams ir dalyviams;
     \item automatinis dalyvių identifikavimas sporto erdvėje naudojant integruotus NFC apyrankių skaitytuvus arba veido atpažinimą;
     \item pakartotinai naudojamų užsiėmimų programų ir vaizdo turinio biblioteka;
     \item individualizuotos programos pagal dalyvio poreikius, pasirengimo lygį ar ankstesnę veiklą;
-    \item dalyvių progreso ir užsiėmimų rezultatų analizė pagal pulso ir krūvio duomenis;
+    \item dalyvių progreso ir rezultatų analizė bei integracijos su „Apple HealthKit“ ar „Google Fit“;
     \item sistemos naudojimas keliose sporto erdvėse ar skirtinguose sporto centruose;
     \item reklaminio turinio planavimas, kampanijų valdymas ir jų rezultatų bei auditorijos srautų analizė prijungtuose ekranuose.
 \end{itemize}

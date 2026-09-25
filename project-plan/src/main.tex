@@ -3,11 +3,12 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[L7x]{fontenc} % lietuviškos raidės kaip atskiri simboliai (paieška, kopijavimas)
+\usepackage[T1]{fontenc} % portable Lithuanian font encoding
 \usepackage[provide=*]{babel}
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{booktabs}
+\usepackage{longtable}
 \usepackage{makecell}
 \usepackage{float}
 \usepackage{pgfgantt} % Ganto diagrama (tvarkaraštis)
@@ -21,18 +22,20 @@
 
 \title{Projekto planas}
 \author{Tomas Baublys, Tadas Plančiūnas, Goda Gutparakytė, Marijus Plančiūnas, Ugnė Skučaitė}
-\date{Rugsėjo 24 d., 2026 m.}
+\date{Rugsėjo 25 d., 2026 m.}
 
 \begin{document}
 
 \maketitle
 
+\input{project-plan/src/wbs_darbai}
 \input{project-plan/src/dydzio-ir-pastangu-vertinimas}
 \input{project-plan/src/tvarkarastis}
 \input{project-plan/src/resource allocation}
 \input{project-plan/src/konfiguracijos_valdymas}
 \input{project-plan/src/pokyciu_valdymas}
 \input{project-plan/src/risk-management}
+\input{project-plan/src/atsekamumas}
 
 
 \end{document}

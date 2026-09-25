@@ -5,14 +5,14 @@
 Projekte valdomi šie esminiai konfigūracijos elementai, suskistyti į tris grupes:
 \begin{itemize}
     \item \textbf{Programinė įranga:} Serverio ir duomenų bazės programinis kodas, žiniatinklio sąsajos moduliai bei „Android“ grotuvo aplikacijos, skirtos baseino ekranams ir belaidėms garso sistemoms.
-    \item \textbf{Aparatūra ir techninė įranga:} Vandeniui atsparūs ekranai, planšetės, belaidės ausinės, garso siųstuvai/imtuvai, NFC skaneriai ir apyrankės.
+    \item \textbf{Aparatūra ir techninė įranga:} Vandeniui atsparūs ekranai, planšetės, belaidės ausinės, garso siųstuvai/imtuvai.
     \item \textbf{Projektinė ir techninė dokumentacija:} Reikalavimų specifikacijos, architektūros aprašai, vartotojo vadovai bei saugumo procedūros.
 \end{itemize}
 
 \subsection{Versijų kontrolės ir atsekamumo taisyklės}
 Siekiant užtikrinti komandos tęstinumą ir žinių perdavimą taikomos šios taisyklės:
 \begin{enumerate}
-    \item \textbf{Programinio kodo valdymas:} Visi programavimo darbai privalo būti saugomi centralizuotje versijų kontrolės sistemoje (\emph{Git}). Atskiriamos pagrindinė (\texttt{master}), integracinė aplinka (\texttt{develop}) bei atskiros funkcinės šakos.
+    \item \textbf{Programinio kodo valdymas:} Visi programavimo darbai saugomi centralizuotoje versijų kontrolės sistemoje (\emph{Git}). Atskiriamos pagrindinė (\texttt{main}), integracinė (\texttt{develop}) bei funkcinės šakos.
     \item \textbf{Aparatūros ir įrenginių konfigūracijos:} Kiekvienam baseine įdiegtam įrenginiui priskiriamas konfigūracijos pasas, kuriame fiksuojama programinės įrangos/firmware versija, IP adresai bei techniniai nustatymai.
     \item \textbf{Artefaktų valdymas (\emph{JFrog}):} Sukompiliuoti programiniai paketai bei aplikacijų versijos registruojamos ir saugomos centralizuotoje artefaktų saugykloje (\emph{JFrog Artifactory}).
     \item \textbf{Versijų pavadinimai}: Versijų pavadinimai turi laikytis semantinių versijų formato \texttt{Major.Minor.Patch}, pavyzdžiui, v1.1.0).

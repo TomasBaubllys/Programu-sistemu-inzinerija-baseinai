@@ -1,0 +1,39 @@
+\section{Darbų skaidymo struktūra (WBS)}\label{sec:wbs}
+
+WBS apima bazinės versijos programinius ir neprograminius rezultatus. Kodai atitinka tvarkaraščio \texttt{schedule.csv} lauką \texttt{wbs}; P0--P7, S1--S4 ir N1--N5 atitinka dydžio ir sąnaudų įverčio eilutes. Reklamos plėtinys (6) neįtrauktas į bazinio plano sąnaudas ir tvarkaraštį.
+
+\begin{enumerate}
+\item \textbf{Projekto valdymas ir reikalavimai}
+  \begin{enumerate}
+  \item[1.1] Užsakovo poreikių, sporto erdvių ir pratimų sąrašo analizė; reikalavimų specifikacija.
+  \item[1.2] Projekto planas, ištekliai, tvarkaraštis, rizikų bei pokyčių valdymas ir stebėsena.
+  \item[1.3] Priėmimo kriterijai, demonstravimo scenarijai ir atsekamumas.
+  \end{enumerate}
+\item \textbf{Projektavimas ir infrastruktūra}
+  \begin{enumerate}
+  \item[2.1] Architektūra, prieigos ir saugumo sprendimai (S4).
+  \item[2.2] Duomenų modelis, API, sąsajų prototipai, debesijos aplinka ir CI/CD (S4).
+  \item[2.3] Baseino ir salės įrangos konfigūracijos; bandomojo komplekto parinkimas ir patikra (N1).
+  \end{enumerate}
+\item \textbf{Pagrindinės sistemos funkcijos}
+  \begin{enumerate}
+  \item[3.1] Paskyros, vaidmenys, sporto erdvės ir įrangos administravimas (P0).
+  \item[3.2] Pratimų katalogas, administratoriaus įkeliamas turinys ir trenerio programos (P1).
+  \item[3.3] Tvarkaraštis, užsiėmimo valdymas, dalyvių rezervacijos ir lankomumas (P2, P3).
+  \item[3.4] Asmeninės programos, telefono žiniatinklio sąsaja ir istorija (P4, P7).
+  \item[3.5] Virtualaus trenerio vykdymo variklis ir sinchronizacija (S1).
+  \end{enumerate}
+\item \textbf{Turinio gamyba ir pateikimas}
+  \begin{enumerate}
+  \item[4.1] Pratimų scenarijai, filmavimas, montavimas, vaizdo pateikimas ir vietinio „Android“ grotuvo programa (N2, P5, S2).
+  \item[4.2] Garso instrukcijų įrašymas, trenerio balso perdavimas ir garso įrangos integracija (N2, P6, S3).
+  \item[4.3] Įrangos užsakymas, montavimas ir grotuvo bei ekranų sujungimas baseine ir salėje (N1, S3).
+  \end{enumerate}
+\item \textbf{Patikra ir perdavimas}
+  \begin{enumerate}
+  \item[5.1] Funkciniai, saugumo ir vaidmenų prieigos bandymai.
+  \item[5.2] Integraciniai ir matomumo bei garso bandymai objekte (N3).
+  \item[5.3] Trenerių ir administratorių mokymai, vadovai, keturių savaičių pilotas, priėmimas, perdavimas ir garantinis palaikymas (N4, N5).
+  \end{enumerate}
+\end{enumerate}
+\paragraph{Už bazinės versijos ribų.} Reklamos turinio administravimas ir rodymas (anksčiau žymėtas 6.1--6.3), atskira mobilioji programėlė, NFC/QR identifikavimas, sveikatos platformų integracijos ir kiti poreikių aprašo išplėtimai būtų planuojami tik patvirtinus apimties pakeitimą.
