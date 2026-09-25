@@ -1,0 +1,56 @@
+\section{Pokyčių valdymas}
+
+\subsection{Tikslas ir apibrėžimas}
+Šio skyriaus tikslas – nustatyti formalų ir kontroliuojamą procesą, skirtą bet kokiems projekto apimties, tvarkaraščio, biudžeto ar kokybės reikalavimų pakeitimams valdyti po to, kai pradiniai projekto planai (bazės) yra patvirtinti. 
+
+Pokyčių valdymu siekiama apsaugoti projektą nuo nekontroliuojamo apimties išsiplėtimo (\textit{angl. scope creep}), užtikrinti skaidrų sprendimų priėmimą ir garantuoti, kad visi suinteresuotieji asmenys supranta planuojamų pakeitimų pasekmes.
+
+\subsection{Pokyčių klasifikacija}
+Visi projekto pakeitimai skirstomi į tris pagrindines kategorijas pagal jų poveikį:
+\begin{itemize}
+    \item \textbf{Nedideli pakeitimai:} Įtakos neturi nei projekto biudžetui, nei galutiniam terminui (pvz., nedidelis užduočių eiliškumo pasikeitimas komandos viduje).
+    \item \textbf{Vidutiniai pakeitimai:} Keičia tarpinius terminus arba reikalauja nedidelio resursų perskirstymo neviršijant bendro biudžeto rezervo.
+    \item \textbf{Dideli pakeitimai:} Iš esmės keičia projekto apimtį, reikalauja papildomo finansavimo arba lemia galutinio projekto termino pratęsimą.
+\end{itemize}
+
+\subsection{Pokyčių valdymo procesas}
+Bet koks pokytis projekto eigoje privalo praeiti šiuos 5 etapus:
+
+\begin{enumerate}
+    \item \textbf{Pokyčio inicijavimas ir pateikimas} --
+    Bet kuris projekto komandos narys ar užsakovas gali pastebėti pokyčio poreikį. Iniciatorius privalo užpildyti formalią \textit{Pokyčio užklausą}, kurioje aprašo pokyčio esmę bei priežastį.
+    
+    \item \textbf{Registracija} -- 
+    Projekto vadovas gauna užklausą, ją užregistruoja centrinėje sistemoje -- \textit{Pokyčių registre} ir suteikia unikalų numerį.
+    
+    \item \textbf{Poveikio analizė} -- 
+    Projekto vadovas kartu su atsakingais specialistais įvertina pokyčio poveikį:
+    \begin{itemize}
+        \item \textit{Apimčiai:} Kokios naujos funkcijos ar reikalavimai atsiranda?
+        \item \textit{Laikui:} Kiek dienų ar savaičių užtruks įgyvendinimas?
+        \item \textit{Kaštams:} Kokie bus reikalingi papildomi finansiniai kaštai?
+        \item \textit{Rizikai:} Kokias naujas grėsmes ar galimybes tai sukuria?
+    \end{itemize}
+    
+    \item \textbf{Sprendimo priėmimas} -- 
+    Remiantis poveikio analize, pokyčio užklausa leidžiama tvirtinti atsakingiems asmenims. Priklausomai nuo pokyčio dydžio, sprendimą priima Projekto vadovas arba Pokyčių valdymo komitetas. Galimi sprendimai: patvirtinti, atmesti arba grąžinti patikslinimui.
+    
+    \item \textbf{Įgyvendinimas ir atnaujinimas} -- 
+    Jei pokytis patvirtinamas, projekto vadovas oficialiai atnaujina projekto planą, biudžetą bei tvarkaraštį ir paveda komandai įgyvendinti užduotį. Atmesti prašymai archyvuojami nurodant atmetimo priežastį.
+\end{enumerate}
+
+\subsection{Valdymo kompetencijos ir ribos}
+\begin{table}[htbp]
+\centering
+\caption{Pokyčių tvirtinimo atsakomybės matrica}
+\label{tab:pokyciu_matrica}
+\begin{tabularx}{\textwidth}{l X l}
+\toprule
+\textbf{Pokyčio lygis} & \textbf{Kriterijai / Apibūdinimas} & \textbf{Tvirtinantis asmuo} \\ 
+\midrule
+Žemas & Biudžeto pokytis iki 1,000 € / laiko vėlavimas iki 3 d. & Projekto vadovas \\ 
+Vidutinis & Biudžeto pokytis 1,000 -- 5,000 € / vėlavimas 3--10 d. & Pokyčių valdymo komitetas \\ 
+Aukštas & Biudžeto pokytis virš 5,000 € / esminis apimties keitimas & Pokyčių valdymo komitetas \\ 
+\bottomrule
+\end{tabularx}
+\end{table}
