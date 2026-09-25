@@ -25,7 +25,7 @@ Kiekvienas sistemos naudotojas turi asmeninę paskyrą, apsaugotą vaidmenimis p
 \begin{itemize}
     \item \textbf{Dalyvis:} prisijungia prie savo paskyros, peržiūri užsiėmimų tvarkaraštį ir laisvas vietas, rezervuoja ar atšaukia vietą, mato savo rezervacijas, lankomumo istoriją, trenerio paskirtą asmeninę programą ir namų pratimus.
     \item \textbf{Treneris:} prisijungia prie savo paskyros, kuria ir keičia užsiėmimų programas, planuoja grupinius ir individualius užsiėmimus, mato užsiregistravusius dalyvius, užfiksuoja faktinį lankomumą, valdo programos eigą užsiėmimo metu ir nuotoliniu būdu atnaujina konkretaus dalyvio asmeninę programą.
-    \item \textbf{Administratorius:} tvarko naudotojų paskyras, vaidmenis, sporto erdves, užsiėmimų tvarkaraščius ir jose naudojamos įrangos nustatymus; prižiūri sistemos veikimą.
+    \item \textbf{Administratorius:} tvarko naudotojų paskyras, vaidmenis, sporto erdves, užsiėmimų tvarkaraščius ir įrangos nustatymus, per sistemos sąsają įkelia patvirtintus vaizdo bei garso failus ir prižiūri sistemos veikimą.
     \item \textbf{Rinkodaros naudotojas (plėtinys):} įkelia ir parenka reklaminį ar informacinį turinį rodymui sporto erdvėse ne treniruočių metu pagal administratoriaus suteiktas teises.
 \end{itemize}
 
@@ -53,8 +53,8 @@ Siekiant užtikrinti sistemos patikimumą, mastelį ir greitaveiką realiuoju la
     \end{itemize}
     \item \textbf{Protokolai ir sąsajos:} programų sąsajos (REST API) valdymui ir realaus laiko komunikacijos protokolas (WebSockets) ekranų bei garso įrangos sinchronizacijai užsiėmimo metu.
     \item \textbf{Saugumas:} saugaus ryšio protokolas (HTTPS), tapatybės patvirtinimas (OAuth 2.0 / JWT), vaidmenimis pagrįstos prieigos valdymas ir asmens duomenų šifravimas.
-    \item \textbf{Vietinis vykdymas:} „Android“ grotuvo programa (pvz., DSDX5 įrenginyje) prieš užsiėmimą atsisiunčia parengtą Full HD turinį; nutrūkus ryšiui ji užbaigia pradėtą etapą. Grotuvo 4K dekodavimo galimybė nereiškia 4K turinio bazinėje apimtyje.
-    \item \textbf{Valdymas ir pritaikomumas:} duomenys, programos, lankomumas ir progresas valdomi centralizuotai. Architektūra leidžia tą patį sprendimą pritaikyti skirtingoms erdvėms (sausoms salėms ar drėgnoms IP klase sertifikuotoms baseinų zonoms).
+    \item \textbf{Vietinis vykdymas:} „Android“ grotuvo programa (pvz., DSDX5 įrenginyje) prieš užsiėmimą atsisiunčia parengtą Full HD turinį; nutrūkus ryšiui ji užbaigia pradėtą etapą, tačiau naujo automatiškai nepradeda ir apie sutrikimą informuoja budintį darbuotoją. Grotuvo 4K dekodavimo galimybė nereiškia 4K turinio bazinėje apimtyje.
+    \item \textbf{Valdymas ir pritaikomumas:} duomenys, programos ir lankomumas valdomi centralizuotai; progreso analizė yra plėtinys. Architektūra leidžia tą patį sprendimą pritaikyti skirtingoms erdvėms (sausoms salėms ar drėgnoms IP klase sertifikuotoms baseinų zonoms).
 \end{itemize}
 
 \section{Preliminarūs techninės įrangos poreikiai}
@@ -116,7 +116,7 @@ Atsakinga už iš anksto įrašytų garso instrukcijų ir vedėjo balso perdavim
 
 \subsection{Vietinio grotuvo programa}
 
-Atskira „Android“ programa prieš užsiėmimą atsisiunčia turinį, rodo dabartinį ir būsimą pratimą, vykdo valdymo komandas ir sinchronizuoja vaizdą su garso instrukcijomis. Nutrūkus ryšiui užbaigia pradėtą etapą iš vietinio turinio. Įvertinime ši dalis žymima S2.
+Atskira „Android“ programa prieš užsiėmimą atsisiunčia turinį, rodo dabartinį ir būsimą pratimą, vykdo valdymo komandas ir sinchronizuoja vaizdą su garso instrukcijomis. Nutrūkus ryšiui užbaigia pradėtą etapą iš vietinio turinio, nepradeda naujo etapo ir informuoja budintį darbuotoją. Įvertinime ši dalis žymima S2.
 
 \subsection{Duomenų ir istorijos valdymas}
 
