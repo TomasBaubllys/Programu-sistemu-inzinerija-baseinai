@@ -1,0 +1,238 @@
+% Dalies P3 išsamus funkcinių taškų skaičiavimas (atsakingas Marijus Planciunas).
+% Įterpiama priede po 87 funkcijų lentelės; skaičiai turi sutapti su P3 eilutėmis tab:fp-sarasas lentelėje.
+
+\subsection{Išsamus dalies P3 skaičiavimas}\label{sec:priedas-p3}
+
+Dalis P3 „Dalyvių valdymas“ (13 funkcijų, 66~UFP) aprašyta išsamiai, nes
+joje yra visi keturi sistemoje pasitaikantys funkcijų tipai~– ILF, EI, EO ir EQ (EIF sistemoje nėra). Kiekvienai
+funkcijai \ref{tab:fp-p3}~lentelėje įvardyti jos DET ir RET arba FTR, o
+paskutiniame stulpelyje~– matricos intervalai, kurie lėmė sudėtingumą.
+
+Transakcijos DET~– naudotojui atpažįstamas laukas, kertantis sistemos
+ribą; ILF DET~– naudotojui atpažįstamas saugomas laukas, kurį įrašo arba
+skaito bent viena funkcija. DET skaičiuojami pagal IFPUG taisykles: įvestyje
+vienas DET skiriamas veiksmo mygtukui ir vienas~– sistemos pranešimui
+(patvirtinimui arba klaidai), o prisijungusio naudotojo tapatybė DET
+nelaikoma. Užklausas ir išvestis paleidžia pasirinkimas (filtras,
+laikotarpis, paieškos mygtukas arba sąrašo įrašas), kuris, kaip ir
+navigacijos mygtukas paskaitos pavyzdyje, laikomas veiksmo DET.
+Tik priminimą (P3.11) sistema siunčia pati nustatytu laiku. Paskaitos parkavimo
+pavyzdyje pranešimas atskiru DET nelaikomas; taip skaičiuojant, lankomumo
+pažymėjimas (P3.7, 4~DET ir 2~FTR) taptų žemo sudėtingumo, o P3 būtų
+65~UFP. Vardas ir pavardė laikomi dviem DET, kai rodomi atskiruose stulpeliuose
+ar kortelės laukuose.
+RET~– loginis ILF pogrupis, FTR~– ILF, kurį transakcija skaito arba keičia.
+FTR įvardyti ILF pavadinimais iš \ref{tab:fp-sarasas}~lentelės: „Naudotojo
+paskyra“ (P0.1), „Sporto erdvė“ (P0.2), „Užsiėmimas“ (P2.1) ir
+„Rezervacijos ir lankomumas“ (P3.1); skliaustuose nurodyta, ką transakcija
+tame faile skaito arba keičia.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\setlength{\LTcapwidth}{\textwidth}
+\captionsetup{font=normalsize}
+% 5 stulpeliai, @{} kraštuose – 8 tarpai \tabcolsep; DET stulpelis užpildo likusį plotį.
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.85cm}>{\raggedright\arraybackslash}p{2.75cm}>{\raggedright\arraybackslash}p{\dimexpr\textwidth-10.25cm-8\tabcolsep\relax}>{\raggedright\arraybackslash}p{4.3cm}>{\raggedright\arraybackslash}p{2.35cm}@{}}
+\caption{Dalies P3 funkcijų DET, RET ir FTR}\label{tab:fp-p3}\\
+\toprule
+\textbf{Nr.} & \textbf{Funkcija ir tipas} & \textbf{DET} & \textbf{RET arba FTR} & \textbf{Sudėtingumas ir UFP} \\
+\midrule
+\endfirsthead
+\caption[]{Dalies P3 funkcijų DET, RET ir FTR (tęsinys)}\\
+\toprule
+\textbf{Nr.} & \textbf{Funkcija ir tipas} & \textbf{DET} & \textbf{RET arba FTR} & \textbf{Sudėtingumas ir UFP} \\
+\midrule
+\endhead
+\endfoot
+\midrule
+\multicolumn{5}{@{}l@{}}{\textbf{Iš viso: 13 funkcijų, 66 UFP}} \\
+\bottomrule
+\endlastfoot
+P3.1 & Rezervacijos ir lankomumas\newline ILF
+ & \textbf{12}\newline rezervacija (8): užsiėmimas, dalyvis (šie du laukai rodo, kas į kurį užsiėmimą
+   užsiregistravo), rezervavimo laikas, būsena (aktyvi, atšaukta,
+   pašalinta), kas užregistravo (dalyvis, treneris ar administratorius),
+   atšaukimo ar pašalinimo laikas, kas atšaukė ar pašalino, priminimas
+   išsiųstas;\newline
+   lankomumo įrašas (4): lankomumo žyma (dalyvavo arba nedalyvavo), kas
+   pažymėjo, pažymėjimo laikas, pataisymo laikas\par\smallskip
+   \footnotesize Laukus įrašo: kas užregistravo~– P3.3, P3.5; atšaukimo ar
+   pašalinimo laikas, kas atšaukė ar pašalino~– P3.4, P3.6, P0.12, P2.5;
+   priminimas išsiųstas~– P3.11; kas pažymėjo, pažymėjimo ir pataisymo
+   laikas~– P3.7.
+ & \textbf{RET 2}: rezervacija; lankomumo įrašas (atsiranda tik treneriui
+   pažymėjus lankomumą, P3.7)
+ & žemas, 7\newline{\footnotesize DET 1–19\newline RET 2–5} \\
+\midrule
+P3.2 & Užsiėmimų tvarkaraštis su laisvų vietų skaičiumi\newline EO
+ & \textbf{10}: laikotarpis (savaitė), užsiėmimo pavadinimas, režimas (su
+   treneriu ar virtualus treneris), data, pradžios laikas, pabaigos laikas,
+   vieta (pagal ją galima ir filtruoti), treneris, vietų skaičius, laisvų
+   vietų skaičius (apskaičiuojamas)
+ & \textbf{FTR 4}: Užsiėmimas (pavadinimas, režimas, data ir laikas, vietų
+   skaičius); Rezervacijos ir lankomumas (aktyvios rezervacijos); Sporto
+   erdvė (vieta); Naudotojo paskyra (treneris)
+ & aukštas, 7\newline{\footnotesize DET 6–19\newline FTR 4+} \\
+\midrule
+P3.3 & Vietos rezervavimas (tikrinant laisvas vietas)\newline EI
+ & \textbf{3}: pasirinktas užsiėmimas, mygtukas „Rezervuoti“, pranešimas
+   (patvirtinimas arba „Laisvų vietų nebėra“)
+ & \textbf{FTR 3}: Užsiėmimas (vietų skaičius, ar dar neprasidėjo);
+   Rezervacijos ir lankomumas (užimtos vietos, nauja rezervacija, kas
+   užregistravo); Naudotojo
+   paskyra (ar paskyra nedeaktyvuota: deaktyvuotas dalyvis negali
+   rezervuoti, plg. P0.12)
+ & vidutinis, 4\newline{\footnotesize DET 1–4\newline FTR 3+} \\
+\midrule
+P3.4 & Rezervacijos atšaukimas\newline EI
+ & \textbf{3}: pasirinkta rezervacija, mygtukas „Atšaukti“, pranešimas
+ & \textbf{FTR 2}: Rezervacijos ir lankomumas (būsena „atšaukta“, atšaukimo
+   laikas, kas atšaukė); Užsiėmimas (ar dar neprasidėjo)
+ & žemas, 3\newline{\footnotesize DET 1–4\newline FTR 2} \\
+\midrule
+P3.5 & Dalyvio priskyrimas užsiėmimui (treneris, administratorius)\newline EI
+ & \textbf{4}: užsiėmimas, dalyvis (įvedamas jo el.~pašto adresas; sistema
+   randa paskyrą), mygtukas „Priskirti“, pranešimas
+ & \textbf{FTR 3}: Užsiėmimas (vietų skaičius, ar jį veda šis treneris);
+   Rezervacijos ir lankomumas (užimtos vietos, nauja rezervacija, kas
+   užregistravo); Naudotojo paskyra (dalyvio paskyra pagal el.~paštą, ar ji
+   aktyvi)
+ & vidutinis, 4\newline{\footnotesize DET 1–4\newline FTR 3+} \\
+\midrule
+P3.6 & Dalyvio pašalinimas iš užsiėmimo\newline EI
+ & \textbf{4}: užsiėmimas, pasirinktas dalyvis, mygtukas „Pašalinti“,
+   pranešimas
+ & \textbf{FTR 2}: Rezervacijos ir lankomumas (būsena „pašalinta“,
+   pašalinimo laikas, kas pašalino); Užsiėmimas (ar jį veda šis treneris)
+ & žemas, 3\newline{\footnotesize DET 1–4\newline FTR 2} \\
+\midrule
+P3.7 & Faktinio lankomumo pažymėjimas ir taisymas\newline EI
+ & \textbf{5}: užsiėmimas, dalyvis, lankomumo žyma (dalyvavo arba
+   nedalyvavo), mygtukas „Išsaugoti“, pranešimas
+ & \textbf{FTR 2}: Rezervacijos ir lankomumas (užsiregistravę dalyviai,
+   lankomumo įrašas); Užsiėmimas (ar jau prasidėjo, ar jį veda šis treneris)
+ & vidutinis, 4\newline{\footnotesize DET 5–15\newline FTR 2} \\
+\midrule
+P3.8 & Dalyvio rezervacijų peržiūra\newline EQ
+ & \textbf{7}: filtras „būsimos arba praėjusios“, užsiėmimo pavadinimas,
+   data, pradžios laikas, vieta, treneris, rezervacijos būsena
+ & \textbf{FTR 4}: Rezervacijos ir lankomumas (būsena); Užsiėmimas
+   (pavadinimas, data, laikas); Sporto erdvė (vieta); Naudotojo paskyra
+   (treneris)
+ & aukštas, 6\newline{\footnotesize DET 5–15\newline FTR 3+} \\
+\midrule
+P3.9 & Užsiregistravusių dalyvių sąrašas\newline EQ
+ & \textbf{6}: užsiėmimas (pasirinktas; antraštėje rodomas jo pavadinimas),
+   dalyvio vardas, pavardė (atskiri stulpeliai), telefonas, rezervacijos
+   būsena, rezervavimo laikas
+ & \textbf{FTR 3}: Užsiėmimas (pasirinkto užsiėmimo pavadinimas; ar jį veda
+   šis treneris); Rezervacijos ir lankomumas (būsena, rezervavimo laikas);
+   Naudotojo paskyra (vardas, pavardė, telefonas)
+ & aukštas, 6\newline{\footnotesize DET 5–15\newline FTR 3+} \\
+\midrule
+P3.10 & Dalyvio lankomumo istorija (dalyviui ir treneriui)\newline EQ
+ & \textbf{8}: dalyvis (vardas ir pavardė antraštėje; treneris jį
+   pasirenka), laikotarpis, užsiėmimo pavadinimas, režimas, data, pradžios
+   laikas, rezervacijos būsena, lankomumo žyma
+ & \textbf{FTR 3}: Rezervacijos ir lankomumas (būsena, lankomumo žyma);
+   Užsiėmimas (pavadinimas, režimas, data, laikas); Naudotojo paskyra
+   (dalyvio vardas ir pavardė)
+ & aukštas, 6\newline{\footnotesize DET 5–15\newline FTR 3+} \\
+\midrule
+P3.11 & Priminimas apie artėjantį užsiėmimą\newline EO
+ & \textbf{6}: dalyvio el.~pašto adresas, vardas, data, laikas, užsiėmimo
+   pavadinimas, vieta. Laiško tekstas: „[Vardas], primename: rytoj [data]
+   [laikas]~– [užsiėmimas], [vieta]“
+ & \textbf{FTR 4}: Rezervacijos ir lankomumas (rytdienos aktyvios
+   rezervacijos, žyma „priminimas išsiųstas“); Užsiėmimas (pavadinimas,
+   data, laikas); Sporto erdvė (vieta); Naudotojo paskyra (vardas,
+   el.~paštas)
+ & aukštas, 7\newline{\footnotesize DET 6–19\newline FTR 4+} \\
+\midrule
+P3.12 & Trenerio dalyvių sąrašas ir paieška\newline EQ
+ & \textbf{6}: dalyvio vardas, pavardė (pagal juos ir ieškoma), telefonas,
+   el.~paštas, plaukimo lygis, mygtukas „Ieškoti“
+ & \textbf{FTR 3}: Užsiėmimas (trenerio užsiėmimai); Rezervacijos ir
+   lankomumas (kas į juos užsiregistravo); Naudotojo paskyra (vardas,
+   pavardė, telefonas, el.~paštas, plaukimo lygis)
+ & aukštas, 6\newline{\footnotesize DET 5–15\newline FTR 3+} \\
+\midrule
+P3.13 & Dalyvio kortelės peržiūra (treneriui)\newline EQ
+ & \textbf{10}: dalyvio pasirinkimas sąraše P3.12 (veiksmas, kuriuo
+   atidaroma kortelė), vardas, pavardė, gimimo data, telefonas, el.~paštas,
+   plaukimo lygis, tikslai, pastabos treneriui, paskyros sukūrimo data
+ & \textbf{FTR 1}: Naudotojo paskyra (naudotojo duomenys ir dalyvio
+   profilis)
+ & žemas, 3\newline{\footnotesize DET 5–15\newline FTR 0–1} \\
+\end{longtable}
+\endgroup
+
+\paragraph{Kodėl taip skaičiuota.}
+\begin{itemize}
+  \item Failas „Rezervacijos ir lankomumas“ yra atskiras ILF, o ne
+    užsiėmimo RET. Rezervacija sieja du nepriklausomus failus~– dalyvio
+    paskyrą ir užsiėmimą~– ir nepriklauso nė vienam iš jų. Naudotojas ją
+    mato kaip atskirą objektą („Mano rezervacijos“, visų užsiėmimų lankomumo
+    istorija), o įrašai išlieka ir atšaukus užsiėmimą (P2.5) ar
+    deaktyvavus paskyrą (P0.12), nes iš jų sudaroma istorija (P3.10) ir
+    ataskaita (P7.2). Paskaitos parkavimo pavyzdyje būsenos failas,
+    siejantis automobilį ir zoną, taip pat yra atskiras ILF. Kitaip nei
+    rezervacija, dalyvio įvertinimas priklauso vienai asmeninei programai,
+    todėl yra RET (P4.1). Faile dar saugoma, kas užregistravo, kas ir kada
+    atšaukė ar pašalino rezervaciją, ar išsiųstas priminimas, kas ir kada
+    pažymėjo lankomumą ir kada jį pataisė; \ref{tab:fp-p3}~lentelėje nurodyta,
+    kurios funkcijos šiuos laukus įrašo. Ir be šių laukų failas liktų žemo
+    sudėtingumo (DET~1–19).
+  \item Tvarkaraštis (P3.2) yra EO, o ne EQ, nes laisvų vietų skaičius
+    nesaugomas: jis kaskart apskaičiuojamas iš užsiėmimo vietų skaičiaus
+    atimant aktyvių rezervacijų skaičių. Išvestis, kurioje yra apskaičiuotų duomenų, laikoma EO,
+    o EQ tik pateikia saugomus duomenis. Užsiėmimo pavadinimas įvedamas
+    planuojant užsiėmimą (P2.2, P2.3) ir saugomas faile „Užsiėmimas“.
+  \item Rezervavimas (P3.3) ir priskyrimas (P3.5), taip pat atšaukimas
+    (P3.4) ir pašalinimas (P3.6) yra atskiros funkcijos, nors keičia tą
+    patį failą. Priskirdamas ar šalindamas treneris arba administratorius
+    nurodo dalyvį (papildomas DET), o kai veiksmą atlieka treneris, sistema
+    dar tikrina, ar užsiėmimą veda jis. Dalyvis rezervuoja ir atšaukia savo
+    vardu, todėl jo tapatybė DET nelaikoma.
+  \item Lankomumo pažymėjimas ir taisymas (P3.7) yra viena įvestis: tas
+    pats lankomumo ekranas, tie patys laukai, failai ir patikros; taisant
+    tik perrašoma žyma ir įrašomas pataisymo laikas.
+  \item Lankomumo istorija (P3.10) dalyviui ir treneriui yra viena
+    užklausa: abiem atvejais rodomi tie patys laukai (įskaitant dalyvio
+    vardą ir pavardę antraštėje), skaitomi tie patys trys failai ir
+    taikoma ta pati logika. Skiriasi tik tai, kaip parenkamas dalyvis:
+    treneris jį pasirenka, o dalyviui rodoma jo paties istorija. Todėl
+    skaičiuojama 8~DET ir 3~FTR.
+  \item Panašios funkcijos skaičiuojamos atskirai, nes skiriasi jų DET ir
+    FTR. Rezervacijų peržiūra (P3.8) rodo vietą ir trenerį, todėl skaito ir
+    failą „Sporto erdvė“, o iš failo „Naudotojo paskyra“~– trenerio vardą
+    (4~FTR).
+    Lankomumo istorija (P3.10) vietos ir trenerio nerodo, bet rodo
+    užsiėmimo režimą ir lankomumo žymą (3~FTR). Trenerio dalyvių sąrašas
+    (P3.12) skiriasi nuo administratoriaus naudotojų sąrašo (P0.13), kuris
+    skaito tik paskyras (1~FTR) ir rodo visus naudotojus, ir nuo trenerio
+    dalyvių ir jų asmeninių programų sąrašo (P4.9), kuris rodo tik dalyvius,
+    turinčius asmeninę programą, ir skaito failą „Asmeninė programa“.
+  \item Priminimas (P3.11) yra EO, o ne EQ: sistema taiko verslo logiką ir keičia
+    ILF~– kasdien
+    pati atrenka rytdienos aktyvias rezervacijas, išsiunčia laišką dalyviui
+    el.~paštu ir įrašo žymą „priminimas išsiųstas“, kad laiškas nebūtų
+    išsiųstas dukart. EQ tik pateikia informaciją ir ILF
+    nekeičia. Tai nėra ir EI, nes per sistemos ribą duomenys neįeina, o
+    pagrindinis veiksmo tikslas~– pranešti dalyviui.
+  \item Trenerio dalyviai yra jo užsiėmimų dalyviai: dalyvis pasirenka
+    trenerį, kai rezervuoja jo užsiėmimą (P3.3), o individualiam užsiėmimui dalyvį priskiria
+    administratorius arba pats treneris (P3.5). Todėl atskiros dalyvio priskyrimo treneriui
+    funkcijos nėra, o sąraše P3.12 dalyviai atrenkami pagal trenerio užsiėmimus
+    ir jų rezervacijas (3~FTR).
+  \item Dalyvio kortelė (P3.13) ir naudotojo paskyros peržiūra (P0.14)
+    skaito tą patį failą, bet rodo skirtingus laukus: treneris mato sportui
+    reikalingus profilio duomenis (plaukimo lygį, tikslus, pastabas
+    treneriui), o administratorius~– paskyros duomenis (prisijungimo
+    duomenis, vaidmenį, būseną). Šiuos profilio laukus dalyvis pildo
+    savo profilyje (P0.8). Kortelė
+    atidaroma tik iš trenerio sąrašo P3.12, kuriame jau yra tik trenerio
+    dalyviai, todėl ji, kaip ir P0.14, skaito tik paskyrą (1~FTR). DET
+    rinkiniai skiriasi, todėl tai dvi atskiros užklausos.
+\end{itemize}

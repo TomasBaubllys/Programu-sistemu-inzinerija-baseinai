@@ -60,6 +60,13 @@
 \input{project-plan/src/pokyciu_valdymas}
 \input{project-plan/src/risk-management}
 \input{project-plan/src/atsekamumas}
+\appendix
+% Priedų antraštės: „A priedas. Pavadinimas“ (tik skyriaus lygiu)
+\makeatletter
+\def\priedas@section{~priedas.}
+\renewcommand\@seccntformat[1]{\csname the#1\endcsname\csname priedas@#1\endcsname\quad}
+\makeatother
+\input{project-plan/src/priedas-funkciniai-taskai}
 
 
 \end{document}

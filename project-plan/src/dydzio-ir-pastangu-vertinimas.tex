@@ -1,17 +1,17 @@
 % Dydžio ir pastangų vertinimas (atsakingas Marijus Planciunas).
-% Lentelių skaičiai – iš galutinio įverčio (2026-09-24).
+% Lentelių skaičiai – iš galutinio įverčio (2026-09-24); FP perskaičiuoti 2026-10-01.
 
 \section{Dydžio ir pastangų vertinimas}\label{sec:dydis}
 
-Sistemos dydis – 381 funkcinis taškas (FP) prieš koregavimą ir apie 404 po
-jo. Darbo sąnaudas vertinome kiekvienai sistemos daliai atskirai: be rezervų
+Sistemos dydis – 398 funkciniai taškai (FP) prieš koregavimą ir apie 426 po
+jo. Darbo sąnaudas vertinome kiekvienai sistemos daliai atskirai. Be rezervų
 projektui reikia 739,25 žmogaus darbo dienos (žm.~d.), arba apie 35,2
 žmogaus darbo mėnesio (žm.~mėn.; vienas žm.~mėn. – 21 darbo diena, d.~d.).
 Programavimas sudaro 309~žm.~d., su juo susijusios reikalavimų,
 projektavimo, testavimo ir valdymo veiklos – 231,75~žm.~d., o neprograminiai
 darbai (įranga, turinio gamyba, bandymai objekte, mokymai ir pilotinis
-naudojimas) – 198,5~žm.~d. Su 26~žm.~d. rizikų rezervu bazinis planas yra
-765,25~žm.~d. (apie 36,4~žm.~mėn.); išplėtimai į įvertį neįtraukti.
+naudojimas) – 198,5~žm.~d. Su 26~žm.~d. rizikų rezervu bazinis planas sudaro
+765,25~žm.~d. (apie 36,4~žm.~mėn.). Išplėtimai į įvertį neįtraukti.
 
 \subsection{Vertinimo metodas}
 
@@ -21,7 +21,7 @@ kiekvienai sistemos daliai atskirai PERT metodu.
 PROBE metodas šiam projektui netinka: jis remiasi komandos istoriniais
 duomenimis apie anksčiau sukurtų komponentų dydį ir jų kūrimo trukmę, o tokių
 duomenų neturime. FP metodas tinka, nes funkciniai taškai skaičiuojami pagal
-tai, ką sistema daro naudotojams, o tai jau žinoma iš poreikių aprašo ir
+naudotojui matomas sistemos funkcijas, o jos jau žinomos iš poreikių aprašo ir
 sistemos vizijos. Programos kodo tam nereikia.
 
 Darbo sąnaudų iš FP tiesiogiai neskaičiavome, nes nežinome, kiek darbo mūsų
@@ -30,7 +30,7 @@ sudėtingumo: realiojo laiko vykdymo variklio, grotuvo programos, garso įrangos
 integracijos ir infrastruktūros. Todėl kiekvienos dalies sąnaudas įvertinome
 ekspertiškai trimis reikšmėmis (optimistine, tikėtiniausia ir pesimistine),
 apskaičiavome PERT įvertį ir dalių įverčius sudėjome. FP naudojome dalims
-palyginti: didesnei daliai skyrėme didesnes sąnaudas. Įverčio eilutės
+palyginti: daliai su daugiau funkcinių taškų paprastai skyrėme didesnes sąnaudas. Įverčio eilutės
 sudarytos pagal sistemos dalis, o kiekvienos tvarkaraščio veiklos ryšys su
 WBS darbų paketais nurodytas tvarkaraščio faile
 \texttt{project-plan/\allowbreak resources/\allowbreak schedule.csv}.
@@ -38,16 +38,19 @@ WBS darbų paketais nurodytas tvarkaraščio faile
 
 \subsection{Sistemos dydis funkciniais taškais}
 
-Sistemos dydis – 381 nekoreguotas funkcinis taškas (UFP). Suskaičiavome
+Sistemos dydis – 398 nekoreguoti funkciniai taškai (UFP). Suskaičiavome
 87 funkcijas: 9 vidinius loginius failus (ILF), 47 išorines įvestis (EI),
 8 išorines išvestis (EO) ir 23 išorines užklausas (EQ). Išorinių sąsajų
 failų (EIF) nėra, nes bazinė sistemos versija su kitomis sistemomis
-nesijungia. Kiekvienos funkcijos sudėtingumą pagal DET, RET ir FTR skaičių
+nėra integruota. Kiekvienos funkcijos sudėtingumą pagal DET, RET ir FTR skaičių
 nustatėme paskaitos SE-03 matricomis; išorinės užklausos (EQ) vertintos ta
 pačia matrica kaip įvestys (EI). Funkcijų skaičius pagal sudėtingumą pateiktas
 \ref{tab:fp-sud}~lentelėje, o dydis pagal sistemos dalis –
 \ref{tab:fp}~lentelėje. Dalys P0--P7 atitinka sistemos vizijos skaidymą. P0 apima paskyras,
-prisijungimą, vaidmenis, sporto erdves ir jų įrangos nustatymus.
+prisijungimą, vaidmenis, sporto erdves ir jų įrangos nustatymus. Visos
+87 funkcijos su DET, RET ir FTR skaičiais išvardytos \ref{sec:priedas-fp}~priede
+(\ref{tab:fp-sarasas}~lentelė), o dalies P3 skaičiavimas išsamiai
+paaiškintas \ref{sec:priedas-p3}~poskyryje.
 
 \begin{table}[H]
   \centering
@@ -62,25 +65,25 @@ prisijungimą, vaidmenis, sporto erdves ir jų įrangos nustatymus.
     \midrule
     ILF & 6 & 7 & 3 & 10 & 0 & 15 & 72 \\
     EIF & 0 & 5 & 0 & 7 & 0 & 10 & 0 \\
-    EI & 27 & 3 & 12 & 4 & 8 & 6 & 177 \\
-    EO & 0 & 4 & 6 & 5 & 2 & 7 & 44 \\
-    EQ & 12 & 3 & 7 & 4 & 4 & 6 & 88 \\
+    EI & 24 & 3 & 15 & 4 & 8 & 6 & 180 \\
+    EO & 0 & 4 & 4 & 5 & 4 & 7 & 48 \\
+    EQ & 10 & 3 & 5 & 4 & 8 & 6 & 98 \\
     \midrule
-    \textbf{Iš viso} & \textbf{45} & & \textbf{28} & & \textbf{14} & & \textbf{381} \\
+    \textbf{Iš viso} & \textbf{40} & & \textbf{27} & & \textbf{20} & & \textbf{398} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 Funkciniai taškai skaičiuojami naudotojo požiūriu: vertinama kiekviena funkcija,
 kurią naudotojas atlieka ar mato, ir kiekviena duomenų grupė, kurią sistema
-saugo. Todėl didžiausia dalis yra užsiėmimų programų valdymas (P1, 94~UFP).
+saugo. Todėl didžiausia dalis yra užsiėmimų programų valdymas (P1, 96~UFP).
 Joje treneris kuria, keičia ir šalina programas, jų etapus ir pratimus,
 peržiūri programų sąrašą, pratimų katalogą ir versijų istoriją.
 
-Vaizdinio turinio pateikimas (P5) ir garso komunikacija (P6) turi tik 7 ir
+Dalys „Vaizdinio turinio pateikimas“ (P5) ir „Garso įranga“ (P6) turi tik 7 ir
 8~UFP, nors techniškai yra sudėtingiausios. Naudotojui čia matomos tik kelios
 funkcijos, o sinchronizacija realiuoju laiku, grotuvo programa ir radijo
-siųstuvo integracija vyksta sistemos viduje, ir FP jų nemato. Šį darbą
+siųstuvo integracija veikia sistemos viduje, todėl FP jų neapima. Šį darbą
 vertinome atskirai kaip FP nematomą programinę įrangą (S1--S4,
 \ref{tab:pert}~lentelė).
 
@@ -94,16 +97,16 @@ vertinome atskirai kaip FP nematomą programinę įrangą (S1--S4,
     \toprule
     \textbf{Kodas} & \textbf{Sistemos dalis} & \textbf{ILF} & \textbf{EIF} & \textbf{EI} & \textbf{EO} & \textbf{EQ} & \textbf{Funkcijų sk.} & \textbf{UFP} \\
     \midrule
-    P0 & Paskyros, sporto erdvės ir įranga & 21 & 0 & 41 & 0 & 23 & 23 & 85 \\
-    P1 & Užsiėmimų programų valdymas & 24 & 0 & 45 & 0 & 25 & 22 & 94 \\
-    P2 & Užsiėmimų valdymas & 10 & 0 & 40 & 10 & 6 & 13 & 66 \\
-    P3 & Dalyvių valdymas & 7 & 0 & 18 & 12 & 18 & 13 & 55 \\
+    P0 & Paskyros, administravimas ir sporto erdvės & 21 & 0 & 43 & 0 & 23 & 23 & 87 \\
+    P1 & Užsiėmimų programų valdymas & 24 & 0 & 46 & 0 & 26 & 22 & 96 \\
+    P2 & Užsiėmimų valdymas & 10 & 0 & 40 & 12 & 6 & 13 & 68 \\
+    P3 & Dalyvių valdymas & 7 & 0 & 18 & 14 & 27 & 13 & 66 \\
     P4 & Asmeninių programų valdymas & 10 & 0 & 30 & 0 & 10 & 10 & 50 \\
     P5 & Vaizdinio turinio pateikimas & 0 & 0 & 0 & 7 & 0 & 1 & 7 \\
-    P6 & Garso komunikacija & 0 & 0 & 3 & 5 & 0 & 2 & 8 \\
+    P6 & Garso įranga & 0 & 0 & 3 & 5 & 0 & 2 & 8 \\
     P7 & Duomenų ir istorijos valdymas & 0 & 0 & 0 & 10 & 6 & 3 & 16 \\
     \midrule
-    & \textbf{Iš viso, UFP} & \textbf{72} & \textbf{0} & \textbf{177} & \textbf{44} & \textbf{88} & & \textbf{381} \\
+    & \textbf{Iš viso, UFP} & \textbf{72} & \textbf{0} & \textbf{180} & \textbf{48} & \textbf{98} & & \textbf{398} \\
     & \textbf{Funkcijų skaičius} & 9 & 0 & 47 & 8 & 23 & \textbf{87} & \\
     \bottomrule
   \end{tabularx}
@@ -113,16 +116,31 @@ vertinome atskirai kaip FP nematomą programinę įrangą (S1--S4,
 
 Nekoreguotą dydį koregavome pagal 14 bendrųjų sistemos charakteristikų
 (GSC), kurių kiekviena įvertinta balu nuo 0 iki 5 (\ref{tab:gsc}~lentelė).
-Balų suma (TDI) yra 41, todėl vertės koregavimo koeficientas
-$\mathrm{VAF} = 0{,}65 + 0{,}01 \times 41 = 1{,}06$, o koreguotas dydis
-$\mathrm{AFP} = 381 \times 1{,}06 \approx 404$ funkciniai taškai.
+Balų suma (TDI) yra 42, todėl vertės koregavimo koeficientas
+$\mathrm{VAF} = 0{,}65 + 0{,}01 \times 42 = 1{,}07$, o koreguotas dydis
+$\mathrm{AFP} = 398 \times 1{,}07 \approx 426$ funkciniai taškai.
 
-Didžiausią balą (5) gavo tiesioginis duomenų įvedimas: visus duomenis
-naudotojai įveda patys per žiniatinklio sąsają, ir jie iškart įrašomi į
-sistemą, o paketinio apdorojimo nėra. Dauguma kitų balų ginčytini: jei 12
-iš jų būtų vienu balu mažesni ar didesni, AFP svyruotų nuo 358 iki 450.
-Darbo sąnaudų įverčiui tai įtakos neturi, nes sąnaudas vertinome kiekvienai
-daliai atskirai, o ne iš AFP.
+Didžiausią balą (5) gavo dvi charakteristikos. Tiesioginis duomenų įvedimas
+(GSC~6) vertinamas 5 balais, kai daugiau nei 30~\% transakcijų yra
+interaktyvus duomenų įvedimas. Mūsų sistemoje iš 78 transakcijų funkcijų 47
+yra įvestys (60~\%), visos jos vykdomos per žiniatinklio sąsają, o
+paketinio apdorojimo nėra. Kelių vietų palaikymas (GSC~13) vertinamas
+5 balais, nes sistema diegiama dviejose to paties centro vietose su skirtinga
+įranga (baseine IP66 ekranai ir kaulinio laidumo ausinės, sporto salėje
+televizorius ir kolonėlės). Plane abiem vietoms numatyta parengta ir
+išbandyta dokumentacija bei palaikymas (tarpiniai rezultatai,
+\ref{tab:kt}~lentelė): montavimo aktas (KT8), bandymai baseine ir sporto
+salėje (KT11), naudotojo vadovai ir mokymai (KT12), pilotinis naudojimas
+(KT13) ir garantinis palaikymas (KT15). Kitų centrų nevertinome, nes jie
+priskirti išplėtimams. Paskirstytam duomenų apdorojimui (GSC~2) skirti
+3 balai: turinys į grotuvą atsiunčiamas prieš užsiėmimą, o komandos
+realiuoju laiku perduodamos iš debesies į grotuvą, kuris jas vykdo vietoje.
+Atgal grotuvas siunčia tik būsenos signalus, todėl duomenys perduodami viena
+kryptimi; 4 balai skiriami, kai jie perduodami abiem kryptimis. Dauguma balų
+ginčytini: jei 12 iš jų (visi, išskyrus GSC~6 ir 8) būtų vienu balu mažesni
+ar didesni (kiek leidžia skalė), AFP svyruotų nuo 378 iki 470. Darbo sąnaudų įverčiui tai
+įtakos neturi, nes sąnaudas vertinome kiekvienai daliai atskirai, o ne iš
+AFP.
 
 
 \begin{table}[H]
@@ -135,7 +153,7 @@ daliai atskirai, o ne iš AFP.
     \textbf{Nr.} & \textbf{Charakteristika} & \textbf{Įtaka (0--5)} \\
     \midrule
     1 & Duomenų perdavimas & 4 \\
-    2 & Paskirstytas duomenų apdorojimas & 4 \\
+    2 & Paskirstytas duomenų apdorojimas & 3 \\
     3 & Našumas & 3 \\
     4 & Smarkiai apkrauta konfigūracija & 3 \\
     5 & Transakcijų dažnumas & 3 \\
@@ -146,12 +164,12 @@ daliai atskirai, o ne iš AFP.
     10 & Pakartotinis panaudojimas & 2 \\
     11 & Diegimo lengvumas & 1 \\
     12 & Eksploatavimo lengvumas & 2 \\
-    13 & Kelių vietų palaikymas & 3 \\
+    13 & Kelių vietų palaikymas & 5 \\
     14 & Pokyčių palengvinimas & 2 \\
     \midrule
-    & \textbf{Bendra įtaka (TDI)} & \textbf{41} \\
-    & Vertės koregavimo koeficientas VAF $= 0{,}65 + 0{,}01 \times 41$ & 1,06 \\
-    & Koreguoti funkciniai taškai AFP $= 381 \times 1{,}06 = 403{,}86$ & \textbf{$\approx$\,404} \\
+    & \textbf{Bendra įtaka (TDI)} & \textbf{42} \\
+    & Vertės koregavimo koeficientas VAF $= 0{,}65 + 0{,}01 \times 42$ & 1,07 \\
+    & Koreguoti funkciniai taškai AFP $= 398 \times 1{,}07 = 425{,}86$ & \textbf{$\approx$\,426} \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -160,8 +178,8 @@ daliai atskirai, o ne iš AFP.
 
 Kiekvienai sistemos daliai nurodėme tris darbo sąnaudų įverčius:
 optimistinį (O), tikėtiniausią (M) ir pesimistinį (P). Iš jų apskaičiavome
-PERT įvertį $E = (O + 4M + P)/6$, suapvalintą iki 0,5~žm.~d., ir
-standartinį nuokrypį $\sigma = (P - O)/6$, suapvalintą iki 0,1~žm.~d.
+PERT įvertį $E = (O + 4M + P)/6$, suapvalintą 0,5~žm.~d. tikslumu, ir
+standartinį nuokrypį $\sigma = (P - O)/6$, suapvalintą 0,1~žm.~d. tikslumu
 (\ref{tab:pert}~lentelė). Tikėtiniausias įvertis turi didžiausią svorį, nes
 jis realistiškiausias, o $\sigma$ rodo, kiek neapibrėžtas dalies įvertis.
 
@@ -174,8 +192,8 @@ nematomos programinės įrangos (S1--S4) – 128~žm.~d., iš viso 309~žm.~d.
 
 Neprograminius darbus (N1--N5: įrangą, turinio gamybą, bandymus objekte,
 mokymus ir dokumentaciją, pilotinį naudojimą ir perdavimą) taip pat
-vertinome PERT metodu; jie sudaro 198,5~žm.~d. Procentinio priedo prie jų
-nepridėjome, nes tai nėra programų realizacija, o dalis šių darbų
+vertinome PERT metodu; jie sudaro 198,5~žm.~d. Procentinio priedo jiems
+netaikėme, nes tai nėra programų realizacija, o dalis šių darbų
 (integraciniai bandymai objekte ir priėmimo bandymas) pati yra testavimas.
 
 
@@ -189,13 +207,13 @@ nepridėjome, nes tai nėra programų realizacija, o dalis šių darbų
     \toprule
     \textbf{Kodas} & \textbf{Sistemos dalis ar darbas} & \textbf{O} & \textbf{M} & \textbf{P} & \textbf{E} & {\boldmath$\sigma$} & \textbf{\makecell[r]{žm.~d. /\\UFP}} \\
     \midrule
-    P0 & Paskyros, sporto erdvės ir įranga & 23 & 33 & 50 & 34,0 & 4,5 & 0,40 \\
-    P1 & Užsiėmimų programų valdymas & 27 & 38 & 58 & 39,5 & 5,2 & 0,42 \\
-    P2 & Užsiėmimų valdymas & 22 & 32 & 50 & 33,5 & 4,7 & 0,51 \\
-    P3 & Dalyvių valdymas & 18 & 25 & 38 & 26,0 & 3,3 & 0,47 \\
+    P0 & Paskyros, administravimas ir sporto erdvės & 23 & 33 & 50 & 34,0 & 4,5 & 0,39 \\
+    P1 & Užsiėmimų programų valdymas & 27 & 38 & 58 & 39,5 & 5,2 & 0,41 \\
+    P2 & Užsiėmimų valdymas & 22 & 32 & 50 & 33,5 & 4,7 & 0,49 \\
+    P3 & Dalyvių valdymas & 18 & 25 & 38 & 26,0 & 3,3 & 0,39 \\
     P4 & Asmeninių programų valdymas & 15 & 22 & 34 & 23,0 & 3,2 & 0,46 \\
     P5 & Vaizdinio turinio pateikimas & 4 & 8 & 14 & 8,5 & 1,7 & 1,21 \\
-    P6 & Garso komunikacija & 4 & 7 & 12 & 7,5 & 1,3 & 0,94 \\
+    P6 & Garso įranga & 4 & 7 & 12 & 7,5 & 1,3 & 0,94 \\
     P7 & Duomenų ir istorijos valdymas & 5 & 9 & 14 & 9,0 & 1,5 & 0,56 \\
     \midrule
     & \textbf{A. FP matomos sistemos dalys} & & & & \textbf{181,0} & & \\
@@ -223,11 +241,11 @@ nepridėjome, nes tai nėra programų realizacija, o dalis šių darbų
 
 Programavimo įvertis (309~žm.~d.) neapima kitų projekto veiklų. Reikalavimų
 analizės, projektavimo, testavimo ir projekto valdymo sąnaudas apskaičiavome
-procentiniu metodu, t.~y. kaip dalį nuo programavimo sąnaudų: reikalavimai
+procentiniu metodu, t.~y. kaip programavimo sąnaudų dalį: reikalavimai
 15~\%, projektavimas 20~\%, testavimas 30~\%, projekto valdymas 10~\%. Iš viso
 tai sudaro 75~\%, arba 231,75~žm.~d. (\ref{tab:priedas}~lentelė).
 
-Priedas nėra rezervas. Tai suplanuotas darbas, kuris tvarkaraštyje turi
+Priedas nėra rezervas. Tai suplanuotas darbas, kuris tvarkaraštyje suskirstytas į
 atskiras veiklas: reikalavimų specifikaciją, architektūros projektavimą,
 kiekvienos iteracijos testavimą ir projekto valdymą. Rizikoms skirti
 atskiri rezervai: registre surašytoms rizikoms – rizikų rezervas, o
@@ -236,7 +254,7 @@ nenumatytiems atvejams – valdymo rezervas (\ref{tab:sanaudos}~lentelė).
 
 \begin{table}[H]
   \centering
-  \caption{Priedas prie programavimo sąnaudų (309~žm.~d.) pagal paskaitos procentus}
+  \caption{Priedas prie programavimo sąnaudų (309~žm.~d.) pagal paskaitoje nurodytus procentus}
   \label{tab:priedas}
   \small
   \begin{tabular}{@{}lrr@{}}
@@ -258,8 +276,7 @@ nenumatytiems atvejams – valdymo rezervas (\ref{tab:sanaudos}~lentelė).
 Be rezervų projekto darbo sąnaudos sudaro 739,25~žm.~d., arba apie
 35,2~žm.~mėn. (\ref{tab:sanaudos}~lentelė).
 
-Rizikų rezervas skirtas registre surašytoms rizikoms ir trims naujoms
-projekto rizikoms (IR2, OR2, OR3). Kiekvienai rizikai
+Rizikų rezervas skirtas registre surašytoms rizikoms. Kiekvienai rizikai
 apskaičiavome tikėtinąją vertę (angl. \textit{expected monetary value},
 EMV): tikimybę padauginome iš papildomų sąnaudų, kurių prireiktų rizikai
 įvykus. Pavyzdžiui, drėgmės poveikio įrangai (TR1) tikimybė yra 35~\%, o
@@ -269,7 +286,7 @@ rezervą valdo projekto vadovas. Su rizikų rezervu bazinis planas sudaro
 765,25~žm.~d. (apie 36,4~žm.~mėn.).
 
 Valdymo rezervas (5~\%, apie 37~žm.~d.) skirtas nenumatytiems atvejams,
-kurių registre nėra. Jį laiko užsakovas, todėl projekto vadovas gali jį
+kurių registre nėra. Jį valdo užsakovas, todėl projekto vadovas gali jį
 naudoti tik užsakovui sutikus. Su abiem rezervais sąnaudos sudaro
 802,25~žm.~d. (apie 38,2~žm.~mėn.).
 
@@ -289,7 +306,7 @@ naudoti tik užsakovui sutikus. Su abiem rezervais sąnaudos sudaro
     \textbf{Iš viso be rezervų} & \textbf{739,25} & \textbf{35,20} \\
     Rizikų rezervas ($\Sigma$ EMV) & 26,00 & 1,24 \\
     \textbf{Bazinis planas} & \textbf{765,25} & \textbf{36,44} \\
-    Valdymo rezervas (5~\%, laiko užsakovas) & 37,00 & 1,76 \\
+    Valdymo rezervas (5~\%, valdo užsakovas) & 37,00 & 1,76 \\
     \midrule
     \textbf{Iš viso su rezervais} & \textbf{802,25} & \textbf{38,20} \\
     \bottomrule
@@ -324,49 +341,53 @@ naudoti tik užsakovui sutikus. Su abiem rezervais sąnaudos sudaro
 
 Rizikų vertinimo lentelėje (\ref{tab:rizikos_vertinimas}~lentelė) nurodyta
 pradinė tikimybė, t.~y. kokia ji būtų be jokių priemonių. Ji įvertinta
-balais, kuriuos verčiame procentais taip: 1~balas – 0--19~\%, 2~balai –
+balais, kurie atitinka šiuos tikimybės intervalus: 1~balas – 0--19~\%, 2~balai –
 20--39~\%, 3~balai – 40--59~\%, 4~balai – 60--79~\%, 5~balai –
-80--100~\%. Rezervui naudojome likutinę tikimybę, kuri lieka po
-tvarkaraštyje suplanuotų priemonių. Todėl trijų rizikų tikimybės rezerve
-mažesnės. Drėgmės poveikio įrangai (TR1) ir įrangos suderinamumo (IR1)
-tikimybė sumažėja, nes prieš perkant visą įrangą bandomasis komplektas ir
-prototipas išbandomi baseine, o radus problemą sprendimas pakeičiamas.
+80--100~\%. Rezervui naudojome likutinę tikimybę, kuri lieka
+įgyvendinus tvarkaraštyje suplanuotas priemones. Todėl skaičiuojant rezervą šešių rizikų
+tikimybės mažesnės. Drėgmės poveikio įrangai (TR1), įrangos suderinamumo (IR1) ir
+radijo siųstuvo bei mikrofono grandinės (IR2) tikimybės sumažėja, nes prieš
+perkant visą įrangą bandomasis komplektas su radijo siųstuvu ir prototipas
+išbandomi baseine (KT4), o radus problemą sprendimas pakeičiamas.
 Ekranų matomumo (ER1) tikimybė sumažėja, nes bandomasis vaizdo klipas
-patikrinamas baseine prieš montuojant visus pratimus. Kitų registro rizikų
-tikimybės atitinka tos lentelės balus, o naujos rizikos IR2, OR2
-ir OR3 įvertintos po 30~\%. Serverio ir debesijos paslaugų teikėjo gedimai
+patikrinamas baseine prieš montuojant visus pratimus, o pratimų
+perfilmavimo (OR3)~– nes pirmoji pratimų partija suderinama su treneriais
+prieš filmuojant kitus pratimus. Įrangos tiekimo vėlavimas (OR2)
+retai virsta papildomu darbu, nes visa įranga užsakoma po KT4, o įrangos
+grandinė turi 41~d.~d. laisvo laiko. Kitų registro rizikų tikimybės
+atitinka tos lentelės balus. Serverio ir debesijos paslaugų teikėjo sutrikimai
 (TR3) į šį darbo sąnaudų rezervą neįtraukti: baziniame plane atskiro
-papildomo komandos darbo dėl tiekėjo gedimo nenumatyta. Tiekėjo
+papildomo komandos darbo dėl teikėjo sutrikimų nenumatyta. Teikėjo
 pasiekiamumo įsipareigojimai ir incidento eskalavimas riboja poveikį,
-tačiau neišsprendžia galimos prastovos; jei vertinant sutartį paaiškės
-papildomo darbo poreikis, rezervas ir tvarkaraštis turi būti peržiūrėti.
+tačiau nuo galimos prastovos neapsaugo; jei vertinant sutartį paaiškės
+papildomo darbo poreikis, rezervą ir tvarkaraštį reikės peržiūrėti.
 
 \subsection{Prielaidos}
 
 Įvertis galioja, kai tenkinamos šios sąlygos:
 \begin{itemize}
-  \item vertinama tik bazinė versija (poreikiai 1--13); išplėtimai
+  \item vertinama tik bazinė versija (poreikiai 1--13), o išplėtimai
     (poreikiai 14--20: mobilioji programėlė, dalyvių identifikavimas,
     programų ir vaizdo turinio biblioteka, programų pritaikymas, progreso
-    analizė, kelios erdvės ar centrai, reklama) ir galima integracija su
+    analizė, papildomos erdvės ar kiti centrai, reklama) ir galima integracija su
     sveikatos platformomis į įvertį neįtraukti;
   \item sistema diegiama viename sporto centre: vienoje baseino zonoje ir
     vienoje sporto salėje;
-  \item treneriai vaizdo įrašų nekelia, 4K raiškos nėra (turinys ir ekranai
+  \item treneriai vaizdo įrašų nekelia, 4K raiška nenaudojama (turinys ir ekranai
     Full HD), pratimai filmuojami iš anksto, o paruoštus failus įkelia
     administratorius;
   \item pradinė turinio biblioteka – apie 40 pratimų ir 10 programų,
     įgarsintų lietuviškai;
   \item architektūra – modulinis monolitas (NestJS, PostgreSQL, Redis), React
     žiniatinklio sąsaja ir vietiniai DSDX5 grotuvai;
-  \item programuotojai dirba visu etatu, yra vidutinio lygio, bent vienas turi
-    Android patirties;
-  \item 1~žm.~d. – 8 valandos; atostogos vertinamos tvarkaraštyje, ne
-    sąnaudose.
+  \item programuotojai dirba visu etatu, yra vidutinės kvalifikacijos, bent vienas turi
+    Android programėlių kūrimo patirties;
+  \item 1~žm.~d. – 8 valandos, o atostogos įskaičiuojamos į tvarkaraštį, ne
+    į sąnaudas.
 \end{itemize}
 
-Prielaidos parodo, kuo remiasi įvertis. Jei kuri nors iš jų pasikeistų,
+Jei kuri nors iš jų pasikeistų,
 pavyzdžiui, užsakovas pageidautų 4K turinio ar mobiliosios programėlės, tai
 būtų apimties pakeitimas: jis įvertinamas iš naujo, o papildomos sąnaudos
-suderinamos su užsakovu pagal pakeitimų valdymo procedūrą ir nedengiamos iš
+suderinamos su užsakovu pagal pokyčių valdymo procesą ir nedengiamos iš
 rezervų.
