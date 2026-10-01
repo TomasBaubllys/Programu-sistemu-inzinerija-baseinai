@@ -50,8 +50,8 @@ tame faile skaito arba keičia.
 \bottomrule
 \endlastfoot
 P3.1 & Rezervacijos ir lankomumas\newline ILF
- & \textbf{12}\newline rezervacija (8): užsiėmimas ir dalyvis (kas į kurį
-   užsiėmimą užsiregistravo), rezervavimo laikas, būsena (aktyvi, atšaukta,
+ & \textbf{12}\newline rezervacija (8): užsiėmimas, dalyvis (šie du laukai rodo, kas į kurį užsiėmimą
+   užsiregistravo), rezervavimo laikas, būsena (aktyvi, atšaukta,
    pašalinta), kas užregistravo (dalyvis, treneris ar administratorius),
    atšaukimo ar pašalinimo laikas, kas atšaukė ar pašalino, priminimas
    išsiųstas;\newline
@@ -169,8 +169,6 @@ P3.13 & Dalyvio kortelės peržiūra (treneriui)\newline EQ
 \endgroup
 
 \paragraph{Kodėl taip skaičiuota.}
-Toliau paaiškinti sprendimai, kurie lėmė \ref{tab:fp-p3}~lentelės skaičius.
-
 \begin{itemize}
   \item Failas „Rezervacijos ir lankomumas“ yra atskiras ILF, o ne
     užsiėmimo RET. Rezervacija sieja du nepriklausomus failus~– dalyvio
@@ -216,17 +214,16 @@ Toliau paaiškinti sprendimai, kurie lėmė \ref{tab:fp-p3}~lentelės skaičius.
     skaito tik paskyras (1~FTR) ir rodo visus naudotojus, ir nuo trenerio
     klientų sąrašo (P4.9), kuris rodo tik klientus, turinčius asmeninę
     programą, ir skaito failą „Asmeninė programa“.
-  \item Priminimas (P3.11) yra EO, o ne EQ: sistema ne tik pateikia
-    duomenis, bet ir taiko verslo logiką bei keičia vidinį failą~– kasdien
+  \item Priminimas (P3.11) yra EO, o ne EQ: sistema taiko verslo logiką ir keičia
+    vidinį failą~– kasdien
     pati atrenka rytdienos aktyvias rezervacijas, išsiunčia laišką dalyvio
     el.~paštu ir pažymi „priminimas išsiųstas“, kad laiškas nebūtų
     išsiųstas dukart. EQ tik pateikia informaciją ir vidinių failų
     nekeičia. Tai ir ne EI, nes per sistemos ribą duomenys neįeina, o
     pagrindinis veiksmo tikslas~– pranešti dalyviui.
   \item Trenerio dalyviai yra jo užsiėmimų dalyviai: dalyvis pasirenka
-    trenerį, kai rezervuoja jo užsiėmimą (P3.3), o individualiems
-    užsiėmimams dalyvį trenerio užsiėmimui priskiria administratorius arba
-    pats treneris (P3.5). Todėl atskiros dalyvio priskyrimo treneriui
+    trenerį, kai rezervuoja jo užsiėmimą (P3.3), o individualiam užsiėmimui dalyvį priskiria
+    administratorius arba pats treneris (P3.5). Todėl atskiros dalyvio priskyrimo treneriui
     funkcijos nėra, o sąrašas P3.12 dalyvius randa per trenerio užsiėmimus
     ir jų rezervacijas (3~FTR).
   \item Dalyvio kortelė (P3.13) ir naudotojo paskyros peržiūra (P0.14)

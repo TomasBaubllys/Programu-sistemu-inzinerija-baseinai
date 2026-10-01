@@ -30,7 +30,7 @@ sudėtingumo: realiojo laiko vykdymo variklio, grotuvo programos, garso įrangos
 integracijos ir infrastruktūros. Todėl kiekvienos dalies sąnaudas įvertinome
 ekspertiškai trimis reikšmėmis (optimistine, tikėtiniausia ir pesimistine),
 apskaičiavome PERT įvertį ir dalių įverčius sudėjome. FP naudojome dalims
-palyginti: didesnei daliai skyrėme didesnes sąnaudas. Įverčio eilutės
+palyginti: daliai su daugiau UFP paprastai skyrėme didesnes sąnaudas. Įverčio eilutės
 sudarytos pagal sistemos dalis, o kiekvienos tvarkaraščio veiklos ryšys su
 WBS darbų paketais nurodytas tvarkaraščio faile
 \texttt{project-plan/\allowbreak resources/\allowbreak schedule.csv}.
@@ -80,7 +80,7 @@ saugo. Todėl didžiausia dalis yra užsiėmimų programų valdymas (P1, 96~UFP)
 Joje treneris kuria, keičia ir šalina programas, jų etapus ir pratimus,
 peržiūri programų sąrašą, pratimų katalogą ir versijų istoriją.
 
-Vaizdinio turinio pateikimas (P5) ir garso įranga (P6) turi tik 7 ir
+Dalys „Vaizdinio turinio pateikimas“ (P5) ir „Garso įranga“ (P6) turi tik 7 ir
 8~UFP, nors techniškai yra sudėtingiausios. Naudotojui čia matomos tik kelios
 funkcijos, o sinchronizacija realiuoju laiku, grotuvo programa ir radijo
 siųstuvo integracija vyksta sistemos viduje, ir FP jų nemato. Šį darbą
@@ -118,24 +118,27 @@ Nekoreguotą dydį koregavome pagal 14 bendrųjų sistemos charakteristikų
 (GSC), kurių kiekviena įvertinta balu nuo 0 iki 5 (\ref{tab:gsc}~lentelė).
 Balų suma (TDI) yra 42, todėl vertės koregavimo koeficientas
 $\mathrm{VAF} = 0{,}65 + 0{,}01 \times 42 = 1{,}07$, o koreguotas dydis
-$\mathrm{AFP} = 398 \times 1{,}07 \approx 426$ funkcinių taškų.
+$\mathrm{AFP} = 398 \times 1{,}07 \approx 426$ funkciniai taškai.
 
-Didžiausią balą (5) gavo dvi charakteristikos. Tiesioginiam duomenų
-įvedimui (6) balui 5 pakanka, kad daugiau nei 30~\% transakcijų būtų
+Didžiausią balą (5) gavo dvi charakteristikos. Tiesioginis duomenų įvedimas
+(GSC~6) vertinamas 5 balais, kai daugiau nei 30~\% transakcijų yra
 interaktyvus duomenų įvedimas. Mūsų sistemoje iš 78 transakcinių funkcijų 47
 yra įvestys (60~\%), visos jos vykdomos per žiniatinklio sąsają, o
-paketinio apdorojimo nėra. Kelių vietų palaikymas (13) vertinamas 5 balais,
-nes baseine ir sporto salėje naudojama skirtinga įranga (baseine IP66
-ekranai ir kaulinio laidumo ausinės, salėje televizorius ir kolonėlės), o
-plane kiekvienai vietai numatyta parengta ir išbandyta dokumentacija bei
-palaikymas: montavimo aktas (KT8), naudotojo vadovai ir mokymai (KT12),
-pilotinis naudojimas abiejose vietose (KT13) ir garantinis palaikymas
-(KT15). Paskirstytam duomenų apdorojimui (2) skirti 3 balai: komandos ir
-turinys realiuoju laiku keliauja iš debesies į grotuvą, kuris juos vykdo
-vietoje, o atgal grotuvas siunčia tik būsenos signalus ir duomenų
-neapdoroja, todėl duomenys keliauja viena kryptimi. Dauguma kitų balų
-ginčytini: jei 12 iš jų būtų vienu balu mažesni ar didesni (kiek leidžia
-skalė), AFP svyruotų nuo 378 iki 470. Darbo sąnaudų įverčiui tai
+paketinio apdorojimo nėra. Kelių vietų palaikymas (GSC~13) vertinamas
+5 balais, nes sistema diegiama dviejose to paties centro vietose su skirtinga
+įranga (baseine IP66 ekranai ir kaulinio laidumo ausinės, salėje
+televizorius ir kolonėlės), o plane abiem vietoms numatyta parengta ir
+išbandyta dokumentacija bei palaikymas (tarpiniai rezultatai,
+\ref{tab:kt}~lentelė): montavimo aktas (KT8), bandymai baseine ir sporto
+salėje (KT11), naudotojo vadovai ir mokymai (KT12), pilotinis naudojimas
+(KT13) ir garantinis palaikymas (KT15). Kitų centrų, kurie priklauso
+išplėtimams, nevertinome. Paskirstytam duomenų apdorojimui (GSC~2) skirti
+3 balai: turinys į grotuvą atsiunčiamas prieš užsiėmimą, o komandos
+realiuoju laiku keliauja iš debesies į grotuvą, kuris jas vykdo vietoje.
+Atgal grotuvas siunčia tik būsenos signalus, todėl duomenys perduodami viena
+kryptimi; 4 balai skiriami, kai jie keliauja abiem kryptimis. Dauguma balų
+ginčytini: jei 12 iš jų (visi, išskyrus GSC~6 ir 8) būtų vienu balu mažesni
+ar didesni (kiek leidžia skalė), AFP svyruotų nuo 378 iki 470. Darbo sąnaudų įverčiui tai
 įtakos neturi, nes sąnaudas vertinome kiekvienai daliai atskirai, o ne iš
 AFP.
 
@@ -273,8 +276,7 @@ nenumatytiems atvejams – valdymo rezervas (\ref{tab:sanaudos}~lentelė).
 Be rezervų projekto darbo sąnaudos sudaro 739,25~žm.~d., arba apie
 35,2~žm.~mėn. (\ref{tab:sanaudos}~lentelė).
 
-Rizikų rezervas skirtas registre surašytoms rizikoms ir trims naujoms
-projekto rizikoms (IR2, OR2, OR3). Kiekvienai rizikai
+Rizikų rezervas skirtas registre surašytoms rizikoms. Kiekvienai rizikai
 apskaičiavome tikėtinąją vertę (angl. \textit{expected monetary value},
 EMV): tikimybę padauginome iš papildomų sąnaudų, kurių prireiktų rizikai
 įvykus. Pavyzdžiui, drėgmės poveikio įrangai (TR1) tikimybė yra 35~\%, o
@@ -346,11 +348,11 @@ tvarkaraštyje suplanuotų priemonių. Todėl šešių rizikų tikimybės rezerv
 mažesnės. Drėgmės poveikio įrangai (TR1), įrangos suderinamumo (IR1) ir
 radijo siųstuvo bei mikrofono grandinės (IR2) tikimybė sumažėja, nes prieš
 perkant visą įrangą bandomasis komplektas su radijo siųstuvu ir prototipas
-išbandomi baseine (A10, KT4), o radus problemą sprendimas pakeičiamas.
+išbandomi baseine (KT4), o radus problemą sprendimas pakeičiamas.
 Ekranų matomumo (ER1) tikimybė sumažėja, nes bandomasis vaizdo klipas
-patikrinamas baseine prieš montuojant visus pratimus (A74), o pratimų
+patikrinamas baseine prieš montuojant visus pratimus, o pratimų
 perfilmavimo (OR3)~– nes pirmoji pratimų partija suderinama su treneriais
-prieš filmuojant kitus pratimus (A73). Įrangos tiekimo vėlavimas (OR2)
+prieš filmuojant kitus pratimus. Įrangos tiekimo vėlavimas (OR2)
 retai virsta papildomu darbu, nes visa įranga užsakoma po KT4, o įrangos
 grandinė turi 41~d.~d. laisvo laiko. Kitų registro rizikų tikimybės
 atitinka tos lentelės balus. Serverio ir debesijos paslaugų teikėjo gedimai
@@ -367,7 +369,7 @@ papildomo darbo poreikis, rezervas ir tvarkaraštis turi būti peržiūrėti.
   \item vertinama tik bazinė versija (poreikiai 1--13); išplėtimai
     (poreikiai 14--20: mobilioji programėlė, dalyvių identifikavimas,
     programų ir vaizdo turinio biblioteka, programų pritaikymas, progreso
-    analizė, kelios erdvės ar centrai, reklama) ir galima integracija su
+    analizė, papildomos erdvės ar kiti centrai, reklama) ir galima integracija su
     sveikatos platformomis į įvertį neįtraukti;
   \item sistema diegiama viename sporto centre: vienoje baseino zonoje ir
     vienoje sporto salėje;

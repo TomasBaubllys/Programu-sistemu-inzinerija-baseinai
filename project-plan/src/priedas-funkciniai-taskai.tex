@@ -4,15 +4,15 @@
 
 \section{Funkcinių taškų skaičiavimas}\label{sec:priedas-fp}
 
-Šiame priede išvardytos visos 87 funkcijos, pagal kurias apskaičiuotas
-sistemos dydis – 398 nekoreguoti funkciniai taškai (\ref{sec:dydis}~skyrius).
-Kiekvienai funkcijai \ref{tab:fp-sarasas}~lentelėje nurodytas tipas, DET, RET
-ir FTR skaičius, sudėtingumas ir nekoreguoti funkciniai taškai (UFP). Vidinio
-loginio failo (ILF) sudėtingumą lemia DET ir RET, o įvesties (EI), išvesties
-(EO) ir užklausos (EQ) – DET ir FTR, todėl nenaudojamas stulpelis pažymėtas
-brūkšniu. Sudėtingumas nustatytas paskaitos SE-03 matricomis; užklausos
-vertintos ta pačia matrica kaip įvestys. Svoriai pagal sudėtingumą (žemas,
-vidutinis, aukštas): ILF – 7, 10 ir 15; EI ir EQ – 3, 4 ir 6; EO – 4, 5 ir 7.
+Visos 87 funkcijos, pagal kurias apskaičiuotas sistemos dydis~– 398 nekoreguoti funkciniai taškai
+(\ref{sec:dydis}~skyrius), išvardytos \ref{tab:fp-sarasas}~lentelėje. Kiekvienai
+funkcijai nurodytas tipas, DET, RET ir FTR skaičius, sudėtingumas ir
+nekoreguoti funkciniai taškai (UFP). Vidinio loginio failo (ILF)
+sudėtingumą lemia DET ir RET, o įvesties (EI), išvesties (EO) ir užklausos
+(EQ)~– DET ir FTR, todėl nenaudojamas stulpelis pažymėtas brūkšniu.
+Sudėtingumas nustatytas paskaitos SE-03 matricomis; užklausos vertintos ta
+pačia matrica kaip įvestys. Svoriai pagal sudėtingumą (žemas, vidutinis,
+aukštas): ILF~– 7, 10 ir 15; EI ir EQ~– 3, 4 ir 6; EO~– 4, 5 ir 7.
 Funkcijos sugrupuotos pagal tas pačias sistemos dalis P0--P7 kaip
 \ref{tab:fp}~lentelėje; dalies eilutėje nurodytas jos funkcijų skaičius ir
 UFP suma.
@@ -96,7 +96,7 @@ P2.4 & Užsiėmimo keitimas (pranešant užsiregistravusiems) & EI & 16 & -- & 5
 P2.5 & Užsiėmimo atšaukimas (atšaukiant rezervacijas ir pranešant dalyviams) & EI & 8 & -- & 3 & aukštas & 6 \\
 P2.6 & Užsiėmimo paleidimas & EI & 3 & -- & 3 & vidutinis & 4 \\
 P2.7 & Užsiėmimo pristabdymas ir tęsimas & EI & 3 & -- & 1 & žemas & 3 \\
-P2.8 & Perėjimas prie kito, praleidžiamo ar pasirinkto etapo & EI & 4 & -- & 2 & žemas & 3 \\
+P2.8 & Etapo praleidimas, perėjimas prie kito ar pasirinkto etapo & EI & 4 & -- & 2 & žemas & 3 \\
 P2.9 & Etapo trukmės koregavimas vykdymo metu & EI & 4 & -- & 2 & žemas & 3 \\
 P2.10 & Užsiėmimo užbaigimas & EI & 3 & -- & 1 & žemas & 3 \\
 P2.11 & Trenerio ir administratoriaus užsiėmimų sąrašas su užimtumu & EO & 10 & -- & 4 & aukštas & 7 \\
@@ -135,7 +135,7 @@ P5.1 & Dabartinio ir kito etapo rodymas ekrane (vaizdo įrašas, instrukcija, li
 \addlinespace[3pt]
 \multicolumn{8}{@{}l@{}}{\textbf{P6. Garso įranga (2 funkcijos, 8 UFP)}} \\*
 P6.1 & Įrašytų etapo garso instrukcijų perdavimas į ausines ar kolonėles & EO & 5 & -- & 4 & vidutinis & 5 \\
-P6.2 & Instrukcijų garso valdymas vedėjui kalbant (nutildymas, garsumas) & EI & 3 & -- & 2 & žemas & 3 \\
+P6.2 & Instrukcijų garso valdymas treneriui kalbant (nutildymas, garsumas) & EI & 3 & -- & 2 & žemas & 3 \\
 \addlinespace[3pt]
 \multicolumn{8}{@{}l@{}}{\textbf{P7. Duomenų ir istorijos valdymas (3 funkcijos, 16 UFP)}} \\*
 P7.1 & Įvykusių užsiėmimų istorija su faktine eiga & EQ & 9 & -- & 3 & aukštas & 6 \\
