@@ -4,22 +4,22 @@
 \subsection{Išsamus dalies P3 skaičiavimas}\label{sec:priedas-p3}
 
 Dalis P3 „Dalyvių valdymas“ (13 funkcijų, 66~UFP) aprašyta išsamiai, nes
-joje yra visi keturi sistemoje esantys funkcijų tipai~– ILF, EI, EO ir EQ (EIF sistemoje nėra). Kiekvienai
+joje yra visi keturi sistemoje pasitaikantys funkcijų tipai~– ILF, EI, EO ir EQ (EIF sistemoje nėra). Kiekvienai
 funkcijai \ref{tab:fp-p3}~lentelėje įvardyti jos DET ir RET arba FTR, o
 paskutiniame stulpelyje~– matricos intervalai, kurie lėmė sudėtingumą.
 
-Transakcijoje DET~– naudotojui atpažįstamas laukas, kertantis sistemos
+Transakcijos DET~– naudotojui atpažįstamas laukas, kertantis sistemos
 ribą; ILF DET~– naudotojui atpažįstamas saugomas laukas, kurį įrašo arba
 skaito bent viena funkcija. DET skaičiuojami pagal IFPUG taisykles: įvestyje
 vienas DET skiriamas veiksmo mygtukui ir vienas~– sistemos pranešimui
 (patvirtinimui arba klaidai), o prisijungusio naudotojo tapatybė DET
 nelaikoma. Užklausas ir išvestis paleidžia pasirinkimas (filtras,
 laikotarpis, paieškos mygtukas arba sąrašo įrašas), kuris, kaip ir
-navigacijos mygtukas paskaitos pavyzdyje, laikomas veiksmo DET;
-priminimą (P3.11) sistema siunčia pati nustatytu laiku. Paskaitos parkavimo
+navigacijos mygtukas paskaitos pavyzdyje, laikomas veiksmo DET.
+Tik priminimą (P3.11) sistema siunčia pati nustatytu laiku. Paskaitos parkavimo
 pavyzdyje pranešimas atskiru DET nelaikomas; taip skaičiuojant, lankomumo
 pažymėjimas (P3.7, 4~DET ir 2~FTR) taptų žemo sudėtingumo, o P3 būtų
-65~UFP. Vardas ir pavardė yra du DET, kai rodomi atskiruose stulpeliuose
+65~UFP. Vardas ir pavardė laikomi dviem DET, kai rodomi atskiruose stulpeliuose
 ar kortelės laukuose.
 RET~– loginis ILF pogrupis, FTR~– ILF, kurį transakcija skaito arba keičia.
 FTR įvardyti ILF pavadinimais iš \ref{tab:fp-sarasas}~lentelės: „Naudotojo
@@ -81,8 +81,8 @@ P3.3 & Vietos rezervavimas (tikrinant laisvas vietas)\newline EI
  & \textbf{FTR 3}: Užsiėmimas (vietų skaičius, ar dar neprasidėjo);
    Rezervacijos ir lankomumas (užimtos vietos, nauja rezervacija, kas
    užregistravo); Naudotojo
-   paskyra (ar paskyra nedeaktyvuota: deaktyvuoto dalyvio rezervacijos
-   negalimos, plg. P0.12)
+   paskyra (ar paskyra nedeaktyvuota: deaktyvuotas dalyvis negali
+   rezervuoti, plg. P0.12)
  & vidutinis, 4\newline{\footnotesize DET 1–4\newline FTR 3+} \\
 \midrule
 P3.4 & Rezervacijos atšaukimas\newline EI
@@ -172,28 +172,28 @@ P3.13 & Dalyvio kortelės peržiūra (treneriui)\newline EQ
 \begin{itemize}
   \item Failas „Rezervacijos ir lankomumas“ yra atskiras ILF, o ne
     užsiėmimo RET. Rezervacija sieja du nepriklausomus failus~– dalyvio
-    paskyrą ir užsiėmimą~– ir nepriklauso nė vienam iš jų; naudotojas ją
-    mato kaip atskirą objektą („Mano rezervacijos“, lankomumo istorija per
-    visus užsiėmimus), o įrašai išlieka ir atšaukus užsiėmimą (P2.5) ar
+    paskyrą ir užsiėmimą~– ir nepriklauso nė vienam iš jų. Naudotojas ją
+    mato kaip atskirą objektą („Mano rezervacijos“, visų užsiėmimų lankomumo
+    istorija), o įrašai išlieka ir atšaukus užsiėmimą (P2.5) ar
     deaktyvavus paskyrą (P0.12), nes iš jų sudaroma istorija (P3.10) ir
     ataskaita (P7.2). Paskaitos parkavimo pavyzdyje būsenos failas,
-    siejantis automobilį ir zoną, taip pat yra atskiras ILF. Kliento
-    įvertinimas, priešingai, priklauso vienai asmeninei programai, todėl
-    jis yra RET (P4.1). Faile dar saugoma, kas užregistravo, kas ir kada
+    siejantis automobilį ir zoną, taip pat yra atskiras ILF. Kitaip nei
+    rezervacija, dalyvio įvertinimas priklauso vienai asmeninei programai,
+    todėl yra RET (P4.1). Faile dar saugoma, kas užregistravo, kas ir kada
     atšaukė ar pašalino rezervaciją, ar išsiųstas priminimas, kas ir kada
     pažymėjo lankomumą ir kada jį pataisė; \ref{tab:fp-p3}~lentelėje nurodyta,
-    kuri funkcija šiuos laukus įrašo. Net be šių laukų failas liktų žemo
+    kurios funkcijos šiuos laukus įrašo. Ir be šių laukų failas liktų žemo
     sudėtingumo (DET~1–19).
   \item Tvarkaraštis (P3.2) yra EO, o ne EQ, nes laisvų vietų skaičius
     nesaugomas: jis kaskart apskaičiuojamas iš užsiėmimo vietų skaičiaus
-    atimant aktyvių rezervacijų skaičių. Išvestis su skaičiavimais yra EO,
+    atimant aktyvių rezervacijų skaičių. Išvestis, kurioje yra apskaičiuotų duomenų, laikoma EO,
     o EQ tik pateikia saugomus duomenis. Užsiėmimo pavadinimas įvedamas
     planuojant užsiėmimą (P2.2, P2.3) ir saugomas faile „Užsiėmimas“.
   \item Rezervavimas (P3.3) ir priskyrimas (P3.5), taip pat atšaukimas
     (P3.4) ir pašalinimas (P3.6) yra atskiros funkcijos, nors keičia tą
     patį failą. Priskirdamas ar šalindamas treneris arba administratorius
     nurodo dalyvį (papildomas DET), o kai veiksmą atlieka treneris, sistema
-    dar tikrina, ar užsiėmimą veda jis; dalyvis rezervuoja ir atšaukia savo
+    dar tikrina, ar užsiėmimą veda jis. Dalyvis rezervuoja ir atšaukia savo
     vardu, todėl jo tapatybė DET nelaikoma.
   \item Lankomumo pažymėjimas ir taisymas (P3.7) yra viena įvestis: tas
     pats lankomumo ekranas, tie patys laukai, failai ir patikros; taisant
@@ -207,24 +207,24 @@ P3.13 & Dalyvio kortelės peržiūra (treneriui)\newline EQ
   \item Panašios funkcijos skaičiuojamos atskirai, nes skiriasi jų DET ir
     FTR. Rezervacijų peržiūra (P3.8) rodo vietą ir trenerį, todėl skaito ir
     failą „Sporto erdvė“, o iš failo „Naudotojo paskyra“~– trenerio vardą
-    (4~FTR);
-    lankomumo istorija (P3.10) vietos ir trenerio nerodo, bet rodo
+    (4~FTR).
+    Lankomumo istorija (P3.10) vietos ir trenerio nerodo, bet rodo
     užsiėmimo režimą ir lankomumo žymą (3~FTR). Trenerio dalyvių sąrašas
     (P3.12) skiriasi nuo administratoriaus naudotojų sąrašo (P0.13), kuris
     skaito tik paskyras (1~FTR) ir rodo visus naudotojus, ir nuo trenerio
-    klientų sąrašo (P4.9), kuris rodo tik klientus, turinčius asmeninę
-    programą, ir skaito failą „Asmeninė programa“.
+    dalyvių ir jų asmeninių programų sąrašo (P4.9), kuris rodo tik dalyvius,
+    turinčius asmeninę programą, ir skaito failą „Asmeninė programa“.
   \item Priminimas (P3.11) yra EO, o ne EQ: sistema taiko verslo logiką ir keičia
-    vidinį failą~– kasdien
-    pati atrenka rytdienos aktyvias rezervacijas, išsiunčia laišką dalyvio
-    el.~paštu ir pažymi „priminimas išsiųstas“, kad laiškas nebūtų
-    išsiųstas dukart. EQ tik pateikia informaciją ir vidinių failų
-    nekeičia. Tai ir ne EI, nes per sistemos ribą duomenys neįeina, o
+    ILF~– kasdien
+    pati atrenka rytdienos aktyvias rezervacijas, išsiunčia laišką dalyviui
+    el.~paštu ir įrašo žymą „priminimas išsiųstas“, kad laiškas nebūtų
+    išsiųstas dukart. EQ tik pateikia informaciją ir ILF
+    nekeičia. Tai nėra ir EI, nes per sistemos ribą duomenys neįeina, o
     pagrindinis veiksmo tikslas~– pranešti dalyviui.
   \item Trenerio dalyviai yra jo užsiėmimų dalyviai: dalyvis pasirenka
     trenerį, kai rezervuoja jo užsiėmimą (P3.3), o individualiam užsiėmimui dalyvį priskiria
     administratorius arba pats treneris (P3.5). Todėl atskiros dalyvio priskyrimo treneriui
-    funkcijos nėra, o sąrašas P3.12 dalyvius randa per trenerio užsiėmimus
+    funkcijos nėra, o sąraše P3.12 dalyviai atrenkami pagal trenerio užsiėmimus
     ir jų rezervacijas (3~FTR).
   \item Dalyvio kortelė (P3.13) ir naudotojo paskyros peržiūra (P0.14)
     skaito tą patį failą, bet rodo skirtingus laukus: treneris mato sportui

@@ -8,7 +8,7 @@ Visos 87 funkcijos, pagal kurias apskaičiuotas sistemos dydis~– 398 nekoreguo
 (\ref{sec:dydis}~skyrius), išvardytos \ref{tab:fp-sarasas}~lentelėje. Kiekvienai
 funkcijai nurodytas tipas, DET, RET ir FTR skaičius, sudėtingumas ir
 nekoreguoti funkciniai taškai (UFP). Vidinio loginio failo (ILF)
-sudėtingumą lemia DET ir RET, o įvesties (EI), išvesties (EO) ir užklausos
+sudėtingumą lemia DET ir RET, o išorinės įvesties (EI), išvesties (EO) ir užklausos
 (EQ)~– DET ir FTR, todėl nenaudojamas stulpelis pažymėtas brūkšniu.
 Sudėtingumas nustatytas paskaitos SE-03 matricomis; užklausos vertintos ta
 pačia matrica kaip įvestys. Svoriai pagal sudėtingumą (žemas, vidutinis,
@@ -77,9 +77,9 @@ P1.9 & Įrašo šalinimas (tikrinant naudojimą pratimuose ir programose) & EI &
 P1.10 & Programos sukūrimas & EI & 8 & -- & 1 & žemas & 3 \\
 P1.11 & Programos keitimas (sukuriama nauja versija) & EI & 8 & -- & 1 & žemas & 3 \\
 P1.12 & Programos šalinimas arba archyvavimas & EI & 3 & -- & 2 & žemas & 3 \\
-P1.13 & Etapo pridėjimas (trukmė, instrukcija, pratimai, vaizdo ir garso medžiaga) & EI & 12 & -- & 3 & aukštas & 6 \\
-P1.14 & Etapo keitimas (įskaitant eiliškumą) & EI & 12 & -- & 3 & aukštas & 6 \\
-P1.15 & Etapo šalinimas & EI & 3 & -- & 1 & žemas & 3 \\
+P1.13 & Programos etapo pridėjimas (trukmė, instrukcija, pratimai, vaizdo ir garso medžiaga) & EI & 12 & -- & 3 & aukštas & 6 \\
+P1.14 & Programos etapo keitimas (įskaitant eiliškumą) & EI & 12 & -- & 3 & aukštas & 6 \\
+P1.15 & Programos etapo šalinimas & EI & 3 & -- & 1 & žemas & 3 \\
 P1.16 & Pratimų katalogo peržiūra ir paieška & EQ & 7 & -- & 1 & žemas & 3 \\
 P1.17 & Pratimo peržiūra su demonstracija & EQ & 12 & -- & 2 & vidutinis & 4 \\
 P1.18 & Mokomosios medžiagos sąrašas & EQ & 7 & -- & 1 & žemas & 3 \\
@@ -96,11 +96,11 @@ P2.4 & Užsiėmimo keitimas (pranešant užsiregistravusiems) & EI & 16 & -- & 5
 P2.5 & Užsiėmimo atšaukimas (atšaukiant rezervacijas ir pranešant dalyviams) & EI & 8 & -- & 3 & aukštas & 6 \\
 P2.6 & Užsiėmimo paleidimas & EI & 3 & -- & 3 & vidutinis & 4 \\
 P2.7 & Užsiėmimo pristabdymas ir tęsimas & EI & 3 & -- & 1 & žemas & 3 \\
-P2.8 & Etapo praleidimas, perėjimas prie kito ar pasirinkto etapo & EI & 4 & -- & 2 & žemas & 3 \\
-P2.9 & Etapo trukmės koregavimas vykdymo metu & EI & 4 & -- & 2 & žemas & 3 \\
+P2.8 & Programos etapo praleidimas, perėjimas prie kito ar pasirinkto etapo & EI & 4 & -- & 2 & žemas & 3 \\
+P2.9 & Programos etapo trukmės koregavimas vykdymo metu & EI & 4 & -- & 2 & žemas & 3 \\
 P2.10 & Užsiėmimo užbaigimas & EI & 3 & -- & 1 & žemas & 3 \\
-P2.11 & Trenerio ir administratoriaus užsiėmimų sąrašas su užimtumu & EO & 10 & -- & 4 & aukštas & 7 \\
-P2.12 & Vykdomo užsiėmimo valdymo pultas (dabartinis ir kitas etapas, likęs laikas, būsena) & EO & 10 & -- & 3 & vidutinis & 5 \\
+P2.11 & Užsiėmimų sąrašas su užimtumu (treneriui ir administratoriui) & EO & 10 & -- & 4 & aukštas & 7 \\
+P2.12 & Vykdomo užsiėmimo valdymo pultas (dabartinis ir kitas programos etapas, likęs laikas, būsena) & EO & 10 & -- & 3 & vidutinis & 5 \\
 P2.13 & Užsiėmimo informacijos peržiūra & EQ & 13 & -- & 3 & aukštas & 6 \\
 \addlinespace[3pt]
 \multicolumn{8}{@{}l@{}}{\textbf{P3. Dalyvių valdymas (13 funkcijų, 66 UFP)}} \\*
@@ -120,21 +120,21 @@ P3.13 & Dalyvio kortelės peržiūra (treneriui) & EQ & 10 & -- & 1 & žemas & 3
 \addlinespace[3pt]
 \multicolumn{8}{@{}l@{}}{\textbf{P4. Asmeninių programų valdymas (10 funkcijų, 50 UFP)}} \\*
 P4.1 & Asmeninė programa (įvertinimas, programa, programos pratimas, pasiruošimo rekomendacija, namų užduotis) & ILF & 25 & 5 & -- & vidutinis & 10 \\
-P4.2 & Kliento įvertinimo įrašymas & EI & 8 & -- & 2 & vidutinis & 4 \\
+P4.2 & Dalyvio įvertinimo įrašymas & EI & 8 & -- & 2 & vidutinis & 4 \\
 P4.3 & Asmeninės programos sudarymas su pasiruošimo rekomendacijomis & EI & 14 & -- & 3 & aukštas & 6 \\
-P4.4 & Asmeninės programos nuotolinis keitimas (pranešant klientui) & EI & 16 & -- & 3 & aukštas & 6 \\
+P4.4 & Asmeninės programos nuotolinis keitimas (pranešant dalyviui) & EI & 16 & -- & 3 & aukštas & 6 \\
 P4.5 & Asmeninės programos užbaigimas arba archyvavimas & EI & 3 & -- & 1 & žemas & 3 \\
 P4.6 & Namų užduoties priskyrimas & EI & 8 & -- & 2 & vidutinis & 4 \\
 P4.7 & Namų užduoties keitimas & EI & 8 & -- & 2 & vidutinis & 4 \\
 P4.8 & Namų užduoties šalinimas & EI & 3 & -- & 1 & žemas & 3 \\
-P4.9 & Trenerio klientų ir jų asmeninių programų sąrašas & EQ & 6 & -- & 2 & vidutinis & 4 \\
+P4.9 & Trenerio dalyvių ir jų asmeninių programų sąrašas & EQ & 6 & -- & 2 & vidutinis & 4 \\
 P4.10 & Asmeninės programos ir namų užduočių peržiūra (dalyviui ir treneriui) & EQ & 15 & -- & 3 & aukštas & 6 \\
 \addlinespace[3pt]
 \multicolumn{8}{@{}l@{}}{\textbf{P5. Vaizdinio turinio pateikimas (1 funkcija, 7 UFP)}} \\*
-P5.1 & Dabartinio ir kito etapo rodymas ekrane (vaizdo įrašas, instrukcija, likęs laikas, kitas pratimas) & EO & 11 & -- & 5 & aukštas & 7 \\
+P5.1 & Dabartinio ir kito programos etapo rodymas ekrane (vaizdo įrašas, instrukcija, likęs laikas, kitas pratimas) & EO & 11 & -- & 5 & aukštas & 7 \\
 \addlinespace[3pt]
 \multicolumn{8}{@{}l@{}}{\textbf{P6. Garso įranga (2 funkcijos, 8 UFP)}} \\*
-P6.1 & Įrašytų etapo garso instrukcijų perdavimas į ausines ar kolonėles & EO & 5 & -- & 4 & vidutinis & 5 \\
+P6.1 & Įrašytų programos etapo garso instrukcijų perdavimas į ausines ar kolonėles & EO & 5 & -- & 4 & vidutinis & 5 \\
 P6.2 & Instrukcijų garso valdymas treneriui kalbant (nutildymas, garsumas) & EI & 3 & -- & 2 & žemas & 3 \\
 \addlinespace[3pt]
 \multicolumn{8}{@{}l@{}}{\textbf{P7. Duomenų ir istorijos valdymas (3 funkcijos, 16 UFP)}} \\*
