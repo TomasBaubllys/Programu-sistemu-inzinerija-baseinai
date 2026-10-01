@@ -1,11 +1,11 @@
 % Priedas: funkcinių taškų skaičiavimas (atsakingas Marijus Planciunas).
-% Lentelė sugeneruota iš Marijaus darbinio failo fp-galutinis-381.csv (fp_sarasas_tex.py).
+% Lentelė sugeneruota iš Marijaus darbinio failo fp-funkcijos.csv (fp_sarasas_tex.py).
 % Jei keičiate funkcijas ar jų skaičius, praneškite Marijui, kad CSV ir 2 skyriaus lentelės liktų suderinti.
 
 \section{Funkcinių taškų skaičiavimas}\label{sec:priedas-fp}
 
 Šiame priede išvardytos visos 87 funkcijos, pagal kurias apskaičiuotas
-sistemos dydis – 381 nekoreguotas funkcinis taškas (\ref{sec:dydis}~skyrius).
+sistemos dydis – 398 nekoreguoti funkciniai taškai (\ref{sec:dydis}~skyrius).
 Kiekvienai funkcijai \ref{tab:fp-sarasas}~lentelėje nurodytas tipas, DET, RET
 ir FTR skaičius, sudėtingumas ir nekoreguoti funkciniai taškai (UFP). Vidinio
 loginio failo (ILF) sudėtingumą lemia DET ir RET, o įvesties (EI), išvesties
@@ -36,10 +36,10 @@ UFP suma.
 \bottomrule
 \endfoot
 \midrule
-\multicolumn{8}{@{}l@{}}{\textbf{Iš viso: 87 funkcijos, 381 UFP}} \\
+\multicolumn{8}{@{}l@{}}{\textbf{Iš viso: 87 funkcijos, 398 UFP}} \\
 \bottomrule
 \endlastfoot
-\multicolumn{8}{@{}l@{}}{\textbf{P0. Paskyros, administravimas ir sporto erdvės (23 funkcijos, 85 UFP)}} \\*
+\multicolumn{8}{@{}l@{}}{\textbf{P0. Paskyros, administravimas ir sporto erdvės (23 funkcijos, 87 UFP)}} \\*
 P0.1 & Naudotojo paskyra (naudotojas, dalyvio profilis, trenerio profilis) & ILF & 17 & 3 & -- & žemas & 7 \\
 P0.2 & Sporto erdvė (erdvė, erdvės vaizdo ir garso profilis) & ILF & 10 & 2 & -- & žemas & 7 \\
 P0.3 & Įranga (įrenginys, vaizdo įrenginio nustatymai, garso įrenginio nustatymai) & ILF & 16 & 3 & -- & žemas & 7 \\
@@ -50,13 +50,13 @@ P0.7 & Savo profilio peržiūra & EQ & 8 & -- & 1 & žemas & 3 \\
 P0.8 & Savo profilio keitimas & EI & 8 & -- & 1 & žemas & 3 \\
 P0.9 & Naudotojo sukūrimas (administratorius) & EI & 10 & -- & 1 & žemas & 3 \\
 P0.10 & Naudotojo duomenų keitimas (administratorius) & EI & 10 & -- & 1 & žemas & 3 \\
-P0.11 & Vaidmens priskyrimas ir keitimas & EI & 3 & -- & 1 & žemas & 3 \\
-P0.12 & Paskyros deaktyvavimas (atšaukiant būsimas rezervacijas) & EI & 3 & -- & 2 & žemas & 3 \\
+P0.11 & Vaidmens priskyrimas ir keitimas & EI & 4 & -- & 2 & žemas & 3 \\
+P0.12 & Paskyros deaktyvavimas (atšaukiant būsimas rezervacijas; trenerio – tik neturint būsimų užsiėmimų) & EI & 3 & -- & 3 & vidutinis & 4 \\
 P0.13 & Naudotojų sąrašas su filtru pagal vaidmenį & EQ & 7 & -- & 1 & žemas & 3 \\
 P0.14 & Naudotojo paskyros peržiūra & EQ & 12 & -- & 1 & žemas & 3 \\
 P0.15 & Sporto erdvės pridėjimas & EI & 8 & -- & 1 & žemas & 3 \\
 P0.16 & Sporto erdvės keitimas & EI & 8 & -- & 1 & žemas & 3 \\
-P0.17 & Sporto erdvės šalinimas (tikrinant suplanuotus užsiėmimus) & EI & 3 & -- & 2 & žemas & 3 \\
+P0.17 & Sporto erdvės šalinimas (tikrinant suplanuotus užsiėmimus ir įrangą) & EI & 3 & -- & 3 & vidutinis & 4 \\
 P0.18 & Sporto erdvių sąrašas & EQ & 6 & -- & 1 & žemas & 3 \\
 P0.19 & Įrenginio registravimas erdvėje & EI & 10 & -- & 2 & vidutinis & 4 \\
 P0.20 & Įrenginio nustatymų keitimas & EI & 10 & -- & 2 & vidutinis & 4 \\
@@ -64,13 +64,13 @@ P0.21 & Įrenginio šalinimas & EI & 3 & -- & 1 & žemas & 3 \\
 P0.22 & Erdvės įrangos sąrašas & EQ & 7 & -- & 2 & vidutinis & 4 \\
 P0.23 & Įrenginio nustatymų peržiūra & EQ & 10 & -- & 2 & vidutinis & 4 \\
 \addlinespace[3pt]
-\multicolumn{8}{@{}l@{}}{\textbf{P1. Užsiėmimų programų valdymas (22 funkcijos, 94 UFP)}} \\*
+\multicolumn{8}{@{}l@{}}{\textbf{P1. Užsiėmimų programų valdymas (22 funkcijos, 96 UFP)}} \\*
 P1.1 & Pratimų katalogas & ILF & 14 & 1 & -- & žemas & 7 \\
 P1.2 & Mokomoji medžiaga (vaizdo ir garso įrašų metaduomenys) & ILF & 10 & 1 & -- & žemas & 7 \\
-P1.3 & Užsiėmimo programa (programa, etapas, etapo pratimas, versija) & ILF & 25 & 4 & -- & vidutinis & 10 \\
+P1.3 & Užsiėmimo programa (programa, etapas, etapo pratimas, versija) & ILF & 26 & 4 & -- & vidutinis & 10 \\
 P1.4 & Pratimo pridėjimas & EI & 10 & -- & 2 & vidutinis & 4 \\
 P1.5 & Pratimo keitimas & EI & 10 & -- & 2 & vidutinis & 4 \\
-P1.6 & Pratimo šalinimas (tikrinant naudojimą programose) & EI & 3 & -- & 2 & žemas & 3 \\
+P1.6 & Pratimo šalinimas (tikrinant naudojimą programose, asmeninėse programose ir namų užduotyse) & EI & 3 & -- & 3 & vidutinis & 4 \\
 P1.7 & Vaizdo ar garso įrašo įkėlimas su metaduomenimis & EI & 8 & -- & 1 & žemas & 3 \\
 P1.8 & Įrašo metaduomenų keitimas & EI & 8 & -- & 1 & žemas & 3 \\
 P1.9 & Įrašo šalinimas (tikrinant naudojimą pratimuose ir programose) & EI & 3 & -- & 3 & vidutinis & 4 \\
@@ -86,9 +86,9 @@ P1.18 & Mokomosios medžiagos sąrašas & EQ & 7 & -- & 1 & žemas & 3 \\
 P1.19 & Įrašo peržiūra ir perklausa & EQ & 5 & -- & 1 & žemas & 3 \\
 P1.20 & Programų sąrašas & EQ & 7 & -- & 1 & žemas & 3 \\
 P1.21 & Programos peržiūra (etapai, pratimai, medžiaga) & EQ & 16 & -- & 3 & aukštas & 6 \\
-P1.22 & Programos versijų istorija & EQ & 6 & -- & 1 & žemas & 3 \\
+P1.22 & Programos versijų istorija (su versiją sukūrusiu treneriu) & EQ & 6 & -- & 2 & vidutinis & 4 \\
 \addlinespace[3pt]
-\multicolumn{8}{@{}l@{}}{\textbf{P2. Užsiėmimų valdymas (13 funkcijų, 66 UFP)}} \\*
+\multicolumn{8}{@{}l@{}}{\textbf{P2. Užsiėmimų valdymas (13 funkcijų, 68 UFP)}} \\*
 P2.1 & Užsiėmimas (užsiėmimas, vaizdo, garso ir grupės nustatymai, vykdymo žurnalas) & ILF & 22 & 3 & -- & vidutinis & 10 \\
 P2.2 & Užsiėmimo suplanavimas (treneris; individualus ar grupinis) & EI & 13 & -- & 4 & aukštas & 6 \\
 P2.3 & Virtualaus trenerio užsiėmimo suplanavimas (administratorius) & EI & 11 & -- & 4 & aukštas & 6 \\
@@ -99,23 +99,23 @@ P2.7 & Užsiėmimo pristabdymas ir tęsimas & EI & 3 & -- & 1 & žemas & 3 \\
 P2.8 & Perėjimas prie kito, praleidžiamo ar pasirinkto etapo & EI & 4 & -- & 2 & žemas & 3 \\
 P2.9 & Etapo trukmės koregavimas vykdymo metu & EI & 4 & -- & 2 & žemas & 3 \\
 P2.10 & Užsiėmimo užbaigimas & EI & 3 & -- & 1 & žemas & 3 \\
-P2.11 & Trenerio ir administratoriaus užsiėmimų sąrašas su užimtumu & EO & 9 & -- & 3 & vidutinis & 5 \\
+P2.11 & Trenerio ir administratoriaus užsiėmimų sąrašas su užimtumu & EO & 10 & -- & 4 & aukštas & 7 \\
 P2.12 & Vykdomo užsiėmimo valdymo pultas (dabartinis ir kitas etapas, likęs laikas, būsena) & EO & 10 & -- & 3 & vidutinis & 5 \\
 P2.13 & Užsiėmimo informacijos peržiūra & EQ & 13 & -- & 3 & aukštas & 6 \\
 \addlinespace[3pt]
-\multicolumn{8}{@{}l@{}}{\textbf{P3. Dalyvių valdymas (13 funkcijų, 55 UFP)}} \\*
-P3.1 & Rezervacijos ir lankomumas (rezervacija, lankomumo įrašas) & ILF & 11 & 2 & -- & žemas & 7 \\
+\multicolumn{8}{@{}l@{}}{\textbf{P3. Dalyvių valdymas (13 funkcijų, 66 UFP)}} \\*
+P3.1 & Rezervacijos ir lankomumas (rezervacija, lankomumo įrašas) & ILF & 12 & 2 & -- & žemas & 7 \\
 P3.2 & Užsiėmimų tvarkaraštis su laisvų vietų skaičiumi & EO & 10 & -- & 4 & aukštas & 7 \\
-P3.3 & Vietos rezervavimas (tikrinant laisvas vietas) & EI & 4 & -- & 3 & vidutinis & 4 \\
+P3.3 & Vietos rezervavimas (tikrinant laisvas vietas) & EI & 3 & -- & 3 & vidutinis & 4 \\
 P3.4 & Rezervacijos atšaukimas & EI & 3 & -- & 2 & žemas & 3 \\
 P3.5 & Dalyvio priskyrimas užsiėmimui (treneris, administratorius) & EI & 4 & -- & 3 & vidutinis & 4 \\
-P3.6 & Dalyvio pašalinimas iš užsiėmimo & EI & 3 & -- & 2 & žemas & 3 \\
+P3.6 & Dalyvio pašalinimas iš užsiėmimo & EI & 4 & -- & 2 & žemas & 3 \\
 P3.7 & Faktinio lankomumo pažymėjimas ir taisymas & EI & 5 & -- & 2 & vidutinis & 4 \\
-P3.8 & Dalyvio rezervacijų peržiūra & EQ & 7 & -- & 2 & vidutinis & 4 \\
-P3.9 & Užsiregistravusių dalyvių sąrašas & EQ & 6 & -- & 2 & vidutinis & 4 \\
-P3.10 & Dalyvio lankomumo istorija (dalyviui ir treneriui) & EQ & 7 & -- & 2 & vidutinis & 4 \\
-P3.11 & Priminimas apie artėjantį užsiėmimą & EO & 6 & -- & 3 & vidutinis & 5 \\
-P3.12 & Trenerio dalyvių sąrašas ir paieška & EQ & 6 & -- & 1 & žemas & 3 \\
+P3.8 & Dalyvio rezervacijų peržiūra & EQ & 7 & -- & 4 & aukštas & 6 \\
+P3.9 & Užsiregistravusių dalyvių sąrašas & EQ & 6 & -- & 3 & aukštas & 6 \\
+P3.10 & Dalyvio lankomumo istorija (dalyviui ir treneriui) & EQ & 8 & -- & 3 & aukštas & 6 \\
+P3.11 & Priminimas apie artėjantį užsiėmimą & EO & 6 & -- & 4 & aukštas & 7 \\
+P3.12 & Trenerio dalyvių sąrašas ir paieška & EQ & 6 & -- & 3 & aukštas & 6 \\
 P3.13 & Dalyvio kortelės peržiūra (treneriui) & EQ & 10 & -- & 1 & žemas & 3 \\
 \addlinespace[3pt]
 \multicolumn{8}{@{}l@{}}{\textbf{P4. Asmeninių programų valdymas (10 funkcijų, 50 UFP)}} \\*
@@ -143,3 +143,6 @@ P7.2 & Lankomumo ataskaita (užsiregistravusių ir dalyvavusių skaičius, lanko
 P7.3 & Užsiėmimų ir erdvių užimtumo ataskaita (įskaitant virtualaus trenerio užsiėmimus) & EO & 10 & -- & 3 & vidutinis & 5 \\
 \end{longtable}
 \endgroup
+
+% Išsamus dalies P3 skaičiavimas (rašomas ranka, ne generuojamas)
+\input{project-plan/src/priedas-p3}

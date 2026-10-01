@@ -1,9 +1,9 @@
 % Dydžio ir pastangų vertinimas (atsakingas Marijus Planciunas).
-% Lentelių skaičiai – iš galutinio įverčio (2026-09-24).
+% Lentelių skaičiai – iš galutinio įverčio (2026-09-24); FP perskaičiuoti 2026-10-01.
 
 \section{Dydžio ir pastangų vertinimas}\label{sec:dydis}
 
-Sistemos dydis – 381 funkcinis taškas (FP) prieš koregavimą ir apie 404 po
+Sistemos dydis – 398 funkciniai taškai (FP) prieš koregavimą ir apie 426 po
 jo. Darbo sąnaudas vertinome kiekvienai sistemos daliai atskirai: be rezervų
 projektui reikia 739,25 žmogaus darbo dienos (žm.~d.), arba apie 35,2
 žmogaus darbo mėnesio (žm.~mėn.; vienas žm.~mėn. – 21 darbo diena, d.~d.).
@@ -38,7 +38,7 @@ WBS darbų paketais nurodytas tvarkaraščio faile
 
 \subsection{Sistemos dydis funkciniais taškais}
 
-Sistemos dydis – 381 nekoreguotas funkcinis taškas (UFP). Suskaičiavome
+Sistemos dydis – 398 nekoreguoti funkciniai taškai (UFP). Suskaičiavome
 87 funkcijas: 9 vidinius loginius failus (ILF), 47 išorines įvestis (EI),
 8 išorines išvestis (EO) ir 23 išorines užklausas (EQ). Išorinių sąsajų
 failų (EIF) nėra, nes bazinė sistemos versija su kitomis sistemomis
@@ -49,7 +49,8 @@ pačia matrica kaip įvestys (EI). Funkcijų skaičius pagal sudėtingumą patei
 \ref{tab:fp}~lentelėje. Dalys P0--P7 atitinka sistemos vizijos skaidymą. P0 apima paskyras,
 prisijungimą, vaidmenis, sporto erdves ir jų įrangos nustatymus. Visos
 87 funkcijos su DET, RET ir FTR skaičiais išvardytos \ref{sec:priedas-fp}~priede
-(\ref{tab:fp-sarasas}~lentelė).
+(\ref{tab:fp-sarasas}~lentelė), o dalies P3 skaičiavimas išsamiai
+paaiškintas \ref{sec:priedas-p3}~poskyryje.
 
 \begin{table}[H]
   \centering
@@ -64,18 +65,18 @@ prisijungimą, vaidmenis, sporto erdves ir jų įrangos nustatymus. Visos
     \midrule
     ILF & 6 & 7 & 3 & 10 & 0 & 15 & 72 \\
     EIF & 0 & 5 & 0 & 7 & 0 & 10 & 0 \\
-    EI & 27 & 3 & 12 & 4 & 8 & 6 & 177 \\
-    EO & 0 & 4 & 6 & 5 & 2 & 7 & 44 \\
-    EQ & 12 & 3 & 7 & 4 & 4 & 6 & 88 \\
+    EI & 24 & 3 & 15 & 4 & 8 & 6 & 180 \\
+    EO & 0 & 4 & 4 & 5 & 4 & 7 & 48 \\
+    EQ & 10 & 3 & 5 & 4 & 8 & 6 & 98 \\
     \midrule
-    \textbf{Iš viso} & \textbf{45} & & \textbf{28} & & \textbf{14} & & \textbf{381} \\
+    \textbf{Iš viso} & \textbf{40} & & \textbf{27} & & \textbf{20} & & \textbf{398} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 Funkciniai taškai skaičiuojami naudotojo požiūriu: vertinama kiekviena funkcija,
 kurią naudotojas atlieka ar mato, ir kiekviena duomenų grupė, kurią sistema
-saugo. Todėl didžiausia dalis yra užsiėmimų programų valdymas (P1, 94~UFP).
+saugo. Todėl didžiausia dalis yra užsiėmimų programų valdymas (P1, 96~UFP).
 Joje treneris kuria, keičia ir šalina programas, jų etapus ir pratimus,
 peržiūri programų sąrašą, pratimų katalogą ir versijų istoriją.
 
@@ -96,16 +97,16 @@ vertinome atskirai kaip FP nematomą programinę įrangą (S1--S4,
     \toprule
     \textbf{Kodas} & \textbf{Sistemos dalis} & \textbf{ILF} & \textbf{EIF} & \textbf{EI} & \textbf{EO} & \textbf{EQ} & \textbf{Funkcijų sk.} & \textbf{UFP} \\
     \midrule
-    P0 & Paskyros, administravimas ir sporto erdvės & 21 & 0 & 41 & 0 & 23 & 23 & 85 \\
-    P1 & Užsiėmimų programų valdymas & 24 & 0 & 45 & 0 & 25 & 22 & 94 \\
-    P2 & Užsiėmimų valdymas & 10 & 0 & 40 & 10 & 6 & 13 & 66 \\
-    P3 & Dalyvių valdymas & 7 & 0 & 18 & 12 & 18 & 13 & 55 \\
+    P0 & Paskyros, administravimas ir sporto erdvės & 21 & 0 & 43 & 0 & 23 & 23 & 87 \\
+    P1 & Užsiėmimų programų valdymas & 24 & 0 & 46 & 0 & 26 & 22 & 96 \\
+    P2 & Užsiėmimų valdymas & 10 & 0 & 40 & 12 & 6 & 13 & 68 \\
+    P3 & Dalyvių valdymas & 7 & 0 & 18 & 14 & 27 & 13 & 66 \\
     P4 & Asmeninių programų valdymas & 10 & 0 & 30 & 0 & 10 & 10 & 50 \\
     P5 & Vaizdinio turinio pateikimas & 0 & 0 & 0 & 7 & 0 & 1 & 7 \\
     P6 & Garso įranga & 0 & 0 & 3 & 5 & 0 & 2 & 8 \\
     P7 & Duomenų ir istorijos valdymas & 0 & 0 & 0 & 10 & 6 & 3 & 16 \\
     \midrule
-    & \textbf{Iš viso, UFP} & \textbf{72} & \textbf{0} & \textbf{177} & \textbf{44} & \textbf{88} & & \textbf{381} \\
+    & \textbf{Iš viso, UFP} & \textbf{72} & \textbf{0} & \textbf{180} & \textbf{48} & \textbf{98} & & \textbf{398} \\
     & \textbf{Funkcijų skaičius} & 9 & 0 & 47 & 8 & 23 & \textbf{87} & \\
     \bottomrule
   \end{tabularx}
@@ -115,16 +116,28 @@ vertinome atskirai kaip FP nematomą programinę įrangą (S1--S4,
 
 Nekoreguotą dydį koregavome pagal 14 bendrųjų sistemos charakteristikų
 (GSC), kurių kiekviena įvertinta balu nuo 0 iki 5 (\ref{tab:gsc}~lentelė).
-Balų suma (TDI) yra 41, todėl vertės koregavimo koeficientas
-$\mathrm{VAF} = 0{,}65 + 0{,}01 \times 41 = 1{,}06$, o koreguotas dydis
-$\mathrm{AFP} = 381 \times 1{,}06 \approx 404$ funkciniai taškai.
+Balų suma (TDI) yra 42, todėl vertės koregavimo koeficientas
+$\mathrm{VAF} = 0{,}65 + 0{,}01 \times 42 = 1{,}07$, o koreguotas dydis
+$\mathrm{AFP} = 398 \times 1{,}07 \approx 426$ funkcinių taškų.
 
-Didžiausią balą (5) gavo tiesioginis duomenų įvedimas: visus duomenis
-naudotojai įveda patys per žiniatinklio sąsają, ir jie iškart įrašomi į
-sistemą, o paketinio apdorojimo nėra. Dauguma kitų balų ginčytini: jei 12
-iš jų būtų vienu balu mažesni ar didesni, AFP svyruotų nuo 358 iki 450.
-Darbo sąnaudų įverčiui tai įtakos neturi, nes sąnaudas vertinome kiekvienai
-daliai atskirai, o ne iš AFP.
+Didžiausią balą (5) gavo dvi charakteristikos. Tiesioginiam duomenų
+įvedimui (6) balui 5 pakanka, kad daugiau nei 30~\% transakcijų būtų
+interaktyvus duomenų įvedimas. Mūsų sistemoje iš 78 transakcinių funkcijų 47
+yra įvestys (60~\%), visos jos vykdomos per žiniatinklio sąsają, o
+paketinio apdorojimo nėra. Kelių vietų palaikymas (13) vertinamas 5 balais,
+nes baseine ir sporto salėje naudojama skirtinga įranga (baseine IP66
+ekranai ir kaulinio laidumo ausinės, salėje televizorius ir kolonėlės), o
+plane kiekvienai vietai numatyta parengta ir išbandyta dokumentacija bei
+palaikymas: montavimo aktas (KT8), naudotojo vadovai ir mokymai (KT12),
+pilotinis naudojimas abiejose vietose (KT13) ir garantinis palaikymas
+(KT15). Paskirstytam duomenų apdorojimui (2) skirti 3 balai: komandos ir
+turinys realiuoju laiku keliauja iš debesies į grotuvą, kuris juos vykdo
+vietoje, o atgal grotuvas siunčia tik būsenos signalus ir duomenų
+neapdoroja, todėl duomenys keliauja viena kryptimi. Dauguma kitų balų
+ginčytini: jei 12 iš jų būtų vienu balu mažesni ar didesni (kiek leidžia
+skalė), AFP svyruotų nuo 378 iki 470. Darbo sąnaudų įverčiui tai
+įtakos neturi, nes sąnaudas vertinome kiekvienai daliai atskirai, o ne iš
+AFP.
 
 
 \begin{table}[H]
@@ -137,7 +150,7 @@ daliai atskirai, o ne iš AFP.
     \textbf{Nr.} & \textbf{Charakteristika} & \textbf{Įtaka (0--5)} \\
     \midrule
     1 & Duomenų perdavimas & 4 \\
-    2 & Paskirstytas duomenų apdorojimas & 4 \\
+    2 & Paskirstytas duomenų apdorojimas & 3 \\
     3 & Našumas & 3 \\
     4 & Smarkiai apkrauta konfigūracija & 3 \\
     5 & Transakcijų dažnumas & 3 \\
@@ -148,12 +161,12 @@ daliai atskirai, o ne iš AFP.
     10 & Pakartotinis panaudojimas & 2 \\
     11 & Diegimo lengvumas & 1 \\
     12 & Eksploatavimo lengvumas & 2 \\
-    13 & Kelių vietų palaikymas & 3 \\
+    13 & Kelių vietų palaikymas & 5 \\
     14 & Pokyčių palengvinimas & 2 \\
     \midrule
-    & \textbf{Bendra įtaka (TDI)} & \textbf{41} \\
-    & Vertės koregavimo koeficientas VAF $= 0{,}65 + 0{,}01 \times 41$ & 1,06 \\
-    & Koreguoti funkciniai taškai AFP $= 381 \times 1{,}06 = 403{,}86$ & \textbf{$\approx$\,404} \\
+    & \textbf{Bendra įtaka (TDI)} & \textbf{42} \\
+    & Vertės koregavimo koeficientas VAF $= 0{,}65 + 0{,}01 \times 42$ & 1,07 \\
+    & Koreguoti funkciniai taškai AFP $= 398 \times 1{,}07 = 425{,}86$ & \textbf{$\approx$\,426} \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -191,10 +204,10 @@ nepridėjome, nes tai nėra programų realizacija, o dalis šių darbų
     \toprule
     \textbf{Kodas} & \textbf{Sistemos dalis ar darbas} & \textbf{O} & \textbf{M} & \textbf{P} & \textbf{E} & {\boldmath$\sigma$} & \textbf{\makecell[r]{žm.~d. /\\UFP}} \\
     \midrule
-    P0 & Paskyros, administravimas ir sporto erdvės & 23 & 33 & 50 & 34,0 & 4,5 & 0,40 \\
-    P1 & Užsiėmimų programų valdymas & 27 & 38 & 58 & 39,5 & 5,2 & 0,42 \\
-    P2 & Užsiėmimų valdymas & 22 & 32 & 50 & 33,5 & 4,7 & 0,51 \\
-    P3 & Dalyvių valdymas & 18 & 25 & 38 & 26,0 & 3,3 & 0,47 \\
+    P0 & Paskyros, administravimas ir sporto erdvės & 23 & 33 & 50 & 34,0 & 4,5 & 0,39 \\
+    P1 & Užsiėmimų programų valdymas & 27 & 38 & 58 & 39,5 & 5,2 & 0,41 \\
+    P2 & Užsiėmimų valdymas & 22 & 32 & 50 & 33,5 & 4,7 & 0,49 \\
+    P3 & Dalyvių valdymas & 18 & 25 & 38 & 26,0 & 3,3 & 0,39 \\
     P4 & Asmeninių programų valdymas & 15 & 22 & 34 & 23,0 & 3,2 & 0,46 \\
     P5 & Vaizdinio turinio pateikimas & 4 & 8 & 14 & 8,5 & 1,7 & 1,21 \\
     P6 & Garso įranga & 4 & 7 & 12 & 7,5 & 1,3 & 0,94 \\
@@ -329,14 +342,18 @@ pradinė tikimybė, t.~y. kokia ji būtų be jokių priemonių. Ji įvertinta
 balais, kuriuos verčiame procentais taip: 1~balas – 0--19~\%, 2~balai –
 20--39~\%, 3~balai – 40--59~\%, 4~balai – 60--79~\%, 5~balai –
 80--100~\%. Rezervui naudojome likutinę tikimybę, kuri lieka po
-tvarkaraštyje suplanuotų priemonių. Todėl trijų rizikų tikimybės rezerve
-mažesnės. Drėgmės poveikio įrangai (TR1) ir įrangos suderinamumo (IR1)
-tikimybė sumažėja, nes prieš perkant visą įrangą bandomasis komplektas ir
-prototipas išbandomi baseine, o radus problemą sprendimas pakeičiamas.
+tvarkaraštyje suplanuotų priemonių. Todėl šešių rizikų tikimybės rezerve
+mažesnės. Drėgmės poveikio įrangai (TR1), įrangos suderinamumo (IR1) ir
+radijo siųstuvo bei mikrofono grandinės (IR2) tikimybė sumažėja, nes prieš
+perkant visą įrangą bandomasis komplektas su radijo siųstuvu ir prototipas
+išbandomi baseine (A10, KT4), o radus problemą sprendimas pakeičiamas.
 Ekranų matomumo (ER1) tikimybė sumažėja, nes bandomasis vaizdo klipas
-patikrinamas baseine prieš montuojant visus pratimus. Kitų registro rizikų
-tikimybės atitinka tos lentelės balus, o naujos rizikos IR2, OR2
-ir OR3 įvertintos po 30~\%. Serverio ir debesijos paslaugų teikėjo gedimai
+patikrinamas baseine prieš montuojant visus pratimus (A74), o pratimų
+perfilmavimo (OR3)~– nes pirmoji pratimų partija suderinama su treneriais
+prieš filmuojant kitus pratimus (A73). Įrangos tiekimo vėlavimas (OR2)
+retai virsta papildomu darbu, nes visa įranga užsakoma po KT4, o įrangos
+grandinė turi 41~d.~d. laisvo laiko. Kitų registro rizikų tikimybės
+atitinka tos lentelės balus. Serverio ir debesijos paslaugų teikėjo gedimai
 (TR3) į šį darbo sąnaudų rezervą neįtraukti: baziniame plane atskiro
 papildomo komandos darbo dėl tiekėjo gedimo nenumatyta. Tiekėjo
 pasiekiamumo įsipareigojimai ir incidento eskalavimas riboja poveikį,
