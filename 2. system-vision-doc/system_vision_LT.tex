@@ -22,6 +22,8 @@ Sprendimas bus realizuojamas kaip žiniatinklio kliento-serverio sistema, naudoj
 
 Kiekvienas sistemos naudotojas turi asmeninę paskyrą, apsaugotą vaidmenimis pagrįstos prieigos valdymu. Prisijungus rodomos jo vaidmeniui skirtos funkcijos, o vieno dalyvio asmeninė programa ir lankomumo duomenys nėra prieinami kitiems dalyviams.
 
+Dalyvis susiejamas su treneriu per užsiėmimą: rezervuodamas vietą dalyvis pasirenka konkretų užsiėmimą ir jį vedantį trenerį. Dalyvį užsiėmimui taip pat gali priskirti administratorius arba tą užsiėmimą vedantis treneris. Priskyrimas ir pašalinimas administruojami užsiėmimo dalyvių sąraše. Atskiro nuolatinio dalyvio priskyrimo treneriui nėra.
+
 \begin{itemize}
     \item \textbf{Dalyvis:} prisijungia prie savo paskyros, peržiūri užsiėmimų tvarkaraštį ir laisvas vietas, rezervuoja ar atšaukia vietą, mato savo rezervacijas, lankomumo istoriją, trenerio paskirtą asmeninę programą ir namų pratimus.
     \item \textbf{Treneris:} prisijungia prie savo paskyros, kuria ir keičia užsiėmimų programas, planuoja grupinius ir individualius užsiėmimus, mato užsiregistravusius dalyvius, užfiksuoja faktinį lankomumą, valdo programos eigą užsiėmimo metu ir nuotoliniu būdu atnaujina konkretaus dalyvio asmeninę programą.
@@ -44,7 +46,7 @@ Kiekvienas sistemos naudotojas turi asmeninę paskyrą, apsaugotą vaidmenimis p
 Siekiant užtikrinti sistemos patikimumą, mastelį ir greitaveiką realiuoju laiku, numatomi šie preliminarūs architektūriniai sprendimai:
 
 \begin{itemize}
-    \item \textbf{Architektūra:} modulinis monolitas debesų kompiuterijos platformoje ir atskira vietinio grotuvo programa sporto erdvėje.
+    \item \textbf{Architektūra:} centrinė serverio dalis bus įgyvendinta kaip monolitinė aplikacija debesijos platformoje. Jos funkcijos bus suskirstytos į vidinius modulius, diegiamus kartu. Sporto erdvėje veiks atskira vietinio grotuvo kliento programa.
     \item \textbf{Programinė įranga:} 
     \begin{itemize}
         \item \textit{Bazinė programinė įranga:} „Node.js / NestJS“ serverio daliai.
@@ -53,7 +55,7 @@ Siekiant užtikrinti sistemos patikimumą, mastelį ir greitaveiką realiuoju la
     \end{itemize}
     \item \textbf{Protokolai ir sąsajos:} programų sąsajos (REST API) valdymui ir realaus laiko komunikacijos protokolas (WebSockets) ekranų bei garso įrangos sinchronizacijai užsiėmimo metu.
     \item \textbf{Saugumas:} saugaus ryšio protokolas (HTTPS), tapatybės patvirtinimas (OAuth 2.0 / JWT), vaidmenimis pagrįstos prieigos valdymas ir asmens duomenų šifravimas.
-    \item \textbf{Vietinis vykdymas:} „Android“ grotuvo programa (pvz., DSDX5 įrenginyje) prieš užsiėmimą atsisiunčia parengtą Full HD turinį; nutrūkus ryšiui ji užbaigia pradėtą etapą, tačiau naujo automatiškai nepradeda ir apie sutrikimą informuoja budintį darbuotoją. Grotuvo 4K dekodavimo galimybė nereiškia 4K turinio bazinėje apimtyje.
+    \item \textbf{Vietinis vykdymas:} vietiniame grotuve rodomo vaizdo turinio raiška ribojama iki Full HD (1920 $\times$ 1080). Didesnės raiškos turinio vykdymas neįtraukiamas į bazinę sistemos apimtį.
     \item \textbf{Valdymas ir pritaikomumas:} duomenys, programos ir lankomumas valdomi centralizuotai; progreso analizė yra plėtinys. Architektūra leidžia tą patį sprendimą pritaikyti skirtingoms erdvėms (sausoms salėms ar drėgnoms IP klase sertifikuotoms baseinų zonoms).
 \end{itemize}
 
@@ -93,6 +95,8 @@ Atsakingas už individualių ir grupinių užsiėmimų planavimą bei vykdymą. 
 \subsection{Dalyvių valdymas}
 
 Atsakingas už dalyvių informacijos saugojimą, tvarkaraščio pateikimą, vietų rezervavimą, dalyvių priskyrimą užsiėmimams, pranešimų siuntimą bei faktinio lankomumo istorijos valdymą. NFC ar QR pagrįstas automatinis identifikavimas priklauso plėtiniams.
+
+Trenerio dalyvių sąrašas sudaromas pagal jo vedamus užsiėmimus ir jų rezervacijas. Treneris gali priskirti dalyvius tik savo vedamiems užsiėmimams, o administratorius -- visiems užsiėmimams.
 
 \subsection{Asmeninių programų valdymas}
 
