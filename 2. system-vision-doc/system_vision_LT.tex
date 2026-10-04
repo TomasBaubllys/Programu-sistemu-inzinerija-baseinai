@@ -82,7 +82,7 @@ Projekto planavimo tikslais sistema skaidoma į šias pagrindines dalis:
 
 \subsection{Paskyros, administravimas ir sporto erdvės}
 
-Registracija, prisijungimas, vaidmenų teisės, paskyrų ir sporto erdvių įrangos nustatymų valdymas (įskaitant įrenginių konfigūracijos pasus ir jų būsenų sekimą). Administratorius įkelia patvirtintą turinį. Įvertinime ši dalis žymima P0.
+Registracija, prisijungimas, vaidmenų teisės, paskyrų ir sporto erdvių įrangos nustatymų valdymas (įskaitant įrenginių konfigūracijos pasus su programinės įrangos versija, IP adresu ir dabartine įrenginio būsena). Administratorius įkelia patvirtintą turinį. Įvertinime ši dalis žymima P0.
 
 \subsection{Užsiėmimų programų valdymas}
 
@@ -90,7 +90,7 @@ Atsakingas už užsiėmimų programų kūrimą, redagavimą, saugojimą ir valdy
 
 \subsection{Užsiėmimų valdymas}
 
-Atsakingas už individualių ir grupinių užsiėmimų planavimą bei vykdymą. Modulis valdo parengtos programos vykdymą per realiojo laiko varikliuką ir leidžia vedėjui užsiėmimo metu programą pradėti, pristabdyti, tęsti, praleisti etapą arba pereiti prie kito etapo.
+Atsakingas už individualių ir grupinių užsiėmimų planavimą bei vykdymą. Modulis valdo parengtos programos vykdymą per realiojo laiko varikliuką ir leidžia vedėjui užsiėmimo metu programą pradėti, pristabdyti, tęsti, praleisti etapą arba pereiti prie kito etapo. Nutrūkus ryšiui su grotuvu, sistema administratoriaus sąsajoje parodo pranešimą budinčiam darbuotojui ir įrašo įvykį į užsiėmimo vykdymo žurnalą.
 
 \subsection{Dalyvių valdymas}
 
@@ -100,7 +100,7 @@ Trenerio dalyvių sąrašas sudaromas pagal jo vedamus užsiėmimus ir jų rezer
 
 \subsection{Asmeninių programų valdymas}
 
-Atsakingas už individualaus įvertinimo pagrindu sudaromas kliento programas, pasiruošimo rekomendacijas ir namuose atliekamas užduotis. Treneris galės programą atnaujinti nuotoliniu būdu, o klientas ją matys telefone pritaikytoje žiniatinklio sąsajoje.
+Atsakingas už individualaus įvertinimo pagrindu sudaromas kliento programas, pasiruošimo rekomendacijas ir namuose atliekamas užduotis. Treneris matys savo sudarytų asmeninių programų sąrašą ir galės programą atnaujinti nuotoliniu būdu, o klientas ją matys telefonui pritaikytoje žiniatinklio sąsajoje.
 
 \subsection{Vaizdinio turinio pateikimas}
 
@@ -120,11 +120,11 @@ Atsakinga už iš anksto įrašytų garso instrukcijų ir vedėjo balso perdavim
 
 \subsection{Vietinio grotuvo programa}
 
-Atskira „Android“ programa prieš užsiėmimą atsisiunčia turinį, rodo dabartinį ir būsimą pratimą, vykdo valdymo komandas ir sinchronizuoja vaizdą su garso instrukcijomis. Nutrūkus ryšiui užbaigia pradėtą etapą iš vietinio turinio, nepradeda naujo etapo ir informuoja budintį darbuotoją. Įvertinime ši dalis žymima S2.
+Atskira „Android“ programa prieš užsiėmimą atsisiunčia turinį, rodo dabartinį ir būsimą pratimą, vykdo valdymo komandas ir sinchronizuoja vaizdą su garso instrukcijomis. Nutrūkus ryšiui ji užbaigia pradėtą etapą iš vietinio turinio ir nepradeda naujo etapo, o serveris, nebegavęs grotuvo signalo, apie sutrikimą informuoja budintį darbuotoją. Įvertinime ši dalis žymima S2.
 
 \subsection{Duomenų ir istorijos valdymas}
 
-Atsakingas už užsiėmimų programų, užsiėmimų, dalyvavimo informacijos ir susijusių istorinių duomenų saugojimą. Progreso analizė ir integracijos su „Apple HealthKit“ ar „Google Fit“ priklauso plėtiniams.
+Atsakingas už užsiėmimų programų, užsiėmimų, dalyvavimo informacijos ir susijusių istorinių duomenų saugojimą. Sistema pateikia lankomumo bei užsiėmimų ir erdvių užimtumo ataskaitas. Progreso analizė ir integracijos su „Apple HealthKit“ ar „Google Fit“ priklauso plėtiniams.
 
 \section{Galimi sistemos išplėtimai}
 
