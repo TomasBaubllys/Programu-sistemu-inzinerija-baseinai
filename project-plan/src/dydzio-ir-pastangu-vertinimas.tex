@@ -1,9 +1,9 @@
 % Dydžio ir pastangų vertinimas (atsakingas Marijus Planciunas).
-% Lentelių skaičiai – iš galutinio įverčio (2026-09-24); FP perskaičiuoti 2026-10-01.
+% Lentelių skaičiai – iš galutinio įverčio (2026-09-24); FP perskaičiuoti 2026-10-04.
 
 \section{Dydžio ir pastangų vertinimas}\label{sec:dydis}
 
-Sistemos dydis – 398 funkciniai taškai (FP) prieš koregavimą ir apie 426 po
+Sistemos dydis – 402 funkciniai taškai (FP) prieš koregavimą ir apie 430 po
 jo. Darbo sąnaudas vertinome kiekvienai sistemos daliai atskirai. Be rezervų
 projektui reikia 739,25 žmogaus darbo dienos (žm.~d.), arba apie 35,2
 žmogaus darbo mėnesio (žm.~mėn.; vienas žm.~mėn. – 21 darbo diena, d.~d.).
@@ -38,17 +38,17 @@ WBS darbų paketais nurodytas tvarkaraščio faile
 
 \subsection{Sistemos dydis funkciniais taškais}
 
-Sistemos dydis – 398 nekoreguoti funkciniai taškai (UFP). Suskaičiavome
-87 funkcijas: 9 vidinius loginius failus (ILF), 47 išorines įvestis (EI),
-8 išorines išvestis (EO) ir 23 išorines užklausas (EQ). Išorinių sąsajų
+Sistemos dydis – 402 nekoreguoti funkciniai taškai (UFP). Suskaičiavome
+88 funkcijas: 9 vidinius loginius failus (ILF), 47 išorines įvestis (EI),
+9 išorines išvestis (EO) ir 23 išorines užklausas (EQ). Išorinių sąsajų
 failų (EIF) nėra, nes bazinė sistemos versija su kitomis sistemomis
 nėra integruota. Kiekvienos funkcijos sudėtingumą pagal DET, RET ir FTR skaičių
 nustatėme paskaitos SE-03 matricomis; išorinės užklausos (EQ) vertintos ta
 pačia matrica kaip įvestys (EI). Funkcijų skaičius pagal sudėtingumą pateiktas
 \ref{tab:fp-sud}~lentelėje, o dydis pagal sistemos dalis –
 \ref{tab:fp}~lentelėje. Dalys P0--P7 atitinka sistemos vizijos skaidymą. P0 apima paskyras,
-prisijungimą, vaidmenis, sporto erdves ir jų įrangos nustatymus. Visos
-87 funkcijos su DET, RET ir FTR skaičiais išvardytos \ref{sec:priedas-fp}~priede
+prisijungimą, vaidmenis, sporto erdves, jų įrangos nustatymus ir įrenginių konfigūracijos pasus. Visos
+88 funkcijos su DET, RET ir FTR skaičiais išvardytos \ref{sec:priedas-fp}~priede
 (\ref{tab:fp-sarasas}~lentelė), o dalies P3 skaičiavimas išsamiai
 paaiškintas \ref{sec:priedas-p3}~poskyryje.
 
@@ -66,10 +66,10 @@ paaiškintas \ref{sec:priedas-p3}~poskyryje.
     ILF & 6 & 7 & 3 & 10 & 0 & 15 & 72 \\
     EIF & 0 & 5 & 0 & 7 & 0 & 10 & 0 \\
     EI & 24 & 3 & 15 & 4 & 8 & 6 & 180 \\
-    EO & 0 & 4 & 4 & 5 & 4 & 7 & 48 \\
+    EO & 1 & 4 & 4 & 5 & 4 & 7 & 52 \\
     EQ & 10 & 3 & 5 & 4 & 8 & 6 & 98 \\
     \midrule
-    \textbf{Iš viso} & \textbf{40} & & \textbf{27} & & \textbf{20} & & \textbf{398} \\
+    \textbf{Iš viso} & \textbf{41} & & \textbf{27} & & \textbf{20} & & \textbf{402} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -99,15 +99,15 @@ vertinome atskirai kaip FP nematomą programinę įrangą (S1--S4,
     \midrule
     P0 & Paskyros, administravimas ir sporto erdvės & 21 & 0 & 43 & 0 & 23 & 23 & 87 \\
     P1 & Užsiėmimų programų valdymas & 24 & 0 & 46 & 0 & 26 & 22 & 96 \\
-    P2 & Užsiėmimų valdymas & 10 & 0 & 40 & 12 & 6 & 13 & 68 \\
+    P2 & Užsiėmimų valdymas & 10 & 0 & 40 & 16 & 6 & 14 & 72 \\
     P3 & Dalyvių valdymas & 7 & 0 & 18 & 14 & 27 & 13 & 66 \\
     P4 & Asmeninių programų valdymas & 10 & 0 & 30 & 0 & 10 & 10 & 50 \\
     P5 & Vaizdinio turinio pateikimas & 0 & 0 & 0 & 7 & 0 & 1 & 7 \\
     P6 & Garso įranga & 0 & 0 & 3 & 5 & 0 & 2 & 8 \\
     P7 & Duomenų ir istorijos valdymas & 0 & 0 & 0 & 10 & 6 & 3 & 16 \\
     \midrule
-    & \textbf{Iš viso, UFP} & \textbf{72} & \textbf{0} & \textbf{180} & \textbf{48} & \textbf{98} & & \textbf{398} \\
-    & \textbf{Funkcijų skaičius} & 9 & 0 & 47 & 8 & 23 & \textbf{87} & \\
+    & \textbf{Iš viso, UFP} & \textbf{72} & \textbf{0} & \textbf{180} & \textbf{52} & \textbf{98} & & \textbf{402} \\
+    & \textbf{Funkcijų skaičius} & 9 & 0 & 47 & 9 & 23 & \textbf{88} & \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -118,12 +118,12 @@ Nekoreguotą dydį koregavome pagal 14 bendrųjų sistemos charakteristikų
 (GSC), kurių kiekviena įvertinta balu nuo 0 iki 5 (\ref{tab:gsc}~lentelė).
 Balų suma (TDI) yra 42, todėl vertės koregavimo koeficientas
 $\mathrm{VAF} = 0{,}65 + 0{,}01 \times 42 = 1{,}07$, o koreguotas dydis
-$\mathrm{AFP} = 398 \times 1{,}07 \approx 426$ funkciniai taškai.
+$\mathrm{AFP} = 402 \times 1{,}07 \approx 430$ funkcinių taškų.
 
 Didžiausią balą (5) gavo dvi charakteristikos. Tiesioginis duomenų įvedimas
 (GSC~6) vertinamas 5 balais, kai daugiau nei 30~\% transakcijų yra
-interaktyvus duomenų įvedimas. Mūsų sistemoje iš 78 transakcijų funkcijų 47
-yra įvestys (60~\%), visos jos vykdomos per žiniatinklio sąsają, o
+interaktyvus duomenų įvedimas. Mūsų sistemoje iš 79 transakcijų funkcijų 47
+yra įvestys (59~\%), visos jos vykdomos per žiniatinklio sąsają, o
 paketinio apdorojimo nėra. Kelių vietų palaikymas (GSC~13) vertinamas
 5 balais, nes sistema diegiama dviejose to paties centro vietose su skirtinga
 įranga (baseine IP66 ekranai ir kaulinio laidumo ausinės, sporto salėje
@@ -138,7 +138,7 @@ realiuoju laiku perduodamos iš debesies į grotuvą, kuris jas vykdo vietoje.
 Atgal grotuvas siunčia tik būsenos signalus, todėl duomenys perduodami viena
 kryptimi; 4 balai skiriami, kai jie perduodami abiem kryptimis. Dauguma balų
 ginčytini: jei 12 iš jų (visi, išskyrus GSC~6 ir 8) būtų vienu balu mažesni
-ar didesni (kiek leidžia skalė), AFP svyruotų nuo 378 iki 470. Darbo sąnaudų įverčiui tai
+ar didesni (kiek leidžia skalė), AFP svyruotų nuo 382 iki 474. Darbo sąnaudų įverčiui tai
 įtakos neturi, nes sąnaudas vertinome kiekvienai daliai atskirai, o ne iš
 AFP.
 
@@ -169,7 +169,7 @@ AFP.
     \midrule
     & \textbf{Bendra įtaka (TDI)} & \textbf{42} \\
     & Vertės koregavimo koeficientas VAF $= 0{,}65 + 0{,}01 \times 42$ & 1,07 \\
-    & Koreguoti funkciniai taškai AFP $= 398 \times 1{,}07 = 425{,}86$ & \textbf{$\approx$\,426} \\
+    & Koreguoti funkciniai taškai AFP $= 402 \times 1{,}07 = 430{,}14$ & \textbf{$\approx$\,430} \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -209,7 +209,7 @@ netaikėme, nes tai nėra programų realizacija, o dalis šių darbų
     \midrule
     P0 & Paskyros, administravimas ir sporto erdvės & 23 & 33 & 50 & 34,0 & 4,5 & 0,39 \\
     P1 & Užsiėmimų programų valdymas & 27 & 38 & 58 & 39,5 & 5,2 & 0,41 \\
-    P2 & Užsiėmimų valdymas & 22 & 32 & 50 & 33,5 & 4,7 & 0,49 \\
+    P2 & Užsiėmimų valdymas & 22 & 32 & 50 & 33,5 & 4,7 & 0,47 \\
     P3 & Dalyvių valdymas & 18 & 25 & 38 & 26,0 & 3,3 & 0,39 \\
     P4 & Asmeninių programų valdymas & 15 & 22 & 34 & 23,0 & 3,2 & 0,46 \\
     P5 & Vaizdinio turinio pateikimas & 4 & 8 & 14 & 8,5 & 1,7 & 1,21 \\
