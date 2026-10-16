@@ -1,0 +1,498 @@
+% Įterpiamas 2.2 poskyris. Reikalingi paketai: longtable, array, booktabs, enumitem, tikz.
+% Dokumento numeraciją nustato pagrindinis Analizės modelio failas.
+\subsection{Panaudojimo atvejų analizė}\label{sec:panaudojimo-atvejai}
+Analizė apima individualių ir grupinių užsiėmimų valdymo bazinę sistemą: paskyras, sporto erdves, turinį, planavimą, rezervacijas, lankomumą, asmenines programas ir užsiėmimo vykdymą. Sistemos riba apima centrinę dalį, žiniatinklio sąsają ir vietinio grotuvo programą. Todėl vietinis grotuvas, vidinis laikmatis ir virtualaus trenerio režimas nėra atskiri išoriniai aktoriai. Ekranai bei garso įranga yra turinio pateikimo priemonės. El. pašto perdavimo techninis tiekėjas šiame analizės lygyje nedetalizuojamas.
+
+Reklama, rinkodaros vaidmuo, atskira dalyvio mobilioji programėlė, automatinis NFC ar QR identifikavimas ir progreso analizė yra plėtiniai ir į bazinių panaudojimo atvejų sąrašą neįtraukiami. Asmeninės programos prieinamos adaptyviojoje žiniatinklio sąsajoje.
+
+\subsubsection{Aktoriai ir prieigos ribos}
+\begin{description}[style=nextline]
+\item[Dalyvis] Registruojasi, tvarko savo profilį, rezervuoja ar atšaukia savo vietą, skaito savo rezervacijas, lankomumą, asmeninę programą ir namų užduotis; gauna priminimus.
+\item[Treneris] Kuria užsiėmimų programas, planuoja ir veda savo užsiėmimus, tvarko jų dalyvius, žymi faktinį lankomumą, sudaro ir nuotoliniu būdu keičia asmenines programas. Patvirtintus vaizdo ir garso failus įkelia administratorius.
+\item[Administratorius] Tvarko paskyras, vaidmenis, erdves, įrangą ir patvirtintą medžiagą; administruoja tvarkaraščius ir dalyvių priskyrimą, planuoja virtualaus trenerio užsiėmimus ir prižiūri veikimą. Budintis darbuotojas šioje analizėje yra administratoriaus vaidmenį atliekantis asmuo.
+\end{description}
+Dalyvis su treneriu susiejamas per konkretaus užsiėmimo rezervaciją. Atskiro nuolatinio priskyrimo treneriui nėra. Individualioje pamokoje yra viena dalyvio vieta; šis apribojimas taikomas ir savarankiškai rezervacijai, ir trenerio ar administratoriaus priskyrimui. Trenerio dalyvių sąrašas išvedamas iš jo užsiėmimų ir rezervacijų.
+
+\subsubsection{Panaudojimo atvejų registras}
+PA identifikatoriai skirti šiai analizei. P0--P7 nuorodos yra ankstesnio laboratorinio funkcinių taškų priedo funkcijų kodai, o ne naujai patvirtinti funkcinių reikalavimų identifikatoriai. Vienas panaudojimo atvejis gali apimti kelias susijusias funkcijas ir alternatyvius scenarijus.
+\begingroup\small
+\begin{longtable}{@{}p{1.2cm}p{6cm}p{3cm}p{4cm}@{}}
+\toprule ID & Tikslas & Aktoriai & Šaltinio funkcijos\\\midrule\endhead
+PA-01 & Registruotis ir valdyti savo paskyrą & Dalyvis & P0.4--P0.8 \\
+PA-02 & Administruoti naudotojus ir vaidmenis & Administratorius & P0.9--P0.14 \\
+PA-03 & Tvarkyti sporto erdves ir įrangą & Administratorius & P0.15--P0.23 \\
+PA-04 & Tvarkyti pratimus ir mokomąją medžiagą & Administratorius & P1.4--P1.9, P1.16--P1.19 \\
+PA-05 & Sudaryti ir keisti užsiėmimo programą & Treneris & P1.10--P1.15, P1.16--P1.22 \\
+PA-06 & Suplanuoti užsiėmimą su treneriu & Treneris, Administratorius & P2.2, P2.11, P2.13; vizijos 3 skyriaus 2 scenarijus \\
+PA-07 & Suplanuoti virtualaus trenerio užsiėmimą & Administratorius & P2.3, P2.11, P2.13 \\
+PA-08 & Keisti arba atšaukti užsiėmimą & Treneris, Administratorius & P2.4--P2.5 \\
+PA-09 & Rezervuoti vietą užsiėmime & Dalyvis & P3.2--P3.3, P3.8 \\
+PA-10 & Atšaukti savo rezervaciją & Dalyvis & P3.4, P3.8 \\
+PA-11 & Priskirti arba pašalinti užsiėmimo dalyvį & Treneris, Administratorius & P3.5--P3.6, P3.9, P3.12--P3.13 \\
+PA-12 & Fiksuoti lankomumą ir peržiūrėti istoriją & Treneris, Dalyvis & P3.7, P3.10 \\
+PA-13 & Sudaryti ir nuotoliniu būdu keisti asmeninę programą & Treneris & P4.2--P4.9 \\
+PA-14 & Peržiūrėti asmeninę programą ir namų užduotis & Dalyvis, Treneris & P4.9--P4.10 \\
+PA-15 & Vykdyti ir valdyti užsiėmimą & Treneris, Administratorius & P2.6--P2.10, P2.12; P5.1; P6.1--P6.2; S2 \\
+PA-16 & Peržiūrėti veikimo sutrikimą & Administratorius & P2.14; vizijos vietinio grotuvo ir užsiėmimų valdymo aprašai \\
+PA-17 & Peržiūrėti istoriją ir ataskaitas & Treneris, Administratorius & P7.1--P7.3 \\
+PA-18 & Gauti priminimą apie užsiėmimą & Dalyvis & P3.11 \\
+\bottomrule\end{longtable}\endgroup
+\subsubsection{Panaudojimo atvejų diagramos}
+Diagramos suskaidytos pagal veiklos sritis; visose taikoma ta pati sistemos riba. Ištisinė linija žymi aktoriaus dalyvavimą, ne veiksmų seką. PA-18 dalyvis yra pranešimo gavėjas, o iniciatorius yra sistemos vidinis laiko įvykis. Bendros prisijungimo ir teisių patikros aprašomos pradinėse sąlygose, todėl diagramose nedubliuojamos kaip atskiri įtraukiami atvejai.
+\begin{figure}[p]\centering
+\begin{tikzpicture}[x=1cm,y=1cm, every node/.style={font=\small}]
+\draw[rounded corners] (2.0,0.9) rectangle (13.8,-10.40);
+\node[anchor=north] at (7.9,0.8) {Sistema: Paskyros, erdvės ir turinys};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a0) at (0.0,-1.63) {Dalyvis\\{\scriptsize «aktorius»}};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a1) at (0.0,-5.10) {Treneris\\{\scriptsize «aktorius»}};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a2) at (0.0,-8.57) {Administratorius\\{\scriptsize «aktorius»}};
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u0) at (9.0,-1.00) {PA-01\\Registruotis ir valdyti savo paskyrą};
+\draw (a0.east) -- (u0.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u1) at (9.0,-3.00) {PA-02\\Administruoti naudotojus ir vaidmenis};
+\draw (a2.east) -- (u1.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u2) at (9.0,-5.00) {PA-03\\Tvarkyti sporto erdves ir įrangą};
+\draw (a2.east) -- (u2.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u3) at (9.0,-7.00) {PA-04\\Tvarkyti pratimus ir mokomąją medžiagą};
+\draw (a2.east) -- (u3.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u4) at (9.0,-9.00) {PA-05\\Sudaryti ir keisti užsiėmimo programą};
+\draw (a1.east) -- (u4.west);
+\end{tikzpicture}
+\caption{Paskyros, erdvės ir turinys.}\end{figure}
+\begin{figure}[p]\centering
+\begin{tikzpicture}[x=1cm,y=1cm, every node/.style={font=\small}]
+\draw[rounded corners] (2.0,0.9) rectangle (13.8,-12.40);
+\node[anchor=north] at (7.9,0.8) {Sistema: Planavimas ir rezervacijos};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a0) at (0.0,-1.97) {Dalyvis\\{\scriptsize «aktorius»}};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a1) at (0.0,-6.10) {Treneris\\{\scriptsize «aktorius»}};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a2) at (0.0,-10.23) {Administratorius\\{\scriptsize «aktorius»}};
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u0) at (9.0,-1.00) {PA-06\\Suplanuoti užsiėmimą su treneriu};
+\draw (a1.east) -- (u0.west);
+\draw (a2.east) -- (u0.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u1) at (9.0,-3.00) {PA-07\\Suplanuoti virtualaus trenerio užsiėmimą};
+\draw (a2.east) -- (u1.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u2) at (9.0,-5.00) {PA-08\\Keisti arba atšaukti užsiėmimą};
+\draw (a1.east) -- (u2.west);
+\draw (a2.east) -- (u2.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u3) at (9.0,-7.00) {PA-09\\Rezervuoti vietą užsiėmime};
+\draw (a0.east) -- (u3.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u4) at (9.0,-9.00) {PA-10\\Atšaukti savo rezervaciją};
+\draw (a0.east) -- (u4.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u5) at (9.0,-11.00) {PA-11\\Priskirti arba pašalinti užsiėmimo dalyvį};
+\draw (a1.east) -- (u5.west);
+\draw (a2.east) -- (u5.west);
+\end{tikzpicture}
+\caption{Planavimas ir rezervacijos.}\end{figure}
+\begin{figure}[p]\centering
+\begin{tikzpicture}[x=1cm,y=1cm, every node/.style={font=\small}]
+\draw[rounded corners] (2.0,0.9) rectangle (13.8,-8.40);
+\node[anchor=north] at (7.9,0.8) {Sistema: Lankomumas ir asmeninės programos};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a0) at (0.0,-2.00) {Dalyvis\\{\scriptsize «aktorius»}};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a1) at (0.0,-6.20) {Treneris\\{\scriptsize «aktorius»}};
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u0) at (9.0,-1.00) {PA-12\\Fiksuoti lankomumą ir peržiūrėti istoriją};
+\draw (a1.east) -- (u0.west);
+\draw (a0.east) -- (u0.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u1) at (9.0,-3.00) {PA-13\\Sudaryti ir nuotoliniu būdu keisti asmeninę programą};
+\draw (a1.east) -- (u1.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u2) at (9.0,-5.00) {PA-14\\Peržiūrėti asmeninę programą ir namų užduotis};
+\draw (a0.east) -- (u2.west);
+\draw (a1.east) -- (u2.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u3) at (9.0,-7.00) {PA-18\\Gauti priminimą apie užsiėmimą};
+\draw (a0.east) -- (u3.west);
+\end{tikzpicture}
+\caption{Lankomumas ir asmeninės programos.}\end{figure}
+\begin{figure}[p]\centering
+\begin{tikzpicture}[x=1cm,y=1cm, every node/.style={font=\small}]
+\draw[rounded corners] (2.0,0.9) rectangle (13.8,-6.40);
+\node[anchor=north] at (7.9,0.8) {Sistema: Vykdymas ir priežiūra};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a0) at (0.0,-1.50) {Treneris\\{\scriptsize «aktorius»}};
+\node[draw,rounded corners,align=center,text width=2.8cm,font=\scriptsize] (a1) at (0.0,-4.70) {Administratorius\\{\scriptsize «aktorius»}};
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u0) at (9.0,-1.00) {PA-15\\Vykdyti ir valdyti užsiėmimą};
+\draw (a0.east) -- (u0.west);
+\draw (a1.east) -- (u0.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u1) at (9.0,-3.00) {PA-16\\Peržiūrėti veikimo sutrikimą};
+\draw (a1.east) -- (u1.west);
+\node[draw,ellipse,align=center,text width=6.1cm,minimum height=1.1cm] (u2) at (9.0,-5.00) {PA-17\\Peržiūrėti istoriją ir ataskaitas};
+\draw (a0.east) -- (u2.west);
+\draw (a1.east) -- (u2.west);
+\end{tikzpicture}
+\caption{Vykdymas ir priežiūra.}\end{figure}
+\clearpage
+\subsubsection{Panaudojimo atvejų scenarijai}
+Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar API. Neapibrėžtos taisyklės aiškiai pažymėtos kaip derintinos.
+\Needspace{10\baselineskip}
+\paragraph{PA-01. Registruotis ir valdyti savo paskyrą}\mbox{}\par
+\textbf{Aktoriai:} Dalyvis.\par
+\textbf{Pradinės sąlygos:} Registracijai paskyra dar nesukurta; profilio keitimui naudotojas prisijungęs.\par
+\textbf{Inicijavimas:} Dalyvis pasirenka registraciją arba savo profilį.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Dalyvis įveda registracijai reikalingus duomenis ir pateikia formą.
+\item Sistema patikrina privalomus laukus ir el. pašto unikalumą, sukuria dalyvio paskyrą.
+\item Dalyvis prisijungia ir peržiūri savo profilį.
+\item Dalyvis patikslina savo duomenis; sistema patikrina ir išsaugo pakeitimus.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 1--2: Trūksta duomenų arba el. paštas jau naudojamas -- sistema parodo klaidą, naujos paskyros nesukuria.
+\item 3: Neteisingi prisijungimo duomenys arba paskyra deaktyvuota -- prieiga nesuteikiama.
+\item 3: Dalyvis pasirenka slaptažodžio atkūrimą ir vykdo sistemos pateiktą atkūrimo procedūrą.
+\end{itemize}
+\textbf{Rezultatas:} Sukurta paskyra arba išsaugoti profilio pakeitimai. Nesėkmės atveju duomenys nepakeisti.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-02. Administruoti naudotojus ir vaidmenis}\mbox{}\par
+\textbf{Aktoriai:} Administratorius.\par
+\textbf{Pradinės sąlygos:} Administratorius prisijungęs.\par
+\textbf{Inicijavimas:} Administratorius atidaro naudotojų sąrašą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Administratorius filtruoja sąrašą ir atidaro paskyrą arba pasirenka naujos paskyros kūrimą.
+\item Įveda arba pakeičia paskyros duomenis ir vaidmenį.
+\item Sistema patikrina duomenis ir administratoriaus teises.
+\item Sistema išsaugo pakeitimus ir pateikia paskyros informaciją.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 2: Pasirinkus deaktyvavimą, sistema atšaukia dalyvio būsimas rezervacijas, išsaugodama istoriją.
+\item 2: Treneris turi būsimų užsiėmimų -- deaktyvavimas neleidžiamas, kol jie nesutvarkyti.
+\item 3: Duomenys neteisingi -- pakeitimai neišsaugomi, pateikiama klaida.
+\end{itemize}
+\textbf{Rezultatas:} Paskyra sukurta, pakeista arba deaktyvuota pagal pasirinkimą; istorija išlieka.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-03. Tvarkyti sporto erdves ir įrangą}\mbox{}\par
+\textbf{Aktoriai:} Administratorius.\par
+\textbf{Pradinės sąlygos:} Administratorius prisijungęs.\par
+\textbf{Inicijavimas:} Administratorius atidaro erdvių arba įrangos valdymą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Administratorius pasirenka sporto erdvę arba kuria naują.
+\item Įrašo erdvės duomenis ir jai skirtą vaizdo bei garso profilį.
+\item Registruoja įrenginį arba keičia jo nustatymus.
+\item Sistema patikrina duomenis ir išsaugo erdvės bei įrangos informaciją.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 1: Šalinant erdvę sistema patikrina suplanuotus užsiėmimus ir priskirtą įrangą; esant priklausomybėms šalinimas blokuojamas.
+\item 3: Pasirinkus įrenginio šalinimą, sistema pašalina jo registraciją.
+\item 4: Netinkami nustatymai -- pakeitimai neišsaugomi.
+\end{itemize}
+\textbf{Rezultatas:} Erdvių ir įrangos registras atnaujintas; nepanaikintos galiojančios priklausomybės.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-04. Tvarkyti pratimus ir mokomąją medžiagą}\mbox{}\par
+\textbf{Aktoriai:} Administratorius.\par
+\textbf{Pradinės sąlygos:} Administratorius prisijungęs; medžiaga parengta iš anksto.\par
+\textbf{Inicijavimas:} Administratorius atidaro pratimų ar medžiagos sąrašą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Administratorius įkelia patvirtintą vaizdo arba garso failą ir jo metaduomenis.
+\item Sistema patikrina failą; vaizdo turinys turi atitikti Full HD ribą.
+\item Administratorius sukuria arba pakeičia pratimą ir susieja jį su mokomąja medžiaga.
+\item Sistema išsaugo turinį; administratorius gali peržiūrėti demonstraciją ar perklausyti įrašą.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 2: Failas netinkamas -- sistema jo nepriima ir pateikia priežastį.
+\item 3: Šalinant pratimą ar medžiagą tikrinamas naudojimas programose ir užduotyse; naudojamo turinio pašalinti neleidžiama.
+\end{itemize}
+\textbf{Rezultatas:} Kataloge yra tinkama naudoti medžiaga ir pratimai; treneris failų neįkelia.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-05. Sudaryti ir keisti užsiėmimo programą}\mbox{}\par
+\textbf{Aktoriai:} Treneris.\par
+\textbf{Pradinės sąlygos:} Treneris prisijungęs; yra įkeltų pratimų ir medžiagos.\par
+\textbf{Inicijavimas:} Treneris pasirenka kurti arba redaguoti programą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Treneris įveda programos duomenis arba atidaro esamą programą.
+\item Parenka pratimus, vaizdo ir garso medžiagą.
+\item Sudaro etapus, nustato jų trukmę, instrukcijas ir eiliškumą.
+\item Sistema patikrina programos duomenis ir išsaugo programą; keičiant sukuriama nauja versija.
+\item Treneris peržiūri programą ir versijų istoriją.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 4: Trūksta privalomų duomenų -- sistema nurodo klaidas, programa neišsaugoma.
+\item 1: Pasirinkus šalinimą arba archyvavimą tikrinamas naudojimas užsiėmimuose; istoriniams ryšiams išsaugoti taikomas archyvavimas.
+\end{itemize}
+\textbf{Rezultatas:} Išsaugota programa ar nauja jos versija; ankstesnė versija išlieka istorijoje.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-06. Suplanuoti užsiėmimą su treneriu}\mbox{}\par
+\textbf{Aktoriai:} Treneris, Administratorius.\par
+\textbf{Pradinės sąlygos:} Naudotojas prisijungęs; yra treneris, sporto erdvė ir parengta programa.\par
+\textbf{Inicijavimas:} Naudotojas pasirenka naujo užsiėmimo planavimą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Naudotojas nurodo pavadinimą, datą, laiką, sporto erdvę ir programą.
+\item Pasirenka individualų arba grupinį užsiėmimą; individualiam nustatoma viena vieta.
+\item Treneris planuoja savo užsiėmimą; administratorius parenka konkretų trenerį.
+\item Sistema patikrina duomenis ir trenerio užsiėmimų laiko nesikirtimą.
+\item Sistema išsaugo užsiėmimą ir pateikia jį tvarkaraštyje.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 4: Trenerio laikas užimtas -- sistema nurodo konfliktą ir užsiėmimo neišsaugo.
+\item 4: Nenurodyta programa arba individualiam užsiėmimui nustatyta daugiau nei viena vieta -- pateikiama klaida.
+\end{itemize}
+\textbf{Rezultatas:} Suplanuotas individualus arba grupinis užsiėmimas su konkrečiu treneriu.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-07. Suplanuoti virtualaus trenerio užsiėmimą}\mbox{}\par
+\textbf{Aktoriai:} Administratorius.\par
+\textbf{Pradinės sąlygos:} Administratorius prisijungęs; yra parengta programa ir sporto erdvė.\par
+\textbf{Inicijavimas:} Administratorius pasirenka virtualaus trenerio režimą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Administratorius parenka programą, erdvę, datą, laiką ir vietų skaičių.
+\item Sistema patikrina privalomus duomenis.
+\item Sistema išsaugo užsiėmimą su virtualaus trenerio režimo žyma.
+\item Tvarkaraštyje pateikiamas užsiėmimas, į kurį dalyviai gali rezervuoti vietas.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 2: Duomenys netinkami arba nepilni -- užsiėmimas neišsaugomas.
+\item Programos vykdymas detalizuotas PA-15; automatinio paleidimo pagal laiką taisyklė šaltiniuose neapibrėžta.
+\end{itemize}
+\textbf{Rezultatas:} Virtualaus trenerio užsiėmimas suplanuotas; nuolatinis trenerio buvimas vietoje nereikalingas.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-08. Keisti arba atšaukti užsiėmimą}\mbox{}\par
+\textbf{Aktoriai:} Treneris, Administratorius.\par
+\textbf{Pradinės sąlygos:} Yra suplanuotas užsiėmimas; treneris tvarko savo užsiėmimą, administratorius -- pagal suteiktas teises.\par
+\textbf{Inicijavimas:} Naudotojas atidaro užsiėmimą ir pasirenka keitimą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Naudotojas pakeičia užsiėmimo duomenis.
+\item Sistema patikrina teises, duomenis ir trenerio laiko nesikirtimą.
+\item Sistema išsaugo pakeitimus.
+\item Sistema praneša užsiregistravusiems dalyviams apie pakeitimus.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 1: Pasirinkus atšaukimą, sistema pažymi užsiėmimą atšauktu, atšaukia jo aktyvias rezervacijas ir praneša dalyviams.
+\item 2: Laiko konfliktas arba nepakankamos teisės -- pakeitimai neatliekami.
+\item 2: Vietų mažinimo žemiau aktyvių rezervacijų skaičiaus taisyklę reikia suderinti; siūloma tokį keitimą blokuoti.
+\end{itemize}
+\textbf{Rezultatas:} Atnaujintas arba atšauktas užsiėmimas; atšaukimo atveju rezervacijų istorija išsaugota.\par
+\clearpage
+\paragraph{PA-09. Rezervuoti vietą užsiėmime}\mbox{}\par
+\textbf{Aktoriai:} Dalyvis.\par
+\textbf{Pradinės sąlygos:} Dalyvis prisijungęs, jo paskyra aktyvi; tvarkaraštyje yra būsimas neatšauktas užsiėmimas.\par
+\textbf{Inicijavimas:} Dalyvis nori pasirinkti individualią arba grupinę pamoką.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Dalyvis pasirenka meniu „Tvarkaraštis“.
+\item Sistema pateikia užsiėmimus ir apskaičiuotą laisvų vietų skaičių; dalyvis pasirenka laikotarpį ar vietą.
+\item Dalyvis atidaro užsiėmimą; sistema parodo laiką, erdvę, režimą, trenerį ir vietas.
+\item Dalyvis paspaudžia „Rezervuoti“.
+\item Sistema patikrina aktyvią paskyrą, ar užsiėmimas dar neprasidėjo ir neatšauktas, bei aktualų vietų užimtumą.
+\item Sistema sukuria aktyvią rezervaciją ir užfiksuoja dalyvį, užsiėmimą, rezervavimo laiką bei veiksmą atlikusį naudotoją.
+\item Sistema parodo patvirtinimą, atnaujina laisvų vietų skaičių ir „Mano rezervacijos“ sąrašą.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 5a: Laisvų vietų nebėra, įskaitant tuo pat metu kito dalyvio užimtą paskutinę vietą -- sistema rodo „Laisvų vietų nebėra“; rezervacijos nesukuria.
+\item 5b: Užsiėmimas prasidėjo arba atšauktas -- sistema rezervuoti neleidžia ir atnaujina informaciją.
+\item 5c: Paskyra deaktyvuota arba sesija pasibaigė -- veiksmas neleidžiamas.
+\item 5d: Jau turimos aktyvios rezervacijos pakartotinio kūrimo taisyklė siūloma kaip papildoma apsauga: parodyti esamą rezervaciją, antros nekurti.
+\item 6a: Išsaugojimas nepavyko -- sėkmės patvirtinimas nerodomas; pakartotinai atidarius sąrašą tikrinama faktinė rezervacijos būsena.
+\end{itemize}
+\textbf{Rezultatas:} Sėkmė: viena aktyvi rezervacija užima vieną vietą. Individualioje pamokoje nelieka laisvų vietų. Nesėkmė: nauja rezervacija nesukuriama.\par
+\clearpage
+\Needspace{10\baselineskip}
+\paragraph{PA-10. Atšaukti savo rezervaciją}\mbox{}\par
+\textbf{Aktoriai:} Dalyvis.\par
+\textbf{Pradinės sąlygos:} Dalyvis prisijungęs ir turi savo aktyvią būsimo užsiėmimo rezervaciją.\par
+\textbf{Inicijavimas:} Dalyvis atidaro „Mano rezervacijos“.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Dalyvis pasirenka rezervaciją ir paspaudžia „Atšaukti“.
+\item Sistema patikrina rezervacijos savininką ir ar užsiėmimas dar neprasidėjo.
+\item Sistema pakeičia būseną į „atšaukta“ ir įrašo atšaukimo laiką bei naudotoją.
+\item Sistema parodo patvirtinimą ir atnaujina laisvų vietų skaičių.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 2: Užsiėmimas jau prasidėjo -- savarankiškas atšaukimas neleidžiamas.
+\item 2: Rezervacija jau atšaukta arba pašalinta -- sistema parodo dabartinę būseną.
+\end{itemize}
+\textbf{Rezultatas:} Vieta atlaisvinta; rezervacijos įrašas išlieka istorijoje; ryšys su konkrečia pamoka nebeaktyvus.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-11. Priskirti arba pašalinti užsiėmimo dalyvį}\mbox{}\par
+\textbf{Aktoriai:} Treneris, Administratorius.\par
+\textbf{Pradinės sąlygos:} Naudotojas prisijungęs; treneris gali valdyti tik savo užsiėmimų dalyvius.\par
+\textbf{Inicijavimas:} Naudotojas atidaro užsiėmimo dalyvių sąrašą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Naudotojas pasirenka „Priskirti“ ir įveda dalyvio el. paštą.
+\item Sistema suranda paskyrą ir patikrina jos aktyvumą, veikėjo teises bei laisvas vietas.
+\item Sistema sukuria aktyvią rezervaciją ir užfiksuoja, kas dalyvį priskyrė.
+\item Sistema pateikia atnaujintą dalyvių sąrašą; trenerio dalyvių sąrašas išvedamas iš jo užsiėmimų ir rezervacijų.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 2: Paskyra nerasta arba neaktyvi -- priskyrimas neatliekamas.
+\item 2: Vietų nėra, taip pat individuali pamoka jau užimta -- priskyrimas neatliekamas.
+\item 2: Treneris neveda pasirinkto užsiėmimo -- prieiga nesuteikiama.
+\item 1: Pasirinkus esamą dalyvį ir „Pašalinti“, rezervacijos būsena pakeičiama į „pašalinta“, įrašomas laikas ir veikėjas, vieta atlaisvinama.
+\item 3: Taikyti PA-09 siūlomą pakartotinės aktyvios rezervacijos draudimą; priskyrimo po pradžios ribą reikia suderinti.
+\end{itemize}
+\textbf{Rezultatas:} Dalyvis priskirtas konkrečiam užsiėmimui arba pašalintas; nuolatinis ryšys su treneriu nekuriamas.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-12. Fiksuoti lankomumą ir peržiūrėti istoriją}\mbox{}\par
+\textbf{Aktoriai:} Treneris, Dalyvis.\par
+\textbf{Pradinės sąlygos:} Treneris prisijungęs; lankomumui žymėti užsiėmimas prasidėjęs. Dalyvis gali skaityti tik savo istoriją.\par
+\textbf{Inicijavimas:} Treneris atidaro savo užsiėmimo dalyvius arba dalyvis pasirenka istoriją.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Treneris atidaro užsiregistravusių dalyvių sąrašą.
+\item Pažymi „dalyvavo“ arba „nedalyvavo“ ir paspaudžia „Išsaugoti“.
+\item Sistema patikrina užsiėmimo pradžią ir trenerio teises, įrašo žymą, veikėją ir laiką.
+\item Dalyvis arba treneris pagal savo prieigos ribas pasirenka laikotarpį ir peržiūri lankomumo istoriją.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 2: Taisant žymą sistema išsaugo pakeistą reikšmę ir pataisymo laiką.
+\item 3: Užsiėmimas neprasidėjo arba treneris jo neveda -- įrašymas neleidžiamas.
+\item 4: Žyma dar neįvesta -- rodoma, kad lankomumas nepažymėtas; rezervacija savaime nereiškia dalyvavimo.
+\end{itemize}
+\textbf{Rezultatas:} Išsaugotas faktinis lankomumas arba pateikta istorija pagal naudotojo teises.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-13. Sudaryti ir nuotoliniu būdu keisti asmeninę programą}\mbox{}\par
+\textbf{Aktoriai:} Treneris.\par
+\textbf{Pradinės sąlygos:} Treneris prisijungęs ir turi teisę pasiekti konkretaus dalyvio duomenis.\par
+\textbf{Inicijavimas:} Treneris pasirenka dalyvį ir asmeninės programos valdymą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Treneris įrašo individualų įvertinimą.
+\item Sudaro asmeninę programą iš pratimų, pateikia pasiruošimo rekomendacijas ir namų užduotis.
+\item Sistema išsaugo programą konkrečiam dalyviui.
+\item Treneris prireikus nuotoliniu būdu pakeičia programą ar užduotis.
+\item Sistema išsaugo atnaujintą programą ir praneša dalyviui apie pakeitimą.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 2: Nepakanka duomenų -- sistema prašo juos papildyti.
+\item 4: Treneris užbaigia arba archyvuoja programą, arba pakeičia ar pašalina namų užduotį.
+\item Prieigos teisės dalyviui atšaukus visas pamokas šaltiniuose neapibrėžtos; ilgalaikę prieigą prie asmeninių programų reikia suderinti.
+\end{itemize}
+\textbf{Rezultatas:} Dalyviui pasiekiama aktuali asmeninė programa arba ankstesnė programa užbaigta ar archyvuota.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-14. Peržiūrėti asmeninę programą ir namų užduotis}\mbox{}\par
+\textbf{Aktoriai:} Dalyvis, Treneris.\par
+\textbf{Pradinės sąlygos:} Naudotojas prisijungęs ir turi teisę matyti pasirinktą programą.\par
+\textbf{Inicijavimas:} Naudotojas atidaro asmeninių programų skiltį.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Dalyvis atidaro savo programą; treneris pasirenka savo sudarytą programą.
+\item Sistema patikrina prieigos teises.
+\item Sistema pateikia programą, pasiruošimo rekomendacijas ir namų užduotis.
+\item Naudotojas peržiūri aktualius pratimus telefonui ar kompiuteriui pritaikytoje sąsajoje.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 3: Programa dar nepaskirta -- sistema parodo, kad duomenų nėra.
+\item 2: Bandoma atidaryti svetimą programą be teisių -- prieiga nesuteikiama.
+\end{itemize}
+\textbf{Rezultatas:} Pateikta tik prieinama programa; atlikimo ar progreso registravimas į šį atvejį neįtrauktas.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-15. Vykdyti ir valdyti užsiėmimą}\mbox{}\par
+\textbf{Aktoriai:} Treneris, Administratorius.\par
+\textbf{Pradinės sąlygos:} Užsiėmimas suplanuotas, programa parengta; vietinis grotuvas turi vykdymui reikalingą turinį.\par
+\textbf{Inicijavimas:} Treneris pradeda savo užsiėmimą; virtualaus režimo paleidimą prižiūri administratorius (siūlomas patikslinimas).\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Veikėjas atidaro suplanuotą užsiėmimą ir pasirenka „Pradėti“.
+\item Sistema pateikia vykdymo valdymo pultą ir pradeda programos eigą.
+\item Vietinis grotuvas sinchroniškai pateikia dabartinio etapo vaizdą ir garso instrukcijas, rodo likusį laiką ir kitą etapą.
+\item Programa pereina per etapus; treneris prireikus valdo eigą.
+\item Pasibaigus programai arba pasirinkus „Užbaigti“, sistema užbaigia užsiėmimą ir išsaugo faktinę eigą.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 4: Treneris pristabdo ir tęsia programą, praleidžia etapą, pasirenka kitą etapą arba koreguoja etapo trukmę.
+\item 4: Treneriui kalbant reguliuojamas įrašytų instrukcijų garsumas arba jos nutildomos.
+\item 3--4: Nutrūkus ryšiui grotuvas užbaigia pradėtą etapą iš vietinio turinio ir nepradeda kito; serveris įrašo sutrikimą ir informuoja budintį darbuotoją administratoriaus sąsajoje.
+\item 1: Turinys neparengtas arba paleidimo komanda nepatvirtinta -- vykdymas nelaikomas sėkmingai pradėtu; atkūrimo procedūrą reikia suderinti.
+\end{itemize}
+\textbf{Rezultatas:} Užsiėmimo eiga ir būklė užfiksuotos. Faktinis dalyvių lankomumas žymimas atskirai PA-12.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-16. Peržiūrėti veikimo sutrikimą}\mbox{}\par
+\textbf{Aktoriai:} Administratorius.\par
+\textbf{Pradinės sąlygos:} Budintis darbuotojas turi administratoriaus prieigą; sistema negauna grotuvo signalo.\par
+\textbf{Inicijavimas:} Administratoriaus sąsajoje pateikiamas pranešimas apie ryšio sutrikimą.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Sistema užfiksuoja sutrikimą užsiėmimo vykdymo žurnale.
+\item Budintis darbuotojas atidaro pranešimą.
+\item Sistema pateikia susijusį užsiėmimą ir turimus grotuvo būklės duomenis.
+\item Darbuotojas patikrina vietinę įrangą ir ryšį.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item Ryšio atstatymo, naujo etapo paleidimo ir incidento uždarymo taisyklės šaltiniuose neapibrėžtos; ši analizė jų nelaiko patvirtintomis funkcijomis.
+\end{itemize}
+\textbf{Rezultatas:} Darbuotojas informuotas; sutrikimo įrašas išsaugotas. Automatinis tęsinys nepostuluojamas.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-17. Peržiūrėti istoriją ir ataskaitas}\mbox{}\par
+\textbf{Aktoriai:} Treneris, Administratorius.\par
+\textbf{Pradinės sąlygos:} Naudotojas prisijungęs ir turi teisę matyti pasirinktus duomenis.\par
+\textbf{Inicijavimas:} Naudotojas atidaro istorijos arba ataskaitų skiltį.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Naudotojas pasirenka istoriją, lankomumo arba erdvių užimtumo ataskaitą ir laikotarpį.
+\item Sistema atrenka atitinkamus užsiėmimus bei rezervacijų ir lankomumo duomenis.
+\item Sistema pateikia faktinę eigą arba apskaičiuotus rodiklius: registracijų skaičių, dalyvavimą, lankomumo procentą ar užimtumą.
+\item Naudotojas peržiūri rezultatą, įskaitant virtualaus trenerio užsiėmimus.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 2: Pasirinktu laikotarpiu duomenų nėra -- pateikiamas tuščias rezultatas.
+\item 3: Lankomumas nepažymėtas -- duomenų trūkumas turi būti atskiriamas nuo „nedalyvavo“; skaičiavimo formulės derinamos reikalavimų analizėje.
+\end{itemize}
+\textbf{Rezultatas:} Pateikta istorija arba ataskaita; ataskaitų vaidmenų ribas reikia patvirtinti.\par
+\Needspace{10\baselineskip}
+\paragraph{PA-18. Gauti priminimą apie užsiėmimą}\mbox{}\par
+\textbf{Aktoriai:} Dalyvis.\par
+\textbf{Pradinės sąlygos:} Yra aktyvi rytdienos rezervacija, dalyvio el. paštas ir dar neišsiųsto priminimo žyma.\par
+\textbf{Inicijavimas:} Ateina sistemos nustatytas kasdienio priminimų siuntimo laikas.\par
+\textbf{Pagrindinis scenarijus:}
+\begin{enumerate}
+\item Sistema atrenka rytdienos aktyvias rezervacijas.
+\item Parengia priminimą su dalyvio vardu, užsiėmimo data, laiku, pavadinimu ir vieta.
+\item Sistema išsiunčia priminimą dalyviui el. paštu.
+\item Sistema įrašo žymą „priminimas išsiųstas“.
+\end{enumerate}
+\textbf{Alternatyvos ir išimtys:}
+\begin{itemize}
+\item 1: Rezervacija atšaukta arba užsiėmimas atšauktas -- priminimas nesiunčiamas.
+\item 1: Priminimas jau išsiųstas -- pakartotinai nesiunčiamas.
+\item 3: Siuntimas nepavyko -- pakartojimų ir sėkmės žymėjimo tvarką reikia suderinti.
+\end{itemize}
+\textbf{Rezultatas:} Dalyviui išsiųstas priminimas ir užfiksuotas siuntimas; nesėkmė nelaikoma sėkmingu pristatymu.\par
+
+\subsubsection{Sąsajos su kitomis analizės dalimis}
+Veiklos diagramai rekomenduojamas PA-09 „Rezervuoti vietą užsiėmime“. Veiklos takeliai: Dalyvis ir Sistema. Pagrindinė eiga apima 1--7 žingsnius, sprendimų šakos -- 5a--5d, klaidos šaka -- 6a. PA-10 rezervacijos atšaukimas yra atskiras naudotojo tikslas ir nebūtinai įtraukiamas į tą pačią veiklos diagramą.
+
+ER, klasių ir duomenų srautų analizėse turi sutapti šie terminai: naudotojo paskyra, dalyvio profilis, trenerio profilis, sporto erdvė, įrenginys, pratimas, mokomoji medžiaga, užsiėmimo programa ir jos versija, programos etapas, užsiėmimas, rezervacija, lankomumo įrašas, asmeninė programa, įvertinimas, pasiruošimo rekomendacija, namų užduotis ir vykdymo žurnalas. Tai suderinimo sąrašas, o ne galutinė ER ar klasių struktūra.
+
+Rezervacijos būsenos iš esamo priedo: aktyvi, atšaukta, pašalinta. Lankomumo žymos: dalyvavo arba nedalyvavo; žymos nebuvimas nėra „nedalyvavo“. Užsiėmimo vykdymo būsenų išsamų sąrašą nustato gyvavimo ciklų analizė. Rezervacijos ir istorija neištrinamos vien atšaukus užsiėmimą ar deaktyvavus paskyrą.
+
+\subsubsection{Derintinos analizės taisyklės}
+Šaltiniuose ne visos situacijos apibrėžtos vienodai išsamiai. Toliau pateikti pasiūlymai neturi būti laikomi jau patvirtintais reikalavimais:
+\begin{enumerate}
+\item PA-09 ir PA-11: vienam dalyviui viename užsiėmime neleisti dviejų aktyvių rezervacijų; paskutinę vietą rezervuojant vienu metu išsaugoti tik vieną sėkmingą rezervaciją.
+\item PA-08: neleisti mažinti vietų skaičiaus žemiau aktyvių rezervacijų skaičiaus, kol rezervacijos nesutvarkytos.
+\item PA-11 ir PA-12: patikslinti administratoriaus lankomumo žymėjimo teises, priskyrimo ir pašalinimo laiko ribas. Esamas P3 priedas lankomumo žymėjimą priskiria treneriui.
+\item PA-07 ir PA-15: patvirtinti, kas paleidžia virtualaus trenerio užsiėmimą -- administratorius ar vidinis tvarkaraščio mechanizmas. Šiame juodraštyje siūlomas administratoriaus inicijavimas, ne naujas automatinio paleidimo reikalavimas.
+\item PA-13: apibrėžti prieigos prie asmeninės programos trukmę ir teises, kai nebelieka aktyvių rezervacijų pas jos autorių.
+\item PA-15 ir PA-16: apibrėžti vykdymo atkūrimą po ryšio sutrikimo ir pasirengimo paleidimui patikras. Patvirtinta tik tai, kad baigiamas esamas etapas ir nepradedamas naujas.
+\item PA-17 ir PA-18: patvirtinti ataskaitų prieigos ribas, rodiklių formules ir pranešimų siuntimo nesėkmių tvarką.
+\end{enumerate}
+
+\Needspace{15\baselineskip}
+\subsubsection{Analizės šaltiniai}
+Naudotos GitHub saugyklos TomasBaubllys/Programu-sistemu-inzinerija-baseinai pagrindinės šakos versijos, patikrintos 2026-10-16 (saugyklos būsena pateikta žemiau):\par
+{\footnotesize\texttt{2afb7e43e0e4c9036bd49645ca3c90b4fec30ec3}}
+\begin{itemize}
+\item Užsakovo poreikių aprašas: \path{1. business-need-statement/business-need-statement_LT.tex}.
+\item Sistemos vizija: \path{2. system-vision-doc/system_vision_LT.tex}.
+\item Funkcinių taškų funkcijų sąrašas: project-plan/src/priedas-funkciniai-taskai.tex.
+\item Dalyvių valdymo detalizavimas: project-plan/src/priedas-p3.tex.
+\end{itemize}
+PA atvejai detalizuoja šaltinių funkcijas; tai nėra naujas funkcinių taškų perskaičiavimas. Galutinius reikalavimų ID ir atsekamumą su poreikiais pateiks atskiras Reikalavimų analizės dokumentas.

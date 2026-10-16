@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.7.17">
+  <diagram id="group0" name="Paskyros, erdvės ir turinys">
+    <mxGraphModel dx="1400" dy="1000" page="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="Sistema: Paskyros, erdvės ir turinys" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;spacingTop=12;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="250" y="30" width="830" height="740" as="geometry" />
+        </mxCell>
+        <mxCell id="a0" value="Dalyvis" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Treneris" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Administratorius" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u0" value="PA-01&lt;br&gt;Registruotis ir valdyti savo paskyrą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="100" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e0_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u1" value="PA-02&lt;br&gt;Administruoti naudotojus ir vaidmenis" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="200" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a2" target="u1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u2" value="PA-03&lt;br&gt;Tvarkyti sporto erdves ir įrangą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="300" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a2" target="u2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u3" value="PA-04&lt;br&gt;Tvarkyti pratimus ir mokomąją medžiagą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="400" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a2" target="u3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u4" value="PA-05&lt;br&gt;Sudaryti ir keisti užsiėmimo programą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="500" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="group1" name="Planavimas ir rezervacijos">
+    <mxGraphModel dx="1400" dy="1000" page="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="Sistema: Planavimas ir rezervacijos" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;spacingTop=12;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="250" y="30" width="830" height="740" as="geometry" />
+        </mxCell>
+        <mxCell id="a0" value="Dalyvis" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Treneris" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Administratorius" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u0" value="PA-06&lt;br&gt;Suplanuoti užsiėmimą su treneriu" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="100" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e0_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0_2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a2" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u1" value="PA-07&lt;br&gt;Suplanuoti virtualaus trenerio užsiėmimą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="200" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a2" target="u1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u2" value="PA-08&lt;br&gt;Keisti arba atšaukti užsiėmimą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="300" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a2" target="u2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u3" value="PA-09&lt;br&gt;Rezervuoti vietą užsiėmime" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="400" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u4" value="PA-10&lt;br&gt;Atšaukti savo rezervaciją" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="500" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u5" value="PA-11&lt;br&gt;Priskirti arba pašalinti užsiėmimo dalyvį" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="600" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5_2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a2" target="u5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="group2" name="Lankomumas ir asmeninės programos">
+    <mxGraphModel dx="1400" dy="1000" page="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="Sistema: Lankomumas ir asmeninės programos" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;spacingTop=12;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="250" y="30" width="830" height="740" as="geometry" />
+        </mxCell>
+        <mxCell id="a0" value="Dalyvis" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Treneris" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u0" value="PA-12&lt;br&gt;Fiksuoti lankomumą ir peržiūrėti istoriją" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="100" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e0_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u1" value="PA-13&lt;br&gt;Sudaryti ir nuotoliniu būdu keisti asmeninę programą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="200" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u2" value="PA-14&lt;br&gt;Peržiūrėti asmeninę programą ir namų užduotis" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="300" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u3" value="PA-18&lt;br&gt;Gauti priminimą apie užsiėmimą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="400" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="group3" name="Vykdymas ir priežiūra">
+    <mxGraphModel dx="1400" dy="1000" page="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="Sistema: Vykdymas ir priežiūra" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;spacingTop=12;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="250" y="30" width="830" height="740" as="geometry" />
+        </mxCell>
+        <mxCell id="a0" value="Treneris" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Administratorius" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u0" value="PA-15&lt;br&gt;Vykdyti ir valdyti užsiėmimą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="100" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e0_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u1" value="PA-16&lt;br&gt;Peržiūrėti veikimo sutrikimą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="200" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u2" value="PA-17&lt;br&gt;Peržiūrėti istoriją ir ataskaitas" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="590" y="300" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
