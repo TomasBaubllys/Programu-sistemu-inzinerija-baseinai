@@ -1,0 +1,77 @@
+% Analizės modelio dokumentas (2 laboratorinis darbas).
+% Kompiliuoti pdfLaTeX iš saugyklos šaknies; visi keliai – nuo šaknies.
+% Kiekviena dalis įterpiama komanda \dalis{failas}{pavadinimas}{atsakingas}:
+% kol failo nėra, vietoje jo rodoma pavadinta tuščia dalis. Jei savo failą
+% padėjote kitu keliu, pataisykite kelią žemiau.
+\documentclass[a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[provide=*]{babel}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,shapes.multipart}
+\usepackage[hidelinks]{hyperref}
+% babel lt: „1 lentelė“, „1 pav.“; lentelės pavadinimas virš lentelės, paveikslo – po paveikslu
+\captionsetup[table]{labelsep=period}
+\captionsetup[figure]{labelsep=space}
+
+\babelprovide[main, import]{lithuanian}
+
+% \dalis{failas}{poskyrio pavadinimas}{atsakingas}
+\newcommand{\dalis}[3]{%
+  \IfFileExists{#1}{\input{#1}}{\subsection{#2}\textit{[Rengia #3.]}}}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+
+    {\Large \textbf{Vilniaus Universitetas}}\\[0.2cm]
+    {\small Matematikos ir informatikos fakultetas}\\[0.1cm]
+    {\small Informatikos katedra}\\[4cm]
+
+    {\huge \textbf{Analizės modelis}}\\[4cm]
+
+    \begin{raggedleft}
+    \begin{minipage}{0.55\textwidth}
+        \textbf{Atliko:}\\
+        Tomas Baublys, Tadas Plančiūnas, Goda Gutparakytė, Marijus Plančiūnas, Ugnė Skučaitė\\[0.8cm]
+    \end{minipage}
+    \end{raggedleft}
+
+    \vfill
+
+    Vilnius \\ \the\year
+
+\end{titlepage}
+
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\section{Struktūrinė analizė}\label{sec:strukturine}
+\dalis{Struktūrinė analizė/ER diagrama/er_diagrama_LT.tex}{Esybių ir ryšių diagrama}{Tomas}
+\dalis{Struktūrinė analizė/Duomenų srautai ir gyvavimo ciklai/duomenu_srautu_diagramos_LT.tex}{Duomenų srautų diagramos}{Marijus}
+\dalis{Struktūrinė analizė/Duomenų srautai ir gyvavimo ciklai/esybiu_gyvavimo_ciklai_LT.tex}{Esybių gyvavimo ciklai}{Marijus}
+
+\section{Objektinė analizė}\label{sec:objektine}
+\dalis{OOA analizė/Analizės klasių diagrama/klasiu_diagrama_LT.tex}{Analizės klasių diagrama}{Tomas}
+\dalis{OOA analizė/Panaudojimo atvejų analizė/panaudojimo_atveju_analize_LT.tex}{Panaudojimo atvejų analizė}{Tadas}
+\dalis{OOA analizė/Veiklos diagrama/veiklos_diagrama_LT.tex}{Veiklos diagrama}{Ugnė}
+
+\input{Atsekamumas/analizes_modelio_atsekamumas_LT}
+
+\end{document}
