@@ -1,6 +1,253 @@
 % 1.3 poskyris „Esybių gyvavimo ciklai“ (atsakingas Marijus Plančiūnas).
-% Reikalingi paketai: tikz (bibliotekos arrows.meta, positioning), float, booktabs, array.
+% Reikalingi paketai: tikz (bibliotekos arrows.meta, shapes.multipart), float,
+% booktabs, array. Būsenos sutampa su 1.1 poskyrio ER esybių būsenos atributais.
+
+\tikzset{
+  bsena/.style={draw, thick, rounded corners=6pt, align=center, font=\scriptsize,
+    minimum width=2.3cm, minimum height=0.75cm, fill=white},
+  bsenae/.style={bsena, rectangle split, rectangle split parts=2,
+    rectangle split part fill={white,white}},
+  bpradzia/.style={circle, fill=black, minimum size=7pt, inner sep=0pt},
+  bpabaiga/.style={circle, draw, thick, minimum size=11pt, inner sep=0pt,
+    path picture={\fill (path picture bounding box.center) circle (2.8pt);}},
+  bper/.style={-{Stealth[length=2mm]}, semithick},
+  bivyk/.style={font=\tiny, align=center, inner sep=1.5pt},
+}
 
 \subsection{Esybių gyvavimo ciklai}\label{sec:gyvavimo-ciklai}
 
-[Rengiama.]
+Duomenų srautų diagramos rodo, kaip duomenys juda, bet ne tai, kaip keičiasi
+pati esybė. Šiame poskyryje kiekvienai esybei nurodyta, kas ir kada ją
+sukuria, kaip ji keičiama, kada pereina į kitą būseną ir kada užbaigiama,
+archyvuojama ar pašalinama. Šešios esybės turi būsenas, jos pavaizduotos UML
+būsenų diagramomis. Kitos esybės tik sukuriamos, keičiamos ir šalinamos, todėl
+aprašytos tik \ref{tab:gyvavimo-ciklai}~lentelėje.
+
+Žymėjimas: juodas taškas~– pradžia, taškas apskritime~– pabaiga,
+užapvalintas stačiakampis~– būsena, rodyklė~– perėjimas. Prie perėjimo
+užrašytas jį sukeliantis įvykis, laužtiniuose skliaustuose~– sąlyga, po
+pasvirojo brūkšnio~– veiksmas, o skliaustuose~– DFD procesas
+(\ref{sec:dfd}~poskyris), kuriame perėjimas vyksta. Užrašas „entry /“ žymi
+veiksmą, atliekamą patekus į būseną.
+
+Esybė neištrinama, jei kartu dingtų užsiėmimų, rezervacijų ar lankomumo
+istorija: tokiu atveju ji archyvuojama, deaktyvuojama arba tiesiog lieka
+galutinėje būsenoje. Ištrinti galima tik niekur nenaudojamą įrašą. Kiek laiko
+saugomi asmens duomenys, nustato nefunkciniai reikalavimai.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{2.6cm}@{}}
+\caption{Esybių gyvavimo ciklų suvestinė}\label{tab:gyvavimo-ciklai}\\
+\toprule
+\textbf{Esybė (saugykla)} & \textbf{Kas ir kada sukuria} & \textbf{Kaip keičiama} & \textbf{Kaip užbaigiama} & \textbf{Ar ištrinama} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Esybė (saugykla)} & \textbf{Kas ir kada sukuria} & \textbf{Kaip keičiama} & \textbf{Kaip užbaigiama} & \textbf{Ar ištrinama} \\
+\midrule
+\endhead
+Naudotojo paskyra (D1) & Dalyvis registruodamasis; trenerio ir administratoriaus paskyras~– administratorius (1) & Profilį keičia pats naudotojas, vaidmenį~– administratorius (1) & Administratorius deaktyvuoja; vėl aktyvuoti gali administratorius (1) & Ne \\[2pt]
+Sporto erdvė (D2) & Administratorius (1) & Duomenis ir vaizdo bei garso profilį keičia administratorius (1) & Pašalinama (1) & Taip, jei nėra suplanuotų užsiėmimų ir priskirtos įrangos \\[2pt]
+Įrenginys (D3) & Administratorius užregistruoja erdvėje (1) & Nustatymai, konfigūracijos pasas ir būsena (1) & Registracija pašalinama (1) & Taip \\[2pt]
+Pratimas (D4) & Administratorius (2) & Administratorius (2) & Pašalinamas (2) & Taip, jei nenaudojamas programose ir užduotyse \\[2pt]
+Mokomoji medžiaga (D5) & Administratorius įkelia patvirtintą failą (2) & Metaduomenis keičia administratorius (2) & Pašalinama (2) & Taip, jei nenaudojama pratimuose ir programose \\[2pt]
+Užsiėmimo programa ir jos versija (D6) & Treneris (2) & Kiekvienas pakeitimas sukuria naują versiją (2) & Archyvuojama, jei naudota užsiėmimuose; kitaip pašalinama (2) & Tik nenaudota \\[2pt]
+Užsiėmimas (D7) & Treneris arba administratorius suplanuoja (3) & Iki pradžios keičiamas (3), vykdymo metu keičiasi jo būsena (6) & Užbaigiamas (6) arba atšaukiamas iki pradžios (3) & Ne \\[2pt]
+Rezervacija (D8) & Dalyvis rezervuoja (4.2), treneris ar administratorius priskiria (4.4) & Įrašoma žyma „priminimas išsiųstas“ (4.7) & Atšaukiama (4.3, 3, 1) arba pašalinama (4.4); po užsiėmimo nebesikeičia & Ne \\[2pt]
+Lankomumo įrašas (D8) & Treneris pažymi dalyvį prasidėjusiame užsiėmime (4.5) & Žymą taiso treneris (4.5) & Lieka kartu su rezervacija & Ne \\[2pt]
+Asmeninė programa ir namų užduotys (D9) & Treneris pagal dalyvio įvertinimą (5) & Treneris keičia nuotoliniu būdu, dalyviui pranešama (5) & Užbaigiama arba archyvuojama (5) & Ne; namų užduotis galima pašalinti, kol programa galioja \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsubsection{Užsiėmimas}\label{sec:gc-uzsiemimas}
+
+Užsiėmimą suplanuoja treneris arba administratorius (3~procesas). Iki
+pradžios jį galima keisti arba atšaukti; atšaukus užsiėmimą, atšaukiamos visos
+jo aktyvios rezervacijos ir apie tai pranešama dalyviams. Užsiėmimą pradeda jį
+vedantis treneris, o virtualaus trenerio užsiėmimą~– šalia esantis treneris;
+pradėti galima tik tada, kai turinys parsiųstas į grotuvą. Nutrūkus ryšiui,
+grotuvas užbaigia pradėtą etapą ir naujo nepradeda, užsiėmimas pereina į
+būseną „Nutrūkęs ryšys“, o budinčiam darbuotojui pranešama. Atkūrus ryšį,
+treneris užsiėmimą tęsia arba užbaigia. Vykdomo užsiėmimo atšaukti negalima,
+jį galima tik užbaigti. Užbaigti ir atšaukti užsiėmimai lieka istorijoje ir
+ataskaitose (\ref{fig:gc-uzsiemimas}~pav.).
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[bpradzia] (i) at (-8.1,2.5) {};
+  \node[bsena] (sup) at (-5.2,2.5) {Suplanuotas};
+  \node[bsena] (vyk) at (-0.6,2.5) {Vykdomas};
+  \node[bsena] (pri) at (-0.6,5.2) {Pristabdytas};
+  \node[bsenae] (nut) at (-0.6,-0.6) {Nutrūkęs ryšys \nodepart{two} entry / pranešti budinčiam\\darbuotojui (O5)};
+  \node[bsenae] (uzb) at (5.0,2.5) {Užbaigtas \nodepart{two} entry / išsaugoti eigą};
+  \node[bpabaiga] (f1) at (7.4,2.5) {};
+  \node[bsenae] (ats) at (-5.2,-0.6) {Atšauktas \nodepart{two} entry / atšaukti aktyvias\\rezervacijas, pranešti dalyviams};
+  \node[bpabaiga] (f2) at (-5.2,-2.4) {};
+  \draw[bper] (i) -- node[bivyk, above, pos=0.4] {planuoti (3)} (sup);
+  \draw[bper] (sup.60) .. controls +(0.4,1.1) and +(-0.4,1.1) .. node[bivyk, above] {keisti (3)} (sup.120);
+  \draw[bper] (sup) -- node[bivyk, above] {pradėti [turinys\\parengtas] (6.2)} (vyk);
+  \draw[bper] (vyk) -- node[bivyk, below, pos=0.42] {užbaigti (6.2) arba baigėsi\\paskutinis etapas (6.3)} (uzb);
+  \draw[bper] (uzb) -- (f1);
+  \draw[bper] (sup) -- node[bivyk, left] {atšaukti (3)} (ats);
+  \draw[bper] (ats) -- (f2);
+  \draw[bper] ([xshift=-3mm]vyk.north) -- node[bivyk, left] {pristabdyti (6.2)} ([xshift=-3mm]pri.south);
+  \draw[bper] ([xshift=3mm]pri.south) -- node[bivyk, right] {tęsti (6.2)} ([xshift=3mm]vyk.north);
+  \draw[bper] ([xshift=-3mm]vyk.south) -- node[bivyk, left] {negaunamas grotuvo\\signalas (6.6)} ([xshift=-3mm]nut.north);
+  \draw[bper] ([xshift=3mm]nut.north) -- node[bivyk, right] {tęsti [ryšys\\atkurtas] (6.2)} ([xshift=3mm]vyk.south);
+  \draw[bper] (pri.east) -- node[bivyk, above, sloped] {užbaigti (6.2)} (uzb.north west);
+  \draw[bper] (nut.east) -- node[bivyk, below, sloped] {užbaigti (6.2)} (uzb.south west);
+\end{tikzpicture}
+\caption{Užsiėmimo būsenų diagrama}\label{fig:gc-uzsiemimas}
+\end{figure}
+
+\subsubsection{Rezervacija ir lankomumo įrašas}\label{sec:gc-rezervacija}
+
+Rezervacija sukuriama, kai dalyvis rezervuoja vietą arba jį priskiria
+treneris ar administratorius, ir tik tada, kai užsiėmime yra laisvų vietų.
+Ji tampa atšaukta, kai dalyvis ją atšaukia iki užsiėmimo pradžios, kai
+atšaukiamas užsiėmimas arba deaktyvuojama dalyvio paskyra, ir pašalinta, kai
+dalyvį pašalina treneris ar administratorius. Užsiėmimui pasibaigus
+rezervacija nebesikeičia ir lieka istorijoje.
+
+Lankomumo įrašas yra atskiras: jis atsiranda tik treneriui pažymėjus dalyvį
+prasidėjusiame užsiėmime. Kol įrašo nėra, lankomumas laikomas nepažymėtu, o
+ne „nedalyvavo“. Žymą galima taisyti (\ref{fig:gc-rezervacija}~pav.).
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[bpradzia] (i) at (0,3.3) {};
+  \node[bsena] (akt) at (0,1.8) {Aktyvi};
+  \node[bsena] (ats) at (-2.4,-0.6) {Atšaukta};
+  \node[bsena] (pas) at (2.4,-0.6) {Pašalinta};
+  \node[bpabaiga] (f0) at (3.2,1.8) {};
+  \node[bpabaiga] (f1) at (-2.4,-2.0) {};
+  \node[bpabaiga] (f2) at (2.4,-2.0) {};
+  \draw[bper] (i) -- node[bivyk, right] {rezervuoti [yra laisvų vietų] (4.2)\\priskirti [yra laisvų vietų] (4.4)} (akt);
+  \draw[bper] (akt) -- node[bivyk, above left, pos=0.45] {atšaukti [neprasidėjo] (4.3)\\atšauktas užsiėmimas (3)\\deaktyvuota paskyra (1)} (ats);
+  \draw[bper] (akt) -- node[bivyk, above right, pos=0.45] {pašalinti (4.4)} (pas);
+  \draw[bper] (akt) -- node[bivyk, above] {užsiėmimas\\užbaigtas} (f0);
+  \draw[bper] (ats) -- (f1);
+  \draw[bper] (pas) -- (f2);
+  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,3.3) {a) Rezervacija};
+\end{tikzpicture}
+\hspace{0.6cm}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[bpradzia] (i) at (0,3.3) {};
+  \node[bsena] (dal) at (-1.9,0.8) {Dalyvavo};
+  \node[bsena] (ned) at (1.9,0.8) {Nedalyvavo};
+  \draw[bper] (i) -- node[bivyk, above left, pos=0.5] {pažymėti [užsiėmimas\\prasidėjo] (4.5)} (dal);
+  \draw[bper] (i) -- node[bivyk, above right, pos=0.5] {pažymėti [užsiėmimas\\prasidėjo] (4.5)} (ned);
+  \draw[bper] ([yshift=1.5mm]dal.east) -- node[bivyk, above] {taisyti (4.5)} ([yshift=1.5mm]ned.west);
+  \draw[bper] ([yshift=-1.5mm]ned.west) -- node[bivyk, below] {taisyti (4.5)} ([yshift=-1.5mm]dal.east);
+  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,3.3) {b) Lankomumo įrašas};
+\end{tikzpicture}
+\caption{Rezervacijos ir lankomumo įrašo būsenų diagramos}\label{fig:gc-rezervacija}
+\end{figure}
+
+\subsubsection{Užsiėmimo programa}\label{sec:gc-programa}
+
+Programą sukuria treneris. Kiekvienas pakeitimas sukuria naują versiją, o
+ankstesnė lieka versijų istorijoje. Užsiėmimuose naudotos programos pašalinti
+negalima~– ji archyvuojama, kad išliktų įvykusių užsiėmimų istorija;
+nenaudota programa pašalinama (\ref{fig:gc-programa}~pav.).
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[bpradzia] (i) at (0,1.6) {};
+  \node[bsena] (akt) at (0,0) {Aktyvi};
+  \node[bsena] (arc) at (-2.0,-2.0) {Archyvuota};
+  \node[bpabaiga] (f) at (2.0,-2.0) {};
+  \draw[bper] (i) -- node[bivyk, left] {sukurti (2)} (akt);
+  \draw[bper] (akt.10) .. controls +(1.4,0.5) and +(1.4,-0.5) .. node[bivyk, right] {keisti / sukurti\\naują versiją (2)} (akt.-10);
+  \draw[bper] (akt) -- node[bivyk, above left, pos=0.5] {šalinti [naudota\\užsiėmimuose] (2)} (arc);
+  \draw[bper] (akt) -- node[bivyk, above right, pos=0.5] {šalinti [nenaudota] (2)} (f);
+  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {a) Programa};
+\end{tikzpicture}
+\hspace{1.2cm}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[bpradzia] (i) at (0,1.6) {};
+  \node[bsena] (akt) at (0,0) {Aktuali};
+  \node[bsena] (ank) at (0,-2.0) {Ankstesnė};
+  \draw[bper] (i) -- node[bivyk, right] {sukurta programa arba\\jos pakeitimas (2)} (akt);
+  \draw[bper] (akt) -- node[bivyk, right] {sukurta naujesnė\\versija (2)} (ank);
+  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {b) Programos versija};
+\end{tikzpicture}
+\caption{Užsiėmimo programos ir jos versijos būsenų diagramos}\label{fig:gc-programa}
+\end{figure}
+
+\subsubsection{Asmeninė programa ir naudotojo paskyra}\label{sec:gc-asmenine}
+
+Asmeninę programą sudaro treneris pagal dalyvio įvertinimą. Treneris ją
+keičia nuotoliniu būdu, programa lieka galiojanti, o dalyviui pranešama apie
+pakeitimą. Kai dalyvis programą baigia, treneris ją užbaigia, o kai programa
+nebeaktuali~– archyvuoja; abiem atvejais ji lieka istorijoje. Namų užduotys
+priklauso programai: treneris jas priskiria, keičia ir šalina, kol programa
+galioja.
+
+Dalyvio paskyrą sukuria pats dalyvis registruodamasis, trenerio ir
+administratoriaus~– administratorius. Deaktyvuojant dalyvio paskyrą,
+atšaukiamos jo būsimos rezervacijos, o trenerio paskyrą galima deaktyvuoti tik
+tada, kai jis neturi būsimų užsiėmimų. Deaktyvuota paskyra neištrinama, kad
+liktų istorija, ir administratorius gali ją vėl aktyvuoti
+(\ref{fig:gc-asmenine}~pav.).
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[bpradzia] (i) at (0,1.6) {};
+  \node[bsena] (gal) at (0,0) {Galiojanti};
+  \node[bsena] (uzb) at (-1.9,-2.0) {Užbaigta};
+  \node[bsena] (arc) at (1.9,-2.0) {Archyvuota};
+  \draw[bper] (i) -- node[bivyk, left] {sudaryti (5)} (gal);
+  \draw[bper] (gal.10) .. controls +(1.4,0.5) and +(1.4,-0.5) .. node[bivyk, right] {keisti / pranešti\\dalyviui (5)} (gal.-10);
+  \draw[bper] (gal) -- node[bivyk, above left, pos=0.5] {užbaigti (5)} (uzb);
+  \draw[bper] (gal) -- node[bivyk, above right, pos=0.5] {archyvuoti (5)} (arc);
+  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {a) Asmeninė programa};
+\end{tikzpicture}
+\hspace{0.8cm}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[bpradzia] (i) at (0,1.6) {};
+  \node[bsena] (akt) at (0,0) {Aktyvi};
+  \node[bsena] (nea) at (0,-2.4) {Neaktyvi};
+  \draw[bper] (i) -- node[bivyk, right] {registruotis arba sukurti (1)} (akt);
+  \draw[bper] ([xshift=-5mm]akt.south) -- node[bivyk, left] {deaktyvuoti [nėra būsimų\\trenerio užsiėmimų] /\\atšaukti būsimas\\rezervacijas (1)} ([xshift=-5mm]nea.north);
+  \draw[bper] ([xshift=5mm]nea.north) -- node[bivyk, right] {aktyvuoti (1)} ([xshift=5mm]akt.south);
+  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {b) Naudotojo paskyra};
+\end{tikzpicture}
+\caption{Asmeninės programos ir naudotojo paskyros būsenų diagramos}\label{fig:gc-asmenine}
+\end{figure}
+
+\subsubsection{Įrenginys}\label{sec:gc-irenginys}
+
+Įrenginį sporto erdvėje užregistruoja administratorius. Jo konfigūracijos
+pase saugoma programinės įrangos versija, IP adresas ir dabartinė būsena.
+Užregistruotas įrenginys gali būti naudojamas, atiduotas taisyti arba
+grąžintas, o iš bet kurios šių būsenų jo registraciją galima pašalinti
+(\ref{fig:gc-irenginys}~pav.). Ši sudėtinė būsena „Užregistruotas“ apima tris
+konfigūracijos paso būsenas.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \draw[thick, rounded corners=10pt] (-4.6,1.0) rectangle (4.6,-3.0);
+  \node[font=\scriptsize, anchor=north west] at (-4.5,0.95) {Užregistruotas};
+  \node[bpradzia] (i) at (-6.4,0) {};
+  \node[bsena] (nau) at (0,0) {Naudojamas};
+  \node[bsena] (tai) at (-3.0,-2.1) {Taisomas};
+  \node[bsena] (gra) at (3.0,-2.1) {Grąžintas};
+  \node[bpabaiga] (f) at (6.4,-1.0) {};
+  \draw[bper] (i) -- node[bivyk, above] {registruoti (1)} (nau);
+  \draw[bper] (nau.200) -- node[bivyk, left, pos=0.4] {atiduoti taisyti (1)} (tai.65);
+  \draw[bper] (tai.35) -- node[bivyk, right, pos=0.25] {sutaisytas (1)} (nau.235);
+  \draw[bper] (nau.340) -- node[bivyk, right, pos=0.6] {grąžinti (1)} (gra.115);
+  \draw[bper] (gra.145) -- node[bivyk, left, pos=0.25] {vėl įdiegti (1)} (nau.305);
+  \draw[bper] (4.6,-1.0) -- node[bivyk, above] {pašalinti (1)} (f);
+\end{tikzpicture}
+\caption{Įrenginio būsenų diagrama}\label{fig:gc-irenginys}
+\end{figure}
