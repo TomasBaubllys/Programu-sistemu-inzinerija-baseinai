@@ -183,9 +183,13 @@ perdavimo sąlygose.
   \node[dfdproc] (p5) at (-0.2,-10.2) {\textbf{5}\\Tvarkyti asmenines programas};
   \node[dfdext] (tre5) at (-6.6,-9.3) {Treneris};
   \node[dfdext] (dal5) at (-6.6,-11.1) {Dalyvis};
-  \node[dfdstore] (d9) at (5.3,-9.6) {\textbf{D9}~~Asmeninės programos};
+  \node[dfdstore] (d9) at (5.3,-9) {\textbf{D9}~~Asmeninės programos};
   \draw[thick] (d9.north west) -- (d9.north east) (d9.south west) -- (d9.south east);
-  \node[dfdstore] (d1b) at (5.3,-11) {\textbf{D1}~~Naudotojų paskyros};
+  \node[dfdstore] (d7e) at (5.3,-10) {\textbf{D7}~~Užsiėmimai};
+  \draw[thick] (d7e.north west) -- (d7e.north east) (d7e.south west) -- (d7e.south east);
+  \node[dfdstore] (d8e) at (5.3,-11) {\textbf{D8}~~Rezervacijos ir lankomumas};
+  \draw[thick] (d8e.north west) -- (d8e.north east) (d8e.south west) -- (d8e.south east);
+  \node[dfdstore] (d1b) at (5.3,-12) {\textbf{D1}~~Naudotojų paskyros};
   \draw[thick] (d1b.north west) -- (d1b.north east) (d1b.south west) -- (d1b.south east);
   \draw[dfdflow] (-5.45,1.65) -- node[srautas, pos=0.38, sloped, below] {I1.1 Dalyvio paskyros duomenys} (-1.2,0.66);
   \draw[dfdflow] (-0.92,0.96) -- node[srautas, pos=0.73, sloped, above] {O1.1 Dalyvio profilis} (-5.45,1.95);
@@ -218,10 +222,12 @@ perdavimo sąlygose.
   \draw[dfdflow] (-1.26,-9.64) -- node[srautas, pos=0.67, sloped, above] {O3.5 Asmeninės programos} (-5.45,-9.15);
   \draw[dfdflow] (-1.26,-10.75) -- node[srautas, pos=0.69, sloped, below] {O1.3 Asmeninė programa} (-5.45,-11.25);
   \draw[dfdflow] (-1.37,-10.46) -- node[srautas, pos=0.54, sloped, above] {O2.3 Programos pakeitimo pranešimas} (-5.45,-10.95);
-  \draw[dfdflow] (0.99,-10.08) -- node[srautasv, pos=0.78, anchor=north] {V17} (3.05,-9.75);
-  \draw[dfdflow] (3.05,-9.45) -- node[srautasv, pos=0.21, anchor=south] {V18} (0.92,-9.78);
+  \draw[dfdflow] (0.93,-9.81) -- node[srautasv, pos=0.8, anchor=north] {V17} (3.05,-9.15);
+  \draw[dfdflow] (3.05,-8.85) -- node[srautasv, pos=0.19, anchor=south] {V18} (0.78,-9.51);
   \draw[dfdflow] (3.05,-7.8) -- node[srautasv, pos=0.38, anchor=north] {V19} (0.52,-9.24);
-  \draw[dfdflow] (3.05,-11) -- node[srautasv, pos=0.21, anchor=north] {V20} (0.94,-10.56);
+  \draw[dfdflow] (3.05,-12) -- node[srautasv, pos=0.18, anchor=north] {V20} (0.69,-11.01);
+  \draw[dfdflow] (3.05,-10) -- node[srautasv, pos=0.22, anchor=north] {V50} (1,-10.11);
+  \draw[dfdflow] (3.05,-11) -- node[srautasv, pos=0.21, anchor=north] {V51} (0.94,-10.56);
 \end{tikzpicture}
 \caption{1 lygio duomenų srautų diagrama: paskyros, turinys ir asmeninės programos (1, 2 ir 5 procesai)}\label{fig:dfd-1a}
 \end{figure}
@@ -573,21 +579,21 @@ O3.1 & Trenerio profilis & Prisijungimo rezultatas; slaptažodžio atkūrimo nuo
 I2.2 & Programos duomenys & Programos pavadinimas ir aprašas; etapai (eilės numeris, trukmė, instrukcija, pratimai, vaizdo ir garso įrašai); šalinimo ar archyvavimo nurodymas & Treneris & 2 procesas & Žiniatinklio formos duomenys & Kelis kartus per savaitę; pradiniame turinyje apie 10 programų & Treneris prisijungęs; kataloge yra įkeltų pratimų ir medžiagos & P1.10–P1.15 \\[2pt]
 O3.2 & Pratimai, medžiaga ir programos & Pratimų katalogas su demonstracija; mokomosios medžiagos sąrašas ir įrašų peržiūra; programų sąrašas, programos etapai ir versijų istorija & 2 procesas & Treneris & Žiniatinklio puslapis su vaizdo peržiūra ir garso perklausa & Kaskart sudarant ar peržiūrint programą & Treneris prisijungęs & P1.16–P1.22 \\[2pt]
 I2.3 & Užsiėmimo duomenys & Pavadinimas, data, laikas, sporto erdvė, programa, tipas (individualus ar grupinis), vietų skaičius, vaizdo, garso ir grupės nustatymai (jei nenurodyti – iš erdvės profilio); pakeitimai; atšaukimo nurodymas & Treneris & 3 procesas & Žiniatinklio formos duomenys & Iki 10 naujų užsiėmimų per dieną; pakeitimai pavieniai & Treneris tvarko tik savo užsiėmimus; jo užsiėmimų laikas nesikerta; keisti ir atšaukti galima tik dar neprasidėjusį užsiėmimą & P2.2, P2.4, P2.5 \\[2pt]
-O3.3 & Užsiėmimų sąrašas & Trenerio užsiėmimai su užimtumu (užsiregistravusių dalyvių ir laisvų vietų skaičius); pasirinkto užsiėmimo informacija & 3 procesas & Treneris & Žiniatinklio puslapis & Kaskart atidarius sąrašą & Rodomi trenerio vedami užsiėmimai & P2.11, P2.13 \\[2pt]
-I2.4 & Priskyrimas ir lankomumas & Priskiriamo dalyvio el. paštas ir užsiėmimas arba šalinamas dalyvis; lankomumo žymos „dalyvavo“ ir „nedalyvavo“ & Treneris & 4 procesas & Žiniatinklio formos duomenys & Lankomumas – kartą per užsiėmimą (iki 10 per dieną); priskyrimai – pagal poreikį & Treneris veda tą užsiėmimą; lankomumas žymimas užsiėmimui prasidėjus & P3.5–P3.7 \\[2pt]
+O3.3 & Užsiėmimų sąrašas & Trenerio vedami ir virtualaus trenerio užsiėmimai su užimtumu (užsiregistravusių dalyvių ir laisvų vietų skaičius); pasirinkto užsiėmimo informacija & 3 procesas & Treneris & Žiniatinklio puslapis & Kaskart atidarius sąrašą & Rodomi trenerio vedami ir virtualaus trenerio užsiėmimai & P2.11, P2.13 \\[2pt]
+I2.4 & Priskyrimas ir lankomumas & Priskiriamo dalyvio el. paštas ir užsiėmimas arba šalinamas dalyvis; lankomumo žymos „dalyvavo“ ir „nedalyvavo“ & Treneris & 4 procesas & Žiniatinklio formos duomenys & Lankomumas – kartą per užsiėmimą (iki 10 per dieną); priskyrimai – pagal poreikį & Treneris valdo tą užsiėmimą; priskirti ir pašalinti galima, kol užsiėmimas neatšauktas ir neužbaigtas; lankomumas žymimas užsiėmimui prasidėjus & P3.5–P3.7 \\[2pt]
 O3.4 & Dalyvių sąrašai & Priskyrimo ir lankomumo išsaugojimo rezultatai; užsiregistravusių dalyvių sąrašas; trenerio dalyvių sąrašas ir paieška; dalyvio kortelė; dalyvio lankomumo istorija & 4 procesas & Treneris & Žiniatinklio puslapis & Kaskart atidarius sąrašą ar kortelę & Rodomi tik trenerio užsiėmimų dalyviai & P3.9, P3.10, P3.12, P3.13 \\[2pt]
-I2.5 & Įvertinimas ir asmeninė programa & Individualus dalyvio įvertinimas; asmeninės programos pratimai ir pasiruošimo rekomendacijos; namų užduotys; pakeitimai, užbaigimo ar archyvavimo nurodymas & Treneris & 5 procesas & Žiniatinklio formos duomenys & Pagal poreikį; programą galima keisti nuotoliniu būdu bet kada & Treneris turi teisę pasiekti to dalyvio duomenis & P4.2–P4.8 \\[2pt]
+I2.5 & Įvertinimas ir asmeninė programa & Individualus dalyvio įvertinimas; asmeninės programos pratimai ir pasiruošimo rekomendacijos; namų užduotys; pakeitimai, užbaigimo ar archyvavimo nurodymas & Treneris & 5 procesas & Žiniatinklio formos duomenys & Pagal poreikį; programą galima keisti nuotoliniu būdu bet kada & Dalyvis turi ar turėjo rezervaciją šio trenerio užsiėmime & P4.2–P4.8 \\[2pt]
 O3.5 & Asmeninės programos & Trenerio sudarytų asmeninių programų sąrašas; pasirinkta programa su namų užduotimis & 5 procesas & Treneris & Žiniatinklio puslapis & Kaskart atidarius sąrašą ar programą & Rodomos tik trenerio sudarytos programos & P4.9, P4.10 \\[2pt]
-I2.6 & Vykdymo komandos & Pradėti, pristabdyti, tęsti, praleisti etapą, pereiti prie pasirinkto etapo, pakeisti etapo trukmę, užbaigti; instrukcijų nutildymas ir garsumas & Treneris & 6 procesas & Valdymo pulto komanda & Nuo kelių iki kelių dešimčių komandų per užsiėmimą, įskaitant virtualaus trenerio užsiėmimus & Užsiėmimą valdo jį vedantis treneris, o virtualaus trenerio užsiėmimą – šalia esantis treneris; turinys parengtas grotuve & P2.6–P2.10, P6.2 \\[2pt]
+I2.6 & Vykdymo komandos & Pradėti, pristabdyti, tęsti, praleisti etapą, pereiti prie pasirinkto etapo, pakeisti etapo trukmę, užbaigti; instrukcijų nutildymas ir garsumas & Treneris & 6 procesas & Valdymo pulto komanda & Nuo kelių iki kelių dešimčių komandų per užsiėmimą, įskaitant virtualaus trenerio užsiėmimus & Užsiėmimą valdo jį vedantis treneris, o virtualaus trenerio užsiėmimą – bet kuris prisijungęs treneris; turinys parengtas grotuve & P2.6–P2.10, P6.2 \\[2pt]
 O3.6 & Valdymo pulto duomenys & Komandos rezultatas; dabartinis ir kitas etapas, likęs etapo laikas, programos eiga, grotuvo ryšio būsena & 6 procesas & Treneris & Valdymo pultas, atnaujinamas realiuoju laiku & Nuolat užsiėmimo metu, įskaitant virtualaus trenerio užsiėmimus & Užsiėmimas pradėtas & P2.12 \\[2pt]
-O3.7 & Istorija ir ataskaitos & Įvykusių užsiėmimų istorija su faktine eiga; lankomumo ataskaita (užsiregistravusių ir dalyvavusių skaičius, lankomumo procentas, nepažymėtų skaičius); užsiėmimų ir erdvių užimtumo ataskaita & 7 procesas & Treneris & Žiniatinklio puslapis & Pagal poreikį, pasirinkus laikotarpį & Rodomi tik trenerio užsiėmimų duomenys & P7.1–P7.3 \\[2pt]
-I3.1 & Paskyros, erdvės ir įranga & Prisijungimo duomenys; naudotojo paskyros duomenys ir vaidmuo; deaktyvavimo arba aktyvavimo nurodymas; sporto erdvės duomenys ir jos vaizdo bei garso profilis; įrenginio registracija, nustatymai ir konfigūracijos pasas (programinės įrangos versija, IP adresas, būsena); šalinimo nurodymai & Administratorius & 1 procesas & Žiniatinklio formos duomenys & Kelis kartus per savaitę, daugiausia diegimo metu & Administratorius prisijungęs; šalinamoje erdvėje ir deaktyvuojamam treneriui neturi būti suplanuota užsiėmimų & P0.5, P0.9–P0.12, P0.15–P0.17, P0.19–P0.21 \\[2pt]
+O3.7 & Istorija ir ataskaitos & Užsiėmimų, kuriuos treneris vedė ar valdė, istorija su faktine eiga ir lankomumo ataskaita (užsiregistravusių ir dalyvavusių skaičius, lankomumo procentas, nepažymėtų skaičius) & 7 procesas & Treneris & Žiniatinklio puslapis & Pagal poreikį, pasirinkus laikotarpį & Rodomi tik užsiėmimai, kuriuos treneris vedė ar valdė & P7.1, P7.2 \\[2pt]
+I3.1 & Paskyros, erdvės ir įranga & Prisijungimo duomenys; naudotojo paskyros duomenys ir vaidmuo; deaktyvavimo arba aktyvavimo nurodymas; sporto erdvės duomenys ir jos vaizdo bei garso profilis; įrenginio registracija, nustatymai ir konfigūracijos pasas (programinės įrangos versija, IP adresas, būsena); šalinimo nurodymai & Administratorius & 1 procesas & Žiniatinklio formos duomenys & Kelis kartus per savaitę, daugiausia diegimo metu & Administratorius prisijungęs; šalinamoje erdvėje neturi būti vykusių ar suplanuotų užsiėmimų, o deaktyvuojamam treneriui – suplanuotų užsiėmimų & P0.5, P0.9–P0.12, P0.15–P0.17, P0.19–P0.21 \\[2pt]
 O4.1 & Paskyrų, erdvių ir įrangos sąrašai & Prisijungimo rezultatas; naudotojų sąrašas su filtru pagal vaidmenį; paskyros informacija; erdvių sąrašas; erdvės įrangos sąrašas; įrenginio nustatymai & 1 procesas & Administratorius & Žiniatinklio puslapis & Kaskart atidarius sąrašą ar įrašą & Administratorius prisijungęs & P0.13, P0.14, P0.18, P0.22, P0.23 \\[2pt]
 I3.2 & Pratimai ir medžiagos failai & Patvirtinti vaizdo ir garso failai su metaduomenimis; pratimo duomenys ir jo sąsaja su medžiaga; pakeitimai ir šalinimo nurodymai & Administratorius & 2 procesas & Žiniatinklio formos duomenys ir įkeliami failai & Pradinis įkėlimas – apie 40 pratimų; vėliau pavieniai pakeitimai & Vaizdo failas neviršija Full HD raiškos; šalinamas pratimas nenaudojamas programose ir namų užduotyse, o įrašas – pratimuose ir programose & P1.4–P1.9 \\[2pt]
 O4.2 & Pratimai, medžiaga ir programos & Pratimų katalogas su demonstracija; mokomosios medžiagos sąrašas, įrašų peržiūra ir perklausa; programų sąrašas & 2 procesas & Administratorius & Žiniatinklio puslapis su vaizdo peržiūra ir garso perklausa & Kaskart tvarkant turinį ar planuojant užsiėmimą & Administratorius prisijungęs & P1.16–P1.20 \\[2pt]
 I3.3 & Užsiėmimo duomenys & Užsiėmimas su pasirinktu treneriu arba virtualaus trenerio užsiėmimas: pavadinimas, programa, sporto erdvė, data, laikas, vietų skaičius, vaizdo, garso ir grupės nustatymai; pakeitimai; atšaukimo nurodymas & Administratorius & 3 procesas & Žiniatinklio formos duomenys & Pagal poreikį & Pasirinkto trenerio užsiėmimų laikas nesikerta; keisti ir atšaukti galima tik dar neprasidėjusį užsiėmimą & P2.2–P2.5 \\[2pt]
 O4.3 & Užsiėmimų sąrašas & Užsiėmimai su užimtumu (užsiregistravusių dalyvių ir laisvų vietų skaičius); pasirinkto užsiėmimo informacija & 3 procesas & Administratorius & Žiniatinklio puslapis & Kaskart atidarius sąrašą & Administratorius prisijungęs & P2.11, P2.13 \\[2pt]
-I3.4 & Dalyvių priskyrimas & Priskiriamo dalyvio el. paštas ir užsiėmimas arba šalinamas dalyvis & Administratorius & 4 procesas & Žiniatinklio formos duomenys & Pagal poreikį & Užsiėmime yra laisvų vietų; dalyvio paskyra aktyvi & P3.5, P3.6 \\[2pt]
+I3.4 & Dalyvių priskyrimas & Priskiriamo dalyvio el. paštas ir užsiėmimas arba šalinamas dalyvis & Administratorius & 4 procesas & Žiniatinklio formos duomenys & Pagal poreikį & Užsiėmimas neatšauktas ir neužbaigtas; priskiriant – yra laisvų vietų ir dalyvio paskyra aktyvi & P3.5, P3.6 \\[2pt]
 O4.4 & Užsiregistravę dalyviai & Priskyrimo rezultatas; užsiregistravusių dalyvių sąrašas (vardas, pavardė, telefonas, rezervacijos būsena, rezervavimo laikas) & 4 procesas & Administratorius & Žiniatinklio puslapis & Kaskart atidarius sąrašą & Administratorius prisijungęs & P3.9 \\[2pt]
 O4.5 & Istorija ir ataskaitos & Įvykusių užsiėmimų istorija su faktine eiga; lankomumo ataskaita (įskaitant nepažymėtų skaičių); užsiėmimų ir erdvių užimtumo ataskaita, įskaitant virtualaus trenerio užsiėmimus & 7 procesas & Administratorius & Žiniatinklio puslapis & Pagal poreikį, pasirinkus laikotarpį & Administratorius prisijungęs & P7.1–P7.3 \\[2pt]
 O5 & Pranešimas apie ryšio sutrikimą & Užsiėmimo pavadinimas, sporto erdvė, sutrikimo laikas, vykdyto etapo numeris & 6 procesas & Administratorius & Pranešimas administratoriaus sąsajoje & Kaskart nutrūkus ryšiui su grotuvu; turėtų pasitaikyti retai & Užsiėmimas vykdomas, o serveris nustatytą laiką negauna grotuvo signalo & P2.14 \\[2pt]
@@ -614,7 +620,7 @@ V3 & Erdvės įrašas & 1 procesas & D2 Sporto erdvės & Nauja, pakeista ar paš
 V4 & Erdvių duomenys & D2 Sporto erdvės & 1 procesas & Erdvių sąrašas ir erdvės duomenys & Duomenų bazės įrašas & Kartu su I3.1, O4.1 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V5 & Įrenginio įrašas & 1 procesas & D3 Įranga & Įrenginio registracija, nustatymai, konfigūracijos pasas, šalinimo žyma & Duomenų bazės įrašas & Kartu su I3.1 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V6 & Įrangos duomenys & D3 Įranga & 1 procesas & Erdvės įrangos sąrašas ir įrenginio nustatymai & Duomenų bazės įrašas & Kartu su I3.1, O4.1 & Kai perduodami susiję išoriniai srautai \\[2pt]
-V7 & Suplanuoti užsiėmimai & D7 Užsiėmimai & 1 procesas & Būsimi erdvės ir trenerio užsiėmimai – šalinimo ir deaktyvavimo patikrai & Duomenų bazės įrašas & Kaskart šalinant erdvę ar deaktyvuojant paskyrą & Kai perduodami susiję išoriniai srautai \\[2pt]
+V7 & Suplanuoti užsiėmimai & D7 Užsiėmimai & 1 procesas & Erdvės užsiėmimai (ir įvykę) bei būsimi trenerio užsiėmimai – šalinimo ir deaktyvavimo patikrai & Duomenų bazės įrašas & Kaskart šalinant erdvę ar deaktyvuojant paskyrą & Kai perduodami susiję išoriniai srautai \\[2pt]
 V8 & Rezervacijų atšaukimas & 1 procesas & D8 Rezervacijos ir lankomumas & Deaktyvuoto dalyvio būsimos rezervacijos pažymimos atšauktomis & Duomenų bazės įrašas & Kaskart deaktyvuojant dalyvio paskyrą & Kai perduodami susiję išoriniai srautai \\[2pt]
 V9 & Pratimo įrašas & 2 procesas & D4 Pratimai & Naujas, pakeistas ar pašalintas pratimas ir jo sąsaja su medžiaga & Duomenų bazės įrašas & Kartu su I3.2 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V10 & Pratimų duomenys & D4 Pratimai & 2 procesas & Pratimų katalogas, pratimo duomenys & Duomenų bazės įrašas & Kartu su I2.2, I3.2, O3.2, O4.2 & Kai perduodami susiję išoriniai srautai \\[2pt]
@@ -628,7 +634,7 @@ V17 & Asmeninės programos įrašas & 5 procesas & D9 Asmeninės programos & Įv
 V18 & Asmeninių programų duomenys & D9 Asmeninės programos & 5 procesas & Dalyvio programa, rekomendacijos, namų užduotys, trenerio programų sąrašas & Duomenų bazės įrašas & Kartu su I2.5, O1.3, O3.5 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V19 & Pratimai programai & D4 Pratimai & 5 procesas & Pratimai asmeninei programai ir namų užduotims sudaryti & Duomenų bazės įrašas & Kartu su I2.5, O1.3 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V20 & Dalyvio duomenys & D1 Naudotojų paskyros & 5 procesas & Dalyvio vardas, pavardė ir el. paštas & Duomenų bazės įrašas & Kartu su I2.5, O2.3, O3.5 & Kai perduodami susiję išoriniai srautai \\[2pt]
-V21 & Užsiėmimo įrašas & 3 procesas & D7 Užsiėmimai & Naujas, pakeistas ar atšauktas užsiėmimas & Duomenų bazės įrašas & Kartu su I2.3, I3.3 & Kai perduodami susiję išoriniai srautai \\[2pt]
+V21 & Užsiėmimo įrašas & 3 procesas & D7 Užsiėmimai & Naujas, pakeistas, atšauktas ar neįvykusiu pažymėtas užsiėmimas & Duomenų bazės įrašas & Kartu su I2.3, I3.3; periodiškai – neįvykusiems užsiėmimams pažymėti & Kai perduodami susiję išoriniai srautai \\[2pt]
 V22 & Užsiėmimų duomenys & D7 Užsiėmimai & 3 procesas & Trenerio užsiėmimai laiko sankirtoms tikrinti, užsiėmimų sąrašas ir jų būsenos & Duomenų bazės įrašas & Kartu su I2.3, I3.3, O3.3, O4.3 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V23 & Trenerių ir dalyvių duomenys & D1 Naudotojų paskyros & 3 procesas & Trenerių vardai; užsiregistravusių dalyvių vardai ir el. paštai pranešimams & Duomenų bazės įrašas & Kartu su I3.3, O2.1, O3.3, O4.3 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V24 & Erdvių profiliai & D2 Sporto erdvės & 3 procesas & Sporto erdvės ir jų vaizdo bei garso profiliai užsiėmimo nustatymams & Duomenų bazės įrašas & Kartu su I2.3, I3.3, O3.3, O4.3 & Kai perduodami susiję išoriniai srautai \\[2pt]
@@ -645,12 +651,14 @@ V34 & Faktinė eiga & 6 procesas & D7 Užsiėmimai & Užsiėmimo būsena, turini
 V35 & Programos etapai & D6 Užsiėmimų programos & 6 procesas & Programos etapai: eiliškumas, trukmė, instrukcijos, pratimai, įrašai & Duomenų bazės įrašas & Kartą prieš užsiėmimą & Prieš užsiėmimą, kai turinys atsiunčiamas į grotuvą \\[2pt]
 V36 & Vaizdo ir garso įrašai & D5 Mokomoji medžiaga & 6 procesas & Programoje naudojami vaizdo ir garso failai & Vaizdo ir garso failai & Kartą prieš užsiėmimą & Prieš užsiėmimą, kai turinys atsiunčiamas į grotuvą \\[2pt]
 V37 & Įrenginių nustatymai & D3 Įranga & 6 procesas & Erdvės grotuvo, ekrano ir garso įrenginių nustatymai & Duomenų bazės įrašas & Kartą prieš užsiėmimą & Prieš užsiėmimą, kai turinys atsiunčiamas į grotuvą \\[2pt]
-V38 & Užsiėmimų istorija & D7 Užsiėmimai & 7 procesas & Įvykę užsiėmimai su faktine eiga & Duomenų bazės įrašas & Kartu su O3.7, O4.6 & Kai perduodami susiję išoriniai srautai \\[2pt]
+V38 & Užsiėmimų istorija & D7 Užsiėmimai & 7 procesas & Įvykę užsiėmimai su faktine eiga ir vykdymo žurnalu (kas valdė) & Duomenų bazės įrašas & Kartu su O3.7, O4.6 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V39 & Rezervacijų ir lankomumo duomenys & D8 Rezervacijos ir lankomumas & 7 procesas & Rezervacijos ir lankomumo žymos ataskaitoms & Duomenų bazės įrašas & Kartu su O3.7, O4.6 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V40 & Erdvių sąrašas & D2 Sporto erdvės & 7 procesas & Sporto erdvės užimtumo ataskaitai & Duomenų bazės įrašas & Kartu su O3.7, O4.6 & Kai perduodami susiję išoriniai srautai \\[2pt]
 V47 & Pratimai vykdymui & D4 Pratimai & 6 procesas & Programos etapuose naudojamų pratimų pavadinimai ir nuorodos į jų vaizdo įrašus & Duomenų bazės įrašas & Kartą prieš užsiėmimą & Prieš užsiėmimą, kai turinys atsiunčiamas į grotuvą \\[2pt]
 V48 & Sporto erdvė & D2 Sporto erdvės & 6 procesas & Užsiėmimo sporto erdvės pavadinimas pranešimui apie ryšio sutrikimą & Duomenų bazės įrašas & Kaskart nutrūkus ryšiui su grotuvu & Kai perduodami susiję išoriniai srautai \\[2pt]
 V49 & Versijų autoriai & D1 Naudotojų paskyros & 2 procesas & Programos versijas sukūrusių trenerių vardai & Duomenų bazės įrašas & Kartu su O3.2 & Kai perduodami susiję išoriniai srautai \\[2pt]
+V50 & Trenerio užsiėmimai & D7 Užsiėmimai & 5 procesas & Užsiėmimai, kuriuos veda treneris – prieigos prie dalyvio patikrai & Duomenų bazės įrašas & Kartu su I2.5 & Kai perduodami susiję išoriniai srautai \\[2pt]
+V51 & Trenerio dalyvių rezervacijos & D8 Rezervacijos ir lankomumas & 5 procesas & Dalyvio rezervacijos trenerio užsiėmimuose – prieigos prie dalyvio patikrai & Duomenų bazės įrašas & Kartu su I2.5 & Kai perduodami susiję išoriniai srautai \\[2pt]
 % <<< GEN:v
 \bottomrule
 \end{longtable}
@@ -689,8 +697,8 @@ V29.7 & V29 & Rytdienos rezervacijos & D8 Rezervacijos ir lankomumas & 4.7 proce
 V30.1 & V30 & Būsimi užsiėmimai & D7 Užsiėmimai & 4.1 procesas & Neatšaukti būsimi užsiėmimai: pavadinimas, režimas, data ir laikas, vietų skaičius & Kaip V30 \\[2pt]
 V30.2 & V30 & Užsiėmimo būsena & D7 Užsiėmimai & 4.2 procesas & Vietų skaičius; ar užsiėmimas dar neprasidėjo ir neatšauktas & Kaip V30 \\[2pt]
 V30.3 & V30 & Užsiėmimo pradžia & D7 Užsiėmimai & 4.3 procesas & Ar užsiėmimas dar neprasidėjo & Kaip V30 \\[2pt]
-V30.4 & V30 & Užsiėmimo duomenys & D7 Užsiėmimai & 4.4 procesas & Vietų skaičius; ar užsiėmimą veda šis treneris & Kaip V30 \\[2pt]
-V30.5 & V30 & Užsiėmimo duomenys & D7 Užsiėmimai & 4.5 procesas & Ar užsiėmimas prasidėjo; ar jį veda šis treneris & Kaip V30 \\[2pt]
+V30.4 & V30 & Užsiėmimo duomenys & D7 Užsiėmimai & 4.4 procesas & Vietų skaičius, užsiėmimo būsena; ar užsiėmimą valdo šis treneris & Kaip V30 \\[2pt]
+V30.5 & V30 & Užsiėmimo duomenys & D7 Užsiėmimai & 4.5 procesas & Ar užsiėmimas prasidėjo ir neatšauktas; ar jį valdo šis treneris & Kaip V30 \\[2pt]
 V30.6 & V30 & Užsiėmimų duomenys & D7 Užsiėmimai & 4.6 procesas & Užsiėmimų pavadinimas, režimas, data ir laikas; trenerio užsiėmimai & Kaip V30 \\[2pt]
 V30.7 & V30 & Rytdienos užsiėmimai & D7 Užsiėmimai & 4.7 procesas & Pavadinimas, data ir laikas; ar užsiėmimas neatšauktas & Kaip V30 \\[2pt]
 V31.1 & V31 & Trenerio vardas & D1 Naudotojų paskyros & 4.1 procesas & Užsiėmimą vedančio trenerio vardas ir pavardė & Kaip V31 \\[2pt]
@@ -707,7 +715,7 @@ V34.1 & V34 & Būsenos pakeitimas & 6.2 procesas & D7 Užsiėmimai & Nauja užsi
 V34.2 & V34 & Eiga ir ryšio būsena & 6.6 procesas & D7 Užsiėmimai & Būsenos pakeitimai pagal grotuvo signalą (be ryšio, ryšys atkurtas, užbaigtas pasibaigus paskutiniam etapui), faktiniai etapų laikai, ryšio sutrikimo įrašas vykdymo žurnale & Kaip V34 \\[2pt]
 V41 & -- & Atsisiųstas turinys & 6.1 procesas & D10 Vietinė turinio kopija & Užsiėmimo programos etapai, jų pratimai, vaizdo ir garso failai, įrenginių nustatymai & Failai grotuvo atmintyje. Kartą prieš kiekvieną užsiėmimą. Užsiėmimas suplanuotas; grotuvas pasiekiamas tinklu. \\[2pt]
 V42 & -- & Etapo turinys & D10 Vietinė turinio kopija & 6.3 procesas & Dabartinio ir kito etapo vaizdas, garsas, instrukcija ir trukmė & Failai grotuvo atmintyje. Nuolat užsiėmimo metu. Turinys atsisiųstas; veikia ir nutrūkus ryšiui su serveriu. \\[2pt]
-V43 & -- & Vykdymo komanda & 6.2 procesas & 6.3 procesas & Patvirtinta komanda: pradėti, pristabdyti, tęsti, praleisti etapą, pereiti prie etapo, pakeisti trukmę, užbaigti, keisti garsumą ar nutildyti instrukcijas & Realiojo laiko pranešimas grotuvui. Kaskart gavus leistiną komandą. Komandą davė užsiėmimą vedantis treneris, o virtualaus trenerio užsiėmime – šalia esantis treneris. \\[2pt]
+V43 & -- & Vykdymo komanda & 6.2 procesas & 6.3 procesas & Patvirtinta komanda: pradėti, pristabdyti, tęsti, praleisti etapą, pereiti prie etapo, pakeisti trukmę, užbaigti, keisti garsumą ar nutildyti instrukcijas & Realiojo laiko pranešimas grotuvui. Kaskart gavus leistiną komandą. Komandą davė užsiėmimą valdantis treneris. \\[2pt]
 V44 & -- & Etapo vaizdas & 6.3 procesas & 6.4 procesas & Dabartinio etapo vaizdo įrašas, instrukcijos tekstas, likęs laikas, kitas etapas & Grotuvo vidiniai duomenys. Nuolat užsiėmimo metu. Užsiėmimas vykdomas. \\[2pt]
 V45 & -- & Etapo garsas & 6.3 procesas & 6.5 procesas & Dabartinio etapo garso instrukcijos, garsumo lygis ir nutildymo žyma & Grotuvo vidiniai duomenys. Nuolat užsiėmimo metu, sinchroniškai su vaizdu. Užsiėmimas vykdomas. \\[2pt]
 V46 & -- & Grotuvo būsena & 6.3 procesas & 6.6 procesas & Dabartinio ir kito etapo pavadinimai, likęs laikas, programos eiga ir grotuvo veikimo signalas & Periodinis būsenos pranešimas serveriui. Kas kelias sekundes užsiėmimo metu; intervalą nustato nefunkciniai reikalavimai. Grotuvas pasiekiamas tinklu; nutrūkus ryšiui signalas negaunamas. \\[2pt]
@@ -734,7 +742,8 @@ raktiniais žodžiais \textbf{JEI}, \textbf{TADA}, \textbf{KITAIP},
 \textbf{KIEKVIENAM} ir \textbf{KOL}. Prie kiekvieno proceso nurodyti jo
 gaunami, skaitomi, rašomi ir pateikiami srautai. Rezervavimo (4.2) sąlygos,
 nuo kurių priklauso rezultatas, papildomai pateiktos sprendimų lentelėje
-(\ref{tab:pspec-42}~lentelė).
+(\ref{tab:pspec-42}~lentelė). Čia ir toliau „užsiėmimas prasidėjo“ reiškia,
+kad atėjo suplanuotas jo pradžios laikas.
 
 % >>> GEN:pspec
 \paragraph{1 Tvarkyti paskyras, erdves ir įrangą}\mbox{}\par
@@ -745,7 +754,7 @@ nuo kurių priklauso rezultatas, papildomai pateiktos sprendimų lentelėje
   \item Slaptažodžio atkūrimas: \textbf{JEI} el. paštas yra D1 saugykloje, \textbf{TADA} išsiųsti atkūrimo nuorodą; naują slaptažodį įrašyti į D1.
   \item Profilio, paskyros ir vaidmens pakeitimai: patikrinti laukus ir įrašyti į D1.
   \item Paskyros deaktyvavimas: \textbf{JEI} tai treneris ir D7 saugykloje yra jo būsimų užsiėmimų, \textbf{TADA} atmesti; \textbf{KITAIP} paskyrą pažymėti neaktyvia, istorijos netrinti, o \textbf{JEI} tai dalyvis, \textbf{TADA} jo būsimas aktyvias rezervacijas D8 saugykloje pažymėti atšauktomis. Aktyvavimas: neaktyvią paskyrą vėl pažymėti aktyvia.
-  \item Erdvės šalinimas: \textbf{JEI} D7 saugykloje yra toje erdvėje suplanuotų užsiėmimų arba D3 saugykloje yra jai priskirtos įrangos, \textbf{TADA} atmesti; \textbf{KITAIP} ištrinti.
+  \item Erdvės šalinimas: \textbf{JEI} D7 saugykloje yra šios erdvės užsiėmimų (ir įvykusių) arba D3 saugykloje yra jai priskirtos įrangos, \textbf{TADA} atmesti; \textbf{KITAIP} ištrinti.
   \item Įrenginio registravimas, nustatymų ir konfigūracijos paso keitimas, šalinimas: patikrinti nustatymus ir įrašyti į D3.
   \item Profilis ir sąrašai pateikiami tik pagal naudotojo vaidmenį.
 \end{itemize}
@@ -768,6 +777,7 @@ nuo kurių priklauso rezultatas, papildomai pateiktos sprendimų lentelėje
   \item \textbf{JEI} tai virtualaus trenerio užsiėmimas, \textbf{TADA} trenerio nepriskirti ir pažymėti virtualaus trenerio režimą.
   \item Užsiėmimą įrašyti į D7 su būsena „suplanuotas“.
   \item Keitimas ir atšaukimas: \textbf{JEI} užsiėmimo būsena ne „suplanuotas“, \textbf{TADA} atmesti. Keičiant taikyti tas pačias taisykles; \textbf{JEI} naujas vietų skaičius mažesnis už aktyvių rezervacijų skaičių D8 saugykloje, \textbf{TADA} atmesti.
+  \item Periodiškai \textbf{KIEKVIENAM} užsiėmimui, kurio būsena „suplanuotas“, o suplanuota pabaiga jau praėjo: pakeisti būseną į „neįvykęs“.
   \item Atšaukimas: užsiėmimo būseną pakeisti į „atšauktas“, visas jo aktyvias rezervacijas D8 saugykloje pažymėti atšauktomis.
   \item Pakeitus ar atšaukus: \textbf{KIEKVIENAM} dalyviui, turinčiam aktyvią rezervaciją, išsiųsti O2.1 jo el. pašto adresu iš D1.
   \item Sąraše užimtumas = aktyvių rezervacijų skaičius, laisvos vietos = vietų skaičius $-$ užimtumas.
@@ -819,14 +829,15 @@ Atmesti: „Laisvų vietų nebėra“ & & & & & X \\
 \paragraph{4.4 Priskirti ar pašalinti dalyvį}\mbox{}\par
 {\small \textit{Gauna:} I2.4.1, I3.4. \textit{Skaito:} V29.4, V30.4, V31.3. \textit{Rašo:} V28.3. \textit{Pateikia:} O3.4.1, O4.4.1.}
 \begin{itemize}
-  \item Priskyrimas: rasti paskyrą pagal el. paštą D1 saugykloje. \textbf{JEI} paskyra nerasta arba neaktyvi, treneris to užsiėmimo neveda, nėra laisvų vietų arba dalyvis jau turi aktyvią rezervaciją, \textbf{TADA} atmesti; \textbf{KITAIP} sukurti aktyvią rezervaciją ir įrašyti, kas ją sukūrė.
-  \item Pašalinimas: \textbf{JEI} rezervacija aktyvi ir užsiėmimą veda šis treneris (administratoriui – bet kurį užsiėmimą), \textbf{TADA} rezervacijos būseną pakeisti į „pašalinta“, įrašyti laiką ir naudotoją, vieta atlaisvinama; \textbf{KITAIP} atmesti.
+  \item \textbf{JEI} užsiėmimas atšauktas, užbaigtas arba neįvykęs, \textbf{TADA} priskyrimą ir pašalinimą atmesti.
+  \item Priskyrimas: rasti paskyrą pagal el. paštą D1 saugykloje. \textbf{JEI} paskyra nerasta arba neaktyvi, treneris to užsiėmimo nevaldo, nėra laisvų vietų arba dalyvis jau turi aktyvią rezervaciją, \textbf{TADA} atmesti; \textbf{KITAIP} sukurti aktyvią rezervaciją ir įrašyti, kas ją sukūrė.
+  \item Pašalinimas: \textbf{JEI} rezervacija aktyvi ir užsiėmimą valdo šis treneris (administratoriui – bet kurį užsiėmimą), \textbf{TADA} rezervacijos būseną pakeisti į „pašalinta“, įrašyti laiką ir naudotoją, vieta atlaisvinama; \textbf{KITAIP} atmesti.
   \item Rezultatą pateikti treneriui (O3.4.1) arba administratoriui (O4.4.1).
 \end{itemize}
 \paragraph{4.5 Žymėti lankomumą}\mbox{}\par
 {\small \textit{Gauna:} I2.4.2. \textit{Skaito:} V29.5, V30.5. \textit{Rašo:} V28.4. \textit{Pateikia:} O3.4.2.}
 \begin{itemize}
-  \item \textbf{JEI} užsiėmimas prasidėjo ir jį veda šis treneris, \textbf{TADA} \textbf{KIEKVIENAM} užsiregistravusiam dalyviui įrašyti žymą „dalyvavo“ arba „nedalyvavo“, ją įrašiusį trenerį ir laiką; \textbf{KITAIP} atmesti.
+  \item \textbf{JEI} užsiėmimas prasidėjo, neatšauktas ir jį valdo šis treneris, \textbf{TADA} \textbf{KIEKVIENAM} užsiregistravusiam dalyviui įrašyti žymą „dalyvavo“ arba „nedalyvavo“, ją įrašiusį trenerį ir laiką; \textbf{KITAIP} atmesti. Lankomumą galima žymėti ir tada, kai užsiėmimas sistemoje nebuvo pradėtas.
   \item Taisant žymą įrašyti naują reikšmę ir pataisymo laiką. Kol žyma neįrašyta, lankomumas laikomas nepažymėtu, o ne „nedalyvavo“.
   \item Rezultatą pateikti treneriui (O3.4.2).
 \end{itemize}
@@ -843,9 +854,9 @@ Atmesti: „Laisvų vietų nebėra“ & & & & & X \\
   \item \textbf{JEI} laiškas išsiųstas, \textbf{TADA} įrašyti žymą „priminimas išsiųstas“; \textbf{KITAIP} žymos neįrašyti. Pakartotinio siuntimo tvarką nustato nefunkciniai reikalavimai.
 \end{itemize}
 \paragraph{5 Tvarkyti asmenines programas}\mbox{}\par
-{\small \textit{Gauna:} I2.5. \textit{Skaito:} V18, V19, V20. \textit{Rašo:} V17. \textit{Pateikia:} O1.3, O2.3, O3.5.}
+{\small \textit{Gauna:} I2.5. \textit{Skaito:} V18, V19, V20, V50, V51. \textit{Rašo:} V17. \textit{Pateikia:} O1.3, O2.3, O3.5.}
 \begin{itemize}
-  \item \textbf{JEI} treneris neturi prieigos prie to dalyvio duomenų, \textbf{TADA} atmesti; \textbf{KITAIP} įrašyti dalyvio įvertinimą į D9.
+  \item \textbf{JEI} dalyvis neturi ir neturėjo rezervacijos šio trenerio užsiėmime (D8 ir D7 saugyklose), \textbf{TADA} atmesti; \textbf{KITAIP} įrašyti dalyvio įvertinimą į D9.
   \item Sudarant programą parinkti pratimus iš D4, pridėti pasiruošimo rekomendacijas ir įrašyti į D9 kaip galiojančią dalyvio programą.
   \item Keičiant programą ar namų užduotis įrašyti pakeitimą; \textbf{JEI} pakeista galiojanti programa, \textbf{TADA} išsiųsti dalyviui O2.3.
   \item Užbaigta ar archyvuota programa dalyviui nebepateikiama kaip aktuali, bet lieka istorijoje.
@@ -861,7 +872,7 @@ Atmesti: „Laisvų vietų nebėra“ & & & & & X \\
 {\small \textit{Gauna:} I2.6. \textit{Skaito:} V33.2. \textit{Rašo:} V34.1. \textit{Pateikia:} O3.6.1, V43.}
 \begin{itemize}
   \item \textbf{JEI} komandą davė užsiėmimą valdantis treneris ir komanda leistina esamoje užsiėmimo būsenoje (žr. \ref{sec:gyvavimo-ciklai}~poskyrį), \textbf{TADA} perduoti ją grotuvui ir įrašyti į vykdymo žurnalą; \textbf{KITAIP} atmesti.
-  \item Komanda „pradėti“ leistina tik tada, kai turinys parengtas, o „tęsti“ po ryšio sutrikimo – tik atkūrus ryšį.
+  \item Leidžiamos komandos: vykdomame užsiėmime – visos; pristabdytame – tęsti, užbaigti ir garsumo keitimas; vykdomame be ryšio – tęsti (tik atkūrus ryšį) ir užbaigti. „Pradėti“ leidžiama tik suplanuotam užsiėmimui, kai turinys parengtas.
   \item Užsiėmimo būseną D7 saugykloje keičia tik komandos „pradėti“, „pristabdyti“, „tęsti“ ir „užbaigti“; kitos komandos tik perduodamos grotuvui.
   \item Komandos rezultatą pateikti treneriui (O3.6.1).
 \end{itemize}
@@ -895,9 +906,10 @@ Atmesti: „Laisvų vietų nebėra“ & & & & & X \\
 \paragraph{7 Pateikti istoriją ir ataskaitas}\mbox{}\par
 {\small \textit{Skaito:} V38, V39, V40. \textit{Pateikia:} O3.7, O4.5.}
 \begin{itemize}
-  \item Pagal pasirinktą laikotarpį atrinkti įvykusius užsiėmimus; treneriui – tik jo užsiėmimus.
+  \item Pagal pasirinktą laikotarpį atrinkti įvykusius užsiėmimus.
+  \item Treneriui pateikiama tik užsiėmimų, kuriuos jis vedė ar valdė, istorija ir lankomumo ataskaita; administratoriui – visų užsiėmimų istorija, lankomumo ir užimtumo ataskaitos.
   \item Istorija: užsiėmimai su faktine eiga, įskaitant virtualaus trenerio užsiėmimus.
   \item Lankomumo ataskaita: užsiregistravę = rezervacijos, aktyvios užsiėmimo pradžioje; dalyvavę = žymos „dalyvavo“; lankomumo procentas = dalyvavę / užsiregistravę $\times$ 100. Nepažymėtas lankomumas rodomas atskirai.
-  \item Užimtumo ataskaita: kiekvienai erdvei – užsiėmimų skaičius ir vietų užimtumas = aktyvios rezervacijos / vietų skaičius $\times$ 100.
+  \item Užimtumo ataskaita: kiekvienai sporto erdvei – užsiėmimų skaičius ir vietų užimtumas = aktyvios rezervacijos / vietų skaičius $\times$ 100.
 \end{itemize}
 % <<< GEN:pspec
