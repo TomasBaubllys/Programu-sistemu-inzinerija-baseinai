@@ -55,14 +55,14 @@ saugomi asmens duomenys, nustato nefunkciniai reikalavimai.
 \midrule
 \endhead
 Naudotojo paskyra (D1) & Dalyvis registruodamasis; trenerio ir administratoriaus paskyras~– administratorius, kai jie pradeda dirbti (1) & Profilį keičia pats naudotojas, vaidmenį~– administratorius (1) & Administratorius deaktyvuoja ir gali vėl aktyvuoti (1) & Ne \\[2pt]
-Sporto erdvė (D2) & Administratorius, įrengdamas naują erdvę (1) & Duomenis ir vaizdo bei garso profilį keičia administratorius (1) & Ištrinama (1) & Taip, jei joje nevyko ir nesuplanuota užsiėmimų ir nepriskirta įrangos \\[2pt]
+Sporto erdvė (D2) & Administratorius, įrengdamas naują erdvę (1) & Duomenis ir vaizdo bei garso profilį keičia administratorius (1) & Ištrinama (1) & Taip, jei joje nėra jokių užsiėmimų (ir praėjusių ar atšauktų) ir nepriskirta įrangos \\[2pt]
 Įrenginys (D3) & Administratorius, sumontavęs įrenginį erdvėje (1) & Administratorius keičia nustatymus, konfigūracijos pasą ir būseną (1) & Registracija ištrinama (1) & Taip \\[2pt]
 Pratimas (D4) & Administratorius, kai pratimas nufilmuotas ir patvirtintas (2) & Administratorius (2) & Ištrinamas (2) & Taip, jei nenaudojamas programose ir užduotyse \\[2pt]
 Mokomoji medžiaga (D5) & Administratorius įkelia patvirtintą failą (2) & Metaduomenis keičia administratorius (2) & Ištrinama (2) & Taip, jei nenaudojama pratimuose ir programose \\[2pt]
 Užsiėmimo programa ir jos versija (D6) & Treneris, rengdamasis užsiėmimams (2) & Kiekvienas pakeitimas sukuria naują versiją (2) & Archyvuojama; nenaudota užsiėmimuose gali būti ištrinta (2) & Tik nenaudota \\[2pt]
 Užsiėmimas (D7) & Treneris arba administratorius suplanuoja (3) & Iki pradžios keičiamas (3), vykdymo metu keičiasi jo būsena (6) & Užbaigiamas (6), atšaukiamas iki pradžios (3) arba tampa neįvykusiu (3) & Ne \\[2pt]
 Rezervacija (D8) & Dalyvis rezervuoja (4.2), treneris ar administratorius priskiria (4.4) & Įrašoma žyma „priminimas išsiųstas“ (4.7) & Atšaukiama (4.3, 3, 1) arba pašalinama (4.4); po užsiėmimo nebesikeičia & Ne \\[2pt]
-Lankomumo įrašas (D8) & Treneris pažymi dalyvį prasidėjusiame užsiėmime (4.5) & Žymą taiso treneris (4.5) & Lieka kartu su rezervacija & Ne \\[2pt]
+Lankomumo įrašas (D8) & Treneris pažymi dalyvį prasidėjusiame neatšauktame užsiėmime (4.5) & Žymą taiso treneris (4.5) & Lieka kartu su rezervacija & Ne \\[2pt]
 Asmeninė programa ir namų užduotys (D9) & Treneris pagal dalyvio įvertinimą (5) & Treneris keičia nuotoliniu būdu, dalyviui pranešama (5) & Užbaigiama arba archyvuojama (5) & Ne; namų užduotis galima pašalinti, kol programa galioja \\
 \bottomrule
 \end{longtable}
@@ -81,7 +81,7 @@ garsumą.
 
 Nutrūkus ryšiui, grotuvas užbaigia pradėtą etapą ir naujo nepradeda,
 užsiėmimas tampa vykdomu be ryšio, o budinčiam darbuotojui pranešama; jis
-patikrina įrangą. Atkūrus ryšį, treneris užsiėmimą tęsia arba užbaigia.
+patikrina įrangą. Treneris užsiėmimą gali užbaigti, o tęsti~– tik atkūrus ryšį.
 Vykdomo užsiėmimo atšaukti negalima, jį galima tik užbaigti. Jei iki
 suplanuotos pabaigos užsiėmimas sistemoje nebuvo pradėtas, jis tampa
 neįvykusiu, tačiau lankomumą treneris vis tiek gali pažymėti. Užbaigti,
@@ -101,17 +101,17 @@ atšaukti ir neįvykę užsiėmimai lieka istorijoje ir ataskaitose
   \node[bsenae] (pri) at (-0.6,5.0) {Pristabdytas \nodepart{two} garsumas / perduoti\\grotuvui (6.2)};
   \node[bsenae] (nut) at (-0.6,-1.0) {Vykdomas be ryšio \nodepart{two} entry / pranešti budinčiam\\darbuotojui (O5)};
   \node[bsenae] (uzb) at (5.2,2.3) {Užbaigtas \nodepart{two} entry / išsaugoti eigą};
-  \node[bpabaiga] (f1) at (7.5,2.3) {};
+  \node[bpabaiga] (f1) at (7.1,2.3) {};
   \node[bsenae] (ats) at (-5.5,-1.0) {Atšauktas \nodepart{two} entry / atšaukti aktyvias\\rezervacijas, pranešti dalyviams};
   \node[bpabaiga] (f2) at (-5.5,-2.8) {};
   \draw[bper] (i) -- node[bivyk, above, sloped] {planuoti (3)} (sup.north west);
-  \draw[bper] (sup.200) .. controls +(-1.1,-0.5) and +(-1.1,0.5) .. node[bivyk, left] {keisti (3)} (sup.160);
+  \draw[bper] (sup.200) .. controls +(-1.1,-0.5) and +(-1.1,0.5) .. node[bivyk, left] {keisti [iki\\pradžios] (3)} (sup.160);
   \draw[bper] (sup) -- node[bivyk, right] {praėjo suplanuota\\pabaiga (3)} (nei);
   \draw[bper] (nei) -- (f3);
   \draw[bper] (sup) -- node[bivyk, above] {pradėti [turinys\\parengtas] (6.2)} (vyk);
   \draw[bper] (vyk) -- node[bivyk, below, pos=0.55] {pasibaigė paskutinis\\etapas (6.6)} (uzb);
   \draw[bper] (uzb) -- (f1);
-  \draw[bper] (sup) -- node[bivyk, left] {atšaukti (3)} (ats);
+  \draw[bper] (sup) -- node[bivyk, left] {atšaukti [iki\\pradžios] (3)} (ats);
   \draw[bper] (ats) -- (f2);
   \draw[bper] ([xshift=-3mm]vyk.north) -- node[bivyk, left] {pristabdyti (6.2)} ([xshift=-3mm]pri.south);
   \draw[bper] ([xshift=3mm]pri.south) -- node[bivyk, right] {tęsti (6.2)} ([xshift=3mm]vyk.north);
@@ -130,39 +130,39 @@ treneris ar administratorius, ir tik tada, kai užsiėmime yra laisvų vietų.
 Ji tampa atšaukta, kai dalyvis ją atšaukia iki užsiėmimo pradžios, kai
 atšaukiamas užsiėmimas arba deaktyvuojama dalyvio paskyra, ir pašalinta, kai
 dalyvį pašalina treneris ar administratorius. Priskirti ir pašalinti dalyvį
-galima, kol užsiėmimas neatšauktas ir neužbaigtas, taip pat jau prasidėjus
+galima, kol užsiėmimas nėra atšauktas, užbaigtas ar neįvykęs, taip pat jau prasidėjus
 užsiėmimui, pavyzdžiui, kai dalyvis atėjo be rezervacijos. Užsiėmimui pasibaigus
 rezervacija nebesikeičia ir lieka istorijoje.
 
 Lankomumo įrašas yra atskiras: jis atsiranda tik treneriui pažymėjus dalyvį
-prasidėjusiame užsiėmime. Kol įrašo nėra, lankomumas laikomas nepažymėtu, o
+prasidėjusiame neatšauktame užsiėmime. Kol įrašo nėra, lankomumas laikomas nepažymėtu, o
 ne „nedalyvavo“. Žymą galima taisyti (\ref{fig:gc-rezervacija}~pav.).
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-  \node[bpradzia] (i) at (0,3.3) {};
+  \node[bpradzia] (i) at (0,4.8) {};
   \node[bsenae] (akt) at (0,1.8) {Aktyvi \nodepart{two} priminimas išsiųstas /\\įrašyti žymą (4.7)};
   \node[bsena] (ats) at (-2.4,-0.6) {Atšaukta};
   \node[bsena] (pas) at (2.4,-0.6) {Pašalinta};
-  \node[bpabaiga] (f0) at (3.2,1.8) {};
+  \node[bpabaiga] (f0) at (4.0,1.8) {};
   \node[bpabaiga] (f1) at (-2.4,-2.0) {};
   \node[bpabaiga] (f2) at (2.4,-2.0) {};
-  \draw[bper] (i) -- node[bivyk, right] {rezervuoti [tenkinamos 4.2\\sąlygos] (4.2)\\priskirti [yra laisvų vietų,\\užsiėmimas neužbaigtas] (4.4)} (akt);
+  \draw[bper] (i) -- node[bivyk, right] {rezervuoti [tenkinamos 4.2\\sąlygos] (4.2)\\priskirti [yra laisvų vietų,\\užsiėmimas nėra atšauktas,\\užbaigtas ar neįvykęs] (4.4)} (akt);
   \draw[bper] (akt) -- node[bivyk, above left, pos=0.6] {atšaukti [užsiėmimas neprasidėjo] (4.3)\\užsiėmimas atšauktas (3)\\paskyra deaktyvuota (1)} (ats);
-  \draw[bper] (akt) -- node[bivyk, above right, pos=0.45] {pašalinti [užsiėmimas\\neužbaigtas] (4.4)} (pas);
+  \draw[bper] (akt) -- node[bivyk, above right, pos=0.45] {pašalinti [užsiėmimas nėra\\užbaigtas ar neįvykęs] (4.4)} (pas);
   \draw[bper] (akt) -- node[bivyk, above] {užsiėmimas užbaigtas (6)\\arba neįvykęs (3)} (f0);
   \draw[bper] (ats) -- (f1);
   \draw[bper] (pas) -- (f2);
-  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,3.3) {a) Rezervacija};
+  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,4.8) {a) Rezervacija};
 \end{tikzpicture}
 \hspace{0.6cm}
 \begin{tikzpicture}[x=1cm,y=1cm]
   \node[bpradzia] (i) at (0,3.3) {};
   \node[bsena] (dal) at (-1.9,0.8) {Dalyvavo};
   \node[bsena] (ned) at (1.9,0.8) {Nedalyvavo};
-  \draw[bper] (i) -- node[bivyk, above left, pos=0.5] {pažymėti [užsiėmimas\\prasidėjo] (4.5)} (dal);
-  \draw[bper] (i) -- node[bivyk, above right, pos=0.5] {pažymėti [užsiėmimas\\prasidėjo] (4.5)} (ned);
+  \draw[bper] (i) -- node[bivyk, above left, pos=0.5] {pažymėti [užsiėmimas\\prasidėjo, neatšauktas] (4.5)} (dal);
+  \draw[bper] (i) -- node[bivyk, above right, pos=0.5] {pažymėti [užsiėmimas\\prasidėjo, neatšauktas] (4.5)} (ned);
   \draw[bper] ([yshift=1.5mm]dal.east) -- node[bivyk, above] {taisyti (4.5)} ([yshift=1.5mm]ned.west);
   \draw[bper] ([yshift=-1.5mm]ned.west) -- node[bivyk, below] {taisyti (4.5)} ([yshift=-1.5mm]dal.east);
   \node[font=\scriptsize\itshape, anchor=east] at (-0.35,3.3) {b) Lankomumo įrašas};
@@ -175,7 +175,7 @@ ne „nedalyvavo“. Žymą galima taisyti (\ref{fig:gc-rezervacija}~pav.).
 Programą sukuria treneris. Kiekvienas pakeitimas sukuria naują versiją, o
 ankstesnė lieka versijų istorijoje. Nebereikalingą programą treneris
 archyvuoja. Užsiėmimuose naudotos programos ištrinti negalima~– ji
-archyvuojama, kad išliktų įvykusių užsiėmimų istorija, o nenaudota programa
+archyvuojama, kad išliktų užsiėmimų istorija, o nenaudota programa
 ištrinama (\ref{fig:gc-programa}~pav.).
 
 \begin{figure}[H]
