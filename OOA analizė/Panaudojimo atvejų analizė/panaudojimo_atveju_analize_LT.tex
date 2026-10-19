@@ -11,7 +11,7 @@ Reklama, rinkodaros vaidmuo, atskira dalyvio mobilioji programėlė, automatinis
 \item[Treneris] Kuria užsiėmimų programas, planuoja ir veda savo užsiėmimus, tvarko jų dalyvius, žymi faktinį lankomumą, sudaro ir nuotoliniu būdu keičia asmenines programas. Virtualaus trenerio užsiėmimą pradeda ir valdo bet kuris prisijungęs treneris; jis tvarko ir šio užsiėmimo dalyvius bei žymi lankomumą. Patvirtintus vaizdo ir garso failus įkelia administratorius.
 \item[Administratorius] Tvarko paskyras, vaidmenis, erdves, įrangą ir patvirtintą medžiagą; administruoja tvarkaraščius ir dalyvių priskyrimą, planuoja virtualaus trenerio užsiėmimus ir gauna pranešimus apie ryšio su grotuvu sutrikimus. Budintis darbuotojas šioje analizėje yra administratoriaus vaidmenį atliekantis asmuo. Gavęs pranešimą, jis patikrina vietinę įrangą.
 \end{description}
-Dalyvis su treneriu susiejamas per konkretaus užsiėmimo rezervaciją. Atskiro nuolatinio priskyrimo treneriui nėra. Individualioje pamokoje yra viena dalyvio vieta; šis apribojimas taikomas ir savarankiškai rezervacijai, ir trenerio ar administratoriaus priskyrimui. Trenerio dalyvių sąrašas išvedamas iš jo užsiėmimų ir rezervacijų.
+Dalyvis su treneriu susiejamas per konkretaus užsiėmimo rezervaciją. Atskiro nuolatinio priskyrimo treneriui nėra. Individualioje pamokoje yra viena dalyvio vieta; šis apribojimas taikomas ir savarankiškai rezervacijai, ir trenerio ar administratoriaus priskyrimui. Trenerio dalyvių sąrašas išvedamas iš jo vedamų ir virtualaus trenerio užsiėmimų bei jų rezervacijų.
 
 \subsubsection{Panaudojimo atvejų registras}
 PA identifikatoriai skirti šiai analizei. P0--P7 nuorodos yra ankstesnio laboratorinio funkcinių taškų priedo funkcijų kodai, o ne naujai patvirtinti funkcinių reikalavimų identifikatoriai. Vienas panaudojimo atvejis gali apimti kelias susijusias funkcijas ir alternatyvius scenarijus.
@@ -173,7 +173,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \end{enumerate}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}
-\item 1: Šalinant erdvę sistema patikrina joje vykusius ir suplanuotus užsiėmimus bei priskirtą įrangą; esant priklausomybėms šalinimas blokuojamas.
+\item 1: Šalinant erdvę sistema patikrina visus erdvės užsiėmimus, ir praėjusius ar atšauktus, bei priskirtą įrangą; esant priklausomybėms šalinimas blokuojamas.
 \item 3: Pasirinkus įrenginio šalinimą, sistema pašalina jo registraciją.
 \item 4: Netinkami nustatymai -- pakeitimai neišsaugomi.
 \end{itemize}
@@ -325,7 +325,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \item Naudotojas pasirenka „Priskirti“ ir įveda dalyvio el. paštą.
 \item Sistema suranda paskyrą ir patikrina jos aktyvumą, užsiėmimo būseną, veikėjo teises, laisvas vietas ir ar dalyvis dar neužsiregistravęs.
 \item Sistema sukuria aktyvią rezervaciją ir užfiksuoja, kas dalyvį priskyrė.
-\item Sistema pateikia atnaujintą dalyvių sąrašą; trenerio dalyvių sąrašas išvedamas iš jo užsiėmimų ir rezervacijų.
+\item Sistema pateikia atnaujintą dalyvių sąrašą; trenerio dalyvių sąrašas išvedamas iš jo vedamų ir virtualaus trenerio užsiėmimų bei jų rezervacijų.
 \end{enumerate}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}
