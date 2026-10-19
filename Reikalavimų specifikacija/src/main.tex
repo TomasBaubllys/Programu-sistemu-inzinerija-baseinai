@@ -1,0 +1,63 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc} % portable Lithuanian font encoding
+\usepackage[provide=*]{babel}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage{float}
+\usepackage{pgfgantt} % Ganto diagrama (tvarkaraštis)
+\usepackage{pdflscape} % gulsčias puslapis Ganto diagramai
+\usepackage{caption}
+% babel lt: „1 lentelė“, „1 pav.“; lentelės pavadinimas virš lentelės, paveikslo – po paveikslu
+\captionsetup[table]{labelsep=period}
+\captionsetup[figure]{labelsep=space}
+
+\babelprovide[main, import]{lithuanian}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    
+    {\Large \textbf{Vilniaus Universitetas}}\\[0.2cm]
+    {\small Matematikos ir informatikos fakultetas}\\[0.1cm]
+    {\small Informatikos katedra}\\[4cm]
+
+    {\huge \textbf{Reikalavimų specifikacija}}\\[4cm]
+
+    \begin{raggedleft}
+    \begin{minipage}{0.55\textwidth}
+        \textbf{Atliko:}\\
+        Tomas Baublys, Tadas Plančiūnas, Goda Gutparakytė, Marijus Plančiūnas, Ugnė Skučaitė\\[0.8cm]
+    \end{minipage}
+    \end{raggedleft}
+
+    \vfill
+
+    Vilnius \\ \the\year
+
+\end{titlepage}
+
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+% Funkciniai reikalavimai - Ką sistema turi atlikti. Kiekvienas reikalavimas turi unikalų ID, aiškų aprašymą ir patikrinamą rezultatą. GODA
+% Nefunkciniai reikalavimai - Sistemos kokybės ir veikimo ribojimai: našumas, saugumas, patikimumas, naudojamumas, suderinamumas. Formuluojame išmatuojamai. UGNĖ
+% Atsekamumas su poreikiais - Lentelė, susiejanti poreikio ID su funkcinių ir nefunkcinių reikalavimų ID. Papildomai galima nurodyti susijusį panaudojimo atvejį. GODA
+
+\input{Reikalavimų specifikacija/src/funkciniai_reikalavimai}
+
+
+
+\end{document}
