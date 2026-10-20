@@ -11,7 +11,7 @@ Reklama, rinkodaros vaidmuo, atskira dalyvio mobilioji programėlė, automatinis
 \item[Treneris] Kuria užsiėmimų programas, planuoja ir veda savo užsiėmimus, tvarko jų dalyvius, žymi faktinį lankomumą, sudaro ir nuotoliniu būdu keičia asmenines programas. Virtualaus trenerio užsiėmimą pradeda ir valdo bet kuris prisijungęs treneris; jis tvarko ir šio užsiėmimo dalyvius bei žymi lankomumą. Patvirtintus vaizdo ir garso failus įkelia administratorius.
 \item[Administratorius] Tvarko paskyras, vaidmenis, erdves, įrangą ir patvirtintą medžiagą; administruoja tvarkaraščius ir dalyvių priskyrimą, planuoja virtualaus trenerio užsiėmimus ir gauna pranešimus apie ryšio su grotuvu sutrikimus. Budintis darbuotojas šioje analizėje yra administratoriaus vaidmenį atliekantis asmuo. Gavęs pranešimą, jis patikrina vietinę įrangą.
 \end{description}
-Dalyvis su treneriu susiejamas per konkretaus užsiėmimo rezervaciją. Atskiro nuolatinio priskyrimo treneriui nėra. Individualioje pamokoje yra viena dalyvio vieta; šis apribojimas taikomas ir savarankiškai rezervacijai, ir trenerio ar administratoriaus priskyrimui. Trenerio dalyvių sąrašas išvedamas iš jo užsiėmimų ir rezervacijų.
+Dalyvis su treneriu susiejamas per konkretaus užsiėmimo rezervaciją. Atskiro nuolatinio priskyrimo treneriui nėra. Individualioje pamokoje yra viena dalyvio vieta; šis apribojimas taikomas ir savarankiškai rezervacijai, ir trenerio ar administratoriaus priskyrimui. Trenerio dalyvių sąrašas išvedamas iš jo vedamų ir virtualaus trenerio užsiėmimų bei jų rezervacijų.
 
 \subsubsection{Panaudojimo atvejų registras}
 PA identifikatoriai skirti šiai analizei. P0--P7 nuorodos yra ankstesnio laboratorinio funkcinių taškų priedo funkcijų kodai, o ne naujai patvirtinti funkcinių reikalavimų identifikatoriai. Vienas panaudojimo atvejis gali apimti kelias susijusias funkcijas ir alternatyvius scenarijus.
@@ -119,7 +119,7 @@ Diagramos suskaidytos pagal veiklos sritis; visose taikoma ta pati sistemos riba
 \caption{Vykdymas ir priežiūra.}\end{figure}
 \clearpage
 \subsubsection{Panaudojimo atvejų scenarijai}
-Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar API. Scenarijuose aprašytos taisyklės sutampa su duomenų srautų diagramų procesų specifikacijomis ir esybių gyvavimo ciklais. „Užsiėmimas prasidėjo“ reiškia, kad atėjo suplanuotas jo pradžios laikas.
+Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar API. Scenarijuose aprašytos taisyklės sutampa su duomenų srautų diagramų procesų specifikacijomis ir esybių gyvavimo ciklais. „Užsiėmimas prasidėjo“ reiškia, kad atėjo suplanuotas jo pradžios laikas arba treneris jį jau pradėjo.
 \Needspace{10\baselineskip}
 \paragraph{PA-01. Registruotis ir valdyti savo paskyrą}\mbox{}\par
 \textbf{Aktoriai:} Dalyvis, Treneris, Administratorius.\par
@@ -173,7 +173,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \end{enumerate}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}
-\item 1: Šalinant erdvę sistema patikrina joje vykusius ir suplanuotus užsiėmimus bei priskirtą įrangą; esant priklausomybėms šalinimas blokuojamas.
+\item 1: Šalinant erdvę sistema patikrina visus erdvės užsiėmimus (ir praėjusius ar atšauktus) bei priskirtą įrangą; esant priklausomybėms šalinimas blokuojamas.
 \item 3: Pasirinkus įrenginio šalinimą, sistema pašalina jo registraciją.
 \item 4: Netinkami nustatymai -- pakeitimai neišsaugomi.
 \end{itemize}
@@ -204,11 +204,12 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
 \item Treneris įveda programos duomenis arba atidaro esamą programą.
-\item Parenka pratimus, vaizdo ir garso medžiagą.
-\item Sudaro etapus, nustato jų trukmę, instrukcijas ir eiliškumą.
+\item Parenka pratimus iš katalogo kartu su jiems priskirtomis vaizdo demonstracijomis.
+\item Sudaro etapus, nustato jų trukmę, instrukcijas ir eiliškumą; prireikus etapui parenka garso instrukciją.
 \item Sistema patikrina programos duomenis ir išsaugo programą; keičiant sukuriama nauja versija.
 \item Treneris peržiūri programą ir versijų istoriją.
 \end{enumerate}
+\Needspace{4\baselineskip}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}
 \item 4: Trūksta privalomų duomenų -- sistema nurodo klaidas, programa neišsaugoma.
@@ -222,7 +223,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \textbf{Inicijavimas:} Naudotojas pasirenka naujo užsiėmimo planavimą.\par
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
-\item Naudotojas nurodo pavadinimą, datą, laiką, sporto erdvę, programą ir prireikus vaizdo, garso bei grupės nustatymus.
+\item Naudotojas nurodo pavadinimą, datą, pradžios laiką ir trukmę, sporto erdvę, programą ir prireikus vaizdo bei garso nustatymus; nenurodytus sistema perima iš sporto erdvės profilio.
 \item Pasirenka individualų arba grupinį užsiėmimą; individualiam nustatoma viena vieta, grupiniam nurodomas vietų skaičius.
 \item Treneris planuoja savo užsiėmimą; administratorius parenka konkretų trenerį.
 \item Sistema patikrina duomenis ir trenerio užsiėmimų laiko nesikirtimą.
@@ -241,7 +242,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \textbf{Inicijavimas:} Administratorius pasirenka virtualaus trenerio režimą.\par
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
-\item Administratorius nurodo pavadinimą, parenka programą, erdvę, datą, laiką, vietų skaičių ir prireikus vaizdo, garso bei grupės nustatymus.
+\item Administratorius nurodo pavadinimą, programą, erdvę, datą, pradžios laiką, trukmę ir prireikus vaizdo bei garso nustatymus; nenurodytus sistema perima iš erdvės profilio. Pasirenka individualų arba grupinį užsiėmimą; individualiam nustatoma viena vieta, grupiniam nurodomas vietų skaičius.
 \item Sistema patikrina privalomus duomenis.
 \item Sistema išsaugo užsiėmimą su virtualaus trenerio režimo žyma.
 \item Tvarkaraštyje pateikiamas užsiėmimas, į kurį dalyviai gali rezervuoti vietas.
@@ -325,7 +326,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \item Naudotojas pasirenka „Priskirti“ ir įveda dalyvio el. paštą.
 \item Sistema suranda paskyrą ir patikrina jos aktyvumą, užsiėmimo būseną, veikėjo teises, laisvas vietas ir ar dalyvis dar neužsiregistravęs.
 \item Sistema sukuria aktyvią rezervaciją ir užfiksuoja, kas dalyvį priskyrė.
-\item Sistema pateikia atnaujintą dalyvių sąrašą; trenerio dalyvių sąrašas išvedamas iš jo užsiėmimų ir rezervacijų.
+\item Sistema pateikia atnaujintą dalyvių sąrašą; trenerio dalyvių sąrašas išvedamas iš jo vedamų ir virtualaus trenerio užsiėmimų bei jų rezervacijų.
 \end{enumerate}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}
@@ -408,7 +409,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \item Sistema pateikia vykdymo valdymo pultą ir pradeda programos eigą.
 \item Vietinis grotuvas sinchroniškai pateikia dabartinio etapo vaizdą ir garso instrukcijas, rodo likusį laiką ir kitą etapą.
 \item Programa pereina per etapus; treneris prireikus valdo eigą.
-\item Pasibaigus programai arba pasirinkus „Užbaigti“, sistema užbaigia užsiėmimą ir išsaugo faktinę eigą.
+\item Pasibaigus programai arba pasirinkus „Užbaigti“, sistema užbaigia užsiėmimą; vykdymo metu užfiksuota faktinė eiga lieka istorijoje.
 \end{enumerate}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}
