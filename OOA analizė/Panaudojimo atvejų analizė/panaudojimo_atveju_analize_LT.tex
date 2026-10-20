@@ -204,8 +204,8 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
 \item Treneris įveda programos duomenis arba atidaro esamą programą.
-\item Parenka pratimus, vaizdo ir garso medžiagą.
-\item Sudaro etapus, nustato jų trukmę, instrukcijas ir eiliškumą.
+\item Parenka pratimus iš katalogo; jų vaizdo demonstracijos parenkamos kartu su pratimais.
+\item Sudaro etapus, nustato jų trukmę, instrukcijas ir eiliškumą, prireikus etapui parenka garso instrukciją.
 \item Sistema patikrina programos duomenis ir išsaugo programą; keičiant sukuriama nauja versija.
 \item Treneris peržiūri programą ir versijų istoriją.
 \end{enumerate}
@@ -222,7 +222,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \textbf{Inicijavimas:} Naudotojas pasirenka naujo užsiėmimo planavimą.\par
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
-\item Naudotojas nurodo pavadinimą, datą, laiką, sporto erdvę, programą ir prireikus vaizdo, garso bei grupės nustatymus.
+\item Naudotojas nurodo pavadinimą, datą, pradžios laiką ir trukmę, sporto erdvę, programą ir prireikus vaizdo bei garso nustatymus; nenurodytus sistema perima iš sporto erdvės profilio.
 \item Pasirenka individualų arba grupinį užsiėmimą; individualiam nustatoma viena vieta, grupiniam nurodomas vietų skaičius.
 \item Treneris planuoja savo užsiėmimą; administratorius parenka konkretų trenerį.
 \item Sistema patikrina duomenis ir trenerio užsiėmimų laiko nesikirtimą.
@@ -241,7 +241,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \textbf{Inicijavimas:} Administratorius pasirenka virtualaus trenerio režimą.\par
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
-\item Administratorius nurodo pavadinimą, parenka programą, erdvę, datą, laiką, vietų skaičių ir prireikus vaizdo, garso bei grupės nustatymus.
+\item Administratorius nurodo pavadinimą, programą, erdvę, datą, pradžios laiką ir trukmę, vietų skaičių ir prireikus vaizdo bei garso nustatymus; nenurodytus sistema perima iš erdvės profilio.
 \item Sistema patikrina privalomus duomenis.
 \item Sistema išsaugo užsiėmimą su virtualaus trenerio režimo žyma.
 \item Tvarkaraštyje pateikiamas užsiėmimas, į kurį dalyviai gali rezervuoti vietas.
@@ -408,7 +408,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \item Sistema pateikia vykdymo valdymo pultą ir pradeda programos eigą.
 \item Vietinis grotuvas sinchroniškai pateikia dabartinio etapo vaizdą ir garso instrukcijas, rodo likusį laiką ir kitą etapą.
 \item Programa pereina per etapus; treneris prireikus valdo eigą.
-\item Pasibaigus programai arba pasirinkus „Užbaigti“, sistema užbaigia užsiėmimą ir išsaugo faktinę eigą.
+\item Pasibaigus programai arba pasirinkus „Užbaigti“, sistema užbaigia užsiėmimą; vykdymo metu užfiksuota faktinė eiga lieka istorijoje.
 \end{enumerate}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}

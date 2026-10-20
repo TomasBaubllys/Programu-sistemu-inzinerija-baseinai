@@ -1,6 +1,6 @@
 % 1.3 poskyris „Esybių gyvavimo ciklai“ (atsakingas Marijus Plančiūnas).
 % Reikalingi paketai: tikz (bibliotekos arrows.meta, shapes.multipart), float,
-% booktabs, array. Būsenos sutampa su 1.1 poskyrio ER esybių būsenos atributais.
+% booktabs, array. Būsenos sutampa su ER (\ref{sec:er}) esybių būsenos atributais.
 
 \tikzset{
   bsena/.style={draw, thick, rounded corners=6pt, align=center, font=\scriptsize,
@@ -22,10 +22,17 @@ sukuria, kaip ji keičiama, kada pereina į kitą būseną ir kada užbaigiama,
 archyvuojama ar ištrinama. Aštuonių esybių, turinčių būsenas, gyvavimo ciklai
 pavaizduoti UML būsenų diagramomis. Kitos esybės sukuriamos, keičiamos ir
 ištrinamos be tarpinių būsenų, todėl aprašytos tik
-\ref{tab:gyvavimo-ciklai}~lentelėje. Programos etapai, namų užduotys,
-vykdymo žurnalas ir įvertinimas atskiro gyvavimo ciklo neturi: jie
-sukuriami, keičiami ir ištrinami kartu su programa, asmenine programa ar
-užsiėmimu, kuriems priklauso.
+\ref{tab:gyvavimo-ciklai}~lentelėje. ER diagramoje būsena saugoma atribute
+\texttt{būsena} (Užsiėmimas, Rezervacija, Programos versija, Asmeninė
+programa, Naudotojo paskyra, Įrenginys), o Užsiėmimo programos ir Lankomumo
+įrašo būsenas rodo loginiai atributai, atitinkamai \texttt{archyvuota} ir
+\texttt{dalyvavo}. Priklausomos esybės atskiro gyvavimo ciklo neturi, nes jų
+gyvavimą lemia esybė, kuriai jos priklauso. Tai Dalyvio ir Trenerio
+profiliai, Erdvės vaizdo ir garso profilis, Vaizdo ir Garso įrenginio
+nustatymai, Programos etapas ir Etapo pratimas, Užsiėmimo nustatymai,
+Vykdymo žurnalas, Programos pratimas, Pasiruošimo rekomendacija ir Namų
+užduotis. Asmeninė programa sudaroma pagal įvertinimą, kurį treneris įrašo
+prieš ją sudarydamas (5).
 
 Žymėjimas: juodas taškas~– pradinė būsena, taškas apskritime~– galutinė
 būsena, stačiakampis suapvalintais kampais~– būsena, o didesnis stačiakampis
@@ -60,7 +67,7 @@ Sporto erdvė (D2) & Administratorius, įrengdamas naują erdvę (1) & Duomenis 
 Pratimas (D4) & Administratorius, kai pratimas nufilmuotas ir patvirtintas (2) & Administratorius (2) & Ištrinamas (2) & Taip, jei nenaudojamas programose ir užduotyse \\[2pt]
 Mokomoji medžiaga (D5) & Administratorius įkelia patvirtintą failą (2) & Metaduomenis keičia administratorius (2) & Ištrinama (2) & Taip, jei nenaudojama pratimuose ir programose \\[2pt]
 Užsiėmimo programa ir jos versija (D6) & Treneris, rengdamasis užsiėmimams (2) & Kiekvienas pakeitimas sukuria naują versiją (2) & Archyvuojama; nenaudota užsiėmimuose gali būti ištrinta (2) & Tik nenaudota \\[2pt]
-Užsiėmimas (D7) & Treneris arba administratorius suplanuoja (3) & Iki pradžios keičiamas (3), vykdymo metu keičiasi jo būsena (6) & Užbaigiamas (6), atšaukiamas iki pradžios (3) arba tampa neįvykusiu (3) & Ne \\[2pt]
+Užsiėmimas (D7) & Treneris arba administratorius suplanuoja (3) & Iki pradžios keičiamas (3), tada turinys rengiamas iš naujo (6.1); vykdymo metu keičiasi jo būsena (6) & Užbaigiamas (6), atšaukiamas iki pradžios (3) arba tampa neįvykusiu (3) & Ne \\[2pt]
 Rezervacija (D8) & Dalyvis rezervuoja (4.2), treneris ar administratorius priskiria (4.4) & Įrašoma žyma „priminimas išsiųstas“ (4.7) & Atšaukiama (4.3, 3, 1) arba pašalinama (4.4); po užsiėmimo nebesikeičia & Ne \\[2pt]
 Lankomumo įrašas (D8) & Treneris pažymi dalyvį prasidėjusiame neatšauktame užsiėmime (4.5) & Žymą taiso treneris (4.5) & Lieka kartu su rezervacija & Ne \\[2pt]
 Asmeninė programa ir namų užduotys (D9) & Treneris pagal dalyvio įvertinimą (5) & Treneris keičia nuotoliniu būdu, dalyviui pranešama (5) & Užbaigiama arba archyvuojama (5) & Ne; namų užduotis galima pašalinti, kol programa galioja \\
@@ -75,13 +82,18 @@ pradžios jį galima keisti arba atšaukti; atšaukus užsiėmimą, atšaukiamos
 jo aktyvios rezervacijos ir apie tai pranešama dalyviams. Užsiėmimą pradeda ir
 valdo jį vedantis treneris, o virtualaus trenerio užsiėmimą~– bet kuris
 prisijungęs treneris (pagal susitarimą treneris visada būna šalia). Pradėti
-galima tik tada, kai turinys atsisiųstas į grotuvą. Vykdomame užsiėmime
+galima tik tada, kai turinys atsisiųstas į grotuvą. Rengdamas turinį, 6.1~procesas
+užsiėmimui priskiria tuo metu aktualią programos versiją; pakeitus užsiėmimą,
+turinys rengiamas iš naujo. Vykdomame užsiėmime
 leidžiamos visos komandos, pristabdytame~– tik tęsti, užbaigti ir keisti
 garsumą.
 
 Nutrūkus ryšiui, grotuvas užbaigia pradėtą etapą ir naujo nepradeda,
 užsiėmimas tampa vykdomu be ryšio, o budinčiam darbuotojui pranešama; jis
 patikrina įrangą. Treneris užsiėmimą gali užbaigti, o tęsti~– tik atkūrus ryšį.
+Faktinę etapų eigą (etapo pradžią ir pabaigą) 6.6~procesas visą užsiėmimo
+laiką rašo į vykdymo žurnalą, o 6.2~procesas ten įrašo komandas ir jas
+davusius trenerius.
 Vykdomo užsiėmimo atšaukti negalima, jį galima tik užbaigti. Jei iki
 suplanuotos pabaigos užsiėmimas sistemoje nebuvo pradėtas, jis tampa
 neįvykusiu, tačiau lankomumą treneris vis tiek gali pažymėti. Užbaigti,
@@ -100,8 +112,8 @@ atšaukti ir neįvykę užsiėmimai lieka istorijoje ir ataskaitose
   \node[bsenae] (vyk) at (-0.6,2.3) {Vykdomas \nodepart{two} praleisti, pereiti, keisti\\trukmę, garsumas / perduoti\\grotuvui (6.2)};
   \node[bsenae] (pri) at (-0.6,5.0) {Pristabdytas \nodepart{two} garsumas / perduoti\\grotuvui (6.2)};
   \node[bsenae] (nut) at (-0.6,-1.0) {Vykdomas be ryšio \nodepart{two} entry / pranešti budinčiam\\darbuotojui (O5)};
-  \node[bsenae] (uzb) at (5.2,2.3) {Užbaigtas \nodepart{two} entry / išsaugoti eigą};
-  \node[bpabaiga] (f1) at (7.1,2.3) {};
+  \node[bsena] (uzb) at (5.2,2.3) {Užbaigtas};
+  \node[bpabaiga] (f1) at (6.9,2.3) {};
   \node[bsenae] (ats) at (-5.5,-1.0) {Atšauktas \nodepart{two} entry / atšaukti aktyvias\\rezervacijas, pranešti dalyviams};
   \node[bpabaiga] (f2) at (-5.5,-2.8) {};
   \draw[bper] (i) -- node[bivyk, above, sloped] {planuoti (3)} (sup.north west);
@@ -135,7 +147,9 @@ užsiėmimui, pavyzdžiui, kai dalyvis atėjo be rezervacijos. Užsiėmimui pasi
 rezervacija nebesikeičia ir lieka istorijoje.
 
 Lankomumo įrašas yra atskiras: jis atsiranda tik treneriui pažymėjus dalyvį
-prasidėjusiame neatšauktame užsiėmime. Kol įrašo nėra, lankomumas laikomas nepažymėtu, o
+prasidėjusiame neatšauktame užsiėmime. Užsiėmimas čia laikomas prasidėjusiu,
+kai atėjo suplanuotas jo pradžios laikas, todėl lankomumą galima pažymėti ir
+neįvykusiame užsiėmime. Kol įrašo nėra, lankomumas laikomas nepažymėtu, o
 ne „nedalyvavo“. Žymą galima taisyti (\ref{fig:gc-rezervacija}~pav.).
 
 \begin{figure}[H]
@@ -176,7 +190,10 @@ Programą sukuria treneris. Kiekvienas pakeitimas sukuria naują versiją, o
 ankstesnė lieka versijų istorijoje. Nebereikalingą programą treneris
 archyvuoja. Užsiėmimuose naudotos programos ištrinti negalima~– ji
 archyvuojama, kad išliktų užsiėmimų istorija, o nenaudota programa
-ištrinama (\ref{fig:gc-programa}~pav.).
+ištrinama (\ref{fig:gc-programa}~pav.). Planuojant užsiėmimas
+susiejamas su aktualia programos versija, o vykdoma versija priskiriama
+rengiant jo turinį grotuvui (6.1); pradėjus užsiėmimą (6.2), versija
+nebekeičiama.
 
 \begin{figure}[H]
 \centering
@@ -191,7 +208,7 @@ ištrinama (\ref{fig:gc-programa}~pav.).
   \node[bpabaiga] (fa) at (-2.0,-3.3) {};
   \draw[bper] (arc) -- (fa);
   \draw[bper] (akt) -- node[bivyk, above right, pos=0.5] {šalinti [nenaudota] (2)} (f);
-  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {a) Programa};
+  \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {a) Užsiėmimo programa};
 \end{tikzpicture}
 \hspace{1.2cm}
 \begin{tikzpicture}[x=1cm,y=1cm]
@@ -255,8 +272,8 @@ liktų istorija, ir administratorius gali ją vėl aktyvuoti
 
 \subsubsection{Įrenginys}\label{sec:gc-irenginys}
 
-Įrenginį sporto erdvėje užregistruoja administratorius. Jo konfigūracijos
-pase saugoma programinės įrangos versija, IP adresas ir dabartinė būsena.
+Įrenginį sporto erdvėje užregistruoja administratorius. Konfigūracijos pase
+saugoma įrenginio programinės įrangos versija, IP adresas ir dabartinė būsena.
 Užregistruotas įrenginys gali būti naudojamas, atiduotas taisyti arba
 grąžintas, o iš bet kurios šių būsenų jo registraciją galima pašalinti
 (\ref{fig:gc-irenginys}~pav.). Sudėtinė būsena „Užregistruotas“ apima tris
