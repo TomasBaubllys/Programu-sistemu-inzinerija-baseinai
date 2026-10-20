@@ -119,7 +119,7 @@ Diagramos suskaidytos pagal veiklos sritis; visose taikoma ta pati sistemos riba
 \caption{Vykdymas ir priežiūra.}\end{figure}
 \clearpage
 \subsubsection{Panaudojimo atvejų scenarijai}
-Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar API. Scenarijuose aprašytos taisyklės sutampa su duomenų srautų diagramų procesų specifikacijomis ir esybių gyvavimo ciklais. „Užsiėmimas prasidėjo“ reiškia, kad atėjo suplanuotas jo pradžios laikas.
+Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar API. Scenarijuose aprašytos taisyklės sutampa su duomenų srautų diagramų procesų specifikacijomis ir esybių gyvavimo ciklais. „Užsiėmimas prasidėjo“ reiškia, kad atėjo suplanuotas jo pradžios laikas arba treneris jį jau pradėjo.
 \Needspace{10\baselineskip}
 \paragraph{PA-01. Registruotis ir valdyti savo paskyrą}\mbox{}\par
 \textbf{Aktoriai:} Dalyvis, Treneris, Administratorius.\par
@@ -173,7 +173,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \end{enumerate}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}
-\item 1: Šalinant erdvę sistema patikrina visus erdvės užsiėmimus, ir praėjusius ar atšauktus, bei priskirtą įrangą; esant priklausomybėms šalinimas blokuojamas.
+\item 1: Šalinant erdvę sistema patikrina visus erdvės užsiėmimus (ir praėjusius ar atšauktus) bei priskirtą įrangą; esant priklausomybėms šalinimas blokuojamas.
 \item 3: Pasirinkus įrenginio šalinimą, sistema pašalina jo registraciją.
 \item 4: Netinkami nustatymai -- pakeitimai neišsaugomi.
 \end{itemize}
@@ -204,11 +204,12 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
 \item Treneris įveda programos duomenis arba atidaro esamą programą.
-\item Parenka pratimus iš katalogo; jų vaizdo demonstracijos parenkamos kartu su pratimais.
-\item Sudaro etapus, nustato jų trukmę, instrukcijas ir eiliškumą, prireikus etapui parenka garso instrukciją.
+\item Parenka pratimus iš katalogo kartu su jiems priskirtomis vaizdo demonstracijomis.
+\item Sudaro etapus, nustato jų trukmę, instrukcijas ir eiliškumą; prireikus etapui parenka garso instrukciją.
 \item Sistema patikrina programos duomenis ir išsaugo programą; keičiant sukuriama nauja versija.
 \item Treneris peržiūri programą ir versijų istoriją.
 \end{enumerate}
+\Needspace{4\baselineskip}
 \textbf{Alternatyvos ir išimtys:}
 \begin{itemize}
 \item 4: Trūksta privalomų duomenų -- sistema nurodo klaidas, programa neišsaugoma.
@@ -241,7 +242,7 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \textbf{Inicijavimas:} Administratorius pasirenka virtualaus trenerio režimą.\par
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
-\item Administratorius nurodo pavadinimą, programą, erdvę, datą, pradžios laiką ir trukmę, vietų skaičių ir prireikus vaizdo bei garso nustatymus; nenurodytus sistema perima iš erdvės profilio.
+\item Administratorius nurodo pavadinimą, programą, erdvę, datą, pradžios laiką, trukmę ir prireikus vaizdo bei garso nustatymus; nenurodytus sistema perima iš erdvės profilio. Pasirenka individualų arba grupinį užsiėmimą; individualiam nustatoma viena vieta, grupiniam nurodomas vietų skaičius.
 \item Sistema patikrina privalomus duomenis.
 \item Sistema išsaugo užsiėmimą su virtualaus trenerio režimo žyma.
 \item Tvarkaraštyje pateikiamas užsiėmimas, į kurį dalyviai gali rezervuoti vietas.
