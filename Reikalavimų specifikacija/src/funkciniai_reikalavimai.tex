@@ -91,9 +91,10 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
 \noindent\textbf{FR-08: Užsiėmimų planavimas tvarkaraštyje}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F3, F17 (atitinka funkcijos kodus P2.2, P2.3, P2.4, P2.5, P2.11, P2.13 iš projekto plano 18 lentelės), panaudojimo atvejai PA-06, PA-07, PA-08.
-    \item \textbf{Aprašymas:} Treneris arba administratorius turi turėti galimybę suplanuoti grupinį, individualų arba virtualaus trenerio užsiėmimą nurodant datą, laiką, erdvę, programą ir laisvų vietų skaičių.
-    \item \textbf{Patikrinamas rezultatas:} Suplanuotas užsiėmimas atsiranda tvarkaraštyje ir tampa prieinamas dalyvių rezervacijoms.
+    \item \textbf{Aprašymas:} Treneris arba administratorius turi turėti galimybę suplanuoti grupinį arba individualų užsiėmimą, o virtualaus trenerio užsiėmimą gali suplanuoti tik administratorius; nurodoma data, laikas, erdvė, programa ir vietų skaičius. Individualus užsiėmimas turi tik vieną dalyvio vietą. Sistema neleidžia tam pačiam treneriui suplanuoti sutampančių užsiėmimų. Suplanuotą užsiėmimą galima pakeisti arba atšaukti; juos keičiant ar atšaukiant užsiregistravusiems dalyviams pranešama, o atšaukiant ir jų rezervacijos atšaukiamos.
+    \item \textbf{Patikrinamas rezultatas:} Suplanuotas užsiėmimas atsiranda tvarkaraštyje ir tampa prieinamas dalyvių rezervacijoms. Bandant suplanuoti sutampantį to paties trenerio užsiėmimą, sistema jį atmeta ir nurodo priežastį; individualaus užsiėmimo vietų skaičius yra 1; treneris negali suplanuoti virtualaus trenerio užsiėmimo; pakeitus ar atšaukus užsiėmimą, užsiregistravę dalyviai gauna pranešimą.
 \end{itemize}
+
 
 \vspace{0.3cm}
 \noindent\textbf{FR-09: Eigos valdymas realiuoju laiku (Valdymo pultas)}
@@ -117,9 +118,10 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
 \noindent\textbf{FR-11: Vietos rezervavimas tvarkaraštyje}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodus P3.1, P3.2, P3.3, P3.8 iš projekto plano 18 lentelės), panaudojimo atvejis PA-09.
-    \item \textbf{Aprašymas:} Dalyvis turi turėti galimybę peržiūrėti užsiėmimų tvarkaraštį su laisvomis vietomis ir rezervuoti vietą pasirinktame užsiėmime.
-    \item \textbf{Patikrinamas rezultatas:} Sukūrus rezervaciją, užsiėmimo laisvų vietų skaičius sumažėja vienetu, o įrašas atsiranda dalyvio rezervacijų sąraše.
+    \item \textbf{Aprašymas:} Dalyvis turi turėti galimybę peržiūrėti užsiėmimų tvarkaraštį su laisvomis vietomis ir rezervuoti vietą pasirinktame užsiėmime, taip pat pasirinkti laisvą individualios pamokos laiką pas pasirinktą trenerį. Rezervuoti negalima, jei laisvų vietų nebėra, užsiėmimas jau prasidėjo arba dalyvio paskyra deaktyvuota.
+    \item \textbf{Patikrinamas rezultatas:} Sukūrus rezervaciją, užsiėmimo laisvų vietų skaičius sumažėja vienetu, o įrašas atsiranda dalyvio rezervacijų sąraše. Užsirezervavus individualią pamoką (viena vieta), jos laikas tampa nepasiekiamas kitų dalyvių rezervacijoms. Bandant rezervuoti neleidžiamu atveju, parodomas aiškus pranešimas (pvz., „Laisvų vietų nebėra“).
 \end{itemize}
+ 
 
 \vspace{0.3cm}
 \noindent\textbf{FR-12: Rezervacijos atšaukimas}
@@ -130,12 +132,13 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
 \end{itemize}
 
 \vspace{0.3cm}
-\noindent\textbf{FR-13: Dalyvio priskyrimas ir pašalinimas (Treneris / Admin)}
+\noindent\textbf{FR-13: Dalyvių priskyrimas, pašalinimas ir peržiūra (Treneris / Admin)}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F12 (atitinka funkcijos kodus P3.5, P3.6, P3.9, P3.12, P3.13 iš projekto plano 18 lentelės), panaudojimo atvejis PA-11.
-    \item \textbf{Aprašymas:} Treneris arba administratorius turi turėti galimybę rankiniu būdu priskirti dalyvį prie užsiėmimo arba jį pašalinti iš užsiėmimo sąrašo.
-    \item \textbf{Patikrinamas rezultatas:} Priskirtas dalyvis atsiranda sąraše, o pašalinto dalyvio rezervacijos būsena pakeičiama į „pašalinta“.
+    \item \textbf{Aprašymas:} Treneris arba administratorius turi turėti galimybę rankiniu būdu priskirti dalyvį prie užsiėmimo arba jį pašalinti iš užsiėmimo sąrašo. Treneris gali priskirti ir šalinti dalyvius tik savo vedamuose užsiėmimuose, o administratorius -- visuose. Individualiam užsiėmimui galima priskirti tik vieną dalyvį. Treneris taip pat gali peržiūrėti savo užsiėmimų dalyvių sąrašą, ieškoti dalyvio pagal vardą ar pavardę ir atidaryti jo kortelę.
+    \item \textbf{Patikrinamas rezultatas:} Priskirtas dalyvis atsiranda sąraše, o pašalinto dalyvio rezervacijos būsena pakeičiama į „pašalinta“. Bandant priskirti dalyvį kito trenerio užsiėmime arba antrą dalyvį individualiam užsiėmimui, veiksmas atmetamas ir parodomas pranešimas. Trenerio dalyvių sąraše matomi tik jo užsiėmimų dalyviai.
 \end{itemize}
+ 
 
 \vspace{0.3cm}
 \noindent\textbf{FR-14: Faktinio lankomumo žymėjimas}
