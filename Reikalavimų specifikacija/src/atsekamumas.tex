@@ -1,0 +1,73 @@
+\section{Atsekamumas su poreikiais}
+
+Šiame skyriuje pateikiama bendra užsakovo poreikių atsekamumo lentelė, susiejanti poreikių identifikatorius (F -- norimos funkcijos, X -- pageidaujami išplėtimai) su funkciniais (FR-XX) ir nefunkciniais (NFR-XX) reikalavimais bei panaudojimo atvejais (PA-XX iš Panaudojimo atvejų registro). Poreikių sąrašas ir jų būsena (įtraukta / plėtinys / neįtraukta) pateikta projekto plano 9 skyriuje. Susiejimai su PA gauti palyginus funkcinių reikalavimų nurodytus funkcijų kodus (P0--P7) su Panaudojimo atvejų registro šaltinio funkcijomis. Susiejimai su NFR paimti iš kiekvieno nefunkcinio reikalavimo punkto „Užsakovo poreikis ir funkcijos“.
+
+Reikalavimai NFR-45, NFR-46, NFR-48, NFR-49, NFR-50, NFR-51, NFR-52, NFR-53, NFR-55 ir NFR-56 yra bendri visai sistemai (F1--F19), todėl lentelėse prie atskirų poreikių nekartojami.
+
+\subsection{Norimų funkcijų (F1--F19) atsekamumas}
+
+\small
+\begin{longtable}{|c|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{2.3cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{2.2cm}|}
+\caption{Norimų funkcijų atsekamumas su funkciniais ir nefunkciniais reikalavimais bei panaudojimo atvejais}\\
+\hline
+\textbf{ID} & \textbf{Užsakovo poreikis} & \textbf{Funkciniai reikalavimai} & \textbf{Nefunkciniai reikalavimai} & \textbf{Panaudojimo atvejai} \\ \hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Užsakovo poreikis} & \textbf{Funkciniai reikalavimai} & \textbf{Nefunkciniai reikalavimai} & \textbf{Panaudojimo atvejai} \\ \hline
+\endhead
+\hline
+\endfoot
+F1 & Registracija ir prisijungimas & FR-01 & NFR-01, NFR-02, NFR-03, NFR-04, NFR-06, NFR-07, NFR-08 & PA-01 \\ \hline
+F2 & Dalyvio, trenerio, administratoriaus vaidmenys & FR-02, FR-03 & NFR-01, NFR-05, NFR-06, NFR-09, NFR-25, NFR-47 & PA-01, PA-02 \\ \hline
+F3 & Individualių ir grupinių treniruočių valdymas & FR-08 & NFR-16, NFR-17 & PA-06, PA-08 \\ \hline
+F4 & Tvarkaraštis ir rezervacijos & FR-11, FR-12, FR-15 & NFR-20, NFR-21, NFR-22, NFR-23, NFR-24, NFR-26, NFR-27, NFR-28, NFR-29, NFR-30, NFR-57 & PA-09, PA-10, PA-18 \\ \hline
+F5 & Trenerio sudaroma programa & FR-06, FR-07 & -- (taikomi tik bendri NFR) & PA-05 \\ \hline
+F6 & Pratimų ir vaizdo medžiagos katalogas & FR-05 & NFR-12, NFR-13, NFR-14 & PA-04 \\ \hline
+F7 & Etapų trukmė ir medijos priskyrimas & FR-06, FR-07 & NFR-12, NFR-14, NFR-32 & PA-05 \\ \hline
+F8 & Paleidimas ir eigos valdymas & FR-09, FR-19 & NFR-15, NFR-16, NFR-18, NFR-19, NFR-57 & PA-15, PA-16 \\ \hline
+F9 & Dabartinis ir būsimas pratimas ekrane & FR-18 & NFR-18, NFR-19, NFR-32, NFR-33 & PA-15 \\ \hline
+F10 & Garsas ir trenerio balsas realiuoju laiku & FR-20 & NFR-36, NFR-37, NFR-38, NFR-41 & PA-15 \\ \hline
+F11 & Individualios belaidės ausinės & FR-20 & NFR-38, NFR-39, NFR-40 & PA-15 \\ \hline
+F12 & Trenerio dalyvių peržiūra ir valdymas & FR-13 & NFR-09, NFR-21, NFR-22, NFR-25, NFR-27, NFR-47 & PA-11 \\ \hline
+F13 & Treniruotės, registracijos, lankomumo istorija & FR-14, FR-21, FR-22 & NFR-07, NFR-08, NFR-22, NFR-23, NFR-27, NFR-42, NFR-43, NFR-44 & PA-12, PA-17 \\ \hline
+F14 & Naudotojų, treniruočių, turinio administravimas & FR-03, FR-04, FR-05 & NFR-05, NFR-13, NFR-22, NFR-47 & PA-02, PA-03, PA-04 \\ \hline
+F15 & Įvairios vaizdo ir garso įrangos palaikymas & FR-04 & NFR-10, NFR-11, NFR-17, NFR-34, NFR-35 & PA-03 \\ \hline
+F16 & Perdavimo didelei dalyvių grupei galimybė & FR-20 & NFR-40 & PA-15 \\ \hline
+F17 & Virtualus treneris & FR-08, FR-10 & -- (taikomi tik bendri NFR) & PA-07, PA-15 \\ \hline
+F18 & Asmeninė programa ir namų užduotys & FR-16 & NFR-31 & PA-13, PA-14 \\ \hline
+F19 & Nuotolinis asmeninės programos keitimas & FR-17 & NFR-31 & PA-13, PA-14 \\ \hline
+\end{longtable}
+\normalsize
+
+\subsection{Pageidaujamų išplėtimų (X1--X15) atsekamumas}
+
+Išplėtimai į bazinę versiją neįtraukti, todėl jiems funkcinių reikalavimų nėra. Nurodyti tik tie nefunkciniai reikalavimai, kurie užtikrina galimybę išplėtimus pridėti vėliau arba aiškiai nustato bazinės versijos ribą.
+
+\small
+\begin{longtable}{|c|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+\caption{Pageidaujamų išplėtimų atsekamumas su reikalavimais}\\
+\hline
+\textbf{ID} & \textbf{Pageidaujamas išplėtimas} & \textbf{Būsena} & \textbf{Susiję reikalavimai} \\ \hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Pageidaujamas išplėtimas} & \textbf{Būsena} & \textbf{Susiję reikalavimai} \\ \hline
+\endhead
+\hline
+\endfoot
+X1 & Atskira mobilioji programėlė & Plėtinys & NFR-31, NFR-54 \\ \hline
+X2 & Kortelės, apyrankės, kitas identifikavimas & Plėtinys & NFR-54 \\ \hline
+X3 & Specializuotos programų kategorijos & Neįtraukta & -- \\ \hline
+X4 & Sertifikuoto vaizdo turinio biblioteka & Plėtinys & -- \\ \hline
+X5 & Automatinis programų sudarymas / pritaikymas & Plėtinys & NFR-54 \\ \hline
+X6 & Laikrodžių, sporto įrenginių integracijos & Plėtinys & -- \\ \hline
+X7 & Progreso ir rezultatų analizė & Plėtinys & NFR-54 \\ \hline
+X8 & Mokėjimai už treniruotes ar turinį & Neįtraukta & -- \\ \hline
+X9 & Kelios centro zonos & Dalinis & NFR-10 \\ \hline
+X10 & Keli centrai & Plėtinys & NFR-10, NFR-11 \\ \hline
+X11 & Viena treniruotė keliuose ekranuose / zonose & Neįtraukta & -- \\ \hline
+X12 & Pasirinktų dalyvių / grupių garsas & Neįtraukta & -- \\ \hline
+X13 & Kelios turinio kalbos & Neįtraukta & NFR-56 (bazinėje versijoje tik lietuvių k.) \\ \hline
+X14 & Reklama ir rėmėjų logotipai & Plėtinys & NFR-30 (bazinėje versijoje reklamos nėra) \\ \hline
+X15 & Tiesioginė ir iš anksto įrašyta vaizdo / garso medžiaga & Dalinis & NFR-41 (trenerio balsas neįrašomas) \\ \hline
+\end{longtable}
+\normalsize

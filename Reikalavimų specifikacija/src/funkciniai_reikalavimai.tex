@@ -27,7 +27,7 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
 \vspace{0.3cm}
 \noindent\textbf{FR-01: Naudotojo registracija ir autorizacija}
 \begin{itemize}
-    \item \textbf{Užsakovo poreikis ir funkcijos:} F1 (atitinka funkcijos kodus P0.4, P0.5, P0.6 iš projekto plano 18 lentelės).
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F1 (atitinka funkcijos kodus P0.4, P0.5, P0.6 iš projekto plano 18 lentelės), panaudojimo atvejis PA-01.
     \item \textbf{Aprašymas:} Sistema turi leisti dalyviams užsiregistruoti, prisijungti bei atkurti užmirštą slaptažodį per žiniatinklio sąsają.
     \item \textbf{Patikrinamas rezultatas:} Naudotojas suveda teisingus prisijungimo duomenis, gauna JWT autorizacijos žetoną ir sėkmingai nukreipiamas į savo vaidmens pradinį puslapį.
 \end{itemize}
@@ -35,7 +35,7 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
 \vspace{0.3cm}
 \noindent\textbf{FR-02: Vaidmenimis pagrįsta prieigos kontrolė (RBAC)}
 \begin{itemize}
-    \item \textbf{Užsakovo poreikis ir funkcijos:} F2 (atitinka funkcijos kodus P0.1, P0.11 iš projekto plano 18 lentelės).
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F2 (atitinka funkcijos kodus P0.1, P0.11 iš projekto plano 18 lentelės), panaudojimo atvejai PA-01, PA-02.
     \item \textbf{Aprašymas:} Sistema turi užtikrinti trijų pagrindinių vaidmenų (Dalyvis, Treneris, Administratorius) teisių diferencijavimą bei prieigos ribojimą per atitinkamus sąsajos modulius ir API maršrutus.
     \item \textbf{Patikrinamas rezultatas:} Bandant pasiekti kito vaidmens funkciją, sistema grąžina klaidos pranešimą. Dalyvis nemato kitų dalyvių asmeninių duomenų.
 \end{itemize}
@@ -43,7 +43,7 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
 \vspace{0.3cm}
 \noindent\textbf{FR-03: Naudotojų paskyrų administravimas}
 \begin{itemize}
-    \item \textbf{Užsakovo poreikis ir funkcijos:} F2, F14 (atitinka funkcijos kodus P0.9, P0.10, P0.12, P0.13, P0.14 iš projekto plano 18 lentelės).
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F2, F14 (atitinka funkcijos kodus P0.9, P0.10, P0.12, P0.13, P0.14 iš projekto plano 18 lentelės), panaudojimo atvejai PA-01, PA-02.
     \item \textbf{Aprašymas:} Administratorius turi turėti galimybę kurti, peržiūrėti, redaguoti bei deaktyvuoti naudotojų paskyras ir keisti jų vaidmenis.
     \item \textbf{Patikrinamas rezultatas:} Deaktyvuota paskyra nebegali prisijungti prie sistemos, o būsimos to naudotojo rezervacijos automatiškai atšaukiamos.
 \end{itemize}
@@ -213,35 +213,3 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
     \item \textbf{Aprašymas:} Administratorius ir treneris turi turėti galimybę sugeneruoti lankomumo bei erdvių / įrangos užimtumo ataskaitas pasirinktam laikotarpiui.
     \item \textbf{Patikrinamas rezultatas:} Pasirinkus datų rėžius, sistema sugeneruoja ataskaitą su apskaičiuotais užsiregistravusių / dalyvavusių skaičiais bei procentiniu užimtumu.
 \end{itemize}
-
-\subsection{Užsakovo poreikių atsekamumo lentelė}
-Lentelėje pateikiamas užsakovo poreikių sąrašo punktų ir juos atitinkančių funkcinių reikalavimų atsekamumas.
-
-\begin{table}[H]
-\centering
-\small
-\begin{tabular}{|c|l|l|}
-\hline
-\textbf{ID} & \textbf{Užsakovo poreikis} & \textbf{Funkciniai reikalavimai} \\ \hline
-F1 & Registracija ir prisijungimas & FR-01 \\ \hline
-F2 & Dalyvio, trenerio, administratoriaus vaidmenys & FR-02, FR-03 \\ \hline
-F3 & Individualių ir grupinių treniruočių valdymas & FR-08 \\ \hline
-F4 & Tvarkaraštis ir rezervacijos & FR-11, FR-12, FR-15 \\ \hline
-F5 & Trenerio sudaroma programa & FR-06, FR-07 \\ \hline
-F6 & Pratimų ir vaizdo medžiagos katalogas & FR-05 \\ \hline
-F7 & Etapų trukmė ir medijos priskyrimas & FR-06, FR-07 \\ \hline
-F8 & Paleidimas ir eigos valdymas & FR-09, FR-19 \\ \hline
-F9 & Dabartinis ir būsimas pratimas ekrane & FR-18 \\ \hline
-F10 & Garsas ir trenerio balsas realiuoju laiku & FR-20 \\ \hline
-F11 & Individualios belaidės ausinės & FR-20 \\ \hline
-F12 & Trenerio dalyvių peržiūra ir valdymas & FR-13 \\ \hline
-F13 & Treniruotės, registracijos, lankomumo istorija & FR-14, FR-21, FR-22 \\ \hline
-F14 & Naudotojų, treniruočių, turinio administravimas & FR-03, FR-04, FR-05 \\ \hline
-F15 & Įvairios vaizdo ir garso įrangos palaikymas & FR-04 \\ \hline
-F16 & Perdavimo didelei dalyvių grupei galimybė & FR-20 \\ \hline
-F17 & Virtualus treneris & FR-08, FR-10 \\ \hline
-F18 & Asmeninė programa ir namų užduotys & FR-16 \\ \hline
-F19 & Nuotolinis asmeninės programos keitimas & FR-17 \\ \hline
-\end{tabular}
-\caption{Užsakovo poreikių ir funkcinių reikalavimų atitikties matrica}
-\end{table}
