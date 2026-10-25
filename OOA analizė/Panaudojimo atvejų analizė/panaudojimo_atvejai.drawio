@@ -23,6 +23,12 @@
         <mxCell id="e0_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u0">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="e0_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0_2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a2" target="u0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="u1" value="PA-02&lt;br&gt;Administruoti naudotojus ir vaidmenis" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="590" y="200" width="420" height="80" as="geometry" />
         </mxCell>
@@ -180,9 +186,6 @@
           <mxGeometry x="590" y="100" width="420" height="80" as="geometry" />
         </mxCell>
         <mxCell id="e0_0" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a0" target="u0">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e0_1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="a1" target="u0">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="u1" value="PA-16&lt;br&gt;Peržiūrėti veikimo sutrikimą" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">

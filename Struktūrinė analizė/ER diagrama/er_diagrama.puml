@@ -1,14 +1,16 @@
-@startuml er_diagrama
+@startuml
 ' ER diagrama pagal priedo A vidinius loginius failus (ILF): P0.1-P0.3, P1.1-P1.3, P2.1, P3.1, P4.1
 ' Esybės = ILF skliausteliuose nurodyti įrašų tipai (RET): iš viso 24
 ' Pastaba: atributų sąrašai yra pasiūlymas, DET skaičius priede kol kas nesutikrintas
-' plantuml -tpng -charset UTF-8 er_diagrama.puml
+' Piešti (PNG plotis viršija numatytąją 4096 px ribą, todėl reikia didesnės ribos):
+'   java -DPLANTUML_LIMIT_SIZE=8192 -jar plantuml.jar -tpng -charset UTF-8 er_diagrama.puml
+' arba nustatyti aplinkos kintamąjį PLANTUML_LIMIT_SIZE=8192
 hide circle
-scale 2
-skinparam linetype ortho
+scale 1.5
+skinparam linetype polyline
 skinparam defaultFontName DejaVu Sans
 skinparam defaultFontSize 12
-skinparam nodesep 40
+skinparam nodesep 50
 skinparam ranksep 50
 skinparam entity {
   BackgroundColor #FFFFE0
@@ -16,32 +18,35 @@ skinparam entity {
 }
 skinparam ArrowColor #444444
 
-title ER diagrama
-
 ' ---------- P0.1 Naudotojo paskyra ----------
 entity "Naudotojo paskyra" as naudotojas {
   * id : int <<PK>>
   --
-  * el_pastas : varchar
-  * slaptazodzio_hash : varchar
+  * el_paštas : varchar
+  * slaptažodžio_hash : varchar
   * vaidmuo : varchar
-  * busena : varchar
+  * būsena : varchar
+  * sukurta : datetime
 }
 entity "Dalyvio profilis" as dalyvis {
   * id : int <<PK>>
   --
   * naudotojas_id : int <<FK>>
   * vardas : varchar
-  * pavarde : varchar
+  * pavardė : varchar
   telefonas : varchar
+  gimimo_data : date
+  plaukimo_lygis : varchar
+  tikslai : text
+  pastabos_treneriui : text
 }
 entity "Trenerio profilis" as treneris {
   * id : int <<PK>>
   --
   * naudotojas_id : int <<FK>>
   * vardas : varchar
-  * pavarde : varchar
-  aprasymas : text
+  * pavardė : varchar
+  aprašymas : text
 }
 
 ' ---------- P0.2 Sporto erdvė ----------
@@ -50,48 +55,50 @@ entity "Sporto erdvė" as erdve {
   --
   * pavadinimas : varchar
   * adresas : varchar
-  * vietu_skaicius : int
+  * vietų_skaičius : int
 }
 entity "Erdvės vaizdo ir garso profilis" as erdves_profilis {
   * id : int <<PK>>
   --
-  * erdve_id : int <<FK>>
-  vaizdo_israiska : varchar
-  garso_israiska : varchar
+  * erdvė_id : int <<FK>>
+  vaizdo_raiška : varchar
+  garso_raiška : varchar
 }
 
 ' ---------- P0.3 Įranga ----------
 entity "Įrenginys" as irenginys {
   * id : int <<PK>>
   --
-  * erdve_id : int <<FK>>
+  * erdvė_id : int <<FK>>
   * tipas : varchar
   * pavadinimas : varchar
-  * busena : varchar
+  * būsena : varchar
+  programinės_įrangos_versija : varchar
+  ip_adresas : varchar
 }
 entity "Vaizdo įrenginio nustatymai" as vaizdo_nust {
   * id : int <<PK>>
   --
-  * irenginys_id : int <<FK>>
-  israiska : varchar
-  ryskumas : int
+  * įrenginys_id : int <<FK>>
+  raiška : varchar
+  ryškumas : int
 }
 entity "Garso įrenginio nustatymai" as garso_nust {
   * id : int <<PK>>
   --
-  * irenginys_id : int <<FK>>
+  * įrenginys_id : int <<FK>>
   garsumas : int
-  isejimas : varchar
+  išėjimas : varchar
 }
 
 ' ---------- P1.1 Pratimų katalogas ----------
 entity "Pratimas" as pratimas {
   * id : int <<PK>>
   --
-  demonstracija_id : int <<FK>>
+  * medžiaga_id : int <<FK>>
   * pavadinimas : varchar
-  * aprasymas : text
-  raumenu_grupe : varchar
+  * aprašymas : text
+  raumenų_grupė : varchar
 }
 
 ' ---------- P1.2 Mokomoji medžiaga ----------
@@ -101,7 +108,7 @@ entity "Mokomoji medžiaga" as medziaga {
   * pavadinimas : varchar
   * tipas : varchar
   * failo_nuoroda : varchar
-  trukme_s : int
+  trukmė_s : int
 }
 
 ' ---------- P1.3 Užsiėmimo programa ----------
@@ -109,8 +116,8 @@ entity "Užsiėmimo programa" as programa {
   * id : int <<PK>>
   --
   * pavadinimas : varchar
-  aprasymas : text
-  archyvuota : boolean
+  aprašymas : text
+  * archyvuota : boolean
 }
 entity "Programos versija" as versija {
   * id : int <<PK>>
@@ -119,15 +126,15 @@ entity "Programos versija" as versija {
   * treneris_id : int <<FK>>
   * versijos_nr : int
   * sukurta : datetime
-  * busena : varchar
+  * būsena : varchar
 }
 entity "Programos etapas" as etapas {
   * id : int <<PK>>
   --
   * versija_id : int <<FK>>
-  medziaga_id : int <<FK>>
-  * eiles_nr : int
-  * trukme_s : int
+  garso_instrukcija_id : int <<FK>>
+  * eilės_nr : int
+  * trukmė_s : int
   instrukcija : text
 }
 entity "Etapo pratimas" as etapo_pratimas {
@@ -135,7 +142,7 @@ entity "Etapo pratimas" as etapo_pratimas {
   --
   * etapas_id : int <<FK>>
   * pratimas_id : int <<FK>>
-  * eiles_nr : int
+  * eilės_nr : int
 }
 
 ' ---------- P2.1 Užsiėmimas ----------
@@ -143,46 +150,56 @@ entity "Užsiėmimas" as uzsiemimas {
   * id : int <<PK>>
   --
   * versija_id : int <<FK>>
-  * erdve_id : int <<FK>>
+  * erdvė_id : int <<FK>>
   treneris_id : int <<FK>>
+  * pavadinimas : varchar
   * tipas : varchar
-  * pradzia : datetime
-  * trukme_min : int
-  * busena : varchar
+  * režimas : varchar
+  * vietų_skaičius : int
+  * pradžia : datetime
+  * trukmė_min : int
+  * turinys_parengtas : boolean
+  * ryšys_atkurtas : boolean
+  * būsena : varchar
 }
 entity "Užsiėmimo nustatymai" as uzs_nust {
   * id : int <<PK>>
   --
-  * uzsiemimas_id : int <<FK>>
+  * užsiėmimas_id : int <<FK>>
   vaizdo_nustatymai : varchar
   garso_nustatymai : varchar
-  grupes_dydis : int
 }
 entity "Vykdymo žurnalas" as zurnalas {
   * id : int <<PK>>
   --
-  * uzsiemimas_id : int <<FK>>
+  * užsiėmimas_id : int <<FK>>
   * laikas : datetime
-  * ivykis : varchar
+  * įvykis : varchar
   etapas_id : int <<FK>>
+  treneris_id : int <<FK>>
 }
 
 ' ---------- P3.1 Rezervacija ir lankomumas ----------
 entity "Rezervacija" as rezervacija {
   * id : int <<PK>>
   --
-  * uzsiemimas_id : int <<FK>>
+  * užsiėmimas_id : int <<FK>>
   * dalyvis_id : int <<FK>>
+  * užregistravo_id : int <<FK>>
+  atšaukė_id : int <<FK>>
   * sukurta : datetime
-  * busena : varchar
+  atšaukta : datetime
+  * priminimas_išsiųstas : boolean
+  * būsena : varchar
 }
 entity "Lankomumo įrašas" as lankomumas {
   * id : int <<PK>>
   --
   * rezervacija_id : int <<FK>>
   * dalyvavo : boolean
-  pazymejo_id : int <<FK>>
-  pazymeta : datetime
+  * pažymėjo_id : int <<FK>>
+  * pažymėta : datetime
+  pataisyta : datetime
 }
 
 ' ---------- P4.1 Asmeninė programa ----------
@@ -192,23 +209,23 @@ entity "Įvertinimas" as ivertinimas {
   * dalyvis_id : int <<FK>>
   * treneris_id : int <<FK>>
   * data : date
-  isvados : text
+  išvados : text
 }
 entity "Asmeninė programa" as asm_programa {
   * id : int <<PK>>
   --
   * dalyvis_id : int <<FK>>
   * treneris_id : int <<FK>>
-  ivertinimas_id : int <<FK>>
+  * įvertinimas_id : int <<FK>>
   * pavadinimas : varchar
-  * busena : varchar
+  * būsena : varchar
 }
 entity "Programos pratimas" as prog_pratimas {
   * id : int <<PK>>
   --
   * asm_programa_id : int <<FK>>
   * pratimas_id : int <<FK>>
-  * eiles_nr : int
+  * eilės_nr : int
   serijos : int
   pakartojimai : int
 }
@@ -224,10 +241,10 @@ entity "Namų užduotis" as namu_uzduotis {
   * asm_programa_id : int <<FK>>
   * pratimas_id : int <<FK>>
   * terminas : date
-  atlikta : boolean
 }
 
 ' ================= RYŠIAI =================
+' Paskyra: administratorius profilio neturi, todėl 0..1
 naudotojas ||--o| dalyvis : turi
 naudotojas ||--o| treneris : turi
 
@@ -236,33 +253,42 @@ erdve ||--o{ irenginys : turi
 irenginys ||--o| vaizdo_nust : turi
 irenginys ||--o| garso_nust : turi
 
-medziaga |o--o{ pratimas : demonstruoja
+' Pratimas visada turi demonstraciją (privaloma medžiaga)
+medziaga ||--o{ pratimas : demonstruoja
+' Etapo medžiaga = garso instrukcija (neprivaloma)
 medziaga |o--o{ etapas : naudojama
 
-programa ||--o{ versija : turi
+' Kuriant programą iš karto įrašoma pirmoji versija
+programa ||--|{ versija : turi
 treneris ||--o{ versija : sukuria
-versija ||--o{ etapas : sudaro
+versija ||--o{ etapas : susideda iš
 etapas ||--o{ etapo_pratimas : apima
 pratimas ||--o{ etapo_pratimas : naudojamas
 
 versija ||--o{ uzsiemimas : vykdoma
-erdve ||--o{ uzsiemimas : vyksta
+erdve ||--o{ uzsiemimas : < vyksta
 treneris |o--o{ uzsiemimas : veda
 uzsiemimas ||--|| uzs_nust : turi
 uzsiemimas ||--o{ zurnalas : kaupia
+etapas |o--o{ zurnalas : vykdytas etape
+treneris |o--o{ zurnalas : davė komandą
 
 uzsiemimas ||--o{ rezervacija : turi
 dalyvis ||--o{ rezervacija : pateikia
+naudotojas ||--o{ rezervacija : užregistravo
+naudotojas |o--o{ rezervacija : atšaukė
 rezervacija ||--o| lankomumas : fiksuojama
+treneris ||--o{ lankomumas : pažymi
 
 dalyvis ||--o{ ivertinimas : gauna
 treneris ||--o{ ivertinimas : atlieka
 dalyvis ||--o{ asm_programa : turi
 treneris ||--o{ asm_programa : sudaro
-ivertinimas |o--o{ asm_programa : pagrindas
+ivertinimas ||--o| asm_programa : yra pagrindas
 asm_programa ||--o{ prog_pratimas : apima
 pratimas ||--o{ prog_pratimas : naudojamas
 asm_programa ||--o{ rekomendacija : turi
-asm_programa ||--o{ namu_uzduotis : priskiria
+asm_programa ||--o{ namu_uzduotis : apima
 pratimas ||--o{ namu_uzduotis : skirtas
+
 @enduml

@@ -1,0 +1,218 @@
+\section{Funkciniai reikalavimai}
+
+Šiame skyriuje pateikiami visi sistemai keliami funkciniai reikalavimai, apibrėžiantys, ką sistema turi atlikti. Kiekvienas reikalavimas turi unikalų identifikatorių (\textbf{FR-XX}), aiškų aprašymą, patikrinamą rezultatą (testavimo kriterijų) ir yra tiesiogiai susietas su užsakovo poreikiais bei sistemos dalimis. Smulkesnis sistemos funkcijų išskaidymas pagal kodus (P0.1--P7.3) pateikiamas projekto plano A priedo 18 lenteleje.
+
+Panaudojimo atvejų (PA-01--PA-18) identifikatoriai paimti iš Analizės modelio skyriaus Panaudojimo atvejų registro. Prie kiekvieno reikalavimo nurodyti tie panaudojimo atvejai, kurių šaltinio funkcijos (P0--P7 kodai) sutampa su reikalavimą atitinkančiomis funkcijomis. Vienas panaudojimo atvejis gali apimti kelias susijusias funkcijas, todėl tas pats PA gali būti nurodytas prie kelių reikalavimų. Bendras poreikių, reikalavimų ir panaudojimo atvejų ryšys pateikiamas skyriuje „Atsekamumas su poreikiais“.
+
+\subsection{Sistemos dalių struktūra}
+Lentelėje pateikiamas pagrindinių sistemos dalių (kodų) pasiskirstymas, pagal kurį grupuojami reikalavimai.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Kodas} & \textbf{Sistemos dalis} \\ \hline
+P0 & Paskyros, administravimas ir sporto erdvės \\ \hline
+P1 & Užsiėmimų programų valdymas \\ \hline
+P2 & Užsiėmimų valdymas \\ \hline
+P3 & Dalyvių valdymas \\ \hline
+P4 & Asmeninių programų valdymas \\ \hline
+P5 & Vaizdinio turinio pateikimas \\ \hline
+P6 & Garso įranga \\ \hline
+P7 & Duomenų ir istorijos valdymas \\ \hline
+\end{tabular}
+\caption{Pagrindinės sistemos dalys (P0--P7)}
+\label{tab:sistemos_dalys}
+\end{table}
+
+\subsection{P0. Paskyros, administravimas ir sporto erdvės}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-01: Naudotojo registracija ir autorizacija}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F1 (atitinka funkcijos kodus P0.4, P0.5, P0.6 iš projekto plano 18 lentelės), panaudojimo atvejis PA-01.
+    \item \textbf{Aprašymas:} Sistema turi leisti dalyviams užsiregistruoti, prisijungti bei atkurti užmirštą slaptažodį per žiniatinklio sąsają.
+    \item \textbf{Patikrinamas rezultatas:} Naudotojas suveda teisingus prisijungimo duomenis ir yra sėkmingai nukreipiamas į savo vaidmens pradinį puslapį.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-02: Vaidmenimis pagrįsta prieigos kontrolė (RBAC)}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F2 (atitinka funkcijos kodus P0.1, P0.11 iš projekto plano 18 lentelės), panaudojimo atvejai PA-01, PA-02.
+    \item \textbf{Aprašymas:} Sistema turi užtikrinti trijų pagrindinių vaidmenų (Dalyvis, Treneris, Administratorius) teisių suteikimą bei prieigos ribojimą.
+    \item \textbf{Patikrinamas rezultatas:} Bandant pasiekti kito vaidmens funkciją, sistema grąžina klaidos pranešimą. Dalyvis nemato kitų dalyvių asmeninių duomenų.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-03: Naudotojų paskyrų administravimas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F2, F14 (atitinka funkcijos kodus P0.9, P0.10, P0.12, P0.13, P0.14 iš projekto plano 18 lentelės), panaudojimo atvejai PA-01, PA-02.
+    \item \textbf{Aprašymas:} Administratorius turi turėti galimybę kurti, peržiūrėti, redaguoti bei deaktyvuoti naudotojų paskyras ir keisti jų vaidmenis.
+    \item \textbf{Patikrinamas rezultatas:} Deaktyvuota paskyra nebegali prisijungti prie sistemos, o būsimos to naudotojo rezervacijos automatiškai atšaukiamos.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-04: Sporto erdvių ir įrangos registras}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F14, F15 (atitinka funkcijos kodus P0.2, P0.3, P0.15--P0.23 iš projekto plano 18 lentelės), panaudojimo atvejis PA-03.
+    \item \textbf{Aprašymas:} Administratorius turi turėti galimybę pridėti, redaguoti ir šalinti sporto erdvės įrašus bei prie jų priregistruoti techninę įrangą (grotuvus, ekranus, garso siųstuvus).
+    \item \textbf{Patikrinamas rezultatas:} Įvesti įrangos nustatymai išsaugomi duomenų bazėje bei atvaizduojami įrangos sąraše.
+\end{itemize}
+
+\subsection{P1. Užsiėmimų programų valdymas}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-05: Pratimų ir medijos failų katalogas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F6, F14 (atitinka funkcijos kodus P1.1, P1.2, P1.4--P1.9, P1.16--P1.19 iš projekto plano 18 lentelės), panaudojimo atvejis PA-04.
+    \item \textbf{Aprašymas:} Administratorius turi turėti galimybę įkelti patvirtintus vaizdo ir garso įrašus su metaduomenimis bei kurti ar modifikuoti pratimų įrašus kataloge.
+    \item \textbf{Patikrinamas rezultatas:} Įkeltas failas išsaugomas serveryje, o naujas pratimas sėkmingai atvaizduojamas kataloge su galimybe atlikti paiešką.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-06: Užsiėmimo programos sudarymas iš etapų}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F5, F7 (atitinka funkcijos kodus P1.3, P1.10, P1.13--P1.15, P1.20, P1.21 iš projekto plano 18 lentelės), panaudojimo atvejis PA-05.
+    \item \textbf{Aprašymas:} Treneris turi turėti galimybę iš katalogo pratimų sudaryti užsiėmimo programą, padalintą į etapus, nustatant kiekvieno etapo trukmę, tekstines instrukcijas bei susiejant vaizdo/garso medžiagą.
+    \item \textbf{Patikrinamas rezultatas:} Sukurta programa išsaugoma sistemoje; jos peržiūros lange teisinga seka atvaizduojami visi etapai ir pasirinkti medijos failai.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-07: Programų versijavimas ir archyvavimas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F5, F7 (atitinka funkcijos kodus P1.11, P1.12, P1.22 iš projekto plano 18 lentelės), panaudojimo atvejis PA-05.
+    \item \textbf{Aprašymas:} Keičiant jau esamą užsiėmimo programą, sistema turi automatiškai sukurti naują jos versiją, išsaugodama ankstesnių versijų istoriją arba leidžiant nebenaudojamą programą suarchyvuoti.
+    \item \textbf{Patikrinamas rezultatas:} Redagavus programą, sugeneruojama nauja versija, o versijų istorijos lange matomas keitimą atlikęs treneris ir senoji struktūra.
+\end{itemize}
+
+\subsection{P2. Užsiėmimų valdymas}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-08: Užsiėmimų planavimas tvarkaraštyje}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F3, F17 (atitinka funkcijos kodus P2.2, P2.3, P2.4, P2.5, P2.11, P2.13 iš projekto plano 18 lentelės), panaudojimo atvejai PA-06, PA-07, PA-08.
+    \item \textbf{Aprašymas:} Treneris arba administratorius turi turėti galimybę suplanuoti grupinį, individualų arba virtualaus trenerio užsiėmimą nurodant datą, laiką, erdvę, programą ir laisvų vietų skaičių.
+    \item \textbf{Patikrinamas rezultatas:} Suplanuotas užsiėmimas atsiranda tvarkaraštyje ir tampa prieinamas dalyvių rezervacijoms.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-09: Eigos valdymas realiuoju laiku (Valdymo pultas)}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F8 (atitinka funkcijos kodus P2.6--P2.10, P2.12 iš projekto plano 18 lentelės), panaudojimo atvejis PA-15.
+    \item \textbf{Aprašymas:} Treneris užsiėmimo metu per valdymo pultą turi turėti galimybę paleisti programą, ją pristabdyti, tęsti, praleisti etapą arba pakeisti etapo trukmę.
+    \item \textbf{Patikrinamas rezultatas:} Paspaudus valdymo mygtuką, komanda perduodama į vietinį grotuvą ir užsiėmimo eigos būsena iškart pasikeičia.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-10: Virtualaus trenerio režimo vykdymas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F17 (atitinka funkcijos kodus P2.3, P2.6 iš projekto plano 18 lentelės), panaudojimo atvejai PA-07, PA-15.
+    \item \textbf{Aprašymas:} Sistema turi automatiškai paleisti suplanuotą virtualaus trenerio užsiėmimą nustatytu laiku be gyvo trenerio įsikišimo.
+    \item \textbf{Patikrinamas rezultatas:} Pasiekus tvarkaraštyje nurodytą pradžios laiką, vietinis grotuvas automatiškai pradeda vykdyti priskirtos programos vaizdą ir garsą.
+\end{itemize}
+
+\subsection{P3. Dalyvių valdymas}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-11: Vietos rezervavimas tvarkaraštyje}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodus P3.1, P3.2, P3.3, P3.8 iš projekto plano 18 lentelės), panaudojimo atvejis PA-09.
+    \item \textbf{Aprašymas:} Dalyvis turi turėti galimybę peržiūrėti užsiėmimų tvarkaraštį su laisvomis vietomis ir rezervuoti vietą pasirinktame užsiėmime.
+    \item \textbf{Patikrinamas rezultatas:} Sukūrus rezervaciją, užsiėmimo laisvų vietų skaičius sumažėja vienetu, o įrašas atsiranda dalyvio rezervacijų sąraše.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-12: Rezervacijos atšaukimas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodą P3.4 iš projekto plano 18 lentelės), panaudojimo atvejis PA-10.
+    \item \textbf{Aprašymas:} Dalyvis turi turėti galimybę atšaukti savo būsimo užsiėmimo rezervaciją iki užsiėmimo pradžios.
+    \item \textbf{Patikrinamas rezultatas:} Atšaukus rezervaciją, jos būsena pakeičiama į „atšaukta“, o laisvų vietų skaičius padidėja vienetu.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-13: Dalyvio priskyrimas ir pašalinimas (Treneris / Admin)}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F12 (atitinka funkcijos kodus P3.5, P3.6, P3.9, P3.12, P3.13 iš projekto plano 18 lentelės), panaudojimo atvejis PA-11.
+    \item \textbf{Aprašymas:} Treneris arba administratorius turi turėti galimybę rankiniu būdu priskirti dalyvį prie užsiėmimo arba jį pašalinti iš užsiėmimo sąrašo.
+    \item \textbf{Patikrinamas rezultatas:} Priskirtas dalyvis atsiranda sąraše, o pašalinto dalyvio rezervacijos būsena pakeičiama į „pašalinta“.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-14: Faktinio lankomumo žymėjimas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F13 (atitinka funkcijos kodus P3.7, P3.10 iš projekto plano 18 lentelės), panaudojimo atvejis PA-12.
+    \item \textbf{Aprašymas:} Treneris užsiėmimo metu arba po jo turi turėti galimybę pažymėti faktinį kiekvieno užsiregistravusio dalyvio lankomumą (dalyvavo / nedalyvavo).
+    \item \textbf{Patikrinamas rezultatas:} Pažymėti duomenys išsaugomi lankomumo įraše ir atsispindi dalyvio bei trenerio lankomumo istorijoje.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-15: Automatiniai priminimai apie užsiėmimą}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodą P3.11 iš projekto plano 18 lentelės), panaudojimo atvejis PA-18.
+    \item \textbf{Aprašymas:} Sistema turi automatiškai sugeneruoti ir išsiųsti el. pašto pranešimą aktyvią rezervaciją turinčiam dalyviui apie artėjantį užsiėmimą.
+    \item \textbf{Patikrinamas rezultatas:} Periodinis fono procesas identifikuoja būsimus užsiėmimus ir išsiunčia el. pranešimus dalyviams.
+\end{itemize}
+
+\subsection{P4. Asmeninių programų valdymas}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-16: Asmeninės programos ir namų užduočių sudarymas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F18 (atitinka funkcijos kodus P4.1, P4.2, P4.3, P4.6, P4.9, P4.10 iš projekto plano 18 lentelės), panaudojimo atvejai PA-13, PA-14.
+    \item \textbf{Aprašymas:} Treneris, atlikęs individualų dalyvio įvertinimą, turi turėti galimybę jam sudaryti asmeninę programą, pateikti pasiruošimo rekomendacijas bei priskirti namų užduotis.
+    \item \textbf{Patikrinamas rezultatas:} Sukurtas įrašas susiejamas su dalyvio paskyra ir tampa prieinamas peržiūrai dalyvio sąsajoje.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-17: Nuotolinis asmeninės programos atnaujinimas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F19 (atitinka funkcijos kodus P4.4, P4.5, P4.7, P4.8 iš projekto plano 18 lentelės), panaudojimo atvejai PA-13, PA-14.
+    \item \textbf{Aprašymas:} Treneris turi turėti galimybę nuotoliniu būdu redaguoti arba pakeisti paskirtą asmeninę programą ir namų užduotis.
+    \item \textbf{Patikrinamas rezultatas:} Išsaugojus pakeitimus, dalyvis savo paskyroje iškart mato atnaujintą pratimų bei rekomendacijų versiją.
+\end{itemize}
+
+\subsection{P5. Vaizdinio turinio pateikimas}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-18: Užsiėmimo etapo demonstravimas ekrane}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F9 (atitinka funkcijos kodą P5.1 iš projekto plano 18 lentelės), panaudojimo atvejis PA-15.
+    \item \textbf{Aprašymas:} Vietinio grotuvo programa užsiėmimo metu ekrane turi atvaizduoti esamo etapo vaizdo medžiagą, tekstines instrukcijas, laiko skaičiavimą ir kito etapo anonsą.
+    \item \textbf{Patikrinamas rezultatas:} Ekranas rodo pasirinktą vaizdo įrašą, o perėjus prie kito etapo turinys pasikeičia atitinkamai.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-19: Autonominis veikimas nutrūkus ryšiui}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F8 (atitinka funkcijos kodą P2.14, S2 iš projekto plano), panaudojimo atvejis PA-16.
+    \item \textbf{Aprašymas:} Nutrūkus ryšiui tarp grotuvo ir serverio, vietinis grotuvas turi užbaigti pradėtą etapą iš vietinės talpyklos, automatiškai nepradėti naujo etapo ir informuoti darbuotoją.
+    \item \textbf{Patikrinamas rezultatas:} Išjungus tinklo ryšį vykstant etapui, grotuvas pabaigia groti esamą įrašą iki galo, sustoja ir pateikia pranešimą sąsajoje.
+\end{itemize}
+
+\subsection{P6. Garso įranga}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-20: Garso instrukcijų ir trenerio balso transliacija}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F10, F11, F16 (atitinka funkcijos kodus P6.1, P6.2 iš projekto plano 18 lentelės), panaudojimo atvejis PA-15.
+    \item \textbf{Aprašymas:} Garso subsistema turi perduoti įrašytas programos garso instrukcijas į dalyvių ausines arba salės kolonėles ir leisti treneriui transliuoti savo balsą per mikrofoną.
+    \item \textbf{Patikrinamas rezultatas:} Įrašytos instrukcijos girdimos prietaisuose; treneriui prabilus į mikrofoną, foninis garsas automatiškai sumažinamas.
+\end{itemize}
+
+\subsection{P7. Duomenų ir istorijos valdymas}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-21: Užsiėmimų vykdomos eigos istorijos saugojimas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F13 (atitinka funkcijos kodą P7.1 iš projekto plano 18 lentelės), panaudojimo atvejis PA-17.
+    \item \textbf{Aprašymas:} Atsakingas modulis turi automatiškai išsaugoti įvykusių užsiėmimų duomenis, jų faktinę vykdymo eigą bei susijusius žurnalus.
+    \item \textbf{Patikrinamas rezultatas:} Įvykus užsiėmimui, jo įrašas atsiranda praėjusių užsiėmimų istorijoje su užfiksuotais laiko ir etapų parametrais.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent\textbf{FR-22: Lankomumo ir užimtumo ataskaitų generavimas}
+\begin{itemize}
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F13 (atitinka funkcijos kodus P7.2, P7.3 iš projekto plano 18 lentelės), panaudojimo atvejis PA-17.
+    \item \textbf{Aprašymas:} Administratorius ir treneris turi turėti galimybę sugeneruoti lankomumo bei erdvių / įrangos užimtumo ataskaitas pasirinktam laikotarpiui.
+    \item \textbf{Patikrinamas rezultatas:} Pasirinkus datų rėžius, sistema sugeneruoja ataskaitą su apskaičiuotais užsiregistravusių / dalyvavusių skaičiais bei procentiniu užimtumu.
+\end{itemize}

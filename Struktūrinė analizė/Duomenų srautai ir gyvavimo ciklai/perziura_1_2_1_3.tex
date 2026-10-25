@@ -1,0 +1,27 @@
+% Atskira 1.2 ir 1.3 poskyrių peržiūra (Marijus Plančiūnas).
+% Kompiliuoti pdfLaTeX du kartus iš šio katalogo. Bendrame Analizės modelio
+% dokumente įterpiami tik failai duomenu_srautu_diagramos_LT.tex ir
+% esybiu_gyvavimo_ciklai_LT.tex.
+\documentclass[a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[provide=*]{babel}
+\babelprovide[main, import]{lithuanian}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,shapes.multipart}
+\captionsetup[table]{labelsep=period}
+\captionsetup[figure]{labelsep=space}
+
+\begin{document}
+\setcounter{section}{1}\setcounter{subsection}{1}
+\input{duomenu_srautu_diagramos_LT}
+\input{esybiu_gyvavimo_ciklai_LT}
+\end{document}
