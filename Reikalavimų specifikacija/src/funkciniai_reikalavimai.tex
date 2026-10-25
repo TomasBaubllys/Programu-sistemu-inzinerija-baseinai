@@ -108,8 +108,8 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
 \noindent\textbf{FR-10: Virtualaus trenerio režimo vykdymas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F17 (atitinka funkcijos kodus P2.3, P2.6 iš projekto plano 18 lentelės), panaudojimo atvejai PA-07, PA-15.
-    \item \textbf{Aprašymas:} Sistema turi automatiškai paleisti suplanuotą virtualaus trenerio užsiėmimą nustatytu laiku be gyvo trenerio įsikišimo.
-    \item \textbf{Patikrinamas rezultatas:} Pasiekus tvarkaraštyje nurodytą pradžios laiką, vietinis grotuvas automatiškai pradeda vykdyti priskirtos programos vaizdą ir garsą.
+    \item \textbf{Aprašymas:} Sistema turi leisti vykdyti suplanuotą virtualaus trenerio užsiėmimą be gyvo trenerio dalyvavimo salėje ar prie baseino. Užsiėmimą valdymo pulte paleidžia bet kuris prisijungęs treneris, o toliau vietinis grotuvas automatiškai pateikia programos etapų vaizdą ir garsą.
+    \item \textbf{Patikrinamas rezultatas:} Pasiekus tvarkaraštyje nurodytą pradžios laiką užsiėmimas savaime nepasileidžia. Treneriui paspaudus „Pradėti“ (kai turinys parengtas), vietinis grotuvas be tolesnių trenerio veiksmų pereina per visus priskirtos programos etapus, rodydamas vaizdą ir leisdamas garsą.
 \end{itemize}
 
 \subsection{P3. Dalyvių valdymas}
@@ -135,7 +135,7 @@ P7 & Duomenų ir istorijos valdymas \\ \hline
 \noindent\textbf{FR-13: Dalyvių priskyrimas, pašalinimas ir peržiūra (Treneris / Admin)}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F12 (atitinka funkcijos kodus P3.5, P3.6, P3.9, P3.12, P3.13 iš projekto plano 18 lentelės), panaudojimo atvejis PA-11.
-    \item \textbf{Aprašymas:} Treneris arba administratorius turi turėti galimybę rankiniu būdu priskirti dalyvį prie užsiėmimo arba jį pašalinti iš užsiėmimo sąrašo. Treneris gali priskirti ir šalinti dalyvius tik savo vedamuose užsiėmimuose, o administratorius -- visuose. Individualiam užsiėmimui galima priskirti tik vieną dalyvį. Treneris taip pat gali peržiūrėti savo užsiėmimų dalyvių sąrašą, ieškoti dalyvio pagal vardą ar pavardę ir atidaryti jo kortelę.
+    \item \textbf{Aprašymas:} Treneris arba administratorius turi turėti galimybę rankiniu būdu priskirti dalyvį prie užsiėmimo arba jį pašalinti iš užsiėmimo sąrašo. Treneris gali priskirti ir šalinti dalyvius tik savo vedamuose ir virtualaus trenerio užsiėmimuose, o administratorius – visuose.  Individualiam užsiėmimui galima priskirti tik vieną dalyvį. Treneris taip pat gali peržiūrėti savo vedamų ir virtualaus trenerio užsiėmimų dalyvių sąrašą, ieškoti dalyvio pagal vardą ar pavardę ir atidaryti jo kortelę.
     \item \textbf{Patikrinamas rezultatas:} Priskirtas dalyvis atsiranda sąraše, o pašalinto dalyvio rezervacijos būsena pakeičiama į „pašalinta“. Bandant priskirti dalyvį kito trenerio užsiėmime arba antrą dalyvį individualiam užsiėmimui, veiksmas atmetamas ir parodomas pranešimas. Trenerio dalyvių sąraše matomi tik jo užsiėmimų dalyviai.
 \end{itemize}
  

@@ -24,7 +24,44 @@ kuriuos atspindi kuris nors modelio elementas.
 \textbf{ID} & \textbf{Reikalavimas} & \textbf{ER esybė} & \textbf{DFD procesas} & \textbf{Analizės klasė} & \textbf{PA} \\
 \midrule
 \endhead
-\multicolumn{6}{@{}l}{\textit{[Pildoma, kai bus funkcinių reikalavimų sąrašas.]}} \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Funkciniai reikalavimai}} \\
+\midrule
+FR-01 & Naudotojo registracija ir autorizacija & Naudotojo paskyra, Dalyvio profilis, Trenerio profilis & 1 & NaudotojoPaskyra, DalyvioProfilis, TrenerioProfilis & PA-01 \\
+FR-02 & Vaidmenimis grįsta prieigos kontrolė (RBAC) & Naudotojo paskyra & 1 (taikoma ir 4.6, 5, 7) & NaudotojoPaskyra & PA-01, PA-02 \\
+FR-03 & Naudotojų paskyrų administravimas & Naudotojo paskyra, Rezervacija & 1 & NaudotojoPaskyra, Rezervacija & PA-02 \\
+FR-04 & Sporto erdvių ir įrangos registras & Sporto erdvė, Erdvės vaizdo ir garso profilis, Įrenginys, Vaizdo / Garso įrenginio nustatymai & 1 & SportoErdvė, ErdvėsVaizdoIrGarsoProfilis, Įrenginys, VaizdoĮrenginioNustatymai, GarsoĮrenginioNustatymai & PA-03 \\
+FR-05 & Pratimų ir medijos failų katalogas & Pratimas, Mokomoji medžiaga & 2 & Pratimas, MokomojiMedžiaga & PA-04 \\
+FR-06 & Užsiėmimo programos sudarymas iš etapų & Užsiėmimo programa, Programos versija, Programos etapas, Etapo pratimas, Pratimas, Mokomoji medžiaga & 2 & UžsiėmimoPrograma, ProgramosVersija, ProgramosEtapas, Pratimas, MokomojiMedžiaga & PA-05 \\
+FR-07 & Programų versijavimas ir archyvavimas & Užsiėmimo programa, Programos versija, Trenerio profilis & 2 & UžsiėmimoPrograma, ProgramosVersija, TrenerioProfilis & PA-05 \\
+FR-08 & Užsiėmimų planavimas tvarkaraštyje & Užsiėmimas, Užsiėmimo nustatymai, Sporto erdvė, Rezervacija & 3 & Užsiėmimas, UžsiėmimoNustatymai, SportoErdvė, Rezervacija & PA-06, PA-07, PA-08 \\
+FR-09 & Eigos valdymas realiuoju laiku (valdymo pultas) & Užsiėmimas, Vykdymo žurnalas & 6.2, 6.3, 6.6 & Užsiėmimas, VykdymoŽurnalas & PA-15 \\
+FR-10 & Virtualaus trenerio režimo vykdymas & Užsiėmimas, Programos versija & 6.1, 6.2, 6.3 & Užsiėmimas, ProgramosVersija & PA-07, PA-15 \\
+FR-11 & Vietos rezervavimas tvarkaraštyje & Rezervacija, Užsiėmimas, Naudotojo paskyra & 4.1, 4.2 & Rezervacija, Užsiėmimas & PA-09 \\
+FR-12 & Rezervacijos atšaukimas & Rezervacija & 4.3 & Rezervacija & PA-10 \\
+FR-13 & Dalyvių priskyrimas, pašalinimas ir peržiūra & Rezervacija, Užsiėmimas, Naudotojo paskyra, Dalyvio profilis & 4.4, 4.6 & Rezervacija, Užsiėmimas, DalyvioProfilis & PA-11 \\
+FR-14 & Faktinio lankomumo žymėjimas & Lankomumo įrašas, Rezervacija & 4.5, 4.6 & LankomumoĮrašas, Rezervacija & PA-12 \\
+FR-15 & Automatiniai priminimai apie užsiėmimą & Rezervacija, Užsiėmimas, Naudotojo paskyra & 4.7 & Rezervacija, Užsiėmimas & PA-18 \\
+FR-16 & Asmeninės programos ir namų užduočių sudarymas & Įvertinimas, Asmeninė programa, Programos pratimas, Pasiruošimo rekomendacija, Namų užduotis & 5 & Įvertinimas, AsmeninėPrograma, ProgramosPratimas, PasirengimoRekomendacija, NamųUžduotis & PA-13, PA-14 \\
+FR-17 & Nuotolinis asmeninės programos atnaujinimas & Asmeninė programa, Programos pratimas, Pasiruošimo rekomendacija, Namų užduotis & 5 & AsmeninėPrograma, ProgramosPratimas, PasirengimoRekomendacija, NamųUžduotis & PA-13, PA-14 \\
+FR-18 & Užsiėmimo etapo demonstravimas ekrane & Užsiėmimas, Programos etapas, Etapo pratimas, Mokomoji medžiaga & 6.3, 6.4 & Užsiėmimas, ProgramosEtapas, Pratimas, MokomojiMedžiaga & PA-15 \\
+FR-19 & Autonominis veikimas nutrūkus ryšiui & Užsiėmimas, Vykdymo žurnalas & 6.3, 6.6 & Užsiėmimas, VykdymoŽurnalas & PA-15, PA-16 \\
+FR-20 & Garso instrukcijų ir trenerio balso transliacija & Mokomoji medžiaga, Programos etapas, Įrenginys, Garso įrenginio nustatymai & 6.5 & MokomojiMedžiaga, ProgramosEtapas, Įrenginys, GarsoĮrenginioNustatymai & PA-15 \\
+FR-21 & Užsiėmimų vykdomos eigos istorijos saugojimas & Užsiėmimas, Vykdymo žurnalas & 6.6, 7 & Užsiėmimas, VykdymoŽurnalas & PA-17 \\
+FR-22 & Lankomumo ir užimtumo ataskaitų generavimas & Užsiėmimas, Rezervacija, Lankomumo įrašas, Sporto erdvė & 7 & Užsiėmimas, Rezervacija, LankomumoĮrašas, SportoErdvė & PA-17 \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Nefunkciniai reikalavimai, atspindėti modelio elementuose}} \\
+\midrule
+NFR-07, NFR-08 & Asmens duomenų saugojimo terminai, kopija ir anonimizavimas & Naudotojo paskyra, Dalyvio profilis, Rezervacija, Lankomumo įrašas & 1, 4 & NaudotojoPaskyra, DalyvioProfilis, Rezervacija, LankomumoĮrašas & PA-01, PA-02 \\
+NFR-09, NFR-24 & Prieiga prie jautrių profilio duomenų ir trenerio / dalyvio prieigos ribos & Dalyvio profilis, Rezervacija, Užsiėmimas & 4.6, 5 & DalyvioProfilis, Rezervacija, Užsiėmimas & PA-11, PA-12, PA-14 \\
+NFR-10 & Bazinės versijos apimtis – vienas centras & Sporto erdvė, Įrenginys & 1 & SportoErdvė, Įrenginys & PA-03 \\
+NFR-13 & Vaizdo turinio raiška (Full HD) & Mokomoji medžiaga & 2 & MokomojiMedžiaga & PA-04 \\
+NFR-17, NFR-18 & Užsiėmimo tęstinumas sutrikus ryšiui; turinio atsisiuntimas į grotuvą & Užsiėmimas, Vykdymo žurnalas & 6.1, 6.3, 6.6 & Užsiėmimas, VykdymoŽurnalas & PA-15, PA-16 \\
+NFR-23, NFR-27 & Priminimų siuntimo laikas, unikalumas ir pakartojimas & Rezervacija, Užsiėmimas & 4.7 & Rezervacija & PA-18 \\
+NFR-25 & Paskutinės laisvos vietos rezervavimas lygiagrečiai & Rezervacija, Užsiėmimas & 4.2, 4.4 & Rezervacija, Užsiėmimas & PA-09, PA-11 \\
+NFR-26 & Lankomumo ir rezervacijų pakeitimų atsekamumas & Rezervacija, Lankomumo įrašas & 4.3, 4.4, 4.5 & Rezervacija, LankomumoĮrašas & PA-10, PA-11, PA-12 \\
+NFR-42, NFR-43 & Istorijos saugojimo trukmė; rezervacijų ir lankomumo įrašų išlikimas & Užsiėmimas, Rezervacija, Lankomumo įrašas & 3, 4, 7 & Užsiėmimas, Rezervacija, LankomumoĮrašas & PA-08, PA-12, PA-17 \\
+NFR-30 & Prisitaikanti sąsaja telefonui, planšetei ir kompiuteriui & Asmeninė programa & 5 & AsmeninėPrograma & PA-13, PA-14 \\
 \bottomrule
 \end{longtable}
 \endgroup
