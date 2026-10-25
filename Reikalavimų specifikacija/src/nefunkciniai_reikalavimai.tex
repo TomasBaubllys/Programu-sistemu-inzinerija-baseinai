@@ -1,6 +1,6 @@
 \section{Nefunkciniai reikalavimai}
 
-Šiame skyriuje pateikiami bazinės sistemos versijos nefunkciniai reikalavimai, t.~y. kokybės ir veikimo ribojimai, kuriuos turi atitikti funkciniuose reikalavimuose aprašytos funkcijos. Reikalavimai sugrupuoti pagal sistemos dalis P0--P7 (projekto plano 2 lentelė); visai sistemai taikomi reikalavimai pateikti dalyje „Tarp visų“. Reikalavimai formuluojami išmatuojamai: kiekvienas turi patikrinamą rezultatą (ribą, procentą, laiką ar patikros būdą).
+Šiame skyriuje pateikiami bazinės sistemos versijos nefunkciniai reikalavimai, t.~y. kokybės ir veikimo ribojimai, kuriuos turi atitikti funkciniuose reikalavimuose aprašytos funkcijos. Reikalavimai sugrupuoti pagal sistemos dalis P0--P7 (projekto plano 2 lentelė); visai sistemai taikomi reikalavimai pateikti dalyje „Bendri nefunkciniai reikalavimai“. Reikalavimai formuluojami išmatuojamai: kiekvienas turi patikrinamą rezultatą (ribą, procentą, laiką ar patikros būdą).
 
 Kiekvieno reikalavimo aprašas turi keturis punktus:
 \begin{itemize}
@@ -20,7 +20,7 @@ Reikalavimai skirstomi į šešis tipus:
     \item \textbf{Suderinamumas} -- veikimas su įranga, naršyklėmis, kalba ir būsima plėtra.
 \end{itemize}
 
-Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkrovoje, neviršijančioje NFR-45 ribų. Reikalavimai taikomi tik bazinei versijai; išplėtimai (X1--X15) į juos neįtraukti, išskyrus atvejus, kai reikalavimas užtikrina galimybę juos pridėti vėliau.
+Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkrovoje, neviršijančioje NFR-44 ribų. Reikalavimai taikomi tik bazinei versijai; išplėtimai (X1--X15) į juos neįtraukti, išskyrus atvejus, kai reikalavimas užtikrina galimybę juos pridėti vėliau.
 
 % Nefunkciniai reikalavimai - Sistemos kokybės ir veikimo ribojimai: našumas, saugumas, patikimumas, panaudojamumas, prieinamumas, suderinamumas. Formuluojame išmatuojamai. UGNĖ
 \subsection{P0. Paskyros, administravimas ir sporto erdvės}
@@ -78,14 +78,14 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Užsakovo poreikis ir funkcijos:} F1, F13 (atitinka funkcijos kodus P0.1, P0.12, P3.1, P4.1; vidinis komponentas S4; PA-01, PA-02, PA-12).
     \item \textbf{Tipas:} Saugumas.
     \item \textbf{Aprašymas:} Kiekvienai asmens duomenų grupei nustatomas saugojimo terminas, po kurio duomenys ištrinami arba anonimizuojami (NFR-08).
-    \item \textbf{Patikrinamas rezultatas:} Paskyros ir profilio duomenys (P0.1) saugomi, kol paskyra aktyvi, ir 3 mėn. po deaktyvavimo; rezervacijų ir lankomumo įrašai (P3.1) -- 3 metus nuo užsiėmimo datos (NFR-43), po to anonimizuojami; asmeninės programos ir įvertinimai (P4.1) -- 3 mėn. po programos užbaigimo ar archyvavimo. Pasibaigus terminui duomenys automatiškai ištrinami arba anonimizuojami; terminai nurodyti privatumo politikoje.
+    \item \textbf{Patikrinamas rezultatas:} Paskyros ir profilio duomenys (P0.1) saugomi, kol paskyra aktyvi, ir 3 mėn. po deaktyvavimo; rezervacijų ir lankomumo įrašai (P3.1) -- 3 metus nuo užsiėmimo datos (NFR-42), po to anonimizuojami; asmeninės programos ir įvertinimai (P4.1) -- 3 mėn. po programos užbaigimo ar archyvavimo. Pasibaigus terminui duomenys automatiškai ištrinami arba anonimizuojami; terminai nurodyti privatumo politikoje.
 \end{itemize}
 
 \noindent\textbf{NFR-08: Duomenų kopija ir ištrynimas (anonimizavimas)}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F1, F13 (atitinka funkcijos kodus P0.7, P0.12, P0.14, P3.1; atskiros šio reikalavimo funkcijos 18 lentelėje nėra; vidinis komponentas S4; PA-01, PA-02).
     \item \textbf{Tipas:} Saugumas.
-    \item \textbf{Aprašymas:} Dalyvis gali gauti savo duomenų kopiją ir prašyti juos ištrinti. Kadangi rezervacijų ir lankomumo įrašai išlieka (NFR-44), ištrynimo atveju jie anonimizuojami.
+    \item \textbf{Aprašymas:} Dalyvis gali gauti savo duomenų kopiją ir prašyti juos ištrinti. Kadangi rezervacijų ir lankomumo įrašai išlieka (NFR-43), ištrynimo atveju jie anonimizuojami.
     \item \textbf{Patikrinamas rezultatas:} Prašymas įvykdomas per 14 dienų; po anonimizavimo 100~\% to dalyvio rezervacijų ir lankomumo įrašų nebegalima susieti su asmeniu, o ataskaitų (P7.2) skaičiai nepasikeičia.
 \end{itemize}
 
@@ -97,15 +97,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Bandymas gauti šiuos laukus kito dalyvio arba trenerio, kurio užsiėmime dalyvis nėra užsiregistravęs, vardu atmetamas serveryje 100~\% atvejų.
 \end{itemize}
 
-\noindent\textbf{NFR-10: Naujų erdvių ir centrų pridėjimas}
-\begin{itemize}
-    \item \textbf{Užsakovo poreikis ir funkcijos:} F15; plėtiniai X9, X10 (atitinka funkcijos kodus P0.2, P0.3, P0.15, P0.19; vidinis komponentas S4; PA-03).
-    \item \textbf{Tipas:} Suderinamumas.
-    \item \textbf{Aprašymas:} Duomenų modelis leidžia vėliau pridėti naujas erdves ir centrus be esamų duomenų perkėlimo; modelis paruoštas X9 ir X10.
-    \item \textbf{Patikrinamas rezultatas:} Nauja erdvė pridedama per administratoriaus sąsają (konfigūruojant), be kodo keitimo ir be esamų duomenų perkėlimo.
-\end{itemize}
-
-\noindent\textbf{NFR-11: Bazinės versijos apimtis -- vienas centras}
+\noindent\textbf{NFR-10: Bazinės versijos apimtis -- vienas centras}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F15 (atitinka funkcijos kodus P0.2, P0.3, P0.19; PA-03).
     \item \textbf{Tipas:} Suderinamumas.
@@ -115,7 +107,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
 
 \subsection{P1. Užsiėmimų programų valdymas}
 
-\noindent\textbf{NFR-12: Pratimo demonstracijos atidarymo greitis}
+\noindent\textbf{NFR-11: Pratimo demonstracijos atidarymo greitis}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F6, F7 (atitinka funkcijos kodus P1.17, P1.19; PA-04).
     \item \textbf{Tipas:} Našumas.
@@ -123,7 +115,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Vaizdo medžiaga parodoma per 3~s nuo pratimo pasirinkimo vietiniame tinkle (95~\% bandymų).
 \end{itemize}
 
-\noindent\textbf{NFR-13: Katalogo medžiagos naudojimo teisės}
+\noindent\textbf{NFR-12: Katalogo medžiagos naudojimo teisės}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F6, F14 (atitinka funkcijos kodus P1.2, P1.7, P1.8; PA-04).
     \item \textbf{Tipas:} Saugumas.
@@ -131,7 +123,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} 100~\% medijos failų metaduomenyse nurodytas šaltinis arba licencija; failas be šaltinio ar licencijos neįkeliamas.
 \end{itemize}
 
-\noindent\textbf{NFR-14: Vaizdo turinio raiška}
+\noindent\textbf{NFR-13: Vaizdo turinio raiška}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F6, F7 (atitinka funkcijos kodus P1.7, P1.13; vidinis komponentas S2; PA-04).
     \item \textbf{Tipas:} Suderinamumas.
@@ -141,7 +133,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
 
 \subsection{P2. Užsiėmimų valdymas}
 
-\noindent\textbf{NFR-15: Trenerio komandų vėlavimas}
+\noindent\textbf{NFR-14: Trenerio komandų vėlavimas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F8 (atitinka funkcijos kodus P2.6, P2.7, P2.8, P5.1, P6.2; vidiniai komponentai S1, S2, S3; PA-15).
     \item \textbf{Tipas:} Našumas.
@@ -149,7 +141,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Pokytis ekrane ir ausinėse įvyksta ne vėliau kaip per 0,5~s nuo komandos.
 \end{itemize}
 
-\noindent\textbf{NFR-16: Paprastas užsiėmimo paleidimas ir valdymas}
+\noindent\textbf{NFR-15: Paprastas užsiėmimo paleidimas ir valdymas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F3, F8 (atitinka funkcijos kodus P2.6, P2.7, P2.8, P2.10, P2.12; PA-15).
     \item \textbf{Tipas:} Panaudojamumas.
@@ -157,7 +149,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Užsiėmimas paleidžiamas atliekant ne daugiau kaip 3 veiksmus; pagrindinės komandos (pristabdyti, tęsti, praleisti etapą, užbaigti) pasiekiamos viename ekrane.
 \end{itemize}
 
-\noindent\textbf{NFR-17: Vienalaikės treniruotės baseine ir salėje}
+\noindent\textbf{NFR-16: Vienalaikės treniruotės baseine ir salėje}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F3, F15 (atitinka funkcijos kodus P2.1, P2.6, P0.2, P0.3; vidiniai komponentai S1, S2; PA-15).
     \item \textbf{Tipas:} Pasiekiamumas.
@@ -165,7 +157,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Dvi vienu metu vykdomos treniruotės nesutrikdo viena kitos (vienos komandos nepaveikia kitos erdvės ekrano ir garso).
 \end{itemize}
 
-\noindent\textbf{NFR-18: Užsiėmimo tęstinumas sutrikus ryšiui}
+\noindent\textbf{NFR-17: Užsiėmimo tęstinumas sutrikus ryšiui}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F8, F9 (atitinka funkcijos kodus P2.6, P2.10, P2.12, P2.14, P5.1, P6.1; vidiniai komponentai S1, S2; PA-15, PA-16).
     \item \textbf{Tipas:} Pasiekiamumas.
@@ -173,17 +165,17 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Užsiėmimo metu grotuvas siunčia serveriui būsenos signalą kas 3~s. Ryšys laikomas nutrūkusiu, jei signalas negaunamas 15~s (5 iš eilės praleisti signalai); tada serveris per 5~s nuo nutrūkimo nustatymo sukuria vykdymo žurnalo įrašą ir administratoriaus sąsajoje parodo pranešimą budinčiam darbuotojui. Atjungus grotuvą nuo serverio bandyme, pradėtas etapas pabaigiamas iš talpyklos, o atkūrus ryšį užsiėmimą galima tęsti.
 \end{itemize}
 
-\noindent\textbf{NFR-19: Turinio atsisiuntimas į grotuvą prieš užsiėmimą}
+\noindent\textbf{NFR-18: Turinio atsisiuntimas į grotuvą prieš užsiėmimą}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F8, F9 (atitinka funkcijos kodus P2.2, P2.6, P5.1; vidiniai komponentai S1, S2; PA-15).
     \item \textbf{Tipas:} Našumas.
-    \item \textbf{Aprašymas:} Užsiėmimo programa ir visa jos vaizdo bei garso medžiaga į vietinį grotuvą atsisiunčiama prieš užsiėmimą, kad jis galėtų vykti nepriklausomai nuo ryšio (NFR-18).
+    \item \textbf{Aprašymas:} Užsiėmimo programa ir visa jos vaizdo bei garso medžiaga į vietinį grotuvą atsisiunčiama prieš užsiėmimą, kad jis galėtų vykti nepriklausomai nuo ryšio (NFR-17).
     \item \textbf{Patikrinamas rezultatas:} Turinys į grotuvą atsisiunčiamas ne vėliau kaip likus 10~min iki užsiėmimo pradžios; vienos programos (iki 60~min) atsisiuntimas vietiniame tinkle trunka ne ilgiau kaip 10~min. Jei turinys neatsisiųstas, sistema neleidžia pradėti užsiėmimo, nurodo priežastį, o užsiėmimas lieka suplanuotas. Pakeitus programą ar medžiagą, grotuvas atsisiunčia atnaujintą versiją prieš užsiėmimą.
 \end{itemize}
 
 \subsection{P3. Dalyvių valdymas}
 
-\noindent\textbf{NFR-20: Tvarkaraščio užkrovimo greitis}
+\noindent\textbf{NFR-19: Tvarkaraščio užkrovimo greitis}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodą P3.2; PA-09).
     \item \textbf{Tipas:} Našumas.
@@ -191,7 +183,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Tvarkaraštis užsikrauna greičiau nei per 2~s (95~\% užklausų, kai savaitėje yra iki 200 užsiėmimų).
 \end{itemize}
 
-\noindent\textbf{NFR-21: Rezervavimo veiksmų greitis}
+\noindent\textbf{NFR-20: Rezervavimo veiksmų greitis}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4, F12 (atitinka funkcijos kodus P3.3, P3.4, P3.5, P3.6; PA-09, PA-10, PA-11).
     \item \textbf{Tipas:} Našumas.
@@ -199,7 +191,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Veiksmas įvykdomas ir patvirtinamas greičiau nei per 1~s (95~\% užklausų).
 \end{itemize}
 
-\noindent\textbf{NFR-22: Sąrašų ir paieškos greitis}
+\noindent\textbf{NFR-21: Sąrašų ir paieškos greitis}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4, F12, F13, F14 (atitinka funkcijos kodus P3.8, P3.9, P3.10, P3.12, P0.13; PA-02, PA-09, PA-11, PA-12).
     \item \textbf{Tipas:} Našumas.
@@ -207,7 +199,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Kai yra iki 1000 įrašų, sąrašai parodomi greičiau nei per 2~s, paieška -- greičiau nei per 1~s.
 \end{itemize}
 
-\noindent\textbf{NFR-23: Verslo logikos automatiniai testai}
+\noindent\textbf{NFR-22: Verslo logikos automatiniai testai}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4, F13 (atitinka funkcijos kodus P3.3, P3.5, P3.7, P3.11; PA-09, PA-11, PA-12, PA-18).
     \item \textbf{Tipas:} Patikimumas.
@@ -215,7 +207,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Šių modulių kodo testų aprėptis ne mažesnė kaip 70~\%.
 \end{itemize}
 
-\noindent\textbf{NFR-24: Priminimų siuntimo laikas ir unikalumas}
+\noindent\textbf{NFR-23: Priminimų siuntimo laikas ir unikalumas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodą P3.11; PA-18).
     \item \textbf{Tipas:} Našumas.
@@ -223,7 +215,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} 100~\% rytdienos aktyvių rezervacijų, sukurtų iki 9:00 siuntimo laiko, gauna priminimą; rezervacijoms, sukurtoms vėliau, priminimas nesiunčiamas; dublikatų -- 0.
 \end{itemize}
 
-\noindent\textbf{NFR-25: Trenerio ir dalyvio prieigos ribos}
+\noindent\textbf{NFR-24: Trenerio ir dalyvio prieigos ribos}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F2, F12 (atitinka funkcijos kodus P3.8, P3.9, P3.10, P3.12, P3.13; PA-09, PA-11, PA-12).
     \item \textbf{Tipas:} Saugumas.
@@ -231,7 +223,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Bandymas pasiekti kito trenerio dalyvį ar kito dalyvio duomenis atmetamas serveryje 100~\% atvejų.
 \end{itemize}
 
-\noindent\textbf{NFR-26: Paskutinės laisvos vietos rezervavimas lygiagrečiai}
+\noindent\textbf{NFR-25: Paskutinės laisvos vietos rezervavimas lygiagrečiai}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodus P3.3, P3.5; PA-09, PA-11).
     \item \textbf{Tipas:} Patikimumas.
@@ -239,7 +231,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Lygiagrečių užklausų testo (bent 50 vienu metu) metu viršijimų -- 0.
 \end{itemize}
 
-\noindent\textbf{NFR-27: Lankomumo ir rezervacijų pakeitimų atsekamumas}
+\noindent\textbf{NFR-26: Lankomumo ir rezervacijų pakeitimų atsekamumas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4, F12, F13 (atitinka funkcijos kodus P3.4, P3.6, P3.7, P0.12, P2.5; PA-08, PA-10, PA-11, PA-12).
     \item \textbf{Tipas:} Patikimumas.
@@ -247,15 +239,15 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} 100~\% atitinkamų įrašų turi atlikusį asmenį ir laiką.
 \end{itemize}
 
-\noindent\textbf{NFR-28: Priminimų siuntimo pakartojimas}
+\noindent\textbf{NFR-27: Priminimų siuntimo pakartojimas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodą P3.11; PA-18).
     \item \textbf{Tipas:} Patikimumas.
     \item \textbf{Aprašymas:} Jei priminimo laiško išsiuntimas nepavyksta, bandoma iš naujo; sėkmingai išsiųstas laiškas pažymimas, kad nebūtų siunčiamas dukart.
-    \item \textbf{Patikrinamas rezultatas:} Nepavykus išsiųsti priminimo, siunčiama iš naujo, daugiausia 3 pakartotiniai bandymai per 2~val. nuo pirmo nepavykusio bandymo, jei užsiėmimas dar nepasibaigęs ir rezervacija bei užsiėmimas nebuvo atšaukti. Po paskutinio nepavykusio bandymo klaida įrašoma į žurnalą (NFR-55), o žyma „priminimas išsiųstas“ neįrašoma. Dublikatų -- 0.
+    \item \textbf{Patikrinamas rezultatas:} Nepavykus išsiųsti priminimo, siunčiama iš naujo, daugiausia 3 pakartotiniai bandymai per 2~val. nuo pirmo nepavykusio bandymo, jei užsiėmimas dar nepasibaigęs ir rezervacija bei užsiėmimas nebuvo atšaukti. Po paskutinio nepavykusio bandymo klaida įrašoma į žurnalą (NFR-53), o žyma „priminimas išsiųstas“ neįrašoma. Dublikatų -- 0.
 \end{itemize}
 
-\noindent\textbf{NFR-29: Rezervavimo paprastumas naujam dalyviui}
+\noindent\textbf{NFR-28: Rezervavimo paprastumas naujam dalyviui}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodus P3.2, P3.3, P3.8; PA-09).
     \item \textbf{Tipas:} Panaudojamumas.
@@ -263,7 +255,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Nuo tvarkaraščio iki patvirtinimo ne daugiau kaip 5 žingsniai; bent 90~\% bandytojų pavyksta be pagalbos.
 \end{itemize}
 
-\noindent\textbf{NFR-30: Priminimų laiškų turinys be reklamos}
+\noindent\textbf{NFR-29: Priminimų laiškų turinys be reklamos}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4 (atitinka funkcijos kodą P3.11; PA-18); reklama priskirta plėtiniui X14, bazinėje versijoje jos nėra.
     \item \textbf{Tipas:} Patikimumas.
@@ -273,9 +265,9 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
 
 \subsection{P4. Asmeninių programų valdymas}
 
-\noindent\textbf{NFR-31: Prisitaikanti sąsaja telefonui, planšetei ir kompiuteriui}
+\noindent\textbf{NFR-30: Prisitaikanti sąsaja telefonui, planšetei ir kompiuteriui}
 \begin{itemize}
-    \item \textbf{Užsakovo poreikis ir funkcijos:} F18, F19; plėtinys X1 (atitinka funkcijos kodus P4.3, P4.4, P4.6, P4.7, P4.10; PA-13, PA-14).
+    \item \textbf{Užsakovo poreikis ir funkcijos:} F18, F19; (atitinka funkcijos kodus P4.3, P4.4, P4.6, P4.7, P4.10; PA-13, PA-14).
     \item \textbf{Tipas:} Pasiekiamumas.
     \item \textbf{Aprašymas:} Sąsaja prisitaiko prie telefono, planšetės ir kompiuterio ekrano, nes atskira mobilioji programėlė bazinėje versijoje nenumatyta.
     \item \textbf{Patikrinamas rezultatas:} Sąsaja veikia nuo 360~px pločio ekrano be horizontalaus slinkimo; asmeninė programa ir namų užduotys atsidaro ir naudojamos visuose trijuose įrenginių tipuose.
@@ -283,7 +275,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
 
 \subsection{P5. Vaizdinio turinio pateikimas}
 
-\noindent\textbf{NFR-32: Pratimo ir laikmačio atitiktis programos laikui}
+\noindent\textbf{NFR-31: Pratimo ir laikmačio atitiktis programos laikui}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F7, F9 (atitinka funkcijos kodus P5.1, P2.12; vidiniai komponentai S1, S2; PA-15).
     \item \textbf{Tipas:} Našumas.
@@ -291,7 +283,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Nuokrypis nuo programos laiko ne didesnis kaip 0,5~s visos treniruotės metu.
 \end{itemize}
 
-\noindent\textbf{NFR-33: Skaitomumas iš atstumo}
+\noindent\textbf{NFR-32: Skaitomumas iš atstumo}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F9 (atitinka funkcijos kodą P5.1; vidinis komponentas S2; PA-15).
     \item \textbf{Tipas:} Panaudojamumas.
@@ -299,7 +291,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Pratimo pavadinimas ir laikmatis matomi iš ne mažiau kaip 15~m atstumo.
 \end{itemize}
 
-\noindent\textbf{NFR-34: Suderinamumas su įvairia vaizdo ir garso įranga}
+\noindent\textbf{NFR-33: Suderinamumas su įvairia vaizdo ir garso įranga}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F15 (atitinka funkcijos kodus P5.1, P6.1, P0.3; vidiniai komponentai S2, S3; darbų paketas N1; PA-03, PA-15).
     \item \textbf{Tipas:} Suderinamumas.
@@ -307,7 +299,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Palaikomas standartinis ekrano ir garso išvesties ryšys bei standartinės belaidės ausinės; palaikomos įrangos sąrašas pateiktas diegimo dokumentuose.
 \end{itemize}
 
-\noindent\textbf{NFR-35: Įrangos tinkamumas drėgnai aplinkai}
+\noindent\textbf{NFR-34: Įrangos tinkamumas drėgnai aplinkai}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F15 (atitinka funkcijos kodus P5.1, P6.1, P0.3; darbų paketas N1; PA-03).
     \item \textbf{Tipas:} Suderinamumas.
@@ -317,7 +309,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
 
 \subsection{P6. Garso įranga}
 
-\noindent\textbf{NFR-36: Trenerio balso vėlavimas}
+\noindent\textbf{NFR-35: Trenerio balso vėlavimas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F10 (atitinka funkcijos kodą P6.2; vidiniai komponentai S2, S3; PA-15).
     \item \textbf{Tipas:} Našumas.
@@ -325,7 +317,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Vėlavimas nuo mikrofono iki ausinių ne didesnis kaip 300~ms.
 \end{itemize}
 
-\noindent\textbf{NFR-37: Garso kokybė ir pertrūkiai}
+\noindent\textbf{NFR-36: Garso kokybė ir pertrūkiai}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F10 (atitinka funkcijos kodus P6.1, P6.2; vidinis komponentas S3; PA-15).
     \item \textbf{Tipas:} Našumas.
@@ -333,7 +325,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Ne daugiau kaip 1 pertrūkis per 10~min trukmės užsiėmimą esant normaliam tinklo veikimui.
 \end{itemize}
 
-\noindent\textbf{NFR-38: Garso ir valdymo kanalų apsauga}
+\noindent\textbf{NFR-37: Garso ir valdymo kanalų apsauga}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F10, F11 (atitinka funkcijos kodus P6.1, P6.2, P0.19; vidiniai komponentai S3, S4; PA-15).
     \item \textbf{Tipas:} Saugumas.
@@ -341,7 +333,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Grotuvas jungiasi prie serverio tik per TLS 1.2 ar naujesnę su individualiu įrenginio raktu, išduotu registruojant įrenginį erdvėje; neregistruotas įrenginys atmetamas, o jo bandymai užfiksuojami žurnale. Garso siųstuvą valdo tik tos erdvės registruotas grotuvas, o garso kanalas yra atskirtas nuo lankytojų tinklo ir nuo kitos erdvės kanalo. Bandyme įrenginys be įrenginio rakto negauna užsiėmimo duomenų ir negali pradėti transliacijos erdvėje. Jei garsas perduodamas IP tinklu ne uždaru vietiniu tinklu, srautas šifruojamas. Jei naudojamas nešifruotas radijo ryšys, likusi artumo pasiklausymo rizika pripažįstama ir aprašoma diegimo dokumentuose.
 \end{itemize}
 
-\noindent\textbf{NFR-39: Ausinių ryšio atsistatymas}
+\noindent\textbf{NFR-38: Ausinių ryšio atsistatymas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F11 (atitinka funkcijos kodą P6.1; vidinis komponentas S3; PA-15).
     \item \textbf{Tipas:} Patikimumas.
@@ -349,7 +341,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Pakartotinis prisijungimas įvyksta per ne ilgiau kaip 10~s.
 \end{itemize}
 
-\noindent\textbf{NFR-40: Garso perdavimas didelei dalyvių grupei}
+\noindent\textbf{NFR-39: Garso perdavimas didelei dalyvių grupei}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F11, F16 (atitinka funkcijos kodą P6.1; vidinis komponentas S3; PA-15).
     \item \textbf{Tipas:} Pasiekiamumas.
@@ -357,7 +349,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Objekte patikrinta, kad vienoje erdvėje vienu metu veikia bent 5 klausančių ausinių (ar daugiau, jei dalyvių yra daugiau).
 \end{itemize}
 
-\noindent\textbf{NFR-41: Trenerio balso neįrašymas}
+\noindent\textbf{NFR-40: Trenerio balso neįrašymas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F10 (atitinka funkcijos kodą P6.2; vidinis komponentas S3; PA-15).
     \item \textbf{Tipas:} Saugumas.
@@ -367,7 +359,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
 
 \subsection{P7. Duomenų ir istorijos valdymas}
 
-\noindent\textbf{NFR-42: Ataskaitų sudarymo greitis}
+\noindent\textbf{NFR-41: Ataskaitų sudarymo greitis}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F13 (atitinka funkcijos kodus P7.2, P7.3; PA-17).
     \item \textbf{Tipas:} Našumas.
@@ -375,7 +367,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Ataskaita sudaroma per 10~s nuo užklausos pateikimo.
 \end{itemize}
 
-\noindent\textbf{NFR-43: Istorijos saugojimo trukmė}
+\noindent\textbf{NFR-42: Istorijos saugojimo trukmė}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F13 (atitinka funkcijos kodus P3.1, P3.10, P7.1, P7.2, P1.22; PA-12, PA-17).
     \item \textbf{Tipas:} Patikimumas.
@@ -383,7 +375,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Duomenys saugomi ne trumpiau kaip 1 metus nuo užsiėmimo datos.
 \end{itemize}
 
-\noindent\textbf{NFR-44: Rezervacijų ir lankomumo įrašų išlikimas}
+\noindent\textbf{NFR-43: Rezervacijų ir lankomumo įrašų išlikimas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F13 (atitinka funkcijos kodus P3.1, P3.10, P7.2, P2.5, P0.12; PA-08, PA-17).
     \item \textbf{Tipas:} Patikimumas.
@@ -391,17 +383,17 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} 100~\% įrašų išlieka; istorija (P3.10) ir ataskaita (P7.2) rodo tuos pačius skaičius. Kadangi paskyros ištrinamos po 3 mėn. deaktyvavimo (NFR-07), rezervacijų ir lankomumo įrašai yra anonimizuojami.
 \end{itemize}
 
-\subsection{Tarp visų}
+\subsection{Bendri nefunkciniai reikalavimai}
 
-\noindent\textbf{NFR-45: Naudotojų skaičius ir vienalaikė apkrova}
+\noindent\textbf{NFR-44: Naudotojų skaičius ir vienalaikė apkrova}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas visiems poreikiams F1--F19 (atitinka visas žiniatinklio funkcijas P0--P4, P7; vidinis komponentas S4).
     \item \textbf{Tipas:} Pasiekiamumas.
     \item \textbf{Aprašymas:} Sistema aptarnauja iki 500 registruotų naudotojų ir iki 100 vienu metu prisijungusių.
-    \item \textbf{Patikrinamas rezultatas:} Apkrovos testu su 100 vienu metu prisijungusių naudotojų sistema veikia be klaidų ir neviršija NFR-20, NFR-21, NFR-22 ribų.
+    \item \textbf{Patikrinamas rezultatas:} Apkrovos testu su 100 vienu metu prisijungusių naudotojų sistema veikia be klaidų ir neviršija NFR-19, NFR-20, NFR-21 ribų.
 \end{itemize}
 
-\noindent\textbf{NFR-46: Šifruotas ryšys naršyklė--serveris}
+\noindent\textbf{NFR-45: Šifruotas ryšys naršyklė--serveris}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (atitinka visas žiniatinklio funkcijas P0--P4, P7; vidinis komponentas S4).
     \item \textbf{Tipas:} Saugumas.
@@ -409,7 +401,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Naudojamas tik HTTPS (TLS 1.2 ar naujesnė); HTTP užklausos nukreipiamos į HTTPS.
 \end{itemize}
 
-\noindent\textbf{NFR-47: Prieigos valdymas pagal vaidmenis}
+\noindent\textbf{NFR-46: Prieigos valdymas pagal vaidmenis}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F2, F12, F14 (atitinka funkcijos kodus P0--P4, P7, ypač P0.9--P0.14; vidinis komponentas S4; PA-01--PA-18).
     \item \textbf{Tipas:} Saugumas.
@@ -417,7 +409,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Neleistas veiksmas atmetamas serveryje (ne tik paslepiamas sąsajoje); 0 sėkmingų neleistų veiksmų testuose.
 \end{itemize}
 
-\noindent\textbf{NFR-48: Apsauga nuo dažniausių žiniatinklio pažeidžiamumų}
+\noindent\textbf{NFR-47: Apsauga nuo dažniausių žiniatinklio pažeidžiamumų}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (atitinka visas žiniatinklio funkcijas P0--P4, P7; vidinis komponentas S4).
     \item \textbf{Tipas:} Saugumas.
@@ -425,7 +417,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Prieš perdavimą atliekamas pažeidžiamumų patikrinimas; kritinių ir aukšto lygio radinių -- 0.
 \end{itemize}
 
-\noindent\textbf{NFR-49: Žiniatinklio sistemos pasiekiamumas}
+\noindent\textbf{NFR-48: Žiniatinklio sistemos pasiekiamumas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (atitinka visas žiniatinklio funkcijas P0--P4, P7; vidinis komponentas S4).
     \item \textbf{Tipas:} Pasiekiamumas.
@@ -433,7 +425,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Ne mažiau kaip 99,5~\% laiko per mėnesį centro darbo valandomis (planuoti priežiūros darbai neįskaičiuojami).
 \end{itemize}
 
-\noindent\textbf{NFR-50: Atsarginės kopijos ir atkūrimas}
+\noindent\textbf{NFR-49: Atsarginės kopijos ir atkūrimas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (taikoma visiems P0--P7 duomenims; vidinis komponentas S4).
     \item \textbf{Tipas:} Patikimumas.
@@ -441,7 +433,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Kopija daroma kasdien; leistinas duomenų praradimas (RPO) ne daugiau kaip 24~val., atkūrimo laikas (RTO) ne daugiau kaip 4~val. Kopijos ištrinamos po 90 dienų.
 \end{itemize}
 
-\noindent\textbf{NFR-51: Aiškūs klaidų ir būsenų pranešimai}
+\noindent\textbf{NFR-50: Aiškūs klaidų ir būsenų pranešimai}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (atitinka visas žiniatinklio funkcijas P0--P4, P7; pavyzdys -- P3.3 pranešimas „Laisvų vietų nebėra“).
     \item \textbf{Tipas:} Panaudojamumas.
@@ -449,7 +441,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} 100~\% pranešimų lietuvių kalba; naudotojui nerodomi techniniai kodai.
 \end{itemize}
 
-\noindent\textbf{NFR-52: Prieinamumo gairių atitiktis}
+\noindent\textbf{NFR-51: Prieinamumo gairių atitiktis}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (atitinka visas žiniatinklio funkcijas P0--P4, P7).
     \item \textbf{Tipas:} Pasiekiamumas.
@@ -457,7 +449,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Atitiktis WCAG~2.1 lygiui AA.
 \end{itemize}
 
-\noindent\textbf{NFR-53: Veikimas populiariausiose naršyklėse}
+\noindent\textbf{NFR-52: Veikimas populiariausiose naršyklėse}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (atitinka visas žiniatinklio funkcijas P0--P4, P7).
     \item \textbf{Tipas:} Suderinamumas.
@@ -465,15 +457,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Sąsaja veikia dviejose naujausiose Chrome, Firefox, Edge ir Safari versijose (kompiuteryje ir mobiliuosiuose įrenginiuose).
 \end{itemize}
 
-\noindent\textbf{NFR-54: Architektūra plėtiniams per API}
-\begin{itemize}
-    \item \textbf{Užsakovo poreikis ir funkcijos:} plėtiniai X1, X2, X5, X7 (atitinka visas bazines funkcijas P0--P4, P7; vidinis komponentas S4).
-    \item \textbf{Tipas:} Suderinamumas.
-    \item \textbf{Aprašymas:} Architektūra leidžia vėliau pridėti plėtinius (mobilioji programėlė, NFC/QR, progreso analizė, automatinė programų sudarymo logika) per programavimo sąsają.
-    \item \textbf{Patikrinamas rezultatas:} Visos bazinės funkcijos pasiekiamos per dokumentuotą API.
-\end{itemize}
-
-\noindent\textbf{NFR-55: Sistemos veikimo stebėsena}
+\noindent\textbf{NFR-53: Sistemos veikimo stebėsena}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (taikoma visoms sistemos dalims P0--P7; vidinis komponentas S4; PA-16).
     \item \textbf{Tipas:} Patikimumas.
@@ -481,7 +465,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} Klaidų žurnalas saugomas 90 dienų; kritinės klaidos pastebimos per 1~val.
 \end{itemize}
 
-\noindent\textbf{NFR-56: Lietuvių kalba ir lietuviški simboliai}
+\noindent\textbf{NFR-54: Lietuvių kalba ir lietuviški simboliai}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} bendras reikalavimas F1--F19 (atitinka funkcijos kodus P0.4, P0.8, P1.16, P3.11, P3.12; X13 neįtraukta).
     \item \textbf{Tipas:} Suderinamumas.
@@ -489,7 +473,7 @@ Jei nenurodyta kitaip, laiko ribos matuojamos sistemai veikiant įprastoje apkro
     \item \textbf{Patikrinamas rezultatas:} 100~\% sąsajos tekstų lietuvių kalba; raidės ąčęėįšųūž teisingai veikia paieškoje ir laiškuose.
 \end{itemize}
 
-\noindent\textbf{NFR-57: Lietuvos laiko juosta ir laiko perėjimas}
+\noindent\textbf{NFR-55: Lietuvos laiko juosta ir laiko perėjimas}
 \begin{itemize}
     \item \textbf{Užsakovo poreikis ir funkcijos:} F4, F8 (atitinka funkcijos kodus P2.2, P2.3, P3.2, P3.4, P3.7, P3.11; vidinis komponentas S1; PA-06, PA-09, PA-18).
     \item \textbf{Tipas:} Pasiekiamumas.
