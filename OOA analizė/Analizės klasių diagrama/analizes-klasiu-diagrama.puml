@@ -1,0 +1,236 @@
+@startuml analizes-klasiu-diagrama
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 11
+skinparam ArrowFontSize 10
+skinparam class {
+  BackgroundColor #FFFFE0
+  BorderColor #A80036
+  BackgroundColor<<control>> #E6F0FF
+  BorderColor<<control>> #1F4E9C
+  BackgroundColor<<enumeration>> #F2F2F2
+  BorderColor<<enumeration>> #666666
+}
+skinparam nodesep 35
+skinparam ranksep 55
+hide empty members
+hide circle
+
+' ==================== ENUMERACIJOS ====================
+
+' ==================== ESYBES ====================
+  class NaudotojoPaskyra {
+    - elPaštas : string
+    - slaptažodžioHash : string
+    - vaidmuo : Vaidmuo
+    - būsena : aktyvi | neaktyvi
+    - sukurta : datetime
+    + registruotis()
+    + prisijungti()
+    + atkurtiSlaptažodį()
+    + deaktyvuoti()
+    + keistiVaidmenį()
+  }
+  class DalyvioProfilis {
+    - vardas : string
+    - pavardė : string
+    - telefonas : string
+    - gimimoData : date
+    - plaukimoLygis : string
+    - tikslai : text
+    - pastabosTreneriui : text
+    + atnaujintiProfilį()
+  }
+  class TrenerioProfilis {
+    - vardas : string
+    - pavardė : string
+    - aprašymas : text
+    + atnaujintiProfilį()
+  }
+
+  class SportoErdvė {
+    - pavadinimas : string
+    - adresas : string
+    - vietųSkaičius : int
+    + turiPriklausomybių() : boolean
+  }
+  class ErdvėsVaizdoIrGarsoProfilis {
+    - vaizdoRaiška : string
+    - garsoRaiška : string
+  }
+  class Įrenginys {
+    - tipas : string
+    - pavadinimas : string
+    - būsena : ĮrenginioBūsena
+    - programinėsĮrangosVersija : string
+    - ipAdresas : string
+    + registruoti()
+    + keistiNustatymus()
+    + šalinti()
+  }
+  class VaizdoĮrenginioNustatymai {
+    - raiška : string
+    - ryškumas : int
+  }
+  class GarsoĮrenginioNustatymai {
+    - garsumas : int
+    - išėjimas : string
+  }
+
+  class Pratimas {
+    - pavadinimas : string
+    - aprašymas : text
+    - raumenųGrupė : string
+    + naudojamas() : boolean
+  }
+  class MokomojiMedžiaga {
+    - pavadinimas : string
+    - tipas : vaizdas | garsas
+    - failoNuoroda : string
+    - trukmėS : int
+    + patikrintiFailą()
+  }
+  class UžsiėmimoPrograma {
+    - pavadinimas : string
+    - aprašymas : text
+    - archyvuota : boolean
+    + archyvuoti()
+  }
+  class ProgramosVersija {
+    - versijosNr : int
+    - sukurta : datetime
+    - būsena : aktuali | ankstesnė
+    + sukurtiNaują()
+  }
+  class ProgramosEtapas {
+    - eilėsNr : int
+    - trukmėS : int
+    - instrukcija : text
+  }
+  class EtapoPratimas {
+    - eilėsNr : int
+  }
+
+  class Užsiėmimas {
+    - pavadinimas : string
+    - tipas : UžsiėmimoTipas
+    - režimas : UžsiėmimoRežimas
+    - pradžia : datetime
+    - trukmėMin : int
+    - vietųSkaičius : int
+    - turinysParengtas : boolean
+    - ryšysAtkurtas : boolean
+    - būsena : UžsiėmimoBūsena
+    + planuoti()
+    + keisti()
+    + atšaukti()
+    + pradėti()
+    + užbaigti()
+    + laisvosVietos() : int
+  }
+  class UžsiėmimoNustatymai {
+    - vaizdoNustatymai : string
+    - garsoNustatymai : string
+  }
+  class Rezervacija {
+    - sukurta : datetime
+    - atšaukta : datetime
+    - priminimasIšsiųstas : boolean
+    - būsena : RezervacijosBūsena
+    + sukurti()
+    + atšaukti()
+    + pašalinti()
+  }
+  class LankomumoĮrašas {
+    - dalyvavo : boolean
+    - pažymėta : datetime
+    - pataisyta : datetime
+    + pažymėti()
+    + pataisyti()
+  }
+  class VykdymoŽurnalas {
+    - laikas : datetime
+    - įvykis : string
+    - treneris nenurodytas = ryšio sutrikimas
+    + užfiksuotiĮvykį()
+    + užfiksuotiSutrikimą()
+  }
+
+  class Įvertinimas {
+    - data : date
+    - išvados : text
+  }
+  class AsmeninėPrograma {
+    - pavadinimas : string
+    - aprašymas : text
+    - būsena : AsmeninėsProgramosBūsena
+    + sudaryti()
+    + keistiNuotoliniu()
+    + užbaigti()
+    + archyvuoti()
+  }
+  class ProgramosPratimas {
+    - eilėsNr : int
+    - serijos : int
+    - pakartojimai : int
+  }
+  class NamųUžduotis {
+    - terminas : date
+  }
+  class PasirengimoRekomendacija {
+    - tekstas : text
+  }
+
+' ==================== VALDIKLIAI ====================
+
+' ==================== RYSIAI: PASKYROS ====================
+NaudotojoPaskyra "1" -- "0..1" DalyvioProfilis : turi
+NaudotojoPaskyra "1" -- "0..1" TrenerioProfilis : turi
+
+' ==================== RYSIAI: ERDVES ====================
+SportoErdvė "1" -- "1" ErdvėsVaizdoIrGarsoProfilis : turi
+SportoErdvė "1" -- "0..*" Įrenginys : turi
+Įrenginys "1" -- "0..*" VaizdoĮrenginioNustatymai : turi
+Įrenginys "1" -- "0..*" GarsoĮrenginioNustatymai : turi
+
+' ==================== RYSIAI: TURINYS ====================
+MokomojiMedžiaga "0..1" -- "0..*" Pratimas : demonstruoja
+UžsiėmimoPrograma "1" -- "1..*" ProgramosVersija : turi
+TrenerioProfilis "1" -- "0..*" ProgramosVersija : sukūrė
+ProgramosVersija "1" *-- "1..*" ProgramosEtapas : susideda iš
+ProgramosEtapas "0..*" -- "0..1" MokomojiMedžiaga : garso instrukcija
+(ProgramosEtapas, Pratimas) .. EtapoPratimas
+
+' ==================== RYSIAI: UZSIEMIMAI ====================
+Užsiėmimas "0..*" -- "1" ProgramosVersija : vykdoma
+Užsiėmimas "0..*" -- "1" SportoErdvė : vyksta
+Užsiėmimas "0..*" -- "0..1" TrenerioProfilis : veda
+Užsiėmimas "1" *-- "1" UžsiėmimoNustatymai : turi
+Užsiėmimas "1" -- "0..*" VykdymoŽurnalas : kaupia
+VykdymoŽurnalas "0..*" -- "0..1" ProgramosEtapas : vykdytas etapas
+VykdymoŽurnalas "0..*" -- "0..1" TrenerioProfilis : davė komandą
+
+' ==================== RYSIAI: REZERVACIJOS ====================
+Rezervacija "0..*" -- "1" Užsiėmimas : turi
+Rezervacija "0..*" -- "1" DalyvioProfilis : priklauso
+Rezervacija "0..*" -- "1" NaudotojoPaskyra : užregistravo
+Rezervacija "0..*" -- "0..1" NaudotojoPaskyra : atšaukė
+LankomumoĮrašas "0..1" -- "1" Rezervacija : fiksuojama
+LankomumoĮrašas "0..*" -- "1" TrenerioProfilis : pažymėjo
+
+' ==================== RYSIAI: ASMENINES ====================
+DalyvioProfilis "1" -- "0..*" Įvertinimas : gauna
+TrenerioProfilis "1" -- "0..*" Įvertinimas : atlieka
+Įvertinimas "1" -- "0..*" AsmeninėPrograma : yra pagrindas
+DalyvioProfilis "1" -- "0..*" AsmeninėPrograma : turi
+TrenerioProfilis "1" -- "0..*" AsmeninėPrograma : sudaro
+AsmeninėPrograma "1" -- "0..*" PasirengimoRekomendacija : turi
+AsmeninėPrograma "1" -- "0..*" NamųUžduotis : apima
+(AsmeninėPrograma, Pratimas) .. ProgramosPratimas
+NamųUžduotis "0..*" -- "1" Pratimas : skirtas
+
+' ==================== VALDIKLIU PRIKLAUSOMYBES ====================
+
+
+@enduml
