@@ -28,6 +28,9 @@ Diagramoje laikomasi šių sprendimų:
         klasės nėra.
   \item Lankomumo įrašas susietas su rezervacija; žymos nebuvimas reiškia, kad
         lankomumas nepažymėtas, o ne „nedalyvavo“.
+  \item Užsiėmimo programos archyvavimą inicijuoja treneris (PA-05).
+        Metodas \texttt{archyvuoti()} išreiškia esybės atsakomybę pakeisti savo
+        būseną gavus komandą; programa savaime nearchyvuojama.
   \item Ryšių kardinalumas žymimas pagal \ref{tab:er-zymejimas} lentelę.
 \end{itemize}
 
@@ -66,7 +69,7 @@ ProgramosVersija & Nekeičiama programos versija; viena versija aktuali, ankstes
 ProgramosEtapas & Etapo eilė, trukmė ir instrukcija; susieja pratimus (per EtapoPratimas) ir garso instrukcijos medžiagą & PA-05, PA-15 \\
 Užsiėmimas & Suplanuotas individualus ar grupinis užsiėmimas (su treneriu arba virtualus): laikas, erdvė, programos versija, vietos, būsena & PA-06--PA-08, PA-15 \\
 UžsiėmimoNustatymai & Užsiėmimo vaizdo ir garso nustatymai & PA-15 \\
-Rezervacija & Dalyvio vieta užsiėmime (aktyvi, atšaukta, pašalinta), kas ją sukūrė ar atšaukė, priminimo žyma & PA-09--PA-11, PA-18 \\
+Rezervacija & Dalyvio vieta užsiėmime (aktyvi, atšaukta, pašalinta, užbaigta), kas ją sukūrė ar atšaukė, priminimo žyma & PA-09--PA-11, PA-18 \\
 LankomumoĮrašas & Faktinis dalyvavimas (dalyvavo / nedalyvavo), kas ir kada pažymėjo ar pataisė & PA-12, PA-17 \\
 VykdymoŽurnalas & Užsiėmimo vykdymo įvykiai ir ryšio sutrikimai (be trenerio -- sutrikimas) & PA-15, PA-16 \\
 Įvertinimas & Individualus trenerio atliktas dalyvio įvertinimas, pagrindžiantis asmeninę programą & PA-13 \\
