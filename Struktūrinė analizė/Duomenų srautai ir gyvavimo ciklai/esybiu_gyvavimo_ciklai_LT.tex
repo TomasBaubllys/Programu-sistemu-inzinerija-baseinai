@@ -53,14 +53,14 @@ Namų užduotis.
 \textbf{Esybė (saugykla)} & \textbf{Kas ir kada sukuria} & \textbf{Kaip keičiama} & \textbf{Kaip užbaigiama} & \textbf{Ar ištrinama} \\
 \midrule
 \endhead
-Naudotojo paskyra (D1) & Dalyvis registruodamasis; trenerio ir administratoriaus paskyras~– administratorius, kai jie pradeda dirbti (1) & Paskyros duomenis (ir dalyvio ar trenerio profilį) keičia pats naudotojas, vaidmenį~– administratorius (1) & Administratorius deaktyvuoja ir gali vėl aktyvuoti (1) & Ne \\ \addlinespace[3pt]
+Naudotojo paskyra (D1) & Dalyvis registruodamasis; trenerio ir administratoriaus paskyras~– administratorius, kai jie pradeda dirbti (1) & Paskyros duomenis (ir dalyvio ar trenerio profilį) keičia pats naudotojas, vaidmenį~– administratorius (1) & Administratorius deaktyvuoja ir iki ištrynimo gali vėl aktyvuoti (1) & Taip, pagal NFR-07 ir NFR-08; išliekanti istorija anonimizuojama \\ \addlinespace[3pt]
 Sporto erdvė (D2) & Administratorius, įrengdamas naują erdvę (1) & Duomenis ir vaizdo bei garso profilį keičia administratorius (1) & Ištrinama (1) & Taip, jei joje nėra jokių užsiėmimų (ir praėjusių ar atšauktų) ir nepriskirta įrangos \\ \addlinespace[3pt]
 Įrenginys (D3) & Administratorius, sumontavęs įrenginį erdvėje (1) & Administratorius keičia nustatymus, konfigūracijos pasą ir būseną (1) & Registracija ištrinama (1) & Taip \\ \addlinespace[3pt]
 Pratimas (D4) & Administratorius, kai pratimas nufilmuotas ir patvirtintas (2) & Administratorius (2) & Ištrinamas (2) & Taip, jei nenaudojamas programose ir užduotyse \\ \addlinespace[3pt]
 Mokomoji medžiaga (D5) & Administratorius įkelia patvirtintą failą (2) & Metaduomenis keičia administratorius (2) & Ištrinama (2) & Taip, jei nenaudojama pratimuose ir programose \\ \addlinespace[3pt]
 Užsiėmimo programa ir jos versija (D6) & Treneris, rengdamasis užsiėmimams (2) & Kiekvienas pakeitimas sukuria naują versiją (2) & Archyvuojama; nenaudota užsiėmimuose gali būti ištrinta (2) & Tik nenaudota \\ \addlinespace[3pt]
 Užsiėmimas (D7) & Treneris arba administratorius suplanuoja (3) & Iki pradžios keičiamas (3); pakeitus jį ar jo programą, turinys rengiamas iš naujo (6.1); vykdymo metu keičiasi jo būsena (6.2, 6.6) & Užbaigiamas (6.2, 6.6), atšaukiamas iki pradžios (3) arba tampa neįvykusiu (3) & Ne \\ \addlinespace[3pt]
-Rezervacija (D8) & Dalyvis rezervuoja (4.2), treneris ar administratorius priskiria (4.4) & Įrašoma žyma „priminimas išsiųstas“ (4.7) & Atšaukiama (4.3, 3, 1) arba pašalinama (4.4); po užsiėmimo nebesikeičia & Ne \\ \addlinespace[3pt]
+Rezervacija (D8) & Dalyvis rezervuoja (4.2), treneris ar administratorius priskiria (4.4) & Įrašoma žyma „priminimas išsiųstas“ (4.7) & Atšaukiama (4.3, 3, 1) arba pašalinama (4.4); pasibaigus užsiėmimui tampa užbaigta ir lieka istorijoje & Ne \\ \addlinespace[3pt]
 Lankomumo įrašas (D8) & Treneris pažymi dalyvį prasidėjusiame neatšauktame užsiėmime (4.5) & Žymą taiso treneris (4.5) & Lieka kartu su rezervacija & Ne \\ \addlinespace[3pt]
 Įvertinimas (D9) & Treneris, įvertinęs dalyvį, kuris turi ar turėjo rezervaciją jo vedamame užsiėmime (5) & Nekeičiamas; pakartotinai įvertinus dalyvį, įrašomas naujas įvertinimas (5) & Lieka dalyvio istorijoje; pagal jį sudaroma ne daugiau kaip viena asmeninė programa (5) & Ne \\ \addlinespace[3pt]
 Asmeninė programa ir namų užduotys (D9) & Treneris pagal dalyvio įvertinimą (5) & Treneris keičia nuotoliniu būdu, dalyviui pranešama (5) & Užbaigiama arba archyvuojama (5) & Ne; namų užduotis galima pašalinti, kol programa galioja \\
@@ -80,8 +80,9 @@ veiksmu būsenos viduje~– veiksmą, kuris būsenos nekeičia.
 
 Esybė neištrinama, jei kartu dingtų užsiėmimų, rezervacijų ar lankomumo
 istorija: tokiu atveju ji archyvuojama, deaktyvuojama arba lieka galutinėje
-būsenoje. Ištrinti galima tik niekur nenaudojamą įrašą. Kiek laiko
-saugomi asmens duomenys, nustato nefunkciniai reikalavimai.
+būsenoje. Ši taisyklė neriboja paskyros ir asmens duomenų ištrynimo pagal NFR-07 ir
+NFR-08: išliekanti istorija anonimizuojama, išsaugant jos įrašus ir ataskaitų
+skaičius. Kiek laiko saugomi asmens duomenys, nustato nefunkciniai reikalavimai.
 
 \subsubsection{Užsiėmimas}\label{sec:gc-uzsiemimas}
 
@@ -116,8 +117,6 @@ atšaukti ir neįvykę užsiėmimai lieka istorijoje ir ataskaitose
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-  \draw[thick, rounded corners=10pt] (-0.75,6.4) rectangle (3.45,1.4);
-  \node[font=\scriptsize, anchor=north west] at (-0.7,6.35) {Pradėtas};
   \node[bpradzia] (i) at (-7.0,3.9) {};
   \node[bsena] (sup) at (-4.3,2.3) {Suplanuotas};
   \node[bsena] (nei) at (-4.3,5.3) {Neįvykęs};
@@ -140,8 +139,10 @@ atšaukti ir neįvykę užsiėmimai lieka istorijoje ir ataskaitose
   \draw[bper] (ats) -- (f2);
   \draw[bper] ([xshift=-3mm]vyk.north) -- node[bivyk, left] {pristabdyti\\(6.2)} ([xshift=-3mm]pri.south);
   \draw[bper] ([xshift=3mm]pri.south) -- node[bivyk, right] {tęsti (6.2)} ([xshift=3mm]vyk.north);
-  \draw[bper] (3.45,5.0) -- node[bivyk, above, sloped] {užbaigti (6.2)} (uzb.north west);
-  \draw[bper] (1.05,1.4) -- node[bivyk, left] {dingo grotuvo\\signalas (6.6)} ([xshift=-3mm]nut.north);
+  \draw[bper] (pri.north) -- ++(0,0.8) -| node[bivyk, above, pos=0.3] {užbaigti (6.2)} (uzb.north);
+  \draw[bper] (vyk.north east) -- ++(0.35,0.55) -- node[bivyk, above] {užbaigti (6.2)} ([yshift=5.5mm]uzb.north west) -- (uzb.north west);
+  \draw[bper] (vyk.south) -- node[bivyk, left] {dingo grotuvo\\signalas (6.6)} (nut.north);
+  \draw[bper] (pri.east) -- (3.3,5.0) -- node[bivyk, right, pos=0.15] {dingo grotuvo\\signalas (6.6)} (3.3,-1.0) -- (nut.east);
   \draw[bper] ([xshift=3mm]nut.north) -- node[bivyk, right, pos=0.4] {tęsti [ryšys\\atkurtas] (6.2)} ([xshift=3mm]vyk.south);
   \draw[bper] (nut.east) -- node[bivyk, below, sloped] {užbaigti (6.2)} ([xshift=-4mm]uzb.south);
 \end{tikzpicture}
@@ -157,7 +158,8 @@ atšaukiamas užsiėmimas arba deaktyvuojama dalyvio paskyra, ir pašalinta, kai
 dalyvį pašalina treneris ar administratorius. Priskirti ir pašalinti dalyvį
 galima, kol užsiėmimas nėra atšauktas, užbaigtas ar neįvykęs, taip pat jau prasidėjus
 užsiėmimui, pavyzdžiui, kai dalyvis atėjo be rezervacijos. Užsiėmimui pasibaigus
-rezervacija nebesikeičia ir lieka istorijoje.
+aktyvi rezervacija tampa užbaigta ir lieka istorijoje. Taip pat ji užbaigiama,
+jei užsiėmimas tampa neįvykusiu; ši būsena neparodo faktinio dalyvavimo.
 
 Lankomumo įrašas yra atskiras: jis atsiranda tik treneriui pažymėjus dalyvį
 prasidėjusiame neatšauktame užsiėmime. Užsiėmimas čia laikomas prasidėjusiu,
@@ -173,13 +175,15 @@ ne „nedalyvavo“. Žymą galima taisyti (\ref{fig:gc-rezervacija}~pav.).
   \node[bsenae] (akt) at (0,1.8) {Aktyvi \nodepart{two} priminimas išsiųstas /\\įrašyti žymą (4.7)};
   \node[bsena] (ats) at (-2.4,-0.6) {Atšaukta};
   \node[bsena] (pas) at (2.4,-0.6) {Pašalinta};
-  \node[bpabaiga] (f0) at (5.4,1.8) {};
+  \node[bsena] (uzr) at (5.4,1.8) {Užbaigta};
+  \node[bpabaiga] (f0) at (5.4,0.3) {};
+  \draw[bper] (uzr) -- (f0);
   \node[bpabaiga] (f1) at (-2.4,-2.0) {};
   \node[bpabaiga] (f2) at (2.4,-2.0) {};
   \draw[bper] (i) -- node[bivyk, right] {rezervuoti [tenkinamos 4.2\\sąlygos] (4.2)\\priskirti [yra laisvų vietų,\\užsiėmimas nėra atšauktas,\\užbaigtas ar neįvykęs] (4.4)} (akt);
   \draw[bper] (akt) -- node[bivyk, above left, pos=0.68] {atšaukti [užsiėmimas neprasidėjo] (4.3)\\užsiėmimas atšauktas (3)\\paskyra deaktyvuota (1)} (ats);
   \draw[bper] (akt) -- node[bivyk, above right, pos=0.45] {pašalinti [užsiėmimas nėra\\užbaigtas ar neįvykęs] (4.4)} (pas);
-  \draw[bper] (akt) -- node[bivyk, above] {užsiėmimas\\užbaigtas (6.2, 6.6)\\arba neįvykęs (3)} (f0);
+  \draw[bper] (akt) -- node[bivyk, above] {užsiėmimas\\užbaigtas (6.2, 6.6)\\arba neįvykęs (3)} (uzr);
   \draw[bper] (ats) -- (f1);
   \draw[bper] (pas) -- (f2);
   \node[font=\scriptsize\itshape, anchor=east] at (-0.35,4.8) {a) Rezervacija};
@@ -210,7 +214,8 @@ ištrinama (\ref{fig:gc-programa}~pav.). Planuojant užsiėmimas
 susiejamas su aktualia programos versija, o vykdoma versija priskiriama
 rengiant jo turinį grotuvui (6.1); jei iki pradžios sukuriama naujesnė
 versija, turinys parengiamas iš naujo su ja. Pradėjus užsiėmimą (6.2), versija
-nebekeičiama.
+nebekeičiama. Būsena „Pašalinta“ žymi esybės gyvavimo pabaigą, o ne
+saugomą įrašą ar papildomą ER būsenos atributo reikšmę.
 
 \begin{figure}[H]
 \centering
@@ -218,26 +223,29 @@ nebekeičiama.
   \node[bpradzia] (i) at (0,1.6) {};
   \node[bsena] (akt) at (0,0) {Aktyvi};
   \node[bsena] (arc) at (-2.0,-2.0) {Archyvuota};
-  \node[bpabaiga] (f) at (2.0,-2.0) {};
+  \node[bsena] (sal) at (2.0,-2.0) {Pašalinta};
+  \node[bpabaiga] (f) at (2.0,-3.3) {};
+  \draw[bper] (sal) -- (f);
   \draw[bper] (i) -- node[bivyk, left] {sukurti (2)} (akt);
   \draw[bper] (akt.10) .. controls +(1.4,0.5) and +(1.4,-0.5) .. node[bivyk, right] {keisti / sukurti\\naują versiją (2)} (akt.-10);
   \draw[bper] (akt) -- node[bivyk, above left, pos=0.72] {archyvuoti (2) arba\\šalinti [naudota\\užsiėmimuose] (2)} (arc);
   \node[bpabaiga] (fa) at (-2.0,-3.3) {};
   \draw[bper] (arc) -- (fa);
-  \draw[bper] (akt) -- node[bivyk, above right, pos=0.5] {šalinti [nenaudota] (2)} (f);
+  \draw[bper] (akt) -- node[bivyk, above right, pos=0.5] {šalinti [nenaudota] (2)} (sal);
   \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {a) Užsiėmimo programa};
 \end{tikzpicture}
-\hspace{1.2cm}
+\par\vspace{5mm}
 \begin{tikzpicture}[x=1cm,y=1cm]
   \node[bpradzia] (i) at (0,1.6) {};
   \node[bsena] (akt) at (0,0) {Aktuali};
   \node[bsena] (ank) at (0,-2.0) {Ankstesnė};
   \draw[bper] (i) -- node[bivyk, right] {sukurta programa arba\\jos pakeitimas (2)} (akt);
-  \draw[bper] (akt) -- node[bivyk, right] {sukurta naujesnė\\versija (2)} (ank);
-  \node[bpabaiga] (fd) at (-3.1,0) {};
-  \draw[bper] (akt) -- node[bivyk, above] {programa\\ištrinta (2)} (fd);
-  \node[bpabaiga] (fv) at (0,-3.3) {};
-  \draw[bper] (ank) -- node[bivyk, right] {programa ištrinta (2)} (fv);
+  \draw[bper] (akt) -- node[bivyk, left] {sukurta naujesnė\\versija (2)} (ank);
+  \node[bsena] (sal) at (4.5,-1.0) {Pašalinta};
+  \node[bpabaiga] (fd) at (4.5,-3.3) {};
+  \draw[bper] (sal) -- (fd);
+  \draw[bper] (akt.east) -| node[bivyk, above, pos=0.35] {programa\\ištrinta (2)} (sal.north);
+  \draw[bper] (ank.east) -| node[bivyk, below, pos=0.35] {programa\\ištrinta (2)} (sal.south);
   \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {b) Programos versija};
 \end{tikzpicture}
 \caption{Užsiėmimo programos ir jos versijos būsenų diagramos}\label{fig:gc-programa}
@@ -255,8 +263,13 @@ galioja.
 Dalyvio paskyrą sukuria pats dalyvis registruodamasis, trenerio ir
 administratoriaus~– administratorius. Deaktyvuojant dalyvio paskyrą,
 atšaukiamos jo būsimos rezervacijos, o trenerio paskyrą galima deaktyvuoti tik
-tada, kai jis neturi būsimų užsiėmimų. Deaktyvuota paskyra neištrinama, kad
-liktų istorija, ir administratorius gali ją vėl aktyvuoti
+tada, kai jis neturi būsimų užsiėmimų. Iki ištrynimo administratorius gali
+deaktyvuotą paskyrą vėl aktyvuoti. Paskyra ir profilis ištrinami pasibaigus
+NFR-07 terminui arba įvykdžius NFR-08 numatytą prašymą. Vykdant prašymą
+aktyvi paskyra pirmiausia deaktyvuojama pagal tas pačias taisykles. Išliekanti
+istorija ir žurnaluose esantys asmens duomenys anonimizuojami pagal NFR-05,
+NFR-07 ir NFR-08; atsarginės kopijos tvarkomos pagal NFR-49.
+„Ištrinta“ žymi gyvavimo pabaigą, ne papildomą saugomos paskyros būseną
 (\ref{fig:gc-asmenine}~pav.).
 
 \begin{figure}[H]
@@ -284,6 +297,10 @@ liktų istorija, ir administratorius gali ją vėl aktyvuoti
   \draw[bper] (i) -- node[bivyk, right] {registruotis arba\\sukurti (1)} (akt);
   \draw[bper] ([xshift=-5mm]akt.south) -- node[bivyk, left] {deaktyvuoti [nėra būsimų\\trenerio užsiėmimų] /\\atšaukti būsimas\\rezervacijas (1)} ([xshift=-5mm]nea.north);
   \draw[bper] ([xshift=5mm]nea.north) -- node[bivyk, right] {aktyvuoti (1)} ([xshift=5mm]akt.south);
+  \node[bsena] (ist) at (0,-4.8) {Ištrinta};
+  \node[bpabaiga] (fp) at (0,-6.0) {};
+  \draw[bper] (nea) -- node[bivyk, right] {pasibaigė NFR-07 terminas arba\\vykdomas NFR-08 prašymas /\\ištrinti paskyrą ir profilį,\\anonimizuoti išliekančią istoriją (1)} (ist);
+  \draw[bper] (ist) -- (fp);
   \node[font=\scriptsize\itshape, anchor=east] at (-0.35,1.6) {b) Naudotojo paskyra};
 \end{tikzpicture}
 \caption{Asmeninės programos ir naudotojo paskyros būsenų diagramos}\label{fig:gc-asmenine}
