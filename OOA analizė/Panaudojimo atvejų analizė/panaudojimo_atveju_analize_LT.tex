@@ -18,7 +18,7 @@ PA identifikatoriai skirti šiai analizei. P0--P7 nuorodos yra ankstesnio labora
 \begingroup\small
 \begin{longtable}{@{}p{1.2cm}p{6cm}p{3cm}p{4cm}@{}}
 \toprule ID & Tikslas & Aktoriai & Šaltinio funkcijos\\\midrule\endhead
-PA-01 & Registruotis ir valdyti savo paskyrą & Dalyvis, Treneris, Administratorius & P0.4--P0.8 \\
+PA-01 & Registruotis ir valdyti savo paskyrą & Dalyvis, Treneris, Administratorius, Naudotojas & P0.4--P0.8 \\
 PA-02 & Administruoti naudotojus ir vaidmenis & Administratorius & P0.9--P0.14 \\
 PA-03 & Tvarkyti sporto erdves ir įrangą & Administratorius & P0.15--P0.23 \\
 PA-04 & Tvarkyti pratimus ir mokomąją medžiagą & Administratorius & P1.4--P1.9, P1.16--P1.19 \\
@@ -122,7 +122,8 @@ Diagramos suskaidytos pagal veiklos sritis; visose taikoma ta pati sistemos riba
 Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar API. Scenarijuose aprašytos taisyklės sutampa su duomenų srautų diagramų procesų specifikacijomis ir esybių gyvavimo ciklais. „Užsiėmimas prasidėjo“ reiškia, kad atėjo suplanuotas jo pradžios laikas arba treneris jį jau pradėjo.
 \Needspace{10\baselineskip}
 \paragraph{PA-01. Registruotis ir valdyti savo paskyrą}\mbox{}\par
-\textbf{Aktoriai:} Dalyvis, Treneris, Administratorius.\par
+\textbf{Aktoriai:} Dalyvis, Treneris, Administratorius, Naudotojas.\par
+\textbf{Bendras aktorius:} Naudotojas apima visus tris vaidmenis: dalyvį, trenerį ir administratorių. Konkretūs aktoriai išlieka, o bendri jų veiksmai aprašomi kaip naudotojo veiksmai.\par
 \textbf{Pradinės sąlygos:} Registracijai paskyra dar nesukurta; registruojasi tik dalyvis, o trenerio ir administratoriaus paskyras sukuria administratorius (PA-02). Profilio keitimui naudotojas prisijungęs.\par
 \textbf{Inicijavimas:} Dalyvis pasirenka registraciją, o bet kuris naudotojas -- prisijungimą arba savo profilį.\par
 \textbf{Pagrindinis scenarijus:}
@@ -219,11 +220,11 @@ Scenarijai aprašo naudotojo ir sistemos sąveiką, ne programavimo klases ar AP
 \Needspace{10\baselineskip}
 \paragraph{PA-06. Suplanuoti užsiėmimą su treneriu}\mbox{}\par
 \textbf{Aktoriai:} Treneris, Administratorius.\par
-\textbf{Pradinės sąlygos:} Naudotojas prisijungęs; yra treneris, sporto erdvė ir parengta programa.\par
-\textbf{Inicijavimas:} Naudotojas pasirenka naujo užsiėmimo planavimą.\par
+\textbf{Pradinės sąlygos:} Treneris prisijungęs; yra treneris, sporto erdvė ir parengta programa.\par
+\textbf{Inicijavimas:} Treneris pasirenka naujo užsiėmimo planavimą.\par
 \textbf{Pagrindinis scenarijus:}
 \begin{enumerate}
-\item Naudotojas nurodo pavadinimą, datą, pradžios laiką ir trukmę, sporto erdvę, programą ir prireikus vaizdo bei garso nustatymus; nenurodytus sistema perima iš sporto erdvės profilio.
+\item Treneris nurodo pavadinimą, datą, pradžios laiką ir trukmę, sporto erdvę, programą ir prireikus vaizdo bei garso nustatymus; nenurodytus sistema perima iš sporto erdvės profilio.
 \item Pasirenka individualų arba grupinį užsiėmimą; individualiam nustatoma viena vieta, grupiniam nurodomas vietų skaičius.
 \item Treneris planuoja savo užsiėmimą; administratorius parenka konkretų trenerį.
 \item Sistema patikrina duomenis ir trenerio užsiėmimų laiko nesikirtimą.
