@@ -102,9 +102,14 @@ garsumą.
 
 Nutrūkus ryšiui, grotuvas užbaigia pradėtą etapą ir naujo nepradeda,
 užsiėmimas tampa vykdomu be ryšio, o budinčiam darbuotojui pranešama; jis
-patikrina įrangą. Treneris užsiėmimą gali užbaigti, o tęsti~– tik atkūrus ryšį, kai
-6.6~procesas, vėl gavęs grotuvo signalą, D7 saugykloje įrašo žymą „ryšys
-atkurtas“.
+patikrina įrangą. Kai 6.6~procesas vėl gauna grotuvo signalą, jis D7
+saugykloje įrašo žymą „ryšys atkurtas“, ir užsiėmimas pereina į būseną
+„Laukiama tęsinio“. Užsiėmimas savaime netęsiamas ir laukia trenerio komandos
+„Tęsti“. Jei ryšys vėl nutrūksta, užsiėmimas grįžta į būseną „Vykdomas be
+ryšio“, ir budinčiam darbuotojui vėl pranešama. Užbaigti užsiėmimą treneris gali
+ir be ryšio, ir laukdamas tęsinio. ER diagramoje būseną „Laukiama tęsinio“ rodo
+atributo \texttt{būsena} reikšmė „vykdomas be ryšio“ kartu su loginiu atributu
+\texttt{ryšys\_atkurtas}.
 Faktinę etapų eigą (etapo pradžią ir pabaigą) 6.6~procesas visą užsiėmimo
 laiką rašo į vykdymo žurnalą, o 6.2~procesas ten įrašo komandas ir jas
 davusius trenerius.
@@ -117,34 +122,37 @@ atšaukti ir neįvykę užsiėmimai lieka istorijoje ir ataskaitose
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-  \node[bpradzia] (i) at (-7.0,3.9) {};
-  \node[bsena] (sup) at (-4.3,2.3) {Suplanuotas};
-  \node[bsena] (nei) at (-4.3,5.3) {Neįvykęs};
-  \node[bpabaiga] (f3) at (-6.4,5.3) {};
-  \node[bsenae] (vyk) at (1.35,2.3) {Vykdomas \nodepart{two} praleisti, pereiti, keisti\\trukmę ar garsumą /\\perduoti grotuvui (6.2)};
-  \node[bsenae] (pri) at (1.35,5.0) {Pristabdytas \nodepart{two} keisti garsumą / perduoti\\grotuvui (6.2)};
-  \node[bsenae] (nut) at (1.35,-1.0) {Vykdomas be ryšio \nodepart{two} entry / pranešti budinčiam\\darbuotojui (6.6)};
-  \node[bsena] (uzb) at (6.5,2.3) {Užbaigtas};
-  \node[bpabaiga] (f1) at (7.3,0.9) {};
-  \node[bsenae] (ats) at (-4.3,-1.0) {Atšauktas \nodepart{two} entry / atšaukti aktyvias\\rezervacijas, pranešti\\dalyviams (3)};
-  \node[bpabaiga] (f2) at (-4.3,-2.8) {};
+  \node[bpradzia] (i) at (-6.5,3.9) {};
+  \node[bsena] (sup) at (-3.8,2.3) {Suplanuotas};
+  \node[bsena] (nei) at (-3.8,5.3) {Neįvykęs};
+  \node[bpabaiga] (f3) at (-5.9,5.3) {};
+  \node[bsenae] (vyk) at (1.0,2.3) {Vykdomas \nodepart{two} praleisti, pereiti, keisti\\trukmę ar garsumą /\\perduoti grotuvui (6.2)};
+  \node[bsenae] (pri) at (6.5,2.3) {Pristabdytas \nodepart{two} keisti garsumą /\\perduoti grotuvui (6.2)};
+  \node[bsena] (lau) at (1.0,-1.4) {Laukiama tęsinio};
+  \node[bsenae] (nut) at (6.5,-1.4) {Vykdomas be ryšio \nodepart{two} entry / pranešti\\budinčiam\\darbuotojui (6.6)};
+  \node[bsena] (uzb) at (3.5,-4.6) {Užbaigtas};
+  \node[bpabaiga] (f1) at (3.5,-5.8) {};
+  \node[bsenae] (ats) at (-3.8,-1.0) {Atšauktas \nodepart{two} entry / atšaukti aktyvias\\rezervacijas, pranešti\\dalyviams (3)};
+  \node[bpabaiga] (f2) at (-3.8,-2.8) {};
   \draw[bper] (i) -- node[bivyk, above, sloped, pos=0.42] {planuoti (3)} ([xshift=5mm]sup.north west);
   \draw[bper] (sup.200) .. controls +(-0.8,-0.5) and +(-0.8,0.5) .. node[bivyk, left] {keisti [iki\\pradžios] /\\pranešti\\dalyviams (3)} (sup.160);
   \draw[bper] (sup) -- node[bivyk, right] {praėjo suplanuota\\pabaiga (3)} (nei);
   \draw[bper] (nei) -- (f3);
-  \draw[bper] (sup) -- node[bivyk, above, pos=0.41] {pradėti [turinys\\parengtas] (6.2)} (vyk);
-  \draw[bper] (vyk) -- node[bivyk, below, pos=0.61] {pasibaigė\\paskutinis\\etapas (6.6)} (uzb);
-  \draw[bper] ([xshift=8mm]uzb.south) -- (f1);
   \draw[bper] (sup) -- node[bivyk, left] {atšaukti [iki\\pradžios] (3)} (ats);
   \draw[bper] (ats) -- (f2);
-  \draw[bper] ([xshift=-3mm]vyk.north) -- node[bivyk, left] {pristabdyti\\(6.2)} ([xshift=-3mm]pri.south);
-  \draw[bper] ([xshift=3mm]pri.south) -- node[bivyk, right] {tęsti (6.2)} ([xshift=3mm]vyk.north);
-  \draw[bper] (pri.north) -- ++(0,0.8) -| node[bivyk, above, pos=0.3] {užbaigti (6.2)} (uzb.north);
-  \draw[bper] (vyk.north east) -- ++(0.35,0.55) -- node[bivyk, above] {užbaigti (6.2)} ([yshift=5.5mm]uzb.north west) -- (uzb.north west);
-  \draw[bper] (vyk.south) -- node[bivyk, left] {dingo grotuvo\\signalas (6.6)} (nut.north);
-  \draw[bper] (pri.east) -- (3.3,5.0) -- node[bivyk, right, pos=0.15] {dingo grotuvo\\signalas (6.6)} (3.3,-1.0) -- (nut.east);
-  \draw[bper] ([xshift=3mm]nut.north) -- node[bivyk, right, pos=0.4] {tęsti [ryšys\\atkurtas] (6.2)} ([xshift=3mm]vyk.south);
-  \draw[bper] (nut.east) -- node[bivyk, below, sloped] {užbaigti (6.2)} ([xshift=-4mm]uzb.south);
+  \draw[bper] (sup) -- node[bivyk, above] {pradėti [turinys\\parengtas] (6.2)} (vyk);
+  \draw[bper] ([yshift=2mm]vyk.east) -- node[bivyk, above] {pristabdyti (6.2)} ([yshift=2mm]pri.west);
+  \draw[bper] ([yshift=-2mm]pri.west) -- node[bivyk, below] {tęsti (6.2)} ([yshift=-2mm]vyk.east);
+  \draw[bper] (vyk.south east) -- node[bivyk, above right, pos=0.45] {dingo grotuvo\\signalas (6.6)} ([xshift=-10mm]nut.north);
+  \draw[bper] (pri.south) -- node[bivyk, right] {dingo grotuvo\\signalas (6.6)} (nut.north);
+  \draw[bper] ([yshift=2mm]nut.west) -- node[bivyk, above] {ryšys atkurtas (6.6)} ([yshift=2mm]lau.east);
+  \draw[bper] ([yshift=-2mm]lau.east) -- node[bivyk, below] {dingo grotuvo\\signalas (6.6)} ([yshift=-2mm]nut.west);
+  \draw[bper] (lau.north) -- node[bivyk, left] {tęsti (6.2)} (vyk.south);
+  \draw[bper] ([yshift=-4mm]vyk.west) -- ++(-0.6,0) |- node[bivyk, below, pos=0.75] {užbaigti (6.2),\\pasibaigė paskutinis\\etapas (6.6)} (uzb.west);
+  \draw[bper] (pri.east) -- ++(0.6,0) |- node[bivyk, below, pos=0.75] {užbaigti (6.2)} (uzb.east);
+  \draw[bper] ([xshift=6mm]lau.south) -- node[bivyk, left] {užbaigti (6.2)} ([xshift=-6mm]uzb.north);
+  \draw[bper] ([xshift=-6mm]nut.south) -- node[bivyk, right] {užbaigti (6.2)} ([xshift=6mm]uzb.north);
+  \draw[bper] (uzb) -- (f1);
 \end{tikzpicture}
 \caption{Užsiėmimo būsenų diagrama}\label{fig:gc-uzsiemimas}
 \end{figure}
@@ -242,7 +250,7 @@ saugomą įrašą ar papildomą ER būsenos atributo reikšmę.
   \draw[bper] (i) -- node[bivyk, right] {sukurta programa arba\\jos pakeitimas (2)} (akt);
   \draw[bper] (akt) -- node[bivyk, left] {sukurta naujesnė\\versija (2)} (ank);
   \node[bsena] (sal) at (4.5,-1.0) {Pašalinta};
-  \node[bpabaiga] (fd) at (4.5,-3.3) {};
+  \node[bpabaiga] (fd) at (6.6,-1.0) {};
   \draw[bper] (sal) -- (fd);
   \draw[bper] (akt.east) -| node[bivyk, above, pos=0.35] {programa\\ištrinta (2)} (sal.north);
   \draw[bper] (ank.east) -| node[bivyk, below, pos=0.35] {programa\\ištrinta (2)} (sal.south);
