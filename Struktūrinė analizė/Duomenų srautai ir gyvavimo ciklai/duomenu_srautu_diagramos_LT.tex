@@ -920,7 +920,7 @@ Atmesti: „Laisvų vietų nebėra“ & & & & & X \\
 {\small \textit{Gauna:} I2.6. \textit{Skaito:} V33.2. \textit{Rašo:} V34.1. \textit{Pateikia:} O3.6.1, V43.}
 \begin{itemize}
   \item \textbf{JEI} komandą davė užsiėmimą valdantis treneris ir komanda leistina esamoje užsiėmimo būsenoje (žr. \ref{sec:gyvavimo-ciklai}~poskyrį), \textbf{TADA} perduoti ją grotuvui ir įrašyti į vykdymo žurnalą kartu su ją davusiu treneriu; \textbf{KITAIP} atmesti.
-  \item Leidžiamos komandos: vykdomame užsiėmime~– visos; pristabdytame~– tęsti, užbaigti ir keisti garsumą; vykdomame be ryšio~– tęsti (tik atkūrus ryšį) ir užbaigti. „Pradėti“ leidžiama tik suplanuotam užsiėmimui, kai turinys parengtas.
+  \item Leidžiamos komandos: vykdomame užsiėmime~– visos; pristabdytame~– tęsti, užbaigti ir keisti garsumą; vykdomame be ryšio~– tik užbaigti; laukiančiame tęsinio~– tęsti ir užbaigti. „Pradėti“ leidžiama tik suplanuotam užsiėmimui, kai turinys parengtas.
   \item Užsiėmimo būseną D7 saugykloje keičia tik komandos „pradėti“, „pristabdyti“, „tęsti“ ir „užbaigti“; kitos komandos tik perduodamos grotuvui.
   \item Komandos rezultatą pateikti treneriui (O3.6.1).
 \end{itemize}
@@ -948,8 +948,8 @@ Atmesti: „Laisvų vietų nebėra“ & & & & & X \\
 \begin{itemize}
   \item Gavus grotuvo būseną atnaujinti trenerio valdymo pultą ir į vykdymo žurnalą D7 saugykloje įrašyti faktinę etapų eigą (etapo pradžia ir pabaiga).
   \item \textbf{JEI} grotuvas praneša, kad programa baigta, \textbf{TADA} užsiėmimo būseną pakeisti į „užbaigtas“.
-  \item \textbf{JEI} vykdomo ar pristabdyto užsiėmimo grotuvo signalas negaunamas ilgiau už nustatytą ribą, \textbf{TADA} pažymėti, kad užsiėmimas vykdomas be ryšio ir ryšys neatkurtas, išsiųsti O5 budinčiam darbuotojui (užsiėmimas iš D7, sporto erdvė iš D2) ir įrašyti sutrikimą į vykdymo žurnalą. Ribą nustato nefunkciniai reikalavimai.
-  \item \textbf{JEI} signalas vėl gaunamas, \textbf{TADA} D7 saugykloje pažymėti, kad ryšys atkurtas.
+  \item \textbf{JEI} vykdomo, pristabdyto ar tęsinio laukiančio užsiėmimo grotuvo signalas negaunamas ilgiau už nustatytą ribą, \textbf{TADA} pažymėti, kad užsiėmimas vykdomas be ryšio ir ryšys neatkurtas, išsiųsti O5 budinčiam darbuotojui (užsiėmimas iš D7, sporto erdvė iš D2) ir įrašyti sutrikimą į vykdymo žurnalą. Ribą nustato nefunkciniai reikalavimai.
+  \item \textbf{JEI} signalas vėl gaunamas, \textbf{TADA} D7 saugykloje pažymėti, kad ryšys atkurtas. Užsiėmimas laukia tęsinio, kol treneris duos komandą „tęsti“ (6.2).
 \end{itemize}
 \paragraph{7 Pateikti istoriją ir ataskaitas}\mbox{}\par
 {\small \textit{Skaito:} V38, V39, V40. \textit{Pateikia:} O3.7, O4.5.}

@@ -1,6 +1,97 @@
+% PA-09 „Rezervuoti vietą užsiėmime“ veiklos diagrama (UML), nubraižyta TikZ.
+% Reikalingi paketai: tikz (bibliotekos arrows.meta, shapes.geometric), float.
+\tikzset{
+  vdveiksmas/.style={draw, thick, rounded corners=6pt, align=center, font=\scriptsize,
+    inner sep=3pt, minimum height=0.7cm, fill=white,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  vdsprendimas/.style={diamond, draw, thick, fill=white, minimum size=0.45cm, inner sep=0pt},
+  vdpradzia/.style={circle, fill=black, minimum size=7pt, inner sep=0pt},
+  vdpabaiga/.style={circle, draw, thick, minimum size=11pt, inner sep=0pt,
+    path picture={\fill (path picture bounding box.center) circle (2.8pt);}},
+  vdsrautas/.style={-{Stealth[length=2mm]}, semithick},
+  vdsalyga/.style={font=\scriptsize, align=center, inner sep=1.5pt},
+  vdpastaba/.style={font=\scriptsize, align=left, inner sep=4pt,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+% \vdPastaba{vardas}{padėtis}{teksto plotis}{tekstas}: UML pastaba su užlenktu kampu
+\newcommand{\vdPastaba}[4]{%
+  \node[vdpastaba, text width=#3] (#1) at (#2) {#4};
+  \draw[thin] (#1.south west) -- (#1.south east) -- ([yshift=-2mm]#1.north east)
+    -- ([xshift=-2mm]#1.north east) -- (#1.north west) -- cycle;
+  \draw[thin] ([xshift=-2mm]#1.north east) |- ([yshift=-2mm]#1.north east);}
+
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{OOA analizė/Veiklos diagrama/veiklos diagrama.png}
-    \caption{,,PA-09. Rezervuoti vietą užsiėmime'' veiklos diagrama}
-    \label{fig:veiklosDiagrama}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  % Veiklos takeliai
+  \draw[thick] (0,0) rectangle (15.8,-18.2);
+  \draw[thick] (4.6,0) -- (4.6,-18.2);
+  \draw[thick] (0,-0.6) -- (15.8,-0.6);
+  \node[font=\small\bfseries] at (2.3,-0.3) {Dalyvis};
+  \node[font=\small\bfseries] at (10.2,-0.3) {Sistema};
+
+  % Tvarkaraščio peržiūra
+  \node[vdpradzia] (pr) at (2.3,-1.1) {};
+  \node[vdveiksmas, text width=3.6cm] (d1) at (2.3,-2.0) {Pasirenka meniu „Tvarkaraštis“};
+  \node[vdveiksmas, text width=4.0cm] (s1) at (8.0,-2.0) {Suskaičiuoja laisvas vietas (vietų skaičius $-$ aktyvios rezervacijos) ir pateikia tvarkaraštį};
+  \node[vdveiksmas, text width=3.6cm] (d2) at (2.3,-3.7) {Pasirenka laikotarpį ar sporto erdvę ir atidaro užsiėmimą};
+  \node[vdveiksmas, text width=4.0cm] (s2) at (8.0,-3.7) {Parodo laiką, sporto erdvę, režimą, trenerį ir laisvų vietų skaičių};
+  \node[vdveiksmas, text width=3.6cm] (d3) at (2.3,-5.3) {Paspaudžia „Rezervuoti“};
+  \vdPastaba{n0}{13.25,-2.6}{4.1cm}{Rezervuojama dalyvio vieta jau suplanuotame užsiėmime. Trenerio laikas ir sporto erdvė priskiriami planuojant užsiėmimą (PA-06, PA-07), todėl čia jie netikrinami.}
+
+  % Sąlygų patikra
+  \node[vdsprendimas] (k1) at (8.0,-6.4) {};
+  \node[vdsprendimas] (k2) at (8.0,-7.9) {};
+  \node[vdsprendimas] (k3) at (8.0,-9.4) {};
+  \node[vdveiksmas, text width=3.0cm] (r1) at (12.55,-6.4) {Veiksmas neleidžiamas};
+  \node[vdveiksmas, text width=3.0cm] (r2) at (12.55,-7.9) {Rezervuoti neleidžiama, užsiėmimo informacija atnaujinama};
+  \node[vdveiksmas, text width=3.0cm] (r3) at (12.55,-9.4) {Parodoma esama rezervacija, antra nesukuriama};
+
+  % Vietų užimtumo patikra ir rezervacijos įrašymas
+  \draw[thick, dashed, rounded corners=8pt] (5.7,-10.0) rectangle (10.3,-14.35);
+  \node[font=\scriptsize\itshape, anchor=north east, align=right] at (10.25,-10.02) {nedalomas\\veiksmas};
+  \node[vdveiksmas, text width=4.0cm] (a1) at (8.0,-11.15) {Suskaičiuoja aktyvias šio užsiėmimo rezervacijas ir laisvas vietas};
+  \node[vdsprendimas] (k4) at (8.0,-12.4) {};
+  \node[vdveiksmas, text width=4.0cm] (a2) at (8.0,-13.6) {Sukuria aktyvią rezervaciją su dalyviu, užsiėmimu, rezervavimo laiku ir veiksmą atlikusiu naudotoju};
+  \node[vdveiksmas, text width=3.0cm] (r4) at (12.55,-12.4) {Pranešimas „Laisvų vietų nebėra“, rezervacija nesukuriama};
+  \vdPastaba{n1}{2.3,-12.4}{3.5cm}{Patikra ir įrašymas atliekami kaip vienas nedalomas veiksmas. Kai paskutinę vietą vienu metu rezervuoja keli dalyviai, ją gauna tik vienas. Kiti gauna pranešimą „Laisvų vietų nebėra“ (NFR-25).}
+  \draw[thin, dashed] (n1.east) -- (5.7,-12.4);
+
+  % Rezultatas
+  \node[vdsprendimas] (k5) at (8.0,-15.25) {};
+  \node[vdveiksmas, text width=3.0cm] (r5) at (12.55,-15.25) {Patvirtinimas nerodomas. Atidarius sąrašą, tikrinama faktinė būsena};
+  \node[vdveiksmas, text width=4.0cm] (a3) at (8.0,-16.5) {Atnaujina prieinamumą. Laisvų vietų tvarkaraštyje ir užsiėmimo kortelėje sumažėja vienetu};
+  \node[vdveiksmas, text width=3.6cm] (d4) at (2.3,-16.5) {Mato patvirtinimą ir rezervaciją sąraše „Mano rezervacijos“};
+  \node[vdpabaiga] (pb) at (2.3,-17.65) {};
+
+  % Galutiniai mazgai atmetimo šakoms
+  \foreach \r in {r1,r2,r3,r4,r5} {
+    \node[vdpabaiga] (\r f) at ([xshift=7mm]\r.east) {};
+    \draw[vdsrautas] (\r.east) -- (\r f);
+  }
+
+  % Srautai
+  \draw[vdsrautas] (pr) -- (d1);
+  \draw[vdsrautas] (d1) -- (s1);
+  \draw[vdsrautas] (s1.south) -- ++(0,-0.4) -| (d2.north);
+  \draw[vdsrautas] (d2) -- (s2);
+  \draw[vdsrautas] (s2.south) -- ++(0,-0.4) -| (d3.north);
+  \draw[vdsrautas] (d3.south) |- (k1.west);
+  \draw[vdsrautas] (k1) -- node[vdsalyga, above] {[paskyra neaktyvi arba\\sesija pasibaigė]} (r1);
+  \draw[vdsrautas] (k1) -- node[vdsalyga, left] {[paskyra aktyvi]} (k2);
+  \draw[vdsrautas] (k2) -- node[vdsalyga, above] {[atėjo pradžios laikas,\\užsiėmimas pradėtas\\arba atšauktas]} (r2);
+  \draw[vdsrautas] (k2) -- node[vdsalyga, left] {[neprasidėjo ir\\neatšauktas]} (k3);
+  \draw[vdsrautas] (k3) -- node[vdsalyga, above] {[jau turi aktyvią šio\\užsiėmimo rezervaciją]} (r3);
+  \draw[vdsrautas] (k3) -- node[vdsalyga, left, pos=0.15] {[neturi]} (a1);
+  \draw[vdsrautas] (a1) -- (k4);
+  \draw[vdsrautas] (k4) -- node[vdsalyga, above, pos=0.33] {[laisvų\\vietų nėra]} (r4);
+  \draw[vdsrautas] (k4) -- node[vdsalyga, left] {[yra laisvų vietų]} (a2);
+  \draw[vdsrautas] (a2) -- (k5);
+  \draw[vdsrautas] (k5) -- node[vdsalyga, above] {[išsaugoti nepavyko]} (r5);
+  \draw[vdsrautas] (k5) -- node[vdsalyga, left] {[išsaugota]} (a3);
+  \draw[vdsrautas] (a3) -- (d4);
+  \draw[vdsrautas] (d4) -- (pb);
+\end{tikzpicture}
+\caption{„PA-09. Rezervuoti vietą užsiėmime“ veiklos diagrama}
+\label{fig:veiklosDiagrama}
 \end{figure}
