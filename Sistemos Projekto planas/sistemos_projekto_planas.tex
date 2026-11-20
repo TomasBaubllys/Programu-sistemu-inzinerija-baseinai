@@ -1,0 +1,76 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=18mm]{geometry}
+\usepackage{tabularx,booktabs,array}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\pagestyle{empty}
+
+\begin{document}
+
+{\small VU MIF \enspace|\enspace Programų sistemų inžinerija\par}
+{\LARGE\bfseries Sistemos projekto rengimo planas\par}
+
+\textbf{Tikslas.} Parengti sistemos projektą, pagal kurį programuotojai galėtų
+įgyvendinti sistemą be papildomų klausimų apie jos architektūrą, sąsajas,
+duomenis ar elgseną. Projektą grindžiame ankstesniais reikalavimų ir analizės
+dokumentais, išlaikydami jų identifikatorius ir terminus.
+
+\textbf{Metodika.} Dokumentą struktūruojame pagal 4+1 architektūros vaizdų modelį.
+Loginis vaizdas aprašo domeną ir taisykles, kūrimo vaizdas -- modulius ir jų
+priklausomybes, procesų vaizdas -- sistemos elgseną vykdymo metu, fizinis
+vaizdas -- komponentų diegimą. Panaudojimo atvejai (PA) sudaro „+1“ ir susieja
+vaizdus. Modulių ir objektų atsakomybėms apibrėžti taikome objektinį
+projektavimą (OOD). Sudėtingesniems PA galime taikyti ICONIX analizės ir
+sekų diagramas, susiejančias ekranus, valdymo logiką ir domeno objektus.
+
+\subsection*{Darbų paskirstymas}
+
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\linewidth}{@{}r l >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Nr.} & \textbf{Atsakingas} & \textbf{Rezultatas} \\
+\midrule
+1 & Tadas & \textbf{Įvadas, architektūra ir diegimas.}
+Metodika, sistemos konteksto, komponentų ir diegimo diagramos.
+Sluoksnių ir modulių atsakomybės bei priklausomybės. Pagrįstas vietinio,
+debesijos ar hibridinio diegimo pasirinkimas, DB vieta ir vietinio grotuvo
+ryšys su kitais komponentais. \\
+2 & Marijus & \textbf{Duomenų bazės projektas.}
+Fizinė schema, laukų tipai, raktai, apribojimai ir indeksai.
+Transakcijos, archyvavimas, šalinimas ir pagrįstas lentelių skaidymo
+(\textit{partitioning}) sprendimas. \\
+3 & Goda & \textbf{Naudotojo sąsaja.}
+Ekranų žemėlapis, „Figma“ eskizai ir susietas pagrindinių srautų prototipas.
+Veiksmai pagal roles, laukų validavimas, tuščios ir klaidų būsenos.
+Ekranų nuorodos į PA ir susijusias operacijas. \\
+4 & Tomas & \textbf{API ir komponentų sąsajos.}
+Sąsajos tarp naudotojo sąsajos, serverio ir vietinio grotuvo pagal
+pasirinktą architektūrą. Operacijų įvestis, išvestis, DTO, prieigos teisės
+ir klaidos. Pasirinkus HTTP API, jos specifikacija pateikiama „OpenAPI“ formatu. \\
+5 & Ugnė & \textbf{Verslo logika, būsenos ir atsekamumas.}
+Verslo taisyklės, būsenų perėjimai, pagrindinių ir alternatyvių scenarijų
+sekos. Bendra atsekamumo matrica ir jos spragų patikra. \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Detalumas ir projekto patikra}
+
+Pradžioje komanda pagal ankstesnius dokumentus suderina modulių ribas, diegimą,
+roles ir būsenas. Kiekvienas savo dalyje susieja reikalavimus ir PA su
+atitinkamais ekranais, operacijomis, moduliais ar duomenimis bei priėmimo
+kriterijais. Ugnė sujungia šias nuorodas į bendrą matricą.
+
+Paprastam veiksmui pakanka taisyklės ir sąsajos aprašo. Sudėtingam scenarijui
+pridedame sekų arba būsenų diagramą. Pavyzdžiui, rezervuojant paskutinę
+vietą turi būti aišku, kas gali rezervuoti, kokie duomenys perduodami,
+kur tikrinamos laisvos vietos, kas vyksta gavus du prašymus vienu metu
+ir ką sąsaja parodo abiem naudotojams.
+
+\textbf{Baigtumo kriterijus.} Scenarijaus nerengęs komandos narys pagal
+dokumentą gali suskaidyti jį į programavimo užduotis ir nustatyti laukiamą
+rezultatą sėkmės bei klaidų atvejais. Jei reikia autoriaus paaiškinimo,
+trūkstamą sprendimą įrašome į projektą.
+
+\end{document}
